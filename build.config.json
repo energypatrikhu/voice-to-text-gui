@@ -1,0 +1,26 @@
+{
+	"appId": "com.energypatrikhu.voice-to-text",
+	"productName": "Voice To Text",
+	"directories": {
+		"output": "dist"
+	},
+	"win": {
+		"target": "nsis",
+		"requestedExecutionLevel": "requireAdministrator"
+	},
+	"nsis": {
+		"createStartMenuShortcut": true,
+		"oneClick": false,
+		"allowElevation": true,
+		"allowToChangeInstallationDirectory": true,
+		"perMachine": true
+	},
+	"files": [
+		"src/**/*.cjs",
+		{
+			"from": "build",
+			"to": ""
+		}
+	],
+	"extraResources": ["chrome/**/*"]
+}
