@@ -1,6 +1,7 @@
 import { EventEmitter, Page } from 'puppeteer-core';
 
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
+import type { Console } from './console.js';
 
 export class SpeechSynthesisEngine {
 	private page;

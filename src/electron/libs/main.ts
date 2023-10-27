@@ -28,7 +28,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 	const macros = loadMacros();
 	const dictionary = await loadDictionary(config.feedback.language, isDev);
 
-	const appConsole = new Console(ipcMain, mainWindow, isDev, config.logs).init();
+	const appConsole = new Console(ipcMain, mainWindow, isDev, config.logs.saveToFile).init();
 
 	appConsole.debugLog(dictionary.textFeedback.config.config.loaded);
 

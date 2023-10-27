@@ -26,6 +26,7 @@
 			}
 			case 'log': {
 				updateConsoleStore(data);
+				window.electron.send('electron', { event: 'log', data });
 				break;
 			}
 		}

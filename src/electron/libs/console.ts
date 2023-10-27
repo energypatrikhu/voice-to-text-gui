@@ -7,6 +7,7 @@ import { convertTextArray } from './convert-text-array.js';
 import { getLocaleTime } from './get-locale-time.js';
 
 import type { Console as AppConsole } from '../../types/Console.js';
+import type { ConfigOptions } from '../../types/ConfigOptions.js';
 
 export class Console {
 	private ipcMain;
@@ -16,17 +17,17 @@ export class Console {
 
 	private logsPath = join(app.getPath('documents'), 'Voice To Text Logs');
 
-	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean, data: any) {
+	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean, saveToFile: ConfigOptions['logs']['saveToFile']) {
 		this.ipcMain = ipcMain;
 		this.mainWindow = mainWindow;
 		this.isDev = isDev;
-		this.saveToFile = data.saveToFile;
+		this.saveToFile = saveToFile;
 	}
 
 	init() {
-		if (!this.saveToFile) return this;
+		if (!this.saveToFile || this.isDev) return this;
 
-		if (!existsSync(this.logsPath) && !this.isDev) {
+		if (!existsSync(this.logsPath)) {
 			mkdirSync(this.logsPath, {
 				recursive: true,
 			});
@@ -35,7 +36,6 @@ export class Console {
 		this.ipcMain.on('electron', async (_, { event, data }) => {
 			switch (event) {
 				case 'log': {
-					if (this.isDev) return;
 					appendFileSync(join(this.logsPath, data.filename), ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', EOL, ...data.textArray, EOL].join(' '));
 					break;
 				}
