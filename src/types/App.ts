@@ -1,5 +1,5 @@
 export interface App {
 	electronVersion: string;
-	version: string;
+	appVersion: string;
 	startupDate: string;
 }

@@ -1,4 +1,4 @@
-export default {
+export const pageSettingsTable = {
 	common: {
 		nav: {
 			color: {

@@ -17,6 +17,7 @@ declare interface Window {
 
 	callSpeechRecognitionTranscript: (transcript: string) => void;
 	callSpeechRecognitionInfo: (info: 'started' | 'stopped') => void;
+	callSpeechSynthesisFinished: () => void;
 
 	speechSynthesisOptions: { volume: number; lang: string; voice: SpeechSynthesisVoice };
 }

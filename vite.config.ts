@@ -8,7 +8,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import availableSvgs from './src/libs/availableSvgs';
 
 import type { UserConfig } from 'vite';
-import type { tSvgSrcFolderIcons } from './src/types/client.svg.js';
+import type { tSvgSrcFolderIcons } from './src/types/Svgs.js';
 
 function copyUsedMaterialSymbols() {
 	return new Promise<void>(async (resolve) => {

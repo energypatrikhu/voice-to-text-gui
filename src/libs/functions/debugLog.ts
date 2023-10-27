@@ -8,8 +8,3 @@ export function debugLog(...messages: any) {
 	}
 	saveToLogFile('::debug::', ...messages);
 }
-
-export function debugLogLine(...messages: any) {
-	debugLog('');
-	debugLog(...messages);
-}

@@ -17,3 +17,7 @@ yarn-error.log
 pnpm-lock.yaml
 
 .DS_Store
+
+vite.config.js*
+
+resources/app

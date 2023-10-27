@@ -13,14 +13,15 @@
 		"oneClick": false,
 		"allowElevation": true,
 		"allowToChangeInstallationDirectory": true,
-		"perMachine": true
+		"perMachine": true,
+		"menuCategory": "EnergyPatrikHU"
 	},
 	"files": [
-		"src/**/*.cjs",
+		"resources/app/**/*.cjs",
 		{
 			"from": "build",
 			"to": ""
 		}
 	],
-	"extraResources": ["chrome/**/*"]
+	"extraResources": ["resources/chrome/**/*", "resources/dictionaries/**/*"]
 }

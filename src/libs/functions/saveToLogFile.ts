@@ -12,9 +12,7 @@ export function saveToLogFile(type: '::debug::' | '::normal::', ...messages: Arr
 
 		window.electron.send('electron', {
 			event: 'log',
-			// event: 'log',
 			data: { filename, ...msgData, timestamp: dateToLocale(msgData.timestamp) },
-			// data: { filename, ...msgData, timestamp: dateToLocale(msgData.timestamp) },
 		});
 	}
 }

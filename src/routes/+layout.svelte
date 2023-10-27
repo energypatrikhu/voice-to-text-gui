@@ -1,68 +1,52 @@
 <script lang="ts">
 	import '../app.css';
+	import Loading from '$components/Loading.svelte';
+
 	import { onMount } from 'svelte';
 	import { config } from '$stores/config';
 	import { dict } from '$stores/dict';
 	import { app } from '$stores/app';
-	import Loading from '$components/Loading.svelte';
-	import { log } from '$libs/functions/log';
 	import { macros } from '$stores/macros';
-	import { debugLog } from '$libs/functions/debugLog';
+
+	import { getLocaleTime } from '$libs/functions/getLocaleTime';
+	import { preloadSvgs } from '$libs/functions/preloadSvgs';
+	import { updateConsoleStore } from '../stores/console';
 
 	let ready: boolean = false;
 
-	window.electron.receive('speech:synthesis', ({ event }) => {
-		switch (event) {
-			case 'initialized': {
-				window.electron.send('speech:synthesis', { event: 'speak', data: $dict.speechFeedback.index.appStarted });
-				break;
-			}
-		}
-	});
-
 	window.electron.receive('electron', ({ event, data }) => {
-		if (ready) {
-			log(data);
-		}
-
 		switch (event) {
 			case 'ready': {
 				ready = true;
-				$app = { ...$app, ...data };
-
-				if ($config.feedback.speech.enabled) {
-					window.electron.send('speech:synthesis', {
-						event: 'init',
-						data: $config.feedback,
-					});
-				}
-
-				window.electron.send('speech:recognition', {
-					event: 'init',
-					data: $config.speechRecognition,
-				});
+				$app = { ...$app, ...data.versions };
+				$config = data.config;
+				$macros = data.macros;
+				$dict = data.dictionary;
+				break;
+			}
+			case 'log': {
+				updateConsoleStore(data);
 				break;
 			}
 		}
 	});
 
-	onMount(() => {
+	async function loadSettings() {
+		console.log(`setting 'startupDate'`);
+		$app.startupDate = getLocaleTime();
+
+		console.log(`preload svgs`);
+		await preloadSvgs();
+	}
+
+	onMount(async () => {
+		await loadSettings();
+
 		window.electron.send('electron', {
 			event: 'ready',
-			data: {
-				synthesis: $config.feedback.speech.enabled,
-			},
+			data: null,
 		});
 	});
-
-	$: {
-		if (ready) {
-			debugLog({ config: $config });
-			debugLog({ dict: $dict });
-			debugLog({ macros: $macros });
-			debugLog({ app: $app });
-		}
-	}
 </script>
 
 {#if ready}

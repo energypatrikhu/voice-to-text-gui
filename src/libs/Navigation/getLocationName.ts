@@ -1,13 +1,13 @@
 import { cError } from '$stores/console';
 
-let getLocationName = (table: any, searchHref: string): any => {
+export function getLocationName(table: any, searchHref: string): any {
 	try {
 		if (!table || !searchHref) {
 			throw new Error('Param(s) `table` or `searchHref` was not provided!');
 		}
 
 		for (let _location of table) {
-			if (_location.href != '' && _location.href != '/' ? searchHref.startsWith(_location.href) : _location.href == searchHref) {
+			if (_location.href !== '' && _location.href !== '/' ? searchHref.startsWith(_location.href) : _location.href === searchHref) {
 				return _location;
 			}
 			if (_location.children.length) {
@@ -17,6 +17,4 @@ let getLocationName = (table: any, searchHref: string): any => {
 	} catch (catchError) {
 		cError(catchError);
 	}
-};
-
-export default getLocationName;
+}

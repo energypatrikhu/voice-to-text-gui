@@ -6,7 +6,7 @@
 	<div class="flex flex-col">
 		<span>
 			<span class="font-light">App Version:</span>
-			{$app.version}
+			{$app.appVersion}
 		</span>
 		<span>
 			<span class="font-light">Electron Version:</span>

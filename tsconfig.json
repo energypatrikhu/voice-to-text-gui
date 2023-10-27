@@ -34,5 +34,5 @@
 			"$app/*": [".svelte/dev/runtime/app/*", ".svelte/build/runtime/app/*"]
 		}
 	},
-	"include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.svelte", "src/**/*.cjs", "src/**/*.js", "src/electron.cjs", "src/preload.cjs"]
+	"include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.svelte", "src/**/*.cjs", "src/**/*.js"]
 }

@@ -1,0 +1,33 @@
+{
+	"appId": "com.energypatrikhu.voice-to-text",
+	"productName": "Voice To Text Beta",
+	"directories": {
+		"output": "dist"
+	},
+	"win": {
+		"target": "nsis",
+		"requestedExecutionLevel": "requireAdministrator"
+	},
+	"nsis": {
+		"createStartMenuShortcut": true,
+		"oneClick": false,
+		"allowElevation": true,
+		"allowToChangeInstallationDirectory": true,
+		"perMachine": true,
+		"menuCategory": "EnergyPatrikHU"
+	},
+	"files": [
+		"resources/app/**/*.cjs",
+		{
+			"from": "build",
+			"to": ""
+		}
+	],
+	"extraResources": [
+		{
+			"from": "./resources/extraResources/",
+			"to": "",
+			"filter": ["**/*"]
+		}
+	]
+}
