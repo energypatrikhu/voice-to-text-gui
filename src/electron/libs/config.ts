@@ -27,8 +27,8 @@ const defaultConfig: ConfigOptions = {
 		animated: false,
 		typingDelay: 50,
 	},
-	enableSounds: true,
 	feedback: {
+		sounds: false,
 		speech: {
 			enabled: true,
 			volume: 0.5,

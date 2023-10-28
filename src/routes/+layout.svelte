@@ -3,14 +3,14 @@
 	import Loading from '$components/Loading.svelte';
 
 	import { onMount } from 'svelte';
-	import { config } from '$stores/config';
+	import { config, setReady } from '$stores/config';
 	import { dict } from '$stores/dict';
 	import { app } from '$stores/app';
 	import { macros } from '$stores/macros';
 
 	import { getLocaleTime } from '$libs/functions/getLocaleTime';
 	import { preloadSvgs } from '$libs/functions/preloadSvgs';
-	import { updateConsoleStore } from '../stores/console';
+	import { updateConsoleStore } from '$stores/console';
 
 	let ready: boolean = false;
 
@@ -22,11 +22,14 @@
 				$config = data.config;
 				$macros = data.macros;
 				$dict = data.dictionary;
+
+				setReady(true);
 				break;
 			}
+
 			case 'log': {
 				updateConsoleStore(data);
-				window.electron.send('electron', { event: 'log', data });
+				window.electron.send('electron', { event: 'log', data: { ...data, filename: $app.startupDate + '.log' } });
 				break;
 			}
 		}

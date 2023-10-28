@@ -6,8 +6,21 @@ import type { ConfigOptions } from '$types/ConfigOptions';
 
 export const config = <Writable<ConfigOptions>>writable({});
 
+let isReady = false;
+
+export function setReady(state: boolean) {
+	isReady = state;
+
+	console.log('setReady', { isReady });
+}
+
 config.subscribe(function (values) {
-	if (browser) {
-		window.localStorage.setItem('config', JSON.stringify(values));
+	console.log({ browser, isReady });
+
+	if (browser && isReady) {
+		window.electron.send('electron', {
+			event: 'config',
+			data: values,
+		});
 	}
 });

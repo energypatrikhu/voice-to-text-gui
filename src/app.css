@@ -21,6 +21,17 @@ select:-webkit-autofill:focus {
 	transition: background-color 9999999s ease-in-out 0s;
 }
 
+.no-scrollbar::-webkit-scrollbar-thumb,
+.no-scrollbar::-webkit-scrollbar-thumb:hover,
+.no-scrollbar::-webkit-scrollbar {
+	width: 0 !important;
+	background-color: transparent !important;
+}
+
+.small-scrollbar::-webkit-scrollbar {
+	width: 2px !important;
+}
+
 html:not([hide-scrollbar]) ::-webkit-scrollbar-thumb {
 	--tw-bg-opacity: 1;
 	background-color: rgb(115 115 115 / var(--tw-bg-opacity));

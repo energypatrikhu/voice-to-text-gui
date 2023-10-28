@@ -1,20 +1,7 @@
 <script lang="ts">
-	type InputTypes =
-		| 'text'
-		| 'checkbox'
-		| 'color'
-		| 'date'
-		| 'datetime'
-		| 'datetime-local'
-		| 'email'
-		| 'file'
-		| 'search'
-		| 'image'
-		| 'number'
-		| 'password'
-		| 'radio';
+	type InputTypes = 'text' | 'checkbox' | 'color' | 'date' | 'datetime' | 'datetime-local' | 'email' | 'file' | 'search' | 'image' | 'number' | 'password' | 'radio';
 
-	export let value: string = '';
+	export let value: any = '';
 	export let checked: boolean = false;
 	export let alt: string = '';
 	export let files: FileList | null | undefined = undefined;
@@ -30,6 +17,12 @@
 	export let labelClass = '';
 	export { _class as class };
 
+	export let onChanged: ((value: any) => void) | undefined = undefined;
+
+	function selectChanged(event: any) {
+		if (onChanged) onChanged(JSON.parse(event.target.value ?? ''));
+	}
+
 	let _class = '';
 </script>
 
@@ -39,180 +32,180 @@
 		</span>{/if}
 	{#if type == 'text'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="text"
-			{placeholder}
-			bind:value
+			placeholder="{placeholder}"
+			bind:value="{value}"
 		/>
 	{:else if type == 'checkbox'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="checkbox"
-			bind:checked
+			bind:checked="{checked}"
 		/>
 	{:else if type == 'color'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="color"
-			bind:value
+			bind:value="{value}"
 		/>
 	{:else if type == 'date'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="date"
-			bind:value
+			bind:value="{value}"
 		/>
 	{:else if type == 'datetime'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="datetime"
-			bind:value
+			bind:value="{value}"
 		/>
 	{:else if type == 'datetime-local'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="datetime-local"
-			bind:value
+			bind:value="{value}"
 		/>
 	{:else if type == 'email'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="email"
-			{placeholder}
-			bind:value
+			placeholder="{placeholder}"
+			bind:value="{value}"
 		/>
 	{:else if type == 'file'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="file"
-			bind:files
-			{multiple}
+			bind:files="{files}"
+			multiple="{multiple}"
 		/>
 	{:else if type == 'search'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="search"
-			{placeholder}
-			bind:value
+			placeholder="{placeholder}"
+			bind:value="{value}"
 		/>
 	{:else if type == 'image'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="image"
-			bind:value
-			{alt}
-			{multiple}
+			bind:value="{value}"
+			alt="{alt}"
+			multiple="{multiple}"
 		/>
 	{:else if type == 'number'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="number"
-			{placeholder}
-			bind:value
+			placeholder="{placeholder}"
+			bind:value="{value}"
 		/>
 	{:else if type == 'password'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="password"
-			{placeholder}
-			bind:value
+			placeholder="{placeholder}"
+			bind:value="{value}"
 		/>
 	{:else if type == 'radio'}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="radio"
-			bind:value
+			bind:value="{value}"
 		/>
 	{:else}
 		<input
-			on:change
+			on:change="{selectChanged}"
 			on:input
 			on:focus
 			class="input-cmn {_class}"
-			{name}
-			{required}
-			{disabled}
+			name="{name}"
+			required="{required}"
+			disabled="{disabled}"
 			type="text"
-			{placeholder}
-			bind:value
+			placeholder="{placeholder}"
+			bind:value="{value}"
 		/>
 	{/if}
 	{#if text != '' && textPos == 'after'}<span class="w-full flex justify-start ml-1 {textClass}">

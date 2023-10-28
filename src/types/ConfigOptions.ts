@@ -18,8 +18,8 @@ export interface ConfigOptions {
 		animated: boolean;
 		typingDelay: number;
 	};
-	enableSounds: boolean;
 	feedback: {
+		sounds: boolean;
 		speech: {
 			enabled: boolean;
 			volume: number;
