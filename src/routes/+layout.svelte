@@ -35,6 +35,15 @@
 		}
 	});
 
+	window.addEventListener('mouseup', function (e) {
+		if (typeof e === 'object') {
+			// @ts-ignore
+			if ([4, 5].includes(e.button) || [4, 5].includes(e.detail.button)) {
+				e.preventDefault();
+			}
+		}
+	});
+
 	async function loadSettings() {
 		console.log(`setting 'startupDate'`);
 		$app.startupDate = getLocaleTime();
