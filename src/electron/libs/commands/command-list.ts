@@ -24,5 +24,5 @@ cmd.registerCommand(() => {
 
 	commands.push(__app.dictionary.textFeedback.commands.commandList.list.wrapper);
 
-	__app.console.log(commands.join('\n'));
+	__app.console.logJson(commands.join('\n'));
 }, ['both', 'Parancsok', null, ['parancsok', 'commands', 'cmd', 'cmds', 'listcmds', 'listcmd'], __app.dictionary.textFeedback.commands.commandList.description]);

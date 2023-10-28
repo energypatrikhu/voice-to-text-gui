@@ -166,15 +166,15 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 	await cmd.init(__app.speechSynthesis!);
 
 	if (__app.config.input.holdToActivate) {
-		__app.console.log(__app.dictionary.textFeedback.index.app.started.hold);
+		__app.console.logJson(__app.dictionary.textFeedback.index.app.started.hold);
 	} else {
-		__app.console.log(__app.dictionary.textFeedback.index.app.started.toggle);
+		__app.console.logJson(__app.dictionary.textFeedback.index.app.started.toggle);
 	}
 
 	__app.console.log([__app.dictionary.textFeedback.index.creatorsCredits.wrapper, __app.dictionary.textFeedback.index.creatorsCredits.createdBy, __app.dictionary.textFeedback.index.creatorsCredits.ideaBy, __app.dictionary.textFeedback.index.creatorsCredits.wrapper].join('\n'));
 
 	if (__app.config.commands.enabled) {
-		__app.console.log(textReplacer(__app.dictionary.textFeedback.index.commandsEnabled, __app.config.commands.prefix));
+		__app.console.logJson(textReplacer(__app.dictionary.textFeedback.index.commandsEnabled, __app.config.commands.prefix));
 	}
 
 	if (__app.speechSynthesis) __app.speechSynthesis.speak(__app.dictionary.speechFeedback.index.appStarted);

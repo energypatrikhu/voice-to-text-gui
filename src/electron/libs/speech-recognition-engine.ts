@@ -49,7 +49,7 @@ export class SpeechRecognitionEngine {
 				return;
 			}
 
-			this.appConsole.log(this.dictionary.textFeedback.chromeFunctions.speechRecognition.outputStopped);
+			this.appConsole.logJson(this.dictionary.textFeedback.chromeFunctions.speechRecognition.outputStopped);
 
 			this._output = '';
 			this._partialOutput = '';
@@ -173,7 +173,7 @@ export class SpeechRecognitionEngine {
 
 				let isMacro = replacedAppendixPrefix.match(this.textParserRegex) !== null;
 
-				this.appConsole.debugLog({ __appConfigCommandsEnabled: this.config.commands.enabled, isCommand, isMacro, replacedAppendixPrefix, textParserRegex: this.textParserRegex });
+				this.appConsole.debugLogJson({ __appConfigCommandsEnabled: this.config.commands.enabled, isCommand, isMacro, replacedAppendixPrefix, textParserRegex: this.textParserRegex });
 
 				let output = replacedAppendixPrefix.replace(/\shogy\s/g, ', hogy ');
 

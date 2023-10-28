@@ -7,6 +7,7 @@ export interface Dictionary {
 export interface Navigation {
 	home: string;
 	settings: string;
+	macros: string;
 }
 
 export interface SpeechFeedback {

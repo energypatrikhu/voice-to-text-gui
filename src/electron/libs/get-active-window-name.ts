@@ -10,7 +10,7 @@ export async function getActiveWindowName() {
 		return '';
 	}
 
-	__app.console.debugLog({ result });
+	__app.console.debugLogJson({ result });
 
 	return basename(result.owner.path);
 }

@@ -21,4 +21,15 @@ export const webPaths = [
 		customs: {},
 		children: [],
 	},
+	{
+		title: 'macros',
+		href: '/macros',
+		icon: 'settings',
+		navPos: 'top',
+		enabled: true,
+		external: false,
+		permissions: [],
+		customs: {},
+		children: [],
+	},
 ] as const;

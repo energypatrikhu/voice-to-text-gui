@@ -11,6 +11,7 @@ export function updateConsoleStore(partialConsoleData: Partial<Console>) {
 	const consoleData = {
 		severity: partialConsoleData.severity!,
 		type: partialConsoleData.type!,
+		lang: partialConsoleData.lang ?? 'txt',
 		timestamp: Date.now(),
 		dateTime: getLocaleTime(),
 		textArray: convertTextArray(partialConsoleData.textArray!),
@@ -25,6 +26,9 @@ export function updateConsoleStore(partialConsoleData: Partial<Console>) {
 }
 
 // Normal
+export function cJson(...textArray: Array<any>) {
+	return updateConsoleStore({ severity: 'Info', type: 'Normal', lang: 'json', textArray });
+}
 export function cLog(...textArray: Array<any>) {
 	return updateConsoleStore({ severity: 'Info', type: 'Normal', textArray });
 }
@@ -36,6 +40,9 @@ export function cError(...textArray: Array<any>) {
 }
 
 // Debug
+export function cDebugJson(...textArray: Array<any>) {
+	return updateConsoleStore({ severity: 'Info', type: 'Debug', lang: 'json', textArray });
+}
 export function cDebugLog(...textArray: Array<any>) {
 	return updateConsoleStore({ severity: 'Info', type: 'Debug', textArray });
 }

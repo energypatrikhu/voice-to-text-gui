@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import Highlight from 'svelte-highlight';
 	import languageJson from 'svelte-highlight/languages/json';
-	// import languagePlaintext from 'svelte-highlight/languages/plaintext';
+	import languagePlaintext from 'svelte-highlight/languages/plaintext';
 	import 'svelte-highlight/styles/github-dark-dimmed.css';
 
 	let consoleWrapper: HTMLDivElement;
@@ -25,7 +25,7 @@
 	bind:this="{consoleWrapper}"
 	class="fixed overflow-hidden overflow-y-scroll w-full h-[inherit] flex flex-col"
 >
-	{#each $eConsole as { type, severity, timestamp, textArray }}
+	{#each $eConsole as { type, severity, timestamp, lang, textArray }}
 		<div class="w-full border-t border-t-neutral-600">
 			<div class="sticky top-0 bg-neutral-800 px-4 py-1">
 				<span>[{type}]</span>
@@ -34,7 +34,7 @@
 			</div>
 			<Highlight
 				class="bg-inherit"
-				language="{languageJson}"
+				language="{lang === 'json' ? languageJson : languagePlaintext}"
 				code="{textArray.join(' ')}"
 			/>
 		</div>

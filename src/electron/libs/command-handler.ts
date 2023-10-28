@@ -104,7 +104,7 @@ class CommandHandler {
 			args: commandArray.slice(1),
 		};
 
-		__app.console.debugLog('cmd:', cmd);
+		__app.console.debugLogJson({ cmd });
 
 		if (typeof command === 'string' && anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek'])) {
 			return await this.callMacro(cmd.args[0], args.length ? args[0] : 'write');

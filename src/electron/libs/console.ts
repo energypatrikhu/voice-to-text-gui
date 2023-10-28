@@ -49,6 +49,7 @@ export class Console {
 		this.mainWindow.webContents.send('electron', {
 			event: 'log',
 			data: {
+				lang: 'txt',
 				...data,
 				timestamp: Date.now(),
 				dateTime: getLocaleTime(),
@@ -57,6 +58,13 @@ export class Console {
 		});
 
 		return this;
+	}
+
+	logJson(...messages: Array<any>) {
+		this.sendLog({ type: 'Normal', severity: 'Info', lang: 'json', textArray: messages });
+	}
+	debugLogJson(...messages: Array<any>) {
+		this.sendLog({ type: 'Debug', severity: 'Info', lang: 'json', textArray: messages });
 	}
 
 	log(...messages: Array<any>) {

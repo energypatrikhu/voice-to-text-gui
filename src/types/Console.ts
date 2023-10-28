@@ -4,4 +4,5 @@ export interface Console {
 	timestamp: number;
 	dateTime: string;
 	textArray: string[];
+	lang: 'json' | 'txt';
 }

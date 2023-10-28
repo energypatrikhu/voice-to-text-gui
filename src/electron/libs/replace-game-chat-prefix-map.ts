@@ -25,9 +25,7 @@ export function replaceGameChatPrefixMap(text: string) {
 			for (let _text of searchedTexts) {
 				if (text.startsWith(_text + ' ')) {
 					let prefix = __app.config.others.mtaConsoleInputMode ? replacer.slice(1) : replacer;
-					__app.console.debugLog('replacer', replacer);
-					__app.console.debugLog('_text', _text);
-					__app.console.debugLog('prefix', prefix);
+					__app.console.debugLogJson({ replacer, _text, prefix });
 
 					return prefix + text.slice(_text.length);
 				}
