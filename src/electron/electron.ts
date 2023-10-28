@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import electronContextMenu from 'electron-context-menu';
 import electronServe from 'electron-serve';
 import electronWindowState from 'electron-window-state';
@@ -102,15 +102,15 @@ app.on('window-all-closed', () => {
 	}
 });
 
-process.on('uncaughtException', function (err: Buffer) {
-	dialog.showErrorBox('Error - uncaughtException', err.toString());
-	process.exit(1);
-});
-process.on('uncaughtExceptionMonitor', function (err: Buffer) {
-	dialog.showErrorBox('Error - uncaughtExceptionMonitor', err.toString());
-	process.exit(1);
-});
-process.on('unhandledRejection', function (err: Buffer) {
-	dialog.showErrorBox('Error - unhandledRejection', err.toString());
-	process.exit(1);
-});
+// process.on('uncaughtException', function (err: Buffer) {
+// 	dialog.showErrorBox('Error - uncaughtException', err.toString());
+// 	process.exit(1);
+// });
+// process.on('uncaughtExceptionMonitor', function (err: Buffer) {
+// 	dialog.showErrorBox('Error - uncaughtExceptionMonitor', err.toString());
+// 	process.exit(1);
+// });
+// process.on('unhandledRejection', function (err: Buffer) {
+// 	dialog.showErrorBox('Error - unhandledRejection', err.toString());
+// 	process.exit(1);
+// });
