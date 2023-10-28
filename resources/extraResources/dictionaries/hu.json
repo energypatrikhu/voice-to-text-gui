@@ -73,12 +73,10 @@
 
 		"config": {
 			"macro": {
-				"notExists": "A makró konfigurációs fájl nem létezik, új makró konfigurációs fájl készítése!"
+				"loaded": "Makrók betöltve!"
 			},
 			"config": {
 				"wrapper": "> = = = = = < konfiguráció > = = = = = <",
-				"broken": "Konfigurációs hiba! Úgy tűnik, hogy a konfigurációs fájl meghibásodott, új fájl készítése!",
-				"notExists": "Konfigurációs hiba! A konfigurációs fájl nem létezik, új konfigurációs fájl készítése!",
 				"loaded": "Konfiguráció betöltve!",
 				"error": {
 					"partialHoldToActivate": "Konfigurációs hiba! Az „output.partial” nem lehet „true”, míg az „input.holdToActivate” „true”!",
@@ -86,6 +84,9 @@
 					"gameChatPrefixesPartial": "Konfigurációs hiba! A „replacers.gameChatPrefixes” nem lehet „true”, míg az „output.partial” „true”!",
 					"commandsPartial": "Konfigurációs hiba! A „commands.enabled” nem lehet „true”, míg az „output.partial” értéke „igaz”!"
 				}
+			},
+			"dictionary": {
+				"loaded": "Szótár betöltve!"
 			}
 		},
 
@@ -176,6 +177,7 @@
 	"navigation": {
 		"home": "Otthon",
 		"settings": "Beállítások",
-		"macros": "Makrók"
+		"macros": "Makrók",
+		"info": "Infó"
 	}
 }

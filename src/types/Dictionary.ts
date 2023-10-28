@@ -8,6 +8,7 @@ export interface Navigation {
 	home: string;
 	settings: string;
 	macros: string;
+	info: string;
 }
 
 export interface SpeechFeedback {
@@ -166,12 +167,11 @@ export interface FluffyShowActiveButtons {
 export interface TextFeedbackConfig {
 	macro: Macro;
 	config: ConfigConfig;
+	dictionary: DictionaryConfig;
 }
 
 export interface ConfigConfig {
 	wrapper: string;
-	broken: string;
-	notExists: string;
 	loaded: string;
 	error: Error;
 }
@@ -184,7 +184,11 @@ export interface Error {
 }
 
 export interface Macro {
-	notExists: string;
+	loaded: string;
+}
+
+export interface DictionaryConfig {
+	loaded: string;
 }
 
 export interface TextFeedbackIndex {

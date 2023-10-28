@@ -72,12 +72,10 @@
 
 		"config": {
 			"macro": {
-				"notExists": "Macro config file does not exists, creating new macro config file!"
+				"loaded": "Macros loaded!"
 			},
 			"config": {
 				"wrapper": "> = = = = = < config > = = = = = <",
-				"broken": "Config error! The config file seems to be broken, re-creating!",
-				"notExists": "Config error! The config file does not exists, creating new config file!",
 				"loaded": "Config loaded!",
 				"error": {
 					"partialHoldToActivate": "Config error! `output.partial` cannot be `true` while `input.holdToActivate` is `true`!",
@@ -85,6 +83,9 @@
 					"gameChatPrefixesPartial": "Config error! `replacers.gameChatPrefixes` cannot be `true` while `output.partial` is `true`!",
 					"commandsPartial": "Config error! `commands.enabled` cannot be `true` while `output.partial` is `true`!"
 				}
+			},
+			"dictionary": {
+				"loaded": "Dictionary loaded!"
 			}
 		},
 
@@ -175,6 +176,7 @@
 	"navigation": {
 		"home": "Home",
 		"settings": "Settings",
-		"macros": "Macros"
+		"macros": "Macros",
+		"info": "Info"
 	}
 }
