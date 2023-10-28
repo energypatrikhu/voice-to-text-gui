@@ -17,8 +17,8 @@
 		'none': '',
 	};
 
-	let buttons: Array<string> = [];
-	buttons.length += 1;
+	let buttons: Array<string> = indexOfShortcutToModify ? $config.input.keyboardShortcuts[indexOfShortcutToModify].shortcut : [shortcutKeys[0]];
+
 	let outputPrefix = indexOfShortcutToModify ? $config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix : '';
 </script>
 
@@ -31,7 +31,7 @@
 		{#if actionMode === 'remove-shortcut'}
 			<span>Prefix:</span>
 			<Input
-				value="{$config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix}"
+				bind:value="{outputPrefix}"
 				disabled
 			/>
 
@@ -110,6 +110,7 @@
 					type="button"
 					on:click="{function () {
 						$config.input.keyboardShortcuts.splice(indexOfShortcutToModify, 1);
+						$config.input.keyboardShortcuts = $config.input.keyboardShortcuts;
 						actionMode = 'none';
 					}}">Törlés</Button
 				>
