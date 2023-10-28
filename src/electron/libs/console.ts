@@ -36,7 +36,7 @@ export class Console {
 		this.ipcMain.on('electron', async (_, { event, data }) => {
 			switch (event) {
 				case 'log': {
-					appendFileSync(join(this.logsPath, data.filename), ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', EOL, ...data.textArray, EOL].join(' '));
+					appendFileSync(join(this.logsPath, data.filename), ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', '\n', ...data.textArray, EOL].join(' '));
 					break;
 				}
 			}
