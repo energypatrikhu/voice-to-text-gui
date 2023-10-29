@@ -6,13 +6,19 @@
 
 	export let items: ConfigOptions['speechRecognition']['customWordsAndPhrases'] | ConfigOptions['windowAllowList']['windows'];
 	export let itemName: 'customWordsAndPhrases' | 'windows';
+	export let disabled: boolean = false;
 
 	let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none' = 'none';
 
 	let indexOfShortcutToModify: number;
 </script>
 
-<div class="w-full text-white flex flex-col gap-1">
+<div class="w-full relative text-white flex flex-col gap-1">
+	{#if disabled}
+		<div class="absolute w-full h-full z-10 flex justify-center items-center text-3xl">
+			<span>Disabled</span>
+		</div>
+	{/if}
 	<div class="relative flex flex-col rounded-md border border-neutral-500">
 		<table>
 			<thead>
