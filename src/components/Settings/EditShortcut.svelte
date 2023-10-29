@@ -17,9 +17,9 @@
 		'none': '',
 	};
 
-	let buttons: Array<string> = indexOfShortcutToModify ? $config.input.keyboardShortcuts[indexOfShortcutToModify].shortcut : [shortcutKeys[0]];
+	let buttons: Array<string> = indexOfShortcutToModify !== undefined ? $config.input.keyboardShortcuts[indexOfShortcutToModify].shortcut : [shortcutKeys[0]];
 
-	let outputPrefix = indexOfShortcutToModify ? $config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix : '';
+	let outputPrefix = indexOfShortcutToModify !== undefined ? $config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix : '';
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -31,6 +31,7 @@
 		{#if actionMode === 'remove-shortcut'}
 			<span>Prefix:</span>
 			<Input
+				placeholder="none"
 				bind:value="{outputPrefix}"
 				disabled
 			/>
@@ -50,9 +51,12 @@
 			</div>
 		{:else}
 			<span>Prefix:</span>
-			<Input bind:value="{outputPrefix}" />
+			<Input
+				placeholder="none"
+				bind:value="{outputPrefix}"
+			/>
 
-			<span>Shortcut:</span>
+			<span>Shortcut{buttons.length > 1 ? ' (Combo)' : ''}:</span>
 			<div class="flex flex-col gap-0">
 				{#each buttons as button}
 					<Select bind:value="{button}">
