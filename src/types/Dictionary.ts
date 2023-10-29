@@ -1,8 +1,17 @@
 export interface Dictionary {
 	speechFeedback: SpeechFeedback;
 	textFeedback: TextFeedback;
+	states: States;
+	buttons: EnButtons;
 	navigation: Navigation;
 	settings: Settings;
+}
+
+export interface EnButtons {
+	add: string;
+	remove: string;
+	save: string;
+	cancel: string;
 }
 
 export interface Navigation {
@@ -25,66 +34,132 @@ export interface Settings {
 }
 
 export interface SettingsCommands {
-	this: TartuGecko;
-	prefix: TartuGecko;
-	splitter: TartuGecko;
+	this: Prefix;
+	prefix: Prefix;
+	splitter: Prefix;
 }
 
-export interface TartuGecko {
+export interface Prefix {
 	name: string;
 	description: string;
 }
 
 export interface Feedback {
-	this: TartuGecko;
-	sounds: TartuGecko;
-	speech: TartuGecko;
-	volume: TartuGecko;
-	language: TartuGecko;
+	this: Prefix;
+	sounds: Prefix;
+	speech: Prefix;
+	volume: Prefix;
+	language: Prefix;
 }
 
 export interface Input {
-	this: TartuGecko;
-	holdToActivate: TartuGecko;
-	keyboardShortcuts: TartuGecko;
-	autoRelease: TartuGecko;
-	releaseTime: TartuGecko;
+	this: Prefix;
+	holdToActivate: Prefix;
+	keyboardShortcuts: KeyboardShortcuts;
+	autoRelease: Prefix;
+	releaseTime: Prefix;
+}
+
+export interface KeyboardShortcuts {
+	name: string;
+	description: string;
+	table: KeyboardShortcutsTable;
+	modal: KeyboardShortcutsModal;
+}
+
+export interface KeyboardShortcutsModal {
+	titles: PurpleTitles;
+	prefix: string;
+	shortcut: string;
+	buttons: ModalButtons;
+}
+
+export interface ModalButtons {
+	'add-button': string;
+	'remove-button': string;
+}
+
+export interface PurpleTitles {
+	'add-shortcut': string;
+	'edit-shortcut': string;
+	'remove-shortcut': string;
+}
+
+export interface KeyboardShortcutsTable {
+	prefix: string;
+	shortcut: string;
+	button: string;
 }
 
 export interface Logs {
-	this: TartuGecko;
-	debug: TartuGecko;
-	saveToFile: TartuGecko;
+	this: Prefix;
+	debug: Prefix;
+	saveToFile: Prefix;
 }
 
 export interface Others {
-	this: TartuGecko;
-	mtaConsoleInputMode: TartuGecko;
-	showActiveButtons: TartuGecko;
+	this: Prefix;
+	mtaConsoleInputMode: Prefix;
+	showActiveButtons: Prefix;
 }
 
 export interface Output {
-	this: TartuGecko;
-	partial: TartuGecko;
-	animated: TartuGecko;
-	typingDelay: TartuGecko;
+	this: Prefix;
+	partial: Prefix;
+	animated: Prefix;
+	typingDelay: Prefix;
 }
 
 export interface Replacers {
-	this: TartuGecko;
-	punctuationMarks: TartuGecko;
-	gameChatPrefixes: TartuGecko;
+	this: Prefix;
+	punctuationMarks: Prefix;
+	gameChatPrefixes: Prefix;
 }
 
 export interface SettingsSpeechRecognition {
-	this: TartuGecko;
-	language: TartuGecko;
-	customWordsAndPhrases: TartuGecko;
+	this: Prefix;
+	language: Prefix;
+	customWordsAndPhrases: CustomWordsAndPhrases;
+}
+
+export interface CustomWordsAndPhrases {
+	name: string;
+	description: string;
+	table: CustomWordsAndPhrasesTable;
+	modal: CustomWordsAndPhrasesModal;
+}
+
+export interface CustomWordsAndPhrasesModal {
+	titles: FluffyTitles;
+	wordPhrase: string;
+}
+
+export interface FluffyTitles {
+	'add-item': string;
+	'edit-item': string;
+	'remove-item': string;
+}
+
+export interface CustomWordsAndPhrasesTable {
+	title: string;
+	button: string;
 }
 
 export interface WindowAllowList {
-	this: TartuGecko;
-	windows: TartuGecko;
+	this: Prefix;
+	windows: Windows;
+}
+
+export interface Windows {
+	name: string;
+	description: string;
+	table: CustomWordsAndPhrasesTable;
+	modal: WindowsModal;
+}
+
+export interface WindowsModal {
+	titles: FluffyTitles;
+	windowName: string;
 }
 
 export interface SpeechFeedback {
@@ -133,6 +208,16 @@ export interface PurpleShowActiveButtons {
 
 export interface SpeechFeedbackIndex {
 	appStarted: string;
+}
+
+export interface States {
+	disabled: string;
+	enabled: string;
+	active: string;
+	inactive: string;
+	actived: string;
+	deactived: string;
+	none: string;
 }
 
 export interface TextFeedback {

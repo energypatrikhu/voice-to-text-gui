@@ -52,7 +52,6 @@
 				"starting": "A Google Chrome indítása fej nélküli módban...",
 				"initializing": "A Chrome-példány inicializálása..."
 			},
-
 			"registering": {
 				"ioHook": "Io hook regisztrálása...",
 				"commands": "Parancsok regisztrálása..."
@@ -174,6 +173,23 @@
 		}
 	},
 
+	"states": {
+		"disabled": "Letiltva",
+		"enabled": "Engedélyezve",
+		"active": "Aktív",
+		"inactive": "Inaktív",
+		"actived": "Aktiválva",
+		"deactived": "Deaktiválva",
+		"none": "Nincs"
+	},
+
+	"buttons": {
+		"add": "Hozzáadás",
+		"remove": "Törlés",
+		"save": "Mentés",
+		"cancel": "Mégsem"
+	},
+
 	"navigation": {
 		"home": "Otthon",
 		"settings": "Beállítások",
@@ -207,7 +223,25 @@
 			},
 			"keyboardShortcuts": {
 				"name": "Gyorsbillentyűk",
-				"description": "Az aktiváláshoz szükséges gyorsgombok beállítása"
+				"description": "Az aktiváláshoz szükséges gyorsgombok beállítása",
+				"table": {
+					"prefix": "Kimeneti előtag",
+					"shortcut": "Gyorsbillentyű",
+					"button": "Új előtag és gyorsbillentyű hozzáadása"
+				},
+				"modal": {
+					"titles": {
+						"add-shortcut": "Előtag és parancsikon hozzáadása",
+						"edit-shortcut": "Előtag és gyorsbillentyű szerkesztése",
+						"remove-shortcut": "Előtag és gyorsbillentyű eltávolítása"
+					},
+					"prefix": "Kimeneti előtag",
+					"shortcut": "Gyorsbillentyű",
+					"buttons": {
+						"add-button": "+1 Gomb",
+						"remove-button": "-1 Gomb"
+					}
+				}
 			},
 			"autoRelease": {
 				"name": "Automatikus felengedés",
@@ -269,7 +303,19 @@
 			},
 			"customWordsAndPhrases": {
 				"name": "Egyedi szavak/mondatok",
-				"description": "Egyedi szavak és mondatok listája a hangfelismeréshez"
+				"description": "Egyedi szavak és mondatok listája a hangfelismeréshez",
+				"table": {
+					"title": "Szó / Mondat",
+					"button": "Új szó / mondat hozzáadása"
+				},
+				"modal": {
+					"titles": {
+						"add-item": "Szó / mondat hozzáadása",
+						"edit-item": "Szó / mondat szerkesztése",
+						"remove-item": "Szó / mondat eltávolítása"
+					},
+					"wordPhrase": "Szó / Mondat"
+				}
 			}
 		},
 		"replacers": {
@@ -293,7 +339,19 @@
 			},
 			"windows": {
 				"name": "Ablak lista",
-				"description": "Az engedélyezett ablak(ok) listája"
+				"description": "Az engedélyezett ablak(ok) listája",
+				"table": {
+					"title": "Ablak neve",
+					"button": "Új ablak név hozzáadása"
+				},
+				"modal": {
+					"titles": {
+						"add-item": "Ablaknév hozzáadása",
+						"edit-item": "Ablaknév szerkesztése",
+						"remove-item": "Ablaknév eltávolítása"
+					},
+					"windowName": "Ablak neve"
+				}
 			}
 		},
 		"commands": {

@@ -173,6 +173,23 @@
 		}
 	},
 
+	"states": {
+		"disabled": "Disabled",
+		"enabled": "Enabled",
+		"active": "Active",
+		"inactive": "Inactive",
+		"actived": "Actived",
+		"deactived": "Deactived",
+		"none": "None"
+	},
+
+	"buttons": {
+		"add": "Add",
+		"remove": "Remove",
+		"save": "Save",
+		"cancel": "Cancel"
+	},
+
 	"navigation": {
 		"home": "Home",
 		"settings": "Settings",
@@ -206,7 +223,25 @@
 			},
 			"keyboardShortcuts": {
 				"name": "Shortcuts",
-				"description": "Hotkeys for activation"
+				"description": "Hotkeys for activation",
+				"table": {
+					"prefix": "Output Prefix",
+					"shortcut": "Shortcut",
+					"button": "Add new prefix & shortcut"
+				},
+				"modal": {
+					"titles": {
+						"add-shortcut": "Add prefix & shortcut",
+						"edit-shortcut": "Edit prefix & shortcut",
+						"remove-shortcut": "Remove prefix & shortcut"
+					},
+					"prefix": "Output prefix",
+					"shortcut": "Shortcut",
+					"buttons": {
+						"add-button": "+1 Button",
+						"remove-button": "-1 Button"
+					}
+				}
 			},
 			"autoRelease": {
 				"name": "Automatic release",
@@ -268,7 +303,19 @@
 			},
 			"customWordsAndPhrases": {
 				"name": "Custom words/phrases",
-				"description": "List of custom words and phrases for voice recognition"
+				"description": "List of custom words and phrases for voice recognition",
+				"table": {
+					"title": "Word / Phrase",
+					"button": "Add new word / phrase"
+				},
+				"modal": {
+					"titles": {
+						"add-item": "Add word / phrase",
+						"edit-item": "Edit word / phrase",
+						"remove-item": "Remove word / phrase"
+					},
+					"wordPhrase": "Word / Phrase"
+				}
 			}
 		},
 		"replacers": {
@@ -292,7 +339,19 @@
 			},
 			"windows": {
 				"name": "Window list",
-				"description": "List of allowed window(s)."
+				"description": "List of allowed window(s).",
+				"table": {
+					"title": "Window Name",
+					"button": "Add new window name"
+				},
+				"modal": {
+					"titles": {
+						"add-item": "Add window name",
+						"edit-item": "Edit window name",
+						"remove-item": "Remove window name"
+					},
+					"windowName": "Window Name"
+				}
 			}
 		},
 		"commands": {
