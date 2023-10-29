@@ -26,7 +26,7 @@
 
 	let ready: boolean = false;
 
-	window.electron.receive('electron', ({ event, data }) => {
+	window.electron.receive('electron', function ({ event, data }) {
 		switch (event) {
 			case 'ready': {
 				ready = true;
@@ -55,7 +55,7 @@
 		await preloadSvgs();
 	}
 
-	onMount(async () => {
+	onMount(async function () {
 		await loadSettings();
 
 		window.electron.send('electron', {
