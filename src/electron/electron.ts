@@ -50,7 +50,10 @@ function createWindow() {
 
 	// if (!isDev) mainWindow.removeMenu();
 	// else mainWindow.webContents.openDevTools();
-	mainWindow.webContents.openDevTools();
+
+	if (!isDev) {
+		mainWindow.webContents.openDevTools();
+	}
 
 	windowState.manage(mainWindow);
 	mainWindow.on('close', () => {
