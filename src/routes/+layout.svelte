@@ -19,7 +19,7 @@
 		}
 	});
 
-	document.addEventListener('auxclick', (mouseEvent) => {
+	document.addEventListener('auxclick', function (mouseEvent) {
 		mouseEvent.preventDefault();
 		mouseEvent.stopPropagation();
 	});
