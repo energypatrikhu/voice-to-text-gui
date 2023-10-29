@@ -40,6 +40,7 @@ function createWindow() {
 			spellcheck: false,
 			devTools: true,
 			preload: join(__dirname, 'preload.cjs'),
+			disableBlinkFeatures: 'Auxclick',
 		},
 		x: windowState.x,
 		y: windowState.y,
@@ -86,7 +87,12 @@ async function createMainWindow() {
 	if (isDev) loadVite(port);
 	else await serveURL(mainWindow);
 
-	new EventRouter(ipcMain, mainWindow!, isDev);
+	new EventRouter(ipcMain, mainWindow, isDev);
+
+	// @ts-ignore
+	mainWindow.webContents.on('new-window', function (event) {
+		event.preventDefault();
+	});
 }
 
 app.once('ready', createMainWindow);

@@ -12,6 +12,18 @@
 	import { preloadSvgs } from '$libs/functions/preloadSvgs';
 	import { updateConsoleStore } from '$stores/console';
 
+	window.addEventListener('mouseup', function (mouseEvent) {
+		if ([1, 3, 4].includes(mouseEvent.button)) {
+			mouseEvent.preventDefault();
+			mouseEvent.stopPropagation();
+		}
+	});
+
+	document.addEventListener('auxclick', (mouseEvent) => {
+		mouseEvent.preventDefault();
+		mouseEvent.stopPropagation();
+	});
+
 	let ready: boolean = false;
 
 	window.electron.receive('electron', ({ event, data }) => {
@@ -31,15 +43,6 @@
 				updateConsoleStore(data);
 				window.electron.send('electron', { event: 'log', data: { ...data, filename: $app.startupDate + '.log' } });
 				break;
-			}
-		}
-	});
-
-	window.addEventListener('mouseup', function (e) {
-		if (typeof e === 'object') {
-			// @ts-ignore
-			if ([4, 5].includes(e.button) || [4, 5].includes(e.detail.button)) {
-				e.preventDefault();
 			}
 		}
 	});
