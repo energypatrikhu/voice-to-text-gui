@@ -2,6 +2,7 @@ export interface Dictionary {
 	speechFeedback: SpeechFeedback;
 	textFeedback: TextFeedback;
 	navigation: Navigation;
+	settings: Settings;
 }
 
 export interface Navigation {
@@ -9,6 +10,81 @@ export interface Navigation {
 	settings: string;
 	macros: string;
 	info: string;
+}
+
+export interface Settings {
+	logs: Logs;
+	input: Input;
+	output: Output;
+	feedback: Feedback;
+	speechRecognition: SettingsSpeechRecognition;
+	replacers: Replacers;
+	windowAllowList: WindowAllowList;
+	commands: SettingsCommands;
+	others: Others;
+}
+
+export interface SettingsCommands {
+	this: TartuGecko;
+	prefix: TartuGecko;
+	splitter: TartuGecko;
+}
+
+export interface TartuGecko {
+	name: string;
+	description: string;
+}
+
+export interface Feedback {
+	this: TartuGecko;
+	sounds: TartuGecko;
+	speech: TartuGecko;
+	volume: TartuGecko;
+	language: TartuGecko;
+}
+
+export interface Input {
+	this: TartuGecko;
+	holdToActivate: TartuGecko;
+	keyboardShortcuts: TartuGecko;
+	autoRelease: TartuGecko;
+	releaseTime: TartuGecko;
+}
+
+export interface Logs {
+	this: TartuGecko;
+	debug: TartuGecko;
+	saveToFile: TartuGecko;
+}
+
+export interface Others {
+	this: TartuGecko;
+	mtaConsoleInputMode: TartuGecko;
+	showActiveButtons: TartuGecko;
+}
+
+export interface Output {
+	this: TartuGecko;
+	partial: TartuGecko;
+	animated: TartuGecko;
+	typingDelay: TartuGecko;
+}
+
+export interface Replacers {
+	this: TartuGecko;
+	punctuationMarks: TartuGecko;
+	gameChatPrefixes: TartuGecko;
+}
+
+export interface SettingsSpeechRecognition {
+	this: TartuGecko;
+	language: TartuGecko;
+	customWordsAndPhrases: TartuGecko;
+}
+
+export interface WindowAllowList {
+	this: TartuGecko;
+	windows: TartuGecko;
 }
 
 export interface SpeechFeedback {
@@ -165,9 +241,9 @@ export interface FluffyShowActiveButtons {
 }
 
 export interface TextFeedbackConfig {
-	macro: Macro;
+	macro: Dictionary;
 	config: ConfigConfig;
-	dictionary: DictionaryConfig;
+	dictionary: Dictionary;
 }
 
 export interface ConfigConfig {
@@ -183,11 +259,7 @@ export interface Error {
 	commandsPartial: string;
 }
 
-export interface Macro {
-	loaded: string;
-}
-
-export interface DictionaryConfig {
+export interface Dictionary {
 	loaded: string;
 }
 

@@ -179,5 +179,150 @@
 		"settings": "Beállítások",
 		"macros": "Makrók",
 		"info": "Infó"
+	},
+
+	"settings": {
+		"logs": {
+			"this": {
+				"name": "Naplózás",
+				"description": "Naplózással kapcsolatos beállítások"
+			},
+			"debug": {
+				"name": "Hibakeresés",
+				"description": "Hibakeresési naplózás mutatása"
+			},
+			"saveToFile": {
+				"name": "Mentés fájlba",
+				"description": "Naplók fájlba mentése"
+			}
+		},
+		"input": {
+			"this": {
+				"name": "Bevitel",
+				"description": "Bevitellel kapcsolatos beállítások"
+			},
+			"holdToActivate": {
+				"name": "Bevitelhez nyomva tartás",
+				"description": "Bevitelhez nyomva tartás vagy ki/bekapcsolás beállítása"
+			},
+			"keyboardShortcuts": {
+				"name": "Gyorsbillentyűk",
+				"description": "Az aktiváláshoz szükséges gyorsgombok beállítása"
+			},
+			"autoRelease": {
+				"name": "Automatikus felengedés",
+				"description": "Automatikus felengedéshez kapcsolatos beállítások"
+			},
+			"releaseTime": {
+				"name": "Automatikus felengedés idő",
+				"description": "A megadott idő után való automatikus felengedés"
+			}
+		},
+		"output": {
+			"this": {
+				"name": "Kimenet",
+				"description": "A kimeneti szöveghez kapcsolódó beállítások"
+			},
+			"partial": {
+				"name": "Részleges",
+				"description": "Részleges kimeneti szöveg használata"
+			},
+			"animated": {
+				"name": "Animált",
+				"description": "A kimeneti szöveg animált kiíratása"
+			},
+			"typingDelay": {
+				"name": "Gépelési késleltetés",
+				"description": "Az animált kiíratásban a betűk közötti késleltetés"
+			}
+		},
+		"feedback": {
+			"this": {
+				"name": "Visszajelzés",
+				"description": "Visszajelzéssel kapcsolatos beállítások"
+			},
+			"sounds": {
+				"name": "Aktiválási/deaktiválási hangok",
+				"description": "A applikációban lévő hangok használata"
+			},
+			"speech": {
+				"name": "Beszéd",
+				"description": "Beszéd visszajelzés használata"
+			},
+			"volume": {
+				"name": "Beszéd hangereje",
+				"description": "Beszéd visszajelzés hangereje"
+			},
+			"language": {
+				"name": "Nyelv",
+				"description": "Beszéd visszajelzés és alkalmazás nyelve"
+			}
+		},
+		"speechRecognition": {
+			"this": {
+				"name": "Beszédfelismerés",
+				"description": "Hangfelismeréssel kapcsolatos beállítások"
+			},
+			"language": {
+				"name": "Nyelv",
+				"description": "A hangfelismerés nyelve"
+			},
+			"customWordsAndPhrases": {
+				"name": "Egyedi szavak/mondatok",
+				"description": "Egyedi szavak és mondatok listája a hangfelismeréshez"
+			}
+		},
+		"replacers": {
+			"this": {
+				"name": "Helyettesítők",
+				"description": "Helyettesítő beállítások"
+			},
+			"punctuationMarks": {
+				"name": "Írásjelek",
+				"description": "Írásjel helyettesítők használata, mint például [ ! , . ? ]"
+			},
+			"gameChatPrefixes": {
+				"name": "Játék chat előtagok SeeMTA számára",
+				"description": "SeeMTA játékban szöveg helyettesítők használata"
+			}
+		},
+		"windowAllowList": {
+			"this": {
+				"name": "Ablak engedélyezési lista",
+				"description": "Engedélyezett ablakok használata"
+			},
+			"windows": {
+				"name": "Ablak lista",
+				"description": "Az engedélyezett ablak(ok) listája"
+			}
+		},
+		"commands": {
+			"this": {
+				"name": "Parancsok",
+				"description": "Parancsok használata"
+			},
+			"prefix": {
+				"name": "Előtag",
+				"description": "A parancs használatához szükséges jel vagy szöveg"
+			},
+			"splitter": {
+				"name": "Elválasztó",
+				"description": "A parancsban lévő értékek elválasztásához szükséges jel vagy szöveg"
+			}
+		},
+		"others": {
+			"this": {
+				"name": "Egyebek",
+				"description": "Egyéb beállítások"
+			},
+			"mtaConsoleInputMode": {
+				"name": "MTA:SA konzol beviteli mód",
+				"description": "MTA:SA játékban automatikus szövegbevitel használata"
+			},
+			"showActiveButtons": {
+				"name": "Megnyomott gombok megjelenítése",
+				"description": "Jelenleg aktív gombok kiíratása"
+			}
+		}
 	}
 }

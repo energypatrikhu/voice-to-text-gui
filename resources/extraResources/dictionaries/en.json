@@ -178,5 +178,150 @@
 		"settings": "Settings",
 		"macros": "Macros",
 		"info": "Info"
+	},
+
+	"settings": {
+		"logs": {
+			"this": {
+				"name": "Logging",
+				"description": "Logging related settings"
+			},
+			"debug": {
+				"name": "Debugging",
+				"description": "Show debugging logs"
+			},
+			"saveToFile": {
+				"name": "Save to file",
+				"description": "Save logs to file"
+			}
+		},
+		"input": {
+			"this": {
+				"name": "Input",
+				"description": "Input related settings"
+			},
+			"holdToActivate": {
+				"name": "Press and hold to activate",
+				"description": "Press and hold or on/off to activate"
+			},
+			"keyboardShortcuts": {
+				"name": "Shortcuts",
+				"description": "Hotkeys for activation"
+			},
+			"autoRelease": {
+				"name": "Automatic release",
+				"description": "Automatic release for on/off mode"
+			},
+			"releaseTime": {
+				"name": "Automatic release time",
+				"description": "Automatic release after the specified time"
+			}
+		},
+		"output": {
+			"this": {
+				"name": "Output",
+				"description": "Settings related to the output text"
+			},
+			"partial": {
+				"name": "Partial",
+				"description": "Using partial output text"
+			},
+			"animated": {
+				"name": "Animated",
+				"description": "Animated printout of the output text"
+			},
+			"typingDelay": {
+				"name": "Typing delay",
+				"description": "The delay between letters in animated spelling"
+			}
+		},
+		"feedback": {
+			"this": {
+				"name": "Feedback",
+				"description": "Feedback related settings"
+			},
+			"sounds": {
+				"name": "Activation/deactivation sounds",
+				"description": "Using sounds in the app"
+			},
+			"speech": {
+				"name": "Speech",
+				"description": "Using speech feedback"
+			},
+			"volume": {
+				"name": "Speech volume",
+				"description": "Speech feedback volume"
+			},
+			"language": {
+				"name": "Language",
+				"description": "Speech feedback and application language"
+			}
+		},
+		"speechRecognition": {
+			"this": {
+				"name": "Speech recognition",
+				"description": "Voice recognition related settings"
+			},
+			"language": {
+				"name": "Language",
+				"description": "Language of voice recognition"
+			},
+			"customWordsAndPhrases": {
+				"name": "Custom words/phrases",
+				"description": "List of custom words and phrases for voice recognition"
+			}
+		},
+		"replacers": {
+			"this": {
+				"name": "Replacers",
+				"description": "Replacer settings"
+			},
+			"punctuationMarks": {
+				"name": "Punctuation marks",
+				"description": "Using punctuation placeholders such as [ ! , . ? ]"
+			},
+			"gameChatPrefixes": {
+				"name": "Game chat prefixes for SeeMTA",
+				"description": "Use of text replacers in the SeeMTA game"
+			}
+		},
+		"windowAllowList": {
+			"this": {
+				"name": "Window whitelist",
+				"description": "Use of enabled windows"
+			},
+			"windows": {
+				"name": "Window list",
+				"description": "List of allowed window(s)."
+			}
+		},
+		"commands": {
+			"this": {
+				"name": "Commands",
+				"description": "Use of commands"
+			},
+			"prefix": {
+				"name": "Prefix",
+				"description": "Symbol or text required to use the command"
+			},
+			"splitter": {
+				"name": "Separator",
+				"description": "Symbol or text to separate the values in the command"
+			}
+		},
+		"others": {
+			"this": {
+				"name": "Others",
+				"description": "Other settings"
+			},
+			"mtaConsoleInputMode": {
+				"name": "MTA:SA console input mode",
+				"description": "Use automatic text input in MTA:SA"
+			},
+			"showActiveButtons": {
+				"name": "Show pressed buttons",
+				"description": "Show currently active buttons"
+			}
+		}
 	}
 }
