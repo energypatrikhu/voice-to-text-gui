@@ -35,7 +35,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -48,7 +48,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -60,7 +60,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -72,7 +72,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -84,7 +84,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -96,7 +96,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -108,7 +108,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -121,7 +121,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -134,7 +134,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -147,7 +147,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -161,7 +161,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -174,7 +174,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -187,7 +187,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -199,7 +199,7 @@
 			on:change="{selectChanged}"
 			on:input
 			on:focus
-			class="input-cmn {_class}"
+			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
 			name="{name}"
 			required="{required}"
 			disabled="{disabled}"
@@ -216,5 +216,9 @@
 <style>
 	.input-cmn {
 		@apply text-white border rounded-md border-neutral-500 py-1 px-3 flex-grow outline-none bg-transparent;
+	}
+
+	.input-cmn-disabled {
+		@apply text-neutral-400;
 	}
 </style>
