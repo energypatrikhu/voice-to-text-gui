@@ -14,7 +14,7 @@ const defaultConfig: ConfigOptions = {
 		keyboardShortcuts: [
 			{
 				outputPrefix: null,
-				shortcut: ['mouse5'],
+				shortcut: ['win', 'h'],
 			},
 		],
 		autoRelease: {
