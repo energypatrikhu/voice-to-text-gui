@@ -44,6 +44,11 @@
 				window.electron.send('electron', { event: 'log', data: { ...data, filename: $app.startupDate + '.log' } });
 				break;
 			}
+
+			case 'dictionary': {
+				$dict = data.dictionary;
+				break;
+			}
 		}
 	});
 

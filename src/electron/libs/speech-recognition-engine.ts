@@ -117,6 +117,10 @@ export class SpeechRecognitionEngine {
 		}, speechRecognitionOptions);
 	}
 
+	updateEngine(speechRecognition: ConfigOptions['speechRecognition']) {
+		this.initSpeechRecognitionEngine(speechRecognition);
+	}
+
 	async start(_outputPrefix: string | null) {
 		this.stopOutput = true;
 		this._partialOutput = '';

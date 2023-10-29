@@ -1,7 +1,6 @@
 import { EventEmitter, Page } from 'puppeteer-core';
 
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
-import type { Console } from './console.js';
 
 export class SpeechSynthesisEngine {
 	private page;
@@ -35,6 +34,10 @@ export class SpeechSynthesisEngine {
 				volume: speechSynthesisOptions.volume,
 			};
 		}, speechSynthesisOptions);
+	}
+
+	updateEngine(feedback: ConfigOptions['feedback']) {
+		this.initEngine({ language: feedback.language, volume: feedback.speech.volume });
 	}
 
 	async speak(text: string) {
