@@ -9,6 +9,7 @@
 	import Section from '$components/Settings/Section.svelte';
 	import SubSection from '$components/Settings/SubSection.svelte';
 	import KeyboardShortcuts from '$components/Settings/KeyboardShortcuts.svelte';
+	import WordsPhrasesWindows from '$components/Settings/WordsPhrasesWindows.svelte';
 </script>
 
 <Header />
@@ -155,13 +156,20 @@
 
 				<SubSection>
 					<span slot="title">volume</span>
-					<Input
-						bind:value="{$config.feedback.speech.volume}"
+					<div
 						slot="content"
-						type="number"
-						text="%"
-						textPos="after"
-					/>
+						class="flex gap-1"
+					>
+						<input
+							class="w-32"
+							type="range"
+							min="0"
+							max="1"
+							step="0.01"
+							bind:value="{$config.feedback.speech.volume}"
+						/>
+						<span>{Math.round($config.feedback.speech.volume * 100)}%</span>
+					</div>
 				</SubSection>
 
 				<SubSection>
@@ -195,7 +203,11 @@
 
 				<SubSection>
 					<span slot="title">customWordsAndPhrases</span>
-					<span slot="content">WIP</span>
+					<WordsPhrasesWindows
+						slot="content"
+						bind:items="{$config.speechRecognition.customWordsAndPhrases}"
+						itemName="customWordsAndPhrases"
+					/>
 				</SubSection>
 			</div>
 		</Section>
@@ -244,7 +256,11 @@
 
 				<SubSection>
 					<span slot="title">windows</span>
-					<span slot="content">WIP</span>
+					<WordsPhrasesWindows
+						slot="content"
+						bind:items="{$config.windowAllowList.windows}"
+						itemName="windows"
+					/>
 				</SubSection>
 			</div>
 		</Section>

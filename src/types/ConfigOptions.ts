@@ -7,7 +7,7 @@ export interface ConfigOptions {
 	};
 	input: {
 		holdToActivate: boolean;
-		keyboardShortcuts: KeyboardShortcut[];
+		keyboardShortcuts: Array<KeyboardShortcut>;
 		autoRelease: {
 			enabled: boolean;
 			releaseTime: number;
@@ -28,7 +28,7 @@ export interface ConfigOptions {
 	};
 	speechRecognition: {
 		language: 'hu-HU' | 'en-US' | 'en-GB';
-		customWordsAndPhrases: Array<string | number> | null;
+		customWordsAndPhrases: Array<string>;
 	};
 	replacers: {
 		punctuationMarks: boolean;
@@ -36,7 +36,7 @@ export interface ConfigOptions {
 	};
 	windowAllowList: {
 		enabled: boolean;
-		windows: string[];
+		windows: Array<string>;
 	};
 	commands: {
 		enabled: boolean;
