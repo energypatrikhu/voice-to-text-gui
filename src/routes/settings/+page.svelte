@@ -21,11 +21,14 @@
 
 	<div class="fixed overflow-hidden overflow-y-scroll w-full h-[calc(100%-64px-48px)] flex flex-col gap-4 px-4 py-2">
 		<Section>
-			<span slot="title">logs</span>
+			<span slot="title">{$dict.settings.logs.this.name}</span>
+			<span slot="description">{$dict.settings.logs.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">debug</span>
+					<span slot="title">{$dict.settings.logs.debug.name}</span>
+					<span slot="description">{$dict.settings.logs.debug.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.logs.debug}"
@@ -36,7 +39,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">saveToFile</span>
+					<span slot="title">{$dict.settings.logs.saveToFile.name}</span>
+					<span slot="description">{$dict.settings.logs.saveToFile.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.logs.saveToFile}"
@@ -49,11 +54,14 @@
 		</Section>
 
 		<Section>
-			<span slot="title">input</span>
+			<span slot="title">{$dict.settings.input.this.name}</span>
+			<span slot="description">{$dict.settings.input.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">holdToActivate</span>
+					<span slot="title">{$dict.settings.input.holdToActivate.name}</span>
+					<span slot="description">{$dict.settings.input.holdToActivate.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.input.holdToActivate}"
@@ -64,7 +72,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">keyboardShortcuts</span>
+					<span slot="title">{$dict.settings.input.keyboardShortcuts.name}</span>
+					<span slot="description">{$dict.settings.input.keyboardShortcuts.description}</span>
+
 					<KeyboardShortcuts
 						slot="content"
 						bind:keyboardShortcuts="{$config.input.keyboardShortcuts}"
@@ -72,7 +82,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">autoRelease</span>
+					<span slot="title">{$dict.settings.input.autoRelease.name}</span>
+					<span slot="description">{$dict.settings.input.autoRelease.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.input.autoRelease.enabled}"
@@ -83,24 +95,30 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">releaseTime</span>
+					<span slot="title">{$dict.settings.input.releaseTime.name}</span>
+					<span slot="description">{$dict.settings.input.releaseTime.description}</span>
+
 					<Input
 						slot="content"
 						bind:value="{$config.input.autoRelease.releaseTime}"
 						type="number"
 						text="ms"
 						textPos="after"
+						disabled="{!$config.input.autoRelease.enabled}"
 					/>
 				</SubSection>
 			</div>
 		</Section>
 
 		<Section>
-			<span slot="title">output</span>
+			<span slot="title">{$dict.settings.output.this.name}</span>
+			<span slot="description">{$dict.settings.output.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">partial</span>
+					<span slot="title">{$dict.settings.output.partial.name}</span>
+					<span slot="description">{$dict.settings.output.partial.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.output.partial}"
@@ -111,7 +129,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">animated</span>
+					<span slot="title">{$dict.settings.output.animated.name}</span>
+					<span slot="description">{$dict.settings.output.animated.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.output.animated}"
@@ -122,29 +142,37 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">typingDelay</span>
+					<span slot="title">{$dict.settings.output.typingDelay.name}</span>
+					<span slot="description">{$dict.settings.output.typingDelay.description}</span>
+
 					<Input
 						bind:value="{$config.output.typingDelay}"
 						slot="content"
 						type="number"
 						text="ms"
 						textPos="after"
+						disabled="{!$config.output.animated}"
 					/>
 				</SubSection>
 			</div>
 		</Section>
 
 		<Section>
-			<span slot="title">feedback</span>
+			<span slot="title">{$dict.settings.feedback.this.name}</span>
+			<span slot="description">{$dict.settings.feedback.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">sounds</span>
+					<span slot="title">{$dict.settings.feedback.sounds.name}</span>
+					<span slot="description">{$dict.settings.feedback.sounds.description}</span>
+
 					<span slot="content">WIP</span>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">speech</span>
+					<span slot="title">{$dict.settings.feedback.speech.name}</span>
+					<span slot="description">{$dict.settings.feedback.speech.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.feedback.speech.enabled}"
@@ -155,7 +183,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">volume</span>
+					<span slot="title">{$dict.settings.feedback.volume.name}</span>
+					<span slot="description">{$dict.settings.feedback.volume.description}</span>
+
 					<div
 						slot="content"
 						class="flex gap-1"
@@ -167,13 +197,16 @@
 							max="1"
 							step="0.01"
 							bind:value="{$config.feedback.speech.volume}"
+							disabled="{!$config.feedback.speech.enabled}"
 						/>
 						<span>{Math.round($config.feedback.speech.volume * 100)}%</span>
 					</div>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">language</span>
+					<span slot="title">{$dict.settings.feedback.language.name}</span>
+					<span slot="description">{$dict.settings.feedback.language.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.feedback.language}"
@@ -186,11 +219,14 @@
 		</Section>
 
 		<Section>
-			<span slot="title">speechRecognition</span>
+			<span slot="title">{$dict.settings.speechRecognition.this.name}</span>
+			<span slot="description">{$dict.settings.speechRecognition.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">language</span>
+					<span slot="title">{$dict.settings.speechRecognition.language.name}</span>
+					<span slot="description">{$dict.settings.speechRecognition.language.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.speechRecognition.language}"
@@ -202,7 +238,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">customWordsAndPhrases</span>
+					<span slot="title">{$dict.settings.speechRecognition.customWordsAndPhrases.name}</span>
+					<span slot="description">{$dict.settings.speechRecognition.customWordsAndPhrases.description}</span>
+
 					<WordsPhrasesWindows
 						slot="content"
 						bind:items="{$config.speechRecognition.customWordsAndPhrases}"
@@ -213,11 +251,14 @@
 		</Section>
 
 		<Section>
-			<span slot="title">replacers</span>
+			<span slot="title">{$dict.settings.replacers.this.name}</span>
+			<span slot="description">{$dict.settings.replacers.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">punctuationMarks</span>
+					<span slot="title">{$dict.settings.replacers.punctuationMarks.name}</span>
+					<span slot="description">{$dict.settings.replacers.punctuationMarks.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.replacers.punctuationMarks}"
@@ -228,7 +269,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">gameChatPrefixes</span>
+					<span slot="title">{$dict.settings.replacers.gameChatPrefixes.name}</span>
+					<span slot="description">{$dict.settings.replacers.gameChatPrefixes.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.replacers.gameChatPrefixes}"
@@ -241,7 +284,8 @@
 		</Section>
 
 		<Section>
-			<span slot="title">windowAllowList</span>
+			<span slot="title">{$dict.settings.windowAllowList.this.name}</span>
+			<span slot="description">{$dict.settings.windowAllowList.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
@@ -255,8 +299,11 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">windows</span>
+					<span slot="title">{$dict.settings.windowAllowList.windows.name}</span>
+					<span slot="description">{$dict.settings.windowAllowList.windows.description}</span>
+
 					<WordsPhrasesWindows
+						disabled="{!$config.windowAllowList.enabled}"
 						slot="content"
 						bind:items="{$config.windowAllowList.windows}"
 						itemName="windows"
@@ -266,9 +313,13 @@
 		</Section>
 
 		<Section>
-			<span slot="title">commands</span>
+			<span slot="title">{$dict.settings.commands.this.name}</span>
+			<span slot="description">{$dict.settings.commands.this.description}</span>
 
-			<div slot="content">
+			<div
+				slot="content"
+				class="relative"
+			>
 				<SubSection>
 					<Select
 						slot="content"
@@ -280,29 +331,38 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">prefix</span>
+					<span slot="title">{$dict.settings.commands.prefix.name}</span>
+					<span slot="description">{$dict.settings.commands.prefix.description}</span>
+
 					<Input
 						slot="content"
 						bind:value="{$config.commands.prefix}"
+						disabled="{!$config.commands.enabled}"
 					/>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">splitter</span>
+					<span slot="title">{$dict.settings.commands.splitter.name}</span>
+					<span slot="description">{$dict.settings.commands.splitter.description}</span>
+
 					<Input
 						slot="content"
 						bind:value="{$config.commands.splitter}"
+						disabled="{!$config.commands.enabled}"
 					/>
 				</SubSection>
 			</div>
 		</Section>
 
 		<Section useSplitterLine="{false}">
-			<span slot="title">others</span>
+			<span slot="title">{$dict.settings.others.this.name}</span>
+			<span slot="description">{$dict.settings.others.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">mtaConsoleInputMode</span>
+					<span slot="title">{$dict.settings.others.mtaConsoleInputMode.name}</span>
+					<span slot="description">{$dict.settings.others.mtaConsoleInputMode.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.others.mtaConsoleInputMode}"
@@ -313,7 +373,9 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">showActiveButtons</span>
+					<span slot="title">{$dict.settings.others.showActiveButtons.name}</span>
+					<span slot="description">{$dict.settings.others.showActiveButtons.description}</span>
+
 					<Select
 						slot="content"
 						bind:value="{$config.others.showActiveButtons}"
