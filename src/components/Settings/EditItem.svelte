@@ -3,19 +3,15 @@
 	import Button from '$components/Modal/Button.svelte';
 	import { config } from '$stores/config';
 	import Input from '$components/Modal/Input.svelte';
+	import { dict } from '$stores/dict';
 
 	export let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none';
 	export let itemName: 'customWordsAndPhrases' | 'windows';
 	export let indexOfShortcutToModify: number;
 
-	let headerTitle = {
-		'add-item': 'Add Shortcut',
-		'edit-item': 'Edit Shortcut',
-		'remove-item': 'Remove Shortcut',
-		'none': '',
-	};
-
 	let value = indexOfShortcutToModify !== undefined ? (itemName === 'customWordsAndPhrases' ? $config.speechRecognition.customWordsAndPhrases[indexOfShortcutToModify] : $config.windowAllowList.windows[indexOfShortcutToModify]) : '';
+
+	$: title = actionMode !== 'none' ? (itemName === 'customWordsAndPhrases' ? (actionMode in $dict.settings.speechRecognition.customWordsAndPhrases.modal.titles ? $dict.settings.speechRecognition.customWordsAndPhrases.modal.titles[actionMode] : '') : actionMode in $dict.settings.windowAllowList.windows.modal.titles ? $dict.settings.windowAllowList.windows.modal.titles[actionMode] : '') : '';
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -23,10 +19,10 @@
 	on:click|self="{() => (actionMode = 'none')}"
 	class="w-full h-[calc(100%-48px)] top-12 left-0 flex items-center justify-center fixed bg-black/25 backdrop-blur"
 >
-	<Modal header="{headerTitle[actionMode]}">
-		<span>Word / Phrase:</span>
+	<Modal header="{title}">
+		<span>{itemName === 'customWordsAndPhrases' ? $dict.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase : $dict.settings.windowAllowList.windows.modal.windowName}:</span>
 		<Input
-			placeholder="Custom Word / Phrase"
+			placeholder="{itemName === 'customWordsAndPhrases' ? $dict.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase : $dict.settings.windowAllowList.windows.modal.windowName}"
 			bind:value="{value}"
 			disabled="{actionMode === 'remove-item'}"
 		/>
@@ -71,7 +67,7 @@
 						}
 
 						actionMode = 'none';
-					}}">Mentés</Button
+					}}">{$dict.buttons.save}</Button
 				>
 			{:else}
 				<Button
@@ -92,7 +88,7 @@
 						}
 
 						actionMode = 'none';
-					}}">Törlés</Button
+					}}">{$dict.buttons.remove}</Button
 				>
 			{/if}
 
@@ -101,7 +97,7 @@
 				btnType="cancel"
 				on:click="{() => (actionMode = 'none')}"
 			>
-				Mégsem
+				{$dict.buttons.cancel}
 			</Button>
 		</div>
 	</Modal>

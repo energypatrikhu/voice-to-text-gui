@@ -6,20 +6,16 @@
 	import { shortcutKeys } from '$libs/shortcutKeys';
 	import { config } from '$stores/config';
 	import Input from '$components/Modal/Input.svelte';
+	import { dict } from '$stores/dict';
 
 	export let actionMode: 'add-shortcut' | 'edit-shortcut' | 'remove-shortcut' | 'none';
 	export let indexOfShortcutToModify: number;
 
-	let headerTitle = {
-		'add-shortcut': 'Add Shortcut',
-		'edit-shortcut': 'Edit Shortcut',
-		'remove-shortcut': 'Remove Shortcut',
-		'none': '',
-	};
-
 	let buttons: Array<string> = indexOfShortcutToModify !== undefined ? $config.input.keyboardShortcuts[indexOfShortcutToModify].shortcut : [shortcutKeys[0]];
 
 	let outputPrefix = indexOfShortcutToModify !== undefined ? $config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix : '';
+
+	$: title = actionMode !== 'none' ? (actionMode in $dict.settings.input.keyboardShortcuts.modal.titles ? $dict.settings.input.keyboardShortcuts.modal.titles[actionMode] : '') : '';
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -27,16 +23,16 @@
 	on:click|self="{() => (actionMode = 'none')}"
 	class="w-full h-[calc(100%-48px)] top-12 left-0 flex items-center justify-center fixed bg-black/25 backdrop-blur"
 >
-	<Modal header="{headerTitle[actionMode]}">
+	<Modal header="{title}">
 		{#if actionMode === 'remove-shortcut'}
-			<span>Prefix:</span>
+			<span>{$dict.settings.input.keyboardShortcuts.modal.prefix}:</span>
 			<Input
-				placeholder="none"
+				placeholder="{$dict.states.none}"
 				bind:value="{outputPrefix}"
 				disabled
 			/>
 
-			<span>Shortcut:</span>
+			<span>{$dict.settings.input.keyboardShortcuts.modal.shortcut}:</span>
 			<div class="flex flex-col gap-0">
 				{#each buttons as button}
 					<Select
@@ -50,13 +46,13 @@
 				{/each}
 			</div>
 		{:else}
-			<span>Prefix:</span>
+			<span>{$dict.settings.input.keyboardShortcuts.modal.prefix}:</span>
 			<Input
-				placeholder="none"
+				placeholder="{$dict.states.none}"
 				bind:value="{outputPrefix}"
 			/>
 
-			<span>Shortcut{buttons.length > 1 ? ' (Combo)' : ''}:</span>
+			<span>{$dict.settings.input.keyboardShortcuts.modal.shortcut}{buttons.length > 1 ? ' (Combo)' : ''}:</span>
 			<div class="flex flex-col gap-0">
 				{#each buttons as button}
 					<Select bind:value="{button}">
@@ -73,7 +69,7 @@
 					disabled="{buttons.length > 3}"
 					on:click="{function () {
 						if (buttons.length < 4) buttons.length += 1;
-					}}">Add Button</Button
+					}}">{$dict.settings.input.keyboardShortcuts.modal.buttons['add-button']}</Button
 				>
 
 				<Button
@@ -82,7 +78,7 @@
 					disabled="{buttons.length < 2}"
 					on:click="{function () {
 						if (buttons.length > 1) buttons.length -= 1;
-					}}">Remove Button</Button
+					}}">{$dict.settings.input.keyboardShortcuts.modal.buttons['remove-button']}</Button
 				>
 			</div>
 		{/if}
@@ -107,7 +103,7 @@
 						}
 
 						actionMode = 'none';
-					}}">Mentés</Button
+					}}">{$dict.buttons.save}</Button
 				>
 			{:else}
 				<Button
@@ -116,7 +112,7 @@
 						$config.input.keyboardShortcuts.splice(indexOfShortcutToModify, 1);
 						$config.input.keyboardShortcuts = $config.input.keyboardShortcuts;
 						actionMode = 'none';
-					}}">Törlés</Button
+					}}">{$dict.buttons.remove}</Button
 				>
 			{/if}
 
@@ -125,7 +121,7 @@
 				btnType="cancel"
 				on:click="{() => (actionMode = 'none')}"
 			>
-				Mégsem
+				{$dict.buttons.cancel}
 			</Button>
 		</div>
 	</Modal>

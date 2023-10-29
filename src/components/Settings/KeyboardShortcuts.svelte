@@ -3,6 +3,7 @@
 	import Button from '$components/Modal/Button.svelte';
 	import Svg from '$components/Svg.svelte';
 	import SetShortcut from '$components/Settings/EditShortcut.svelte';
+	import { dict } from '$stores/dict';
 
 	export let keyboardShortcuts: ConfigOptions['input']['keyboardShortcuts'];
 
@@ -17,8 +18,8 @@
 			<div class="absolute w-[1px] h-full top-0 left-64 bg-neutral-500"></div>
 			<thead>
 				<tr>
-					<th>Output Preffix</th>
-					<th>Shortcut</th>
+					<th>{$dict.settings.input.keyboardShortcuts.table.prefix}</th>
+					<th>{$dict.settings.input.keyboardShortcuts.table.shortcut}</th>
 				</tr>
 			</thead>
 			<div class="absolute w-full h-[1px] left-0 bg-neutral-500"></div>
@@ -27,9 +28,9 @@
 					<tr>
 						<td>
 							{#if outputPrefix}
-								<span class="">{outputPrefix}</span>
+								<span>{outputPrefix}</span>
 							{:else}
-								<span class=" text-neutral-400">none</span>
+								<span class=" text-neutral-400">{$dict.states.none}</span>
 							{/if}
 						</td>
 						<td>
@@ -70,7 +71,7 @@
 		</table>
 	</div>
 	<div>
-		<Button on:click="{() => (actionMode = 'add-shortcut')}">Add Shortcut</Button>
+		<Button on:click="{() => (actionMode = 'add-shortcut')}">{$dict.settings.input.keyboardShortcuts.table.button}</Button>
 	</div>
 </div>
 
