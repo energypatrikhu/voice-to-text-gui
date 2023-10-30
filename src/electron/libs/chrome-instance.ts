@@ -9,8 +9,6 @@ class ChromeInstance {
 	}
 
 	async init() {
-		console.log(resolve('.'));
-
 		const chromeInstance = await launch({
 			headless: 'new',
 			executablePath: resolve(join(this.isDev ? './resources/extraResources' : './resources', 'chrome/chrome.exe')),
