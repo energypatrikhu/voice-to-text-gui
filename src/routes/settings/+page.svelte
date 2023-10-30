@@ -10,6 +10,7 @@
 	import SubSection from '$components/Settings/SubSection.svelte';
 	import KeyboardShortcuts from '$components/Settings/KeyboardShortcuts.svelte';
 	import WordsPhrasesWindows from '$components/Settings/WordsPhrasesWindows.svelte';
+	import Button from '$components/Modal/Button.svelte';
 </script>
 
 <Header />
@@ -33,8 +34,8 @@
 						slot="content"
 						bind:value="{$config.logs.debug}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -46,8 +47,8 @@
 						slot="content"
 						bind:value="{$config.logs.saveToFile}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 			</div>
@@ -66,8 +67,8 @@
 						slot="content"
 						bind:value="{$config.input.holdToActivate}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -89,8 +90,8 @@
 						slot="content"
 						bind:value="{$config.input.autoRelease.enabled}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -123,8 +124,8 @@
 						slot="content"
 						bind:value="{$config.output.partial}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -136,8 +137,8 @@
 						slot="content"
 						bind:value="{$config.output.animated}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -166,8 +167,89 @@
 					<span slot="title">{$dict.settings.feedback.sounds.name}</span>
 					<span slot="description">{$dict.settings.feedback.sounds.description}</span>
 
-					<span slot="content">WIP</span>
+					<div slot="content">
+						<Select bind:value="{$config.feedback.sounds.enabled}">
+							<Option value="{true}">{$dict.states.enable}</Option>
+							<Option value="{false}">{$dict.states.disable}</Option>
+						</Select>
+					</div>
 				</SubSection>
+
+				<SubSection>
+					<span slot="title">{$dict.settings.feedback.sounds.audioMode.name}</span>
+					<span slot="description">{$dict.settings.feedback.sounds.audioMode.description}</span>
+
+					<div slot="content">
+						<Select
+							bind:value="{$config.feedback.sounds.mode}"
+							disabled="{!$config.feedback.sounds.enabled}"
+						>
+							<Option value="default">{$dict.states.default}</Option>
+							<Option value="custom">{$dict.states.custom}</Option>
+						</Select>
+					</div>
+				</SubSection>
+
+				{#if $config.feedback.sounds.mode === 'custom' && $config.feedback.sounds.enabled}
+					<SubSection>
+						<span slot="title">{$dict.settings.feedback.sounds.customAudioFile.name}</span>
+						<span slot="description">{$dict.settings.feedback.sounds.customAudioFile.description}</span>
+
+						<div slot="content">
+							<div class="flex gap-1">
+								<Button
+									on:click="{function () {
+										window.electron.send('electron', { event: 'selectAudioFile', data: null });
+									}}"
+								>
+									{$dict.settings.feedback.sounds.customAudioFile.select}
+								</Button>
+								{#if $config.feedback.sounds.file.filepath !== null}
+									<Button
+										on:click="{function () {
+											$config.feedback.sounds.file = {
+												filepath: null,
+												basepath: null,
+												basename: null,
+											};
+										}}"
+										btnType="cancel"
+									>
+										{$dict.buttons.reset}
+									</Button>
+									<Button
+										on:click="{function () {
+											window.electron.send('electron', { event: 'playTest', data: null });
+										}}"
+									>
+										Test
+									</Button>
+								{/if}
+							</div>
+							<span>{$dict.settings.feedback.sounds.customAudioFile.selected}: <span class="font-light">{$config.feedback.sounds.file.basename ? $config.feedback.sounds.file.basename : $dict.states.none}</span></span>
+						</div>
+					</SubSection>
+
+					<SubSection>
+						<span slot="title">{$dict.settings.feedback.sounds.audioVolume.name}</span>
+						<span slot="description">{$dict.settings.feedback.sounds.audioVolume.description}</span>
+
+						<div slot="content">
+							<div class="flex gap-1">
+								<input
+									class="w-32"
+									type="range"
+									min="0"
+									max="1"
+									step="0.01"
+									bind:value="{$config.feedback.sounds.volume}"
+									disabled="{!$config.feedback.sounds.enabled || $config.feedback.sounds.mode !== 'custom'}"
+								/>
+								<span>{Math.round($config.feedback.sounds.volume * 100)}%</span>
+							</div>
+						</div>
+					</SubSection>
+				{/if}
 
 				<SubSection>
 					<span slot="title">{$dict.settings.feedback.speech.name}</span>
@@ -177,8 +259,8 @@
 						slot="content"
 						bind:value="{$config.feedback.speech.enabled}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -263,8 +345,8 @@
 						slot="content"
 						bind:value="{$config.replacers.punctuationMarks}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -276,8 +358,8 @@
 						slot="content"
 						bind:value="{$config.replacers.gameChatPrefixes}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 			</div>
@@ -293,8 +375,8 @@
 						slot="content"
 						bind:value="{$config.windowAllowList.enabled}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -325,8 +407,8 @@
 						slot="content"
 						bind:value="{$config.commands.enabled}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -367,8 +449,8 @@
 						slot="content"
 						bind:value="{$config.others.mtaConsoleInputMode}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 
@@ -380,8 +462,8 @@
 						slot="content"
 						bind:value="{$config.others.showActiveButtons}"
 					>
-						<Option value="{true}">Enable</Option>
-						<Option value="{false}">Disable</Option>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
 					</Select>
 				</SubSection>
 			</div>

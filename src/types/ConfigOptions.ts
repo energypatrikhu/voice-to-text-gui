@@ -19,7 +19,16 @@ export interface ConfigOptions {
 		typingDelay: number;
 	};
 	feedback: {
-		sounds: boolean;
+		sounds: {
+			enabled: boolean;
+			volume: number;
+			mode: 'default' | 'custom';
+			file: {
+				filepath: string | null;
+				basepath: string | null;
+				basename: string | null;
+			};
+		};
 		speech: {
 			enabled: boolean;
 			volume: number;

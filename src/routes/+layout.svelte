@@ -12,6 +12,8 @@
 	import { preloadSvgs } from '$libs/functions/preloadSvgs';
 	import { updateConsoleStore } from '$stores/console';
 
+	window.audioPlayback = new Audio();
+
 	window.addEventListener('mouseup', function (mouseEvent) {
 		if ([1, 3, 4].includes(mouseEvent.button)) {
 			mouseEvent.preventDefault();
@@ -47,6 +49,27 @@
 
 			case 'dictionary': {
 				$dict = data.dictionary;
+				break;
+			}
+
+			case 'config': {
+				$config = data.config;
+				break;
+			}
+
+			case 'selectAudioFile': {
+				if (data) {
+					$config.feedback.sounds.file = data;
+				}
+				break;
+			}
+
+			case 'playAudio': {
+				if (data.src && data.volume) {
+					window.audioPlayback.src = data.src;
+					window.audioPlayback.volume = data.volume;
+					window.audioPlayback.play();
+				}
 				break;
 			}
 		}
