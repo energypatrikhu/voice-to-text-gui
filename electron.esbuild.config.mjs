@@ -31,6 +31,9 @@ await build({
 	outdir: __destination,
 	logLevel: 'debug',
 	minify: !isDev,
+	drop: isDev ? ['console', 'debugger'] : [],
+	treeShaking: isDev,
+	mangleQuoted: isDev,
 	format: 'cjs',
 	outExtension: { '.js': '.cjs' },
 });
