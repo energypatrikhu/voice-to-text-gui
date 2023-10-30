@@ -128,6 +128,7 @@
 			type="file"
 			bind:files="{files}"
 			multiple="{multiple}"
+			bind:value="{value}"
 		/>
 	{:else if type == 'search'}
 		<input
