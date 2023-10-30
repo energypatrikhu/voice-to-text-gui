@@ -103,7 +103,7 @@
 						slot="content"
 						bind:value="{$config.input.autoRelease.releaseTime}"
 						type="number"
-						text="ms"
+						text="{$dict.time.normal.s}"
 						textPos="after"
 						disabled="{!$config.input.autoRelease.enabled}"
 					/>
@@ -150,7 +150,7 @@
 						bind:value="{$config.output.typingDelay}"
 						slot="content"
 						type="number"
-						text="ms"
+						text="{$dict.time.normal.ms}"
 						textPos="after"
 						disabled="{!$config.output.animated}"
 					/>
