@@ -5,6 +5,23 @@ export interface Dictionary {
 	buttons: EnButtons;
 	navigation: Navigation;
 	settings: Settings;
+	time: Time;
+}
+
+export interface Time {
+	normal: Normal;
+	short: Normal;
+}
+
+export interface Normal {
+	ms: string;
+	s: string;
+	m: string;
+	h: string;
+	d: string;
+	w: string;
+	mo: string;
+	y: string;
 }
 
 export interface States {

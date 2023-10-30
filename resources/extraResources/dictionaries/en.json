@@ -193,6 +193,29 @@
 		"default": "Default"
 	},
 
+	"time": {
+		"normal": {
+			"ms": "millisecond(s)",
+			"s": "second(s)",
+			"m": "minute(s)",
+			"h": "hour(s)",
+			"d": "day(s)",
+			"w": "week(s)",
+			"mo": "month(s)",
+			"y": "year(s)"
+		},
+		"short": {
+			"ms": "ms",
+			"s": "s",
+			"m": "m",
+			"h": "h",
+			"d": "d",
+			"w": "w",
+			"mo": "mo",
+			"y": "y"
+		}
+	},
+
 	"buttons": {
 		"add": "Add",
 		"remove": "Remove",

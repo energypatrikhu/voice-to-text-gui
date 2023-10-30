@@ -193,6 +193,29 @@
 		"default": "Alapértelmezett"
 	},
 
+	"time": {
+		"normal": {
+			"ms": "századmásodperc",
+			"s": "másodperc",
+			"m": "perc",
+			"h": "óra",
+			"d": "nap",
+			"w": "hét",
+			"mo": "hónap",
+			"y": "év"
+		},
+		"short": {
+			"ms": "századmp",
+			"s": "mp",
+			"m": "p",
+			"h": "ó",
+			"d": "n",
+			"w": "h",
+			"mo": "hó",
+			"y": "év"
+		}
+	},
+
 	"buttons": {
 		"add": "Hozzáadás",
 		"remove": "Eltávolítás",
