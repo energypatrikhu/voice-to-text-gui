@@ -1,4 +1,4 @@
-import { EventEmitter, Page } from 'puppeteer';
+import { EventEmitter, Page } from 'puppeteer-core';
 
 import { appendixPrefixer } from './appendix-prefixer.js';
 import { cmd } from './command-handler.js';

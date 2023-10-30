@@ -4,7 +4,7 @@ import type { Versions } from '../../types/electron/Versions.js';
 import type { Dictionary } from '../../types/Dictionary.js';
 import type { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import type { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
-import type { Page } from 'puppeteer';
+import type { Page } from 'puppeteer-core';
 import type { Console } from './console.js';
 import type { SettingsUpdate } from './send-settings-update.js';
 
