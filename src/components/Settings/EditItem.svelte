@@ -9,7 +9,7 @@
 	export let itemName: 'customWordsAndPhrases' | 'windows';
 	export let indexOfShortcutToModify: number;
 
-	let value = indexOfShortcutToModify !== undefined ? (itemName === 'customWordsAndPhrases' ? $config.speechRecognition.customWordsAndPhrases[indexOfShortcutToModify] : $config.windowAllowList.windows[indexOfShortcutToModify]) : '';
+	let value = indexOfShortcutToModify !== -1 ? (itemName === 'customWordsAndPhrases' ? $config.speechRecognition.customWordsAndPhrases[indexOfShortcutToModify] : $config.windowAllowList.windows[indexOfShortcutToModify]) : '';
 
 	$: title = actionMode !== 'none' ? (itemName === 'customWordsAndPhrases' ? (actionMode in $dict.settings.speechRecognition.customWordsAndPhrases.modal.titles ? $dict.settings.speechRecognition.customWordsAndPhrases.modal.titles[actionMode] : '') : actionMode in $dict.settings.windowAllowList.windows.modal.titles ? $dict.settings.windowAllowList.windows.modal.titles[actionMode] : '') : '';
 </script>

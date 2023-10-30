@@ -11,7 +11,7 @@
 
 	let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none' = 'none';
 
-	let indexOfShortcutToModify: number;
+	let indexOfShortcutToModify: number = -1;
 </script>
 
 <div class="w-full relative text-white flex flex-col gap-1">
@@ -75,7 +75,12 @@
 		</table>
 	</div>
 	<div>
-		<Button on:click="{() => (actionMode = 'add-item')}">
+		<Button
+			on:click="{function () {
+				indexOfShortcutToModify = -1;
+				actionMode = 'add-item';
+			}}"
+		>
 			{#if itemName === 'customWordsAndPhrases'}
 				{$dict.settings.speechRecognition.customWordsAndPhrases.table.button}
 			{:else}
