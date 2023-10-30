@@ -1,14 +1,16 @@
 import { existsSync } from 'node:fs';
 import { copyFile, readdir, rm } from 'node:fs/promises';
 import { basename, extname, resolve } from 'node:path';
+import { UserConfig } from 'vite';
 
 import svg from '@poppanator/sveltekit-svg';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 import availableSvgs from './src/libs/availableSvgs';
 
-import type { UserConfig } from 'vite';
 import type { tSvgSrcFolderIcons } from './src/types/Svgs.js';
+
+const isDev = process.env.NODE_ENV === 'dev';
 
 function copyUsedMaterialSymbols() {
 	return new Promise<void>(async (resolve) => {
@@ -68,10 +70,15 @@ const config: UserConfig = {
 				passes: 1000000,
 				hoist_funs: true,
 				keep_fargs: false,
-				drop_console: true,
+				drop_console: isDev,
+				drop_debugger: isDev,
+				ecma: 2020,
 			},
 			safari10: true,
-			ecma: 5,
+			ecma: 2020,
+			format: {
+				ecma: 2020,
+			},
 		},
 		chunkSizeWarningLimit: 100000,
 	},
