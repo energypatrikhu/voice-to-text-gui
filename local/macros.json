@@ -1,1 +1,0 @@
-[{"handler":"teszt","text":"Ez egy teszt makró, mely kiírja a 'szépnapot' makrót: {!makró:szépnapot}"},{"handler":"szépnapot","text":"Szép napot kívánok, hogy tetszik lenni?"}]
