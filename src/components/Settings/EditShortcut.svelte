@@ -11,9 +11,9 @@
 	export let actionMode: 'add-shortcut' | 'edit-shortcut' | 'remove-shortcut' | 'none';
 	export let indexOfShortcutToModify: number;
 
-	let buttons: Array<string> = indexOfShortcutToModify !== undefined ? $config.input.keyboardShortcuts[indexOfShortcutToModify].shortcut : [shortcutKeys[0]];
+	let buttons: Array<string> = indexOfShortcutToModify !== -1 ? $config.input.keyboardShortcuts[indexOfShortcutToModify].shortcut : [shortcutKeys[0]];
 
-	let outputPrefix = indexOfShortcutToModify !== undefined ? $config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix : '';
+	let outputPrefix = indexOfShortcutToModify !== -1 ? $config.input.keyboardShortcuts[indexOfShortcutToModify].outputPrefix : '';
 
 	$: title = actionMode !== 'none' ? (actionMode in $dict.settings.input.keyboardShortcuts.modal.titles ? $dict.settings.input.keyboardShortcuts.modal.titles[actionMode] : '') : '';
 </script>

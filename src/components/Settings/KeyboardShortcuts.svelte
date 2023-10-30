@@ -2,14 +2,14 @@
 	import type { ConfigOptions } from '$types/ConfigOptions';
 	import Button from '$components/Modal/Button.svelte';
 	import Svg from '$components/Svg.svelte';
-	import SetShortcut from '$components/Settings/EditShortcut.svelte';
+	import EditShortcut from '$components/Settings/EditShortcut.svelte';
 	import { dict } from '$stores/dict';
 
 	export let keyboardShortcuts: ConfigOptions['input']['keyboardShortcuts'];
 
 	let actionMode: 'add-shortcut' | 'edit-shortcut' | 'remove-shortcut' | 'none' = 'none';
 
-	let indexOfShortcutToModify: number;
+	let indexOfShortcutToModify: number = -1;
 </script>
 
 <div class="w-full text-white flex flex-col gap-1">
@@ -73,12 +73,17 @@
 		</table>
 	</div>
 	<div>
-		<Button on:click="{() => (actionMode = 'add-shortcut')}">{$dict.settings.input.keyboardShortcuts.table.button}</Button>
+		<Button
+			on:click="{function () {
+				indexOfShortcutToModify = -1;
+				actionMode = 'add-shortcut';
+			}}">{$dict.settings.input.keyboardShortcuts.table.button}</Button
+		>
 	</div>
 </div>
 
 {#if actionMode !== 'none'}
-	<SetShortcut
+	<EditShortcut
 		bind:actionMode="{actionMode}"
 		bind:indexOfShortcutToModify="{indexOfShortcutToModify}"
 	/>
