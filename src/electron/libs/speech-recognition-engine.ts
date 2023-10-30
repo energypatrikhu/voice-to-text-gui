@@ -85,8 +85,6 @@ export class SpeechRecognitionEngine {
 				customWordsAndPhrases: speechRecognitionOptions.customWordsAndPhrases ?? [],
 			});
 
-			window.speechRecognition.lang;
-
 			window.speechRecognition.addEventListener('result', (event) => {
 				const transcript = Array.from(event.results)
 					.map((results) => results[0])
