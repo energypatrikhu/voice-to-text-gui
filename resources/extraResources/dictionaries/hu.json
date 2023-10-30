@@ -180,14 +180,25 @@
 		"inactive": "Inaktív",
 		"actived": "Aktiválva",
 		"deactived": "Deaktiválva",
-		"none": "Nincs"
+		"none": "Nincs",
+		"enable": "Engedélyezés",
+		"disable": "Tiltás",
+		"on": "Be",
+		"off": "Ki",
+		"onLong": "Bekapcsolás",
+		"offLong": "Kikapcsolás",
+		"onMid": "Bekapcsol",
+		"offMid": "Kikapcsol",
+		"custom": "Egyedi",
+		"default": "Alapértelmezett"
 	},
 
 	"buttons": {
 		"add": "Hozzáadás",
-		"remove": "Törlés",
+		"remove": "Eltávolítás",
 		"save": "Mentés",
-		"cancel": "Mégsem"
+		"cancel": "Mégsem",
+		"reset": "Visszaállítás"
 	},
 
 	"navigation": {
@@ -276,8 +287,22 @@
 				"description": "Visszajelzéssel kapcsolatos beállítások"
 			},
 			"sounds": {
-				"name": "Aktiválási/deaktiválási hangok",
-				"description": "A applikációban lévő hangok használata"
+				"name": "Hangok aktiválása/deaktiválása",
+				"description": "Hangok használata az alkalmazásban",
+				"audioMode": {
+					"name": "Audió mód",
+					"description": "Audió mód a hangvisszajelzéshez"
+				},
+				"customAudioFile": {
+					"name": "Egyedi hangfájl",
+					"description": "Egyedi hang aktiváláshoz/deaktiváláshoz",
+					"select": "Hangfájl kiválasztása",
+					"selected": "Kiválasztva"
+				},
+				"audioVolume": {
+					"name": "Audió hangerő",
+					"description": "Audió hangereje"
+				}
 			},
 			"speech": {
 				"name": "Beszéd",

@@ -180,14 +180,25 @@
 		"inactive": "Inactive",
 		"actived": "Actived",
 		"deactived": "Deactived",
-		"none": "None"
+		"none": "None",
+		"enable": "Enable",
+		"disable": "Disable",
+		"on": "On",
+		"off": "Off",
+		"onLong": "On",
+		"offLong": "Off",
+		"onMid": "On",
+		"offMid": "Off",
+		"custom": "Custom",
+		"default": "Default"
 	},
 
 	"buttons": {
 		"add": "Add",
 		"remove": "Remove",
 		"save": "Save",
-		"cancel": "Cancel"
+		"cancel": "Cancel",
+		"reset": "Reset"
 	},
 
 	"navigation": {
@@ -276,12 +287,26 @@
 				"description": "Feedback related settings"
 			},
 			"sounds": {
-				"name": "Activation/deactivation sounds",
-				"description": "Using sounds in the app"
+				"name": "Use activate/deactivate sounds",
+				"description": "Use sounds in the app",
+				"audioMode": {
+					"name": "Audio mode",
+					"description": "Audio mode for sound feedback"
+				},
+				"customAudioFile": {
+					"name": "Custom audio file",
+					"description": "Custom audio for activation/deactivation",
+					"select": "Select audio file",
+					"selected": "Selected"
+				},
+				"audioVolume": {
+					"name": "Audio volume",
+					"description": "Audio feedback volume"
+				}
 			},
 			"speech": {
 				"name": "Speech",
-				"description": "Using speech feedback"
+				"description": "Use speech feedback"
 			},
 			"volume": {
 				"name": "Speech volume",
