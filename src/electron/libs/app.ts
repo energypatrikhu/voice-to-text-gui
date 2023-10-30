@@ -6,6 +6,7 @@ import type { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import type { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import type { Page } from 'puppeteer-core';
 import type { Console } from './console.js';
+import type { SettingsUpdate } from './send-settings-update.js';
 
 export class App {
 	isDev!: boolean;
@@ -22,6 +23,7 @@ export class App {
 	speechRecognition!: SpeechRecognitionEngine | null;
 	speechSynthesis!: SpeechSynthesisEngine | null;
 	console!: Console;
+	settingsUpdate!: SettingsUpdate;
 
 	userDataFolder!: string;
 

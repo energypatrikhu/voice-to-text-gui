@@ -11,6 +11,7 @@ import { loadDictionary } from './dictionary.js';
 import { getActiveWindowName } from './get-active-window-name.js';
 import { keyboardShortcutMapper } from './keyboard-shortcut-mapper.js';
 import { loadMacros } from './macros.js';
+import { SettingsUpdate } from './send-settings-update.js';
 import { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import { textReplacer } from './text-replacer.js';
@@ -31,12 +32,14 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 		const appConsole = new Console(ipcMain, mainWindow, isDev, config.logs.saveToFile).init();
 
+		const settingsUpdate = new SettingsUpdate(mainWindow);
+
 		appConsole.debugLog(dictionary.textFeedback.config.config.loaded);
 		appConsole.debugLog(dictionary.textFeedback.config.macro.loaded);
 		appConsole.debugLog(dictionary.textFeedback.config.dictionary.loaded);
 
 		if (isDev) {
-			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage: null, speechRecognition: null, speechSynthesis: null, console: appConsole, userDataFolder });
+			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage: null, speechRecognition: null, speechSynthesis: null, console: appConsole, settingsUpdate, userDataFolder });
 
 			mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
 
@@ -54,7 +57,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 			const speechSynthesis = await new SpeechSynthesisEngine(chromePage).init(config.feedback);
 
-			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage, speechRecognition, speechSynthesis, console: appConsole, userDataFolder });
+			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage, speechRecognition, speechSynthesis, console: appConsole, settingsUpdate, userDataFolder });
 
 			let voiceRecognitionEnabled = false;
 			let autoReleaseTimer: string | number | NodeJS.Timeout | null | undefined = null;
