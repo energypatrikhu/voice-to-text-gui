@@ -1,6 +1,6 @@
 {
 	"name": "voice-to-text",
-	"version": "0.5.7",
+	"version": "0.5.8",
 	"private": true,
 	"description": "Voice To Text",
 	"main": "resources/app/electron.cjs",
@@ -24,7 +24,7 @@
 		"keysender": "latest",
 		"lodash": "latest",
 		"moment": "latest",
-		"puppeteer": "latest",
+		"puppeteer-core": "latest",
 		"uiohook-napi": "latest"
 	},
 	"devDependencies": {
