@@ -5,11 +5,11 @@ import { cmd } from './command-handler.js';
 import { printText } from './press-keys.js';
 import { replaceCharMap } from './replace-char-map.js';
 import { replaceGameChatPrefixMap } from './replace-game-chat-prefix-map.js';
+import { soundWrapper } from './sound-wrapper.js';
 import { textReplacer } from './text-replacer.js';
 import { uioHookWrapper } from './uio-hook-wrapper.js';
 
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
-
 import type { Console } from './console.js';
 import type { Dictionary } from '../../types/Dictionary.js';
 
@@ -157,10 +157,7 @@ export class SpeechRecognitionEngine {
 	}
 
 	private speechRecognitionInfo(info: 'started' | 'stopped') {
-		this.mainWindow.webContents.send('speech:recognition', {
-			event: info,
-			data: null,
-		});
+		soundWrapper();
 
 		clearTimeout(this.stopTimer);
 		this.stopTimer = setTimeout(async () => {

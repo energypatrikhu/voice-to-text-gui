@@ -1,4 +1,6 @@
+import { dialog } from 'electron';
 import _ from 'lodash';
+import { basename } from 'path';
 
 import { __app } from './app.js';
 import { loadDictionary } from './dictionary.js';
@@ -55,6 +57,36 @@ export class EventRouter {
 
 						saveJson('config', data);
 					}
+					break;
+				}
+
+				case 'selectAudioFile': {
+					const fileData = dialog.showOpenDialogSync(this.mainWindow, {
+						title: 'Select sound file',
+						properties: ['openFile', 'showHiddenFiles', 'dontAddToRecent'],
+						filters: [
+							{
+								name: 'Audio',
+								extensions: ['mp3', 'm4a', 'ogg', 'opus', 'flac', 'aac', 'wav', 'wma'],
+							},
+						],
+					});
+
+					this.mainWindow.webContents.send('electron', {
+						event: 'selectAudioFile',
+						data: fileData && fileData.length > 0 ? { filepath: fileData[0], basepath: fileData[0].slice(0, -basename(fileData[0])).length, basename: basename(fileData[0]) } : null,
+					});
+					break;
+				}
+
+				case 'playTest': {
+					this.mainWindow.webContents.send('electron', {
+						event: 'playAudio',
+						data: {
+							src: __app.config.feedback.sounds.file.filepath,
+							volume: __app.config.feedback.sounds.volume,
+						},
+					});
 					break;
 				}
 			}

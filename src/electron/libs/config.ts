@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+import { __app } from './app.js';
 import { loadJson, saveJson } from './json-storage.js';
 
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
@@ -28,7 +29,16 @@ const defaultConfig: ConfigOptions = {
 		typingDelay: 50,
 	},
 	feedback: {
-		sounds: false,
+		sounds: {
+			enabled: false,
+			volume: 0.1,
+			mode: 'default',
+			file: {
+				filepath: null,
+				basepath: null,
+				basename: null,
+			},
+		},
 		speech: {
 			enabled: true,
 			volume: 0.5,
@@ -59,17 +69,21 @@ const defaultConfig: ConfigOptions = {
 };
 
 function patchConfig(newConfig: { [x: string]: any }, oldConfig: { [x: string]: any }, defaultConfig: object) {
-	for (let [key, value] of Object.entries(defaultConfig)) {
-		if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
-			Object.assign(newConfig, { [key]: patchConfig({}, oldConfig[key] ?? {}, value) });
-		} else if (!(key in oldConfig)) {
-			newConfig[key] = value;
-		} else {
-			newConfig[key] = oldConfig[key];
+	try {
+		for (let [key, value] of Object.entries(defaultConfig)) {
+			if (value !== null && typeof value !== 'boolean' && typeof value === 'object' && !Array.isArray(value)) {
+				Object.assign(newConfig, { [key]: patchConfig({}, oldConfig[key] ?? {}, value) });
+			} else if (!(key in oldConfig) && typeof oldConfig === 'object') {
+				newConfig[key] = value;
+			} else {
+				newConfig[key] = oldConfig[key];
+			}
 		}
-	}
 
-	return newConfig;
+		return newConfig;
+	} catch (error) {
+		return defaultConfig;
+	}
 }
 
 export function loadConfig() {
@@ -86,4 +100,5 @@ export function loadConfig() {
 
 export function saveConfig(config: ConfigOptions) {
 	saveJson('config', config);
+	__app.settingsUpdate.send('config');
 }
