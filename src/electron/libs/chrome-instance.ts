@@ -13,7 +13,7 @@ class ChromeInstance {
 
 		const chromeInstance = await launch({
 			headless: 'new',
-			executablePath: this.isDev ? './resources/extraResources/chrome/chrome.exe' : './resources/chrome/chrome.exe',
+			executablePath: resolve(this.isDev ? './resources/extraResources/chrome/chrome.exe' : './resources/chrome/chrome.exe'),
 		});
 
 		const page = (await chromeInstance.pages())[0];
