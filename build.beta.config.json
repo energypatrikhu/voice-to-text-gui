@@ -1,5 +1,5 @@
 {
-	"appId": "com.energypatrikhu.voice-to-text",
+	"appId": "com.energypatrikhu.voice-to-text-beta",
 	"productName": "Voice To Text Beta",
 	"directories": {
 		"output": "dist"
