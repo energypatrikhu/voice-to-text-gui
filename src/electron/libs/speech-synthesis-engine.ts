@@ -1,4 +1,4 @@
-import { EventEmitter, Page } from 'puppeteer-core';
+import { EventEmitter, Page } from 'puppeteer';
 
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
 
