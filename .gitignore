@@ -19,6 +19,6 @@ pnpm-lock.yaml
 
 .DS_Store
 
-vite.config.js*
+vite.config.ts.*
 
 resources/app
