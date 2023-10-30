@@ -23,5 +23,11 @@
 			"to": ""
 		}
 	],
-	"extraResources": ["resources/chrome/**/*", "resources/dictionaries/**/*"]
+	"extraResources": [
+		{
+			"from": "./resources/extraResources/",
+			"to": "",
+			"filter": ["**/*"]
+		}
+	]
 }
