@@ -190,6 +190,26 @@
 					</div>
 				</SubSection>
 
+				<SubSection>
+					<span slot="title">{$dict.settings.feedback.sounds.audioVolume.name}</span>
+					<span slot="description">{$dict.settings.feedback.sounds.audioVolume.description}</span>
+
+					<div slot="content">
+						<div class="flex gap-1">
+							<input
+								class="w-32"
+								type="range"
+								min="0"
+								max="1"
+								step="0.01"
+								bind:value="{$config.feedback.sounds.volume}"
+								disabled="{!$config.feedback.sounds.enabled || $config.feedback.sounds.mode !== 'custom'}"
+							/>
+							<span>{Math.round($config.feedback.sounds.volume * 100)}%</span>
+						</div>
+					</div>
+				</SubSection>
+
 				{#if $config.feedback.sounds.mode === 'custom' && $config.feedback.sounds.enabled}
 					<SubSection>
 						<span slot="title">{$dict.settings.feedback.sounds.customAudioFile.name}</span>
@@ -227,26 +247,6 @@
 								{/if}
 							</div>
 							<span>{$dict.settings.feedback.sounds.customAudioFile.selected}: <span class="font-light">{$config.feedback.sounds.file.basename ? $config.feedback.sounds.file.basename : $dict.states.none}</span></span>
-						</div>
-					</SubSection>
-
-					<SubSection>
-						<span slot="title">{$dict.settings.feedback.sounds.audioVolume.name}</span>
-						<span slot="description">{$dict.settings.feedback.sounds.audioVolume.description}</span>
-
-						<div slot="content">
-							<div class="flex gap-1">
-								<input
-									class="w-32"
-									type="range"
-									min="0"
-									max="1"
-									step="0.01"
-									bind:value="{$config.feedback.sounds.volume}"
-									disabled="{!$config.feedback.sounds.enabled || $config.feedback.sounds.mode !== 'custom'}"
-								/>
-								<span>{Math.round($config.feedback.sounds.volume * 100)}%</span>
-							</div>
 						</div>
 					</SubSection>
 				{/if}
