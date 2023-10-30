@@ -18,7 +18,7 @@ const serveURL = electronServe({
 
 const port = process.env.PORT || 5173;
 const isDev = !app.isPackaged || process.env.NODE_ENV == 'dev';
-// const isDev = false;
+const isBeta = process.env.APP_STATE == 'beta';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -37,10 +37,11 @@ function createWindow() {
 		webPreferences: {
 			contextIsolation: true,
 			nodeIntegration: true,
-			spellcheck: false,
-			devTools: true,
+			spellcheck: true,
+			devTools: isDev || isBeta,
 			preload: join(__dirname, 'preload.cjs'),
 			disableBlinkFeatures: 'Auxclick',
+			webSecurity: false,
 		},
 		x: windowState.x,
 		y: windowState.y,
@@ -48,10 +49,11 @@ function createWindow() {
 		height: windowState.height,
 	});
 
-	// if (!isDev) mainWindow.removeMenu();
-	// else mainWindow.webContents.openDevTools();
+	if (!isBeta) {
+		mainWindow.removeMenu();
+	}
 
-	if (!isDev) {
+	if (isDev) {
 		mainWindow.webContents.openDevTools();
 	}
 
@@ -91,11 +93,6 @@ async function createMainWindow() {
 	else await serveURL(mainWindow);
 
 	new EventRouter(ipcMain, mainWindow, isDev);
-
-	// @ts-ignore
-	mainWindow.webContents.on('new-window', function (event) {
-		event.preventDefault();
-	});
 }
 
 app.once('ready', createMainWindow);
@@ -110,16 +107,3 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
-
-// process.on('uncaughtException', function (err: Buffer) {
-// 	dialog.showErrorBox('Error - uncaughtException', err.toString());
-// 	process.exit(1);
-// });
-// process.on('uncaughtExceptionMonitor', function (err: Buffer) {
-// 	dialog.showErrorBox('Error - uncaughtExceptionMonitor', err.toString());
-// 	process.exit(1);
-// });
-// process.on('unhandledRejection', function (err: Buffer) {
-// 	dialog.showErrorBox('Error - unhandledRejection', err.toString());
-// 	process.exit(1);
-// });
