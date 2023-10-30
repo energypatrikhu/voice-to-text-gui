@@ -28,11 +28,11 @@ export class SpeechSynthesisEngine {
 		await this.page.evaluate((speechSynthesisOptions) => {
 			const voices = Array.from(window.speechSynthesis.getVoices());
 
-			Object.assign(window.speechSynthesisOptions, {
+			window.speechSynthesisOptions = {
 				lang: speechSynthesisOptions.language || voices.filter((voice) => voice.default)[0].lang,
 				voice: voices.filter((voice) => voice.lang.includes(speechSynthesisOptions.language))[0],
 				volume: speechSynthesisOptions.volume,
-			});
+			};
 		}, speechSynthesisOptions);
 	}
 
