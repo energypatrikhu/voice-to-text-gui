@@ -20,4 +20,6 @@ declare interface Window {
 	callSpeechSynthesisFinished: () => void;
 
 	speechSynthesisOptions: { volume: number; lang: string; voice: SpeechSynthesisVoice };
+
+	audioPlayback: HTMLAudioElement;
 }
