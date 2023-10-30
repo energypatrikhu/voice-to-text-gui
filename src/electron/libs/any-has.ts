@@ -4,22 +4,26 @@ export function anyHas(string: string | Array<string>, include: null | string | 
 			return false;
 		}
 		if ('object' === typeof exclude) {
-			for (let exc of exclude)
+			for (const exc of exclude) {
 				if (string.includes(exc) && '' != exc) {
 					return false;
 				}
+			}
 		}
 	}
+
 	if (null !== include) {
 		if ('string' === typeof include && string.includes(include)) {
 			return true;
 		}
 		if ('object' === typeof include) {
-			for (let inc of include)
+			for (const inc of include) {
 				if (string.includes(inc) && '' != inc) {
 					return true;
 				}
+			}
 		}
 	}
+
 	return false;
 }

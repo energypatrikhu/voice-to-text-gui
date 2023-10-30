@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
-import { existsSync, mkdirSync, readFileSync } from 'fs';
+import { existsSync } from 'fs';
+import { mkdir, readFile } from 'fs/promises';
 import { join } from 'path';
 
 import { __app } from './app.js';
@@ -21,17 +22,15 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 	return new Promise<void>(async (mainLoaded) => {
 		const versions = {
 			electronVersion: isDev ? app.getVersion() : process.versions.electron,
-			appVersion: isDev ? JSON.parse(readFileSync('./package.json', 'utf-8')).version : app.getVersion(),
+			appVersion: isDev ? JSON.parse(await readFile('./package.json', 'utf-8')).version : app.getVersion(),
 		};
 
 		const userDataFolder = join(app.getPath('userData'), app.name);
 
-		const config = loadConfig();
-		const macros = loadMacros();
+		const config = await loadConfig();
+		const macros = await loadMacros();
 		const dictionary = await loadDictionary(config.feedback.language, isDev);
-
-		const appConsole = new Console(ipcMain, mainWindow, isDev, config.logs.saveToFile).init();
-
+		const appConsole = await new Console(ipcMain, mainWindow, isDev, config.logs.saveToFile).init();
 		const settingsUpdate = new SettingsUpdate(mainWindow);
 
 		appConsole.debugLog(dictionary.textFeedback.config.config.loaded);
@@ -46,7 +45,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			mainLoaded();
 		} else {
 			if (!existsSync(userDataFolder)) {
-				mkdirSync(userDataFolder, { recursive: true });
+				await mkdir(userDataFolder, { recursive: true });
 			}
 
 			appConsole.debugLog(dictionary.textFeedback.index.chrome.initializing);
@@ -93,7 +92,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			__app.console.debugLog(__app.dictionary.textFeedback.index.registering.ioHook);
 			uioHookWrapper((event) => {
 				if (__app.config.others.showActiveButtons) {
-					let activeButtons = Object.entries(event.pressedKeys)
+					const activeButtons = Object.entries(event.pressedKeys)
 						.filter((btn) => btn[1] === true)
 						.map((btn) => btn[0]);
 
@@ -104,7 +103,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 				}
 
 				try {
-					let keyboardShortcutMapperResult = keyboardShortcutMapper(event.pressedKeys);
+					const keyboardShortcutMapperResult = keyboardShortcutMapper(event.pressedKeys);
 
 					if (__app.config.input.holdToActivate) {
 						if (!voiceRecognitionEnabled && keyboardShortcutMapperResult.match) {

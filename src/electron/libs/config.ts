@@ -70,7 +70,7 @@ const defaultConfig: ConfigOptions = {
 
 function patchConfig(newConfig: { [x: string]: any }, oldConfig: { [x: string]: any }, defaultConfig: object) {
 	try {
-		for (let [key, value] of Object.entries(defaultConfig)) {
+		for (const [key, value] of Object.entries(defaultConfig)) {
 			if (value !== null && typeof value !== 'boolean' && typeof value === 'object' && !Array.isArray(value)) {
 				Object.assign(newConfig, { [key]: patchConfig({}, oldConfig[key] ?? {}, value) });
 			} else if (!(key in oldConfig) && typeof oldConfig === 'object') {
@@ -81,24 +81,24 @@ function patchConfig(newConfig: { [x: string]: any }, oldConfig: { [x: string]: 
 		}
 
 		return newConfig;
-	} catch (error) {
+	} catch {
 		return defaultConfig;
 	}
 }
 
-export function loadConfig() {
-	const savedConfig = loadJson<ConfigOptions>('config');
+export async function loadConfig() {
+	const savedConfig = await loadJson<ConfigOptions>('config');
 	const loadedConfig = savedConfig ?? defaultConfig;
 	const patchedConfig = patchConfig({}, loadedConfig, defaultConfig) as ConfigOptions;
 
 	if (!_.isEqual(loadedConfig, patchedConfig) || !savedConfig) {
-		saveJson('config', patchedConfig);
+		await saveJson('config', patchedConfig);
 	}
 
 	return patchedConfig;
 }
 
-export function saveConfig(config: ConfigOptions) {
-	saveJson('config', config);
+export async function saveConfig(config: ConfigOptions) {
+	await saveJson('config', config);
 	__app.settingsUpdate.send('config');
 }

@@ -36,8 +36,8 @@ export function replaceCharMap(text: string) {
 			return text;
 		}
 
-		for (let [replacer, searchedWords] of Object.entries(CHAR_MAP)) {
-			for (let _word of searchedWords) {
+		for (const [replacer, searchedWords] of Object.entries(CHAR_MAP)) {
+			for (const _word of searchedWords) {
 				text = text.replace(new RegExp('.?' + _word + ' ', 'g'), replacer + ' ');
 
 				if (text.endsWith(' ' + _word)) {

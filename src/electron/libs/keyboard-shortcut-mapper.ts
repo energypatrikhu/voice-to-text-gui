@@ -1,8 +1,7 @@
 import { __app } from './app.js';
 
 export function keyboardShortcutMapper(pressedKeys: { [key: string]: boolean }) {
-	// return !shortcutConfig.map((button) => pressedKeys[button] ?? false).includes(false);
-	for (let { outputPrefix, shortcut } of __app.config.input.keyboardShortcuts) {
+	for (const { outputPrefix, shortcut } of __app.config.input.keyboardShortcuts) {
 		if (!shortcut.map((button) => pressedKeys[button] ?? false).includes(false)) {
 			return { match: true, outputPrefix };
 		}

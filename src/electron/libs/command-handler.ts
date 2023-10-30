@@ -74,10 +74,10 @@ class CommandHandler {
 	}
 
 	private async callMacro(handler: Macro$Handler, outputLocation: 'return' | 'write') {
-		let filteredMacros = this.macros.filter((macro) => macro.handler === handler);
+		const filteredMacros = this.macros.filter((macro) => macro.handler === handler);
 
 		if (filteredMacros.length > 0) {
-			let macro = filteredMacros[0];
+			const macro = filteredMacros[0];
 
 			if (outputLocation === 'return') {
 				return macro.text;
@@ -99,8 +99,8 @@ class CommandHandler {
 			return;
 		}
 
-		let commandArray = command.slice(1).replace(/\s+/g, '').split(__app.config.commands.splitter);
-		let cmd: CmdParsed = {
+		const commandArray = command.slice(1).replace(/\s+/g, '').split(__app.config.commands.splitter);
+		const cmd: CmdParsed = {
 			handler: commandArray[0],
 			args: commandArray.slice(1),
 		};
@@ -111,10 +111,10 @@ class CommandHandler {
 			return await this.callMacro(cmd.args[0], args.length ? args[0] : 'write');
 		}
 
-		let filteredCommands = this.commands.filter((_command) => (typeof _command.handler === 'object' ? anyHas(_command.handler, cmd.handler) : _command.handler === cmd.handler));
+		const filteredCommands = this.commands.filter((_command) => (typeof _command.handler === 'object' ? anyHas(_command.handler, cmd.handler) : _command.handler === cmd.handler));
 
 		if (filteredCommands.length > 0) {
-			let command = filteredCommands[0];
+			const command = filteredCommands[0];
 
 			if (command.availability !== 'both') {
 				if (command.availability !== availability) {

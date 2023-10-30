@@ -12,17 +12,17 @@ const defaultMacros: Array<Macro> = [
 	},
 ];
 
-export function loadMacros() {
-	const savedMacros = loadJson<Array<Macro>>('macros');
+export async function loadMacros() {
+	const savedMacros = await loadJson<Array<Macro>>('macros');
 	const loadedMacros = savedMacros ?? defaultMacros;
 
 	if (!savedMacros) {
-		saveJson('macros', loadedMacros);
+		await saveJson('macros', loadedMacros);
 	}
 
 	return loadedMacros;
 }
 
-export function saveMacros(macros: Array<Macro>) {
-	saveJson('macros', macros);
+export async function saveMacros(macros: Array<Macro>) {
+	await saveJson('macros', macros);
 }

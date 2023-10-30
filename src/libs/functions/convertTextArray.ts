@@ -1,9 +1,9 @@
 export function convertTextArray(textArray: Array<any>) {
-	return textArray.map(function (_msg: string | object) {
-		if (typeof _msg === 'object') {
-			return JSON.stringify(_msg, null, '\t') + '\n';
+	return textArray.map(function (text: string | object) {
+		if (typeof text === 'object') {
+			return JSON.stringify(text, null, '\t') + '\n';
 		}
 
-		return _msg;
+		return text;
 	});
 }

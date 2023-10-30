@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 import { launch } from 'puppeteer-core';
 
 class ChromeInstance {
@@ -13,7 +13,7 @@ class ChromeInstance {
 
 		const chromeInstance = await launch({
 			headless: 'new',
-			executablePath: resolve(this.isDev ? './resources/extraResources/chrome/chrome.exe' : './resources/chrome/chrome.exe'),
+			executablePath: resolve(join(this.isDev ? './resources/extraResources' : './resources', 'chrome/chrome.exe')),
 		});
 
 		const page = (await chromeInstance.pages())[0];

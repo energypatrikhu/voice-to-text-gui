@@ -125,7 +125,8 @@ export const keys = Object.values(uiohookKeys);
 
 export type Key = (typeof uiohookKeys)[keyof typeof uiohookKeys];
 
-let pressedKeys: Partial<Record<Key, boolean>> = {};
+const pressedKeys: Partial<Record<Key, boolean>> = {};
+
 export interface ioStdout {
 	key: Key;
 	pressedKeys: typeof pressedKeys;
@@ -136,8 +137,8 @@ interface F$UioHookInputParser {
 }
 
 function uioHookInputParser({ event }: F$UioHookInputParser): ioStdout {
-	let isKey = event.type === EventType.EVENT_KEY_PRESSED || event.type === EventType.EVENT_KEY_RELEASED;
-	let isMouse = event.type === EventType.EVENT_MOUSE_PRESSED || event.type === EventType.EVENT_MOUSE_RELEASED;
+	const isKey = event.type === EventType.EVENT_KEY_PRESSED || event.type === EventType.EVENT_KEY_RELEASED;
+	const isMouse = event.type === EventType.EVENT_MOUSE_PRESSED || event.type === EventType.EVENT_MOUSE_RELEASED;
 
 	if (!isKey && !isMouse) {
 		// @ts-ignore
@@ -149,26 +150,30 @@ function uioHookInputParser({ event }: F$UioHookInputParser): ioStdout {
 
 	if (isKey) {
 		switch (event.type) {
-			case EventType.EVENT_KEY_PRESSED:
+			case EventType.EVENT_KEY_PRESSED: {
 				isPressed = true;
 				break;
-			case EventType.EVENT_MOUSE_RELEASED:
+			}
+			case EventType.EVENT_KEY_RELEASED: {
 				isPressed = false;
 				break;
+			}
 		}
 	} else if (isMouse) {
 		switch (event.type) {
-			case EventType.EVENT_MOUSE_PRESSED:
+			case EventType.EVENT_MOUSE_PRESSED: {
 				isPressed = true;
 				break;
-			case EventType.EVENT_MOUSE_RELEASED:
+			}
+			case EventType.EVENT_MOUSE_RELEASED: {
 				isPressed = false;
 				break;
+			}
 		}
 	}
 
 	if (isKey) {
-		let keyboardEvent = event as UiohookKeyboardEvent;
+		const keyboardEvent = event as UiohookKeyboardEvent;
 
 		if (keyboardEvent.keycode in uiohookKeys) {
 			// @ts-ignore
@@ -177,7 +182,7 @@ function uioHookInputParser({ event }: F$UioHookInputParser): ioStdout {
 			keyName = `unknown[${keyboardEvent.keycode}]`;
 		}
 	} else if (isMouse) {
-		let mouseEvent = event as UiohookMouseEvent;
+		const mouseEvent = event as UiohookMouseEvent;
 
 		keyName = `mouse${mouseEvent.button}`;
 	}
@@ -191,7 +196,7 @@ function uioHookInputParser({ event }: F$UioHookInputParser): ioStdout {
 
 export function uioHookWrapper(callbackFn: (keyEvent: ioStdout) => void) {
 	uIOhook.on('input', (event) => {
-		let uioHookParserData = uioHookInputParser({ event });
+		const uioHookParserData = uioHookInputParser({ event });
 		if (uioHookParserData) {
 			callbackFn(uioHookParserData);
 		}

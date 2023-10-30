@@ -160,17 +160,17 @@ export class SpeechRecognitionEngine {
 		clearTimeout(this.stopTimer);
 		this.stopTimer = setTimeout(async () => {
 			if (info === 'stopped' && !this.stopOutput) {
-				let replacedChar = replaceCharMap(this.outputPrefix + this.partialOutput)!;
-				let replacedGameChatPrefix = replaceGameChatPrefixMap(replacedChar)!;
-				let replacedAppendixPrefix = appendixPrefixer(replacedGameChatPrefix)!;
+				const replacedChar = replaceCharMap(this.outputPrefix + this.partialOutput)!;
+				const replacedGameChatPrefix = replaceGameChatPrefixMap(replacedChar)!;
+				const replacedAppendixPrefix = appendixPrefixer(replacedGameChatPrefix)!;
 
 				if (replacedAppendixPrefix == '') {
 					return;
 				}
 
-				let isCommand = replacedAppendixPrefix.startsWith(this.config.commands.prefix);
+				const isCommand = replacedAppendixPrefix.startsWith(this.config.commands.prefix);
 
-				let isMacro = replacedAppendixPrefix.match(this.textParserRegex) !== null;
+				const isMacro = replacedAppendixPrefix.match(this.textParserRegex) !== null;
 
 				this.appConsole.debugLogJson({ __appConfigCommandsEnabled: this.config.commands.enabled, isCommand, isMacro, replacedAppendixPrefix, textParserRegex: this.textParserRegex });
 

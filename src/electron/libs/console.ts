@@ -1,5 +1,6 @@
 import { app } from 'electron';
-import { appendFileSync, existsSync, mkdirSync } from 'fs';
+import { existsSync } from 'fs';
+import { appendFile, mkdir } from 'fs/promises';
 import { EOL } from 'os';
 import { join } from 'path';
 
@@ -24,11 +25,11 @@ export class Console {
 		this.saveToFile = saveToFile;
 	}
 
-	init() {
+	async init() {
 		if (!this.saveToFile || this.isDev) return this;
 
 		if (!existsSync(this.logsPath)) {
-			mkdirSync(this.logsPath, {
+			await mkdir(this.logsPath, {
 				recursive: true,
 			});
 		}
@@ -36,7 +37,7 @@ export class Console {
 		this.ipcMain.on('electron', async (_, { event, data }) => {
 			switch (event) {
 				case 'log': {
-					appendFileSync(join(this.logsPath, data.filename), ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', '\n', ...data.textArray, EOL].join(' '));
+					await appendFile(join(this.logsPath, data.filename), ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', '\n', ...data.textArray, EOL].join(' '));
 					break;
 				}
 			}

@@ -23,7 +23,7 @@ const isBeta = process.env.APP_STATE == 'beta';
 let mainWindow: BrowserWindow | null = null;
 
 function createWindow() {
-	let windowState = electronWindowState({
+	const windowState = electronWindowState({
 		defaultWidth: 800,
 		defaultHeight: 600,
 	});

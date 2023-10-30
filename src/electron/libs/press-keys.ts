@@ -9,7 +9,7 @@ export function printText(output: string, isCommand: boolean = false) {
 				return;
 			}
 
-			let delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
+			const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
 
 			if (__app.config.others.mtaConsoleInputMode || isCommand) {
 				await keyboard.sendKey('f8', delay, delay);
@@ -33,7 +33,7 @@ export function sendKeys(...key: KeyboardButton[]) {
 				return;
 			}
 
-			let delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
+			const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
 
 			await keyboard.sendKeys(key, delay, delay);
 

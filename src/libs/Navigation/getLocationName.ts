@@ -6,7 +6,7 @@ export function getLocationName(table: any, searchHref: string): any {
 			throw new Error('Param(s) `table` or `searchHref` was not provided!');
 		}
 
-		for (let _location of table) {
+		for (const _location of table) {
 			if (_location.href !== '' && _location.href !== '/' ? searchHref.startsWith(_location.href) : _location.href === searchHref) {
 				return _location;
 			}

@@ -21,10 +21,10 @@ export function replaceGameChatPrefixMap(text: string) {
 			return text;
 		}
 
-		for (let [replacer, searchedTexts] of Object.entries(SEEGAME_CHAT_PREFIX_MAP)) {
-			for (let _text of searchedTexts) {
+		for (const [replacer, searchedTexts] of Object.entries(SEEGAME_CHAT_PREFIX_MAP)) {
+			for (const _text of searchedTexts) {
 				if (text.startsWith(_text + ' ')) {
-					let prefix = __app.config.others.mtaConsoleInputMode ? replacer.slice(1) : replacer;
+					const prefix = __app.config.others.mtaConsoleInputMode ? replacer.slice(1) : replacer;
 					__app.console.debugLogJson({ replacer, _text, prefix });
 
 					return prefix + text.slice(_text.length);

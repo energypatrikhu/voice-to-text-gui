@@ -55,7 +55,7 @@ export class EventRouter {
 						__app.console.debugLog('Config Changed!');
 						__app.config = data;
 
-						saveJson('config', data);
+						await saveJson('config', data);
 					}
 					break;
 				}

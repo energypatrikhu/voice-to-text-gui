@@ -1,24 +1,25 @@
 import { app } from 'electron';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync } from 'fs';
+import { mkdir, readFile, writeFile } from 'fs/promises';
 import { join, resolve } from 'path';
 
-export function saveJson(name: string, data: any) {
+export async function saveJson(name: string, data: any) {
 	const userDataFolder = process.env.NODE_ENV == 'dev' ? resolve('./local') : join(app.getPath('userData'), app.name);
 
 	if (!existsSync(userDataFolder)) {
-		mkdirSync(userDataFolder, { recursive: true });
+		await mkdir(userDataFolder, { recursive: true });
 	}
 
-	writeFileSync(join(userDataFolder, `${name}.json`), JSON.stringify(data), 'utf8');
+	await writeFile(join(userDataFolder, `${name}.json`), JSON.stringify(data), 'utf8');
 }
 
-export function loadJson<T>(name: string): T | null {
+export async function loadJson<T>(name: string): Promise<T | null> {
 	const userDataFolder = process.env.NODE_ENV == 'dev' ? resolve('./local') : join(app.getPath('userData'), app.name);
 
 	if (!existsSync(join(userDataFolder, `${name}.json`))) {
 		return null;
 	}
 
-	const content = readFileSync(join(userDataFolder, `${name}.json`), 'utf8');
+	const content = await readFile(join(userDataFolder, `${name}.json`), 'utf8');
 	return content ? JSON.parse(content) : null;
 }
