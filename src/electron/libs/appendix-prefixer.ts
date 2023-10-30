@@ -13,7 +13,7 @@ export function appendixPrefixer(text: string) {
 			text = text.replace(new RegExp(' ' + appendix + ' ', 'g'), appendix + ' ');
 
 			if (text.endsWith(appendix)) {
-				text = text.slice(0, -(appendix.length + 1)) + appendix;
+				text = text.slice(0, -appendix.length) + appendix;
 			}
 		}
 
