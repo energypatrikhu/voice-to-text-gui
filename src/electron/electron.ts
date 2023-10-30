@@ -49,7 +49,7 @@ function createWindow() {
 		height: windowState.height,
 	});
 
-	if (!isBeta) {
+	if (!isBeta && !isDev) {
 		mainWindow.removeMenu();
 	}
 
