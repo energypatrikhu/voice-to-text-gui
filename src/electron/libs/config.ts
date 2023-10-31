@@ -30,7 +30,7 @@ const defaultConfig: ConfigOptions = {
 	},
 	feedback: {
 		sounds: {
-			enabled: false,
+			enabled: true,
 			volume: 0.1,
 			mode: 'default',
 			file: {
