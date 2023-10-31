@@ -5,6 +5,6 @@
 	"github": {
 		"release": true,
 		"assets": ["./dist/Voice To Text*.exe"],
-		"tokenRef": "GITHUB_TOKEN"
+		"tokenRef": "GH_TOKEN"
 	}
 }
