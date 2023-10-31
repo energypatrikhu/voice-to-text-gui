@@ -2,7 +2,6 @@
 	"appId": "com.energypatrikhu.voice-to-text-beta",
 	"productName": "Voice To Text Beta",
 	"compression": "maximum",
-	"signDlls": true,
 	"directories": {
 		"output": "dist"
 	},
