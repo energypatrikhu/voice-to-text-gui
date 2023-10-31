@@ -33,6 +33,8 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 		const appConsole = await new Console(ipcMain, mainWindow, isDev, config.logs).init();
 		const settingsUpdate = new SettingsUpdate(mainWindow);
 
+		mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
+
 		appConsole.debugLog(dictionary.textFeedback.config.config.loaded);
 		appConsole.debugLog(dictionary.textFeedback.config.macro.loaded);
 		appConsole.debugLog(dictionary.textFeedback.config.dictionary.loaded);
@@ -40,7 +42,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 		if (isDev) {
 			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage: null, speechRecognition: null, speechSynthesis: null, console: appConsole, settingsUpdate, userDataFolder });
 
-			mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
+			// mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
 
 			mainLoaded();
 		} else {
@@ -135,7 +137,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			__app.console.debugLog(__app.dictionary.textFeedback.index.registering.commands);
 			await cmd.init(__app.speechSynthesis!);
 
-			mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
+			// mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
 
 			if (__app.config.input.holdToActivate) {
 				__app.console.logJson(__app.dictionary.textFeedback.index.app.started.hold);
