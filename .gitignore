@@ -22,3 +22,5 @@ pnpm-lock.yaml
 vite.config.ts.*
 
 resources/app
+
+*.release-it.json
