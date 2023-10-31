@@ -26,6 +26,8 @@ export class App {
 	console!: Console;
 	settingsUpdate!: SettingsUpdate;
 
+	checkingForUpdate!: boolean;
+
 	userDataFolder!: string;
 
 	init(data: Partial<App>) {

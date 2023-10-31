@@ -41,10 +41,23 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 		const userDataFolder = join(app.getPath('userData'), app.name);
 
-		if (isDev) {
-			__app.init({ isDev, isBeta, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage: null, speechRecognition: null, speechSynthesis: null, console: appConsole, settingsUpdate, userDataFolder });
+		const defaultVariables = {
+			isDev,
+			isBeta,
+			ipcMain,
+			mainWindow,
+			config,
+			macros,
+			versions,
+			dictionary,
+			console: appConsole,
+			settingsUpdate,
+			userDataFolder,
+			checkingForUpdate: false,
+		};
 
-			// mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
+		if (isDev) {
+			__app.init({ ...defaultVariables, chromePage: null, speechRecognition: null, speechSynthesis: null });
 
 			mainLoaded();
 		} else {
@@ -61,7 +74,10 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 					if (isFirst) {
 						appConsole.log(dictionary.textFeedback.index.updater.starting);
 					} else {
-						await autoUpdater.checkForUpdatesAndNotify();
+						if (!__app.checkingForUpdate) {
+							appConsole.log(dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
+							await autoUpdater.checkForUpdatesAndNotify();
+						}
 					}
 				}
 				setTimeout(
@@ -84,11 +100,9 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 			const speechSynthesis = await new SpeechSynthesisEngine(chromePage).init(config.feedback);
 
-			__app.init({ isDev, isBeta, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage, speechRecognition, speechSynthesis, console: appConsole, settingsUpdate, userDataFolder });
+			__app.init({ ...defaultVariables, chromePage, speechRecognition, speechSynthesis });
 
 			let voiceRecognitionEnabled = false;
-			let autoReleaseTimer: string | number | NodeJS.Timeout | null | undefined = null;
-			let lastActiveButtons: string[] = [];
 
 			async function voiceRecognitionEnable(outputPrefix: string | null) {
 				try {
@@ -116,6 +130,9 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 					__app.console.debugErrorLog(error);
 				}
 			}
+
+			let autoReleaseTimer: string | number | NodeJS.Timeout | null | undefined = null;
+			let lastActiveButtons: string[] = [];
 
 			__app.console.debugLog(__app.dictionary.textFeedback.index.registering.ioHook);
 			uioHookWrapper((event) => {
@@ -163,13 +180,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			__app.console.debugLog(__app.dictionary.textFeedback.index.registering.commands);
 			await cmd.init(__app.speechSynthesis!);
 
-			// mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
-
-			if (__app.config.input.holdToActivate) {
-				__app.console.logJson(__app.dictionary.textFeedback.index.app.started.hold);
-			} else {
-				__app.console.logJson(__app.dictionary.textFeedback.index.app.started.toggle);
-			}
+			__app.console.logJson(__app.config.input.holdToActivate ? __app.dictionary.textFeedback.index.app.started.hold : __app.dictionary.textFeedback.index.app.started.toggle);
 
 			__app.console.log([__app.dictionary.textFeedback.index.creatorsCredits.wrapper, __app.dictionary.textFeedback.index.creatorsCredits.createdBy, __app.dictionary.textFeedback.index.creatorsCredits.ideaBy, __app.dictionary.textFeedback.index.creatorsCredits.wrapper].join('\n'));
 
