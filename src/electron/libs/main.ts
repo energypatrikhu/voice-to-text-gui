@@ -30,7 +30,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 		const config = await loadConfig();
 		const macros = await loadMacros();
 		const dictionary = await loadDictionary(config.feedback.language, isDev);
-		const appConsole = await new Console(ipcMain, mainWindow, isDev, config.logs.saveToFile).init();
+		const appConsole = await new Console(ipcMain, mainWindow, isDev, config.logs).init();
 		const settingsUpdate = new SettingsUpdate(mainWindow);
 
 		appConsole.debugLog(dictionary.textFeedback.config.config.loaded);
