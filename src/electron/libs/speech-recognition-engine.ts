@@ -192,7 +192,7 @@ export class SpeechRecognitionEngine {
 					this._output = output;
 				}
 
-				this.appConsole.debugLog(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.info.output, output));
+				this.appConsole.log(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.info.output, output));
 
 				if (this.config.output.partial) {
 					return;
