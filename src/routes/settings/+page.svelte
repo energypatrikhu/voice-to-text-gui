@@ -327,8 +327,6 @@
 						slot="content"
 						bind:items="{$config.speechRecognition.customWordsAndPhrases}"
 						itemName="customWordsAndPhrases"
-						disabled="{true}"
-						disabledText="Not implemented!"
 					/>
 				</SubSection>
 			</div>
