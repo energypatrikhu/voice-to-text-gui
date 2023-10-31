@@ -115,7 +115,7 @@
 			},
 
 			"mtaMode": {
-				"description": "Az `mtaConsoleInputMode` beállítás jelenlegi értékének az ellenkezőjére állítja be. (true => false | false => true)",
+				"description": "Az 'mtaConsoleInputMode' beállítás jelenlegi értékének az ellenkezőjére állítja be. (true => false | false => true)",
 				"mtaConsoleInputMode": {
 					"enabled": "MTA konzol beviteli mód: Engedélyezve",
 					"disabled": "MTA konzol beviteli mód: Letiltva"

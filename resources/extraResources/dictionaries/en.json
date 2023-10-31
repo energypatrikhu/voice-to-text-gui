@@ -78,10 +78,10 @@
 				"wrapper": "> = = = = = < config > = = = = = <",
 				"loaded": "Config loaded!",
 				"error": {
-					"partialHoldToActivate": "Config error! `output.partial` cannot be `true` while `input.holdToActivate` is `true`!",
-					"punctuationMarksPartial": "Config error! `replacers.punctuationMarks` cannot be `true` while `output.partial` is `true`!",
-					"gameChatPrefixesPartial": "Config error! `replacers.gameChatPrefixes` cannot be `true` while `output.partial` is `true`!",
-					"commandsPartial": "Config error! `commands.enabled` cannot be `true` while `output.partial` is `true`!"
+					"partialHoldToActivate": "Config error! 'output.partial' cannot be 'true' while 'input.holdToActivate' is 'true'!",
+					"punctuationMarksPartial": "Config error! 'replacers.punctuationMarks' cannot be 'true' while 'output.partial' is 'true'!",
+					"gameChatPrefixesPartial": "Config error! 'replacers.gameChatPrefixes' cannot be 'true' while 'output.partial' is 'true'!",
+					"commandsPartial": "Config error! 'commands.enabled' cannot be 'true' while 'output.partial' is 'true'!"
 				}
 			},
 			"dictionary": {
@@ -115,7 +115,7 @@
 			},
 
 			"mtaMode": {
-				"description": "Sets it to the opposite of the current value of `mtaConsoleInputMode`. (true => false | false => true)",
+				"description": "Sets it to the opposite of the current value of 'mtaConsoleInputMode'. (true => false | false => true)",
 				"mtaConsoleInputMode": {
 					"enabled": "MTA Console Input Mode: Enabled",
 					"disabled": "MTA Console Input Mode: Disabled"
