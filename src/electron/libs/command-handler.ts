@@ -59,6 +59,7 @@ class CommandHandler {
 		require('./commands/exit-mta.js');
 		require('./commands/mta-mode.js');
 		require('./commands/show-active-buttons.js');
+		require('./commands/update-app.js');
 	}
 
 	registerCommand(func: Command$Func, [availability, name, syntax, handler, description]: [Command$Availability, Command$Name, Command$Syntax, Command$Handler, Command$Description]) {
