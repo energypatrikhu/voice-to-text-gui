@@ -4,7 +4,7 @@ import { getActiveWindowName } from '../get-active-window-name.js';
 import { printText } from '../press-keys.js';
 
 cmd.registerCommand(
-	async (speechSynthesis) => {
+	async function (speechSynthesis) {
 		try {
 			if (!['gta_sa.exe', 'proxy_sa.exe'].includes(await getActiveWindowName())) {
 				__app.console.log(__app.dictionary.textFeedback.commands.exitMta.notInForeground);

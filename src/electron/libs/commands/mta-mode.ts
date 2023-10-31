@@ -3,7 +3,7 @@ import { cmd } from '../command-handler.js';
 import { saveConfig } from '../config.js';
 
 cmd.registerCommand(
-	async (speechSynthesis) => {
+	async function (speechSynthesis) {
 		try {
 			__app.config.others.mtaConsoleInputMode = !__app.config.others.mtaConsoleInputMode;
 			saveConfig(__app.config);

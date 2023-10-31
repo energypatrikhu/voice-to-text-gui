@@ -3,7 +3,7 @@ import { cmd } from '../command-handler.js';
 import { saveConfig } from '../config.js';
 
 cmd.registerCommand(
-	async (speechSynthesis) => {
+	async function (speechSynthesis) {
 		__app.config.others.showActiveButtons = !__app.config.others.showActiveButtons;
 		saveConfig(__app.config);
 

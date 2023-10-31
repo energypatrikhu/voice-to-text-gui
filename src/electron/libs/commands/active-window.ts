@@ -4,7 +4,7 @@ import { getActiveWindowName } from '../get-active-window-name.js';
 import { textReplacer } from '../text-replacer.js';
 
 cmd.registerCommand(
-	async (speechSynthesis) => {
+	async function (speechSynthesis) {
 		let activeWindow = await getActiveWindowName();
 
 		__app.console.log(textReplacer(__app.dictionary.textFeedback.commands.activeWindow.activeWindow, activeWindow));
