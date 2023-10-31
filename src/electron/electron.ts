@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import electronContextMenu from 'electron-context-menu';
 import electronServe from 'electron-serve';
+import { autoUpdater } from 'electron-updater';
 import electronWindowState from 'electron-window-state';
 import { join } from 'path';
 
@@ -88,6 +89,8 @@ async function createMainWindow() {
 	mainWindow.once('close', () => {
 		mainWindow = null;
 	});
+
+	autoUpdater.checkForUpdatesAndNotify();
 
 	if (isDev) loadVite(port);
 	else await serveURL(mainWindow);
