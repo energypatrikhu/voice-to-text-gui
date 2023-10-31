@@ -4,8 +4,7 @@
 	},
 	"github": {
 		"release": true,
-		"assets": ["./dist/*.exe"],
-		"tokenRef": "GITHUB_TOKEN",
-		"autoGenerate": true
+		"assets": ["./dist/Voice To Text*.exe"],
+		"tokenRef": "GITHUB_TOKEN"
 	}
 }
