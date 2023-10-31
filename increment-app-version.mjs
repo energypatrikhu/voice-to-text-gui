@@ -6,4 +6,4 @@ const currentVersion = parseInt(packageJson.version.replace(/\./g, ''));
 
 packageJson.version = (currentVersion + 1).toString().split('').join('.');
 
-await writeFile('./package.json', JSON.stringify(packageJson), { encoding: 'utf-8' });
+await writeFile('./package.json', JSON.stringify(packageJson, null, '\t'), { encoding: 'utf-8' });
