@@ -5,6 +5,7 @@ import { join } from 'node:path';
 const __source = './src/electron';
 const __destination = './resources/app';
 const isDev = process.env.NODE_ENV === 'dev';
+const isBeta = process.env.APP_SATE === 'beta';
 
 (async function removeOldEntries(absoluteDir) {
 	for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
@@ -30,10 +31,10 @@ await build({
 	platform: 'node',
 	outdir: __destination,
 	logLevel: 'debug',
-	minify: !isDev,
-	drop: isDev ? ['console', 'debugger'] : [],
-	treeShaking: isDev,
-	mangleQuoted: isDev,
+	minify: !isDev && !isBeta,
+	drop: !isDev && !isBeta ? ['console', 'debugger'] : [],
+	treeShaking: !isDev && !isBeta,
+	mangleQuoted: !isDev && !isBeta,
 	format: 'cjs',
 	outExtension: { '.js': '.cjs' },
 });
