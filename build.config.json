@@ -1,6 +1,9 @@
 {
 	"appId": "com.energypatrikhu.voice-to-text",
 	"productName": "Voice To Text",
+	"compression": "maximum",
+	"signDlls": true,
+	"preCompressedFileExtensions": [".avi", ".mov", ".m4v", ".mp4", ".m4p", ".qt", ".mkv", ".webm", ".vmdk", ".mp3", ".js", ".cjs"],
 	"directories": {
 		"output": "dist"
 	},
@@ -9,7 +12,7 @@
 		"requestedExecutionLevel": "requireAdministrator"
 	},
 	"nsis": {
-		"createStartMenuShortcut": true,
+		"createDesktopShortcut": true,
 		"oneClick": false,
 		"allowElevation": true,
 		"allowToChangeInstallationDirectory": true,
