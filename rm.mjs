@@ -1,7 +1,7 @@
 import { readdirSync, rmSync, statSync } from 'fs';
 import { join, resolve } from 'path';
 
-for (const rawPath in process.argv.slice(1)) {
+for (const rawPath of process.argv.slice(2)) {
 	const path = resolve(rawPath);
 	const stat = statSync(path);
 
