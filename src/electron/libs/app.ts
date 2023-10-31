@@ -27,6 +27,8 @@ export class App {
 	settingsUpdate!: SettingsUpdate;
 
 	checkingForUpdate!: boolean;
+	updateReason!: 'manual' | 'automatic' | null;
+	downloadedUpdate!: boolean;
 
 	userDataFolder!: string;
 

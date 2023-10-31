@@ -4,7 +4,7 @@ import { existsSync } from 'fs';
 import { mkdir, readFile } from 'fs/promises';
 import { join } from 'path';
 
-import { __app } from './app.js';
+import { __app, App } from './app.js';
 import { ChromeInstance } from './chrome-instance.js';
 import { cmd } from './command-handler.js';
 import { loadConfig } from './config.js';
@@ -41,7 +41,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 		const userDataFolder = join(app.getPath('userData'), app.name);
 
-		const defaultVariables = {
+		const defaultVariables: Partial<App> = {
 			isDev,
 			isBeta,
 			ipcMain,
@@ -54,6 +54,8 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			settingsUpdate,
 			userDataFolder,
 			checkingForUpdate: false,
+			updateReason: null,
+			downloadedUpdate: true,
 		};
 
 		if (isDev) {
@@ -67,6 +69,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			if (config.update.checkOnStartup) {
 				appConsole.log(dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
 				await autoUpdater.checkForUpdatesAndNotify();
+				defaultVariables.updateReason = 'automatic';
 			}
 
 			await (async function checkForUpdatesAndNotify(isFirst: boolean) {
@@ -74,9 +77,10 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 					if (isFirst) {
 						appConsole.log(dictionary.textFeedback.index.updater.starting);
 					} else {
-						if (!__app.checkingForUpdate) {
+						if (!__app.checkingForUpdate && !__app.downloadedUpdate) {
 							appConsole.log(dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
 							await autoUpdater.checkForUpdatesAndNotify();
+							defaultVariables.updateReason = 'automatic';
 						}
 					}
 				}
