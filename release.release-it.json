@@ -1,0 +1,11 @@
+{
+	"git": {
+		"tagAnnotation": "Pre-Release ${version}"
+	},
+	"github": {
+		"release": true,
+		"assets": ["./dist/*.exe"],
+		"tokenRef": "GITHUB_TOKEN",
+		"autoGenerate": true
+	}
+}
