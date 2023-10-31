@@ -33,7 +33,6 @@ export class EventRouter {
 				case 'config': {
 					if (this.isReady && !_.isEqual(__app.config, data)) {
 						console.log('Config Changed Event', { isReady: this.isReady, isEqual: _.isEqual(__app.config, data) });
-						console.log(JSON.stringify({ config: __app.config, newConfig: data }, null, '\t'));
 
 						if (!_.isEqual(__app.config.feedback.language, data.feedback.language)) {
 							console.log('feedback.language changed!');
@@ -47,7 +46,7 @@ export class EventRouter {
 						}
 
 						if (!_.isEqual(__app.config.speechRecognition, data.speechRecognition)) {
-							console.log('speechRecognition.language changed!');
+							console.log('speechRecognition changed!');
 
 							__app.speechRecognition?.updateEngine(data.speechRecognition);
 						}

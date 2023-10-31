@@ -76,6 +76,7 @@ export class SpeechRecognitionEngine {
 	private async initSpeechRecognitionEngine(speechRecognitionOptions: ConfigOptions['speechRecognition']) {
 		await this.page.evaluate((speechRecognitionOptions) => {
 			window.speechRecognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+			window.speechGrammarList = new (window.SpeechGrammarList || window.webkitSpeechGrammarList)();
 
 			Object.assign(window.speechRecognition, {
 				continuous: true,
@@ -84,6 +85,10 @@ export class SpeechRecognitionEngine {
 				maxAlternatives: 1,
 				customWordsAndPhrases: speechRecognitionOptions.customWordsAndPhrases ?? [],
 			});
+
+			const grammar = `#JSGF V1.0; grammar words; public <word> = ${speechRecognitionOptions.customWordsAndPhrases.join(' | ')};`;
+			window.speechGrammarList.addFromString(grammar, 1);
+			window.speechRecognition.grammars = window.speechGrammarList;
 
 			window.speechRecognition.addEventListener('result', (event) => {
 				const transcript = Array.from(event.results)

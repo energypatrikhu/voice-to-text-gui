@@ -10,7 +10,10 @@ declare interface Window {
 		getVersion: () => void;
 	};
 	speechRecognition: SpeechRecognition;
-	webkitspeechRecognition: webkitSpeechRecognition;
+	webkitSpeechRecognition: SpeechRecognition;
+
+	speechGrammarList: SpeechGrammarList;
+	webkitSpeechGrammarList: SpeechGrammarList;
 
 	speechRecognitionEnabled: boolean;
 	speechRecognitionRestart: boolean;
