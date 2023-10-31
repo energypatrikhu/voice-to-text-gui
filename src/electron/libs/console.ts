@@ -14,19 +14,19 @@ export class Console {
 	private ipcMain;
 	private mainWindow;
 	private isDev;
-	private saveToFile: boolean;
+	private logsConfig;
 
 	private logsPath = join(app.getPath('documents'), 'Voice To Text Logs');
 
-	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean, saveToFile: ConfigOptions['logs']['saveToFile']) {
+	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean, logsConfig: ConfigOptions['logs']) {
 		this.ipcMain = ipcMain;
 		this.mainWindow = mainWindow;
 		this.isDev = isDev;
-		this.saveToFile = saveToFile;
+		this.logsConfig = logsConfig;
 	}
 
 	async init() {
-		if (!this.saveToFile || this.isDev) return this;
+		if (!this.logsConfig.saveToFile || this.isDev) return this;
 
 		if (!existsSync(this.logsPath)) {
 			await mkdir(this.logsPath, {
@@ -65,6 +65,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Info', lang: 'json', textArray: messages });
 	}
 	debugLogJson(...messages: Array<any>) {
+		if (!this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Info', lang: 'json', textArray: messages });
 	}
 
@@ -72,6 +73,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Info', textArray: messages });
 	}
 	debugLog(...messages: Array<any>) {
+		if (!this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Info', textArray: messages });
 	}
 
@@ -79,6 +81,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Warning', textArray: messages });
 	}
 	debugWarningLog(...messages: Array<any>) {
+		if (!this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Warning', textArray: messages });
 	}
 
@@ -86,6 +89,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Error', textArray: messages });
 	}
 	debugErrorLog(...messages: Array<any>) {
+		if (!this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Error', textArray: messages });
 	}
 }
