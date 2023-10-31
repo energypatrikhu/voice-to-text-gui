@@ -2,7 +2,9 @@
 	"appId": "com.energypatrikhu.voice-to-text",
 	"productName": "Voice To Text",
 	"compression": "maximum",
-	"releaseType": "release",
+	"publish": {
+		"releaseType": "release"
+	},
 	"directories": {
 		"output": "dist"
 	},

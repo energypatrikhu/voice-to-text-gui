@@ -2,7 +2,9 @@
 	"appId": "com.energypatrikhu.voice-to-text-beta",
 	"productName": "Voice To Text Beta",
 	"compression": "maximum",
-	"releaseType": "prerelease",
+	"publish": {
+		"releaseType": "prerelease"
+	},
 	"directories": {
 		"output": "dist"
 	},
