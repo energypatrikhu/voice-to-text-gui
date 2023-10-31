@@ -76,10 +76,10 @@
 	});
 
 	async function loadSettings() {
-		console.log(`setting 'startupDate'`);
+		console.log("setting 'startupDate'");
 		$app.startupDate = getLocaleTime();
 
-		console.log(`preload svgs`);
+		console.log('preload svgs');
 		await preloadSvgs();
 	}
 
