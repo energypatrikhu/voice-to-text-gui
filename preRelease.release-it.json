@@ -3,9 +3,7 @@
 		"tagAnnotation": "Pre-Release ${version}"
 	},
 	"github": {
-		"release": true,
-		"preRelease": true,
-		"assets": ["./dist/Voice To Text*.exe"],
+		"release": false,
 		"tokenRef": "GH_TOKEN"
 	}
 }

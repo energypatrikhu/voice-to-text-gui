@@ -1,10 +1,9 @@
 {
 	"git": {
-		"tagAnnotation": "Pre-Release ${version}"
+		"tagAnnotation": "Release ${version}"
 	},
 	"github": {
-		"release": true,
-		"assets": ["./dist/Voice To Text*.exe"],
+		"release": false,
 		"tokenRef": "GH_TOKEN"
 	}
 }
