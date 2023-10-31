@@ -1,6 +1,9 @@
 {
+	"git": {
+		"tagAnnotation": "Pre-Release ${version}"
+	},
 	"github": {
-		"release": false,
+		"release": true,
 		"preRelease": true,
 		"assets": ["./dist/*.exe"]
 	}
