@@ -8,8 +8,6 @@ const versionNumbers = packageJson.version.split('.').map(function (stringNumber
 
 versionNumbers[2] += 1;
 for (let i = versionNumbers.length - 1; i > 0; i--) {
-	console.log({ i }, versionNumbers[i]);
-
 	if (versionNumbers[i] > 9) {
 		versionNumbers[i] = 0;
 		versionNumbers[i - 1] += 1;
