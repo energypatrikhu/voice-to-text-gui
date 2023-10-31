@@ -52,6 +52,13 @@ export interface ConfigOptions {
 		prefix: string;
 		splitter: string;
 	};
+	update: {
+		checkOnStartup: boolean;
+		allowPrerelease: boolean;
+		allowDowngrade: boolean;
+		autoCheck: boolean;
+		checkInterval: number;
+	};
 	others: {
 		mtaConsoleInputMode: boolean;
 		showActiveButtons: boolean;

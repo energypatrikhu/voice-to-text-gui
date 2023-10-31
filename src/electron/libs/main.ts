@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from 'electron';
+import { autoUpdater } from 'electron-updater';
 import { existsSync } from 'fs';
 import { mkdir, readFile } from 'fs/promises';
 import { join } from 'path';
@@ -18,34 +19,56 @@ import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import { textReplacer } from './text-replacer.js';
 import { uioHookWrapper } from './uio-hook-wrapper.js';
 
-export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev: boolean) {
+export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev: boolean, isBeta: boolean) {
 	return new Promise<void>(async (mainLoaded) => {
 		const versions = {
 			electronVersion: isDev ? app.getVersion() : process.versions.electron,
 			appVersion: isDev ? JSON.parse(await readFile('./package.json', 'utf-8')).version : app.getVersion(),
 		};
 
-		const userDataFolder = join(app.getPath('userData'), app.name);
-
 		const config = await loadConfig();
 		const macros = await loadMacros();
 		const dictionary = await loadDictionary(config.feedback.language, isDev);
-		const appConsole = await new Console(ipcMain, mainWindow, isDev, config.logs).init();
-		const settingsUpdate = new SettingsUpdate(mainWindow);
 
 		mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
+
+		const appConsole = await new Console(ipcMain, mainWindow, isDev, config.logs).init();
+		const settingsUpdate = new SettingsUpdate(mainWindow);
 
 		appConsole.debugLog(dictionary.textFeedback.config.config.loaded);
 		appConsole.debugLog(dictionary.textFeedback.config.macro.loaded);
 		appConsole.debugLog(dictionary.textFeedback.config.dictionary.loaded);
 
+		const userDataFolder = join(app.getPath('userData'), app.name);
+
 		if (isDev) {
-			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage: null, speechRecognition: null, speechSynthesis: null, console: appConsole, settingsUpdate, userDataFolder });
+			__app.init({ isDev, isBeta, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage: null, speechRecognition: null, speechSynthesis: null, console: appConsole, settingsUpdate, userDataFolder });
 
 			// mainWindow.webContents.send('electron', { event: 'ready', data: { versions, config, macros, dictionary } });
 
 			mainLoaded();
 		} else {
+			autoUpdater.allowPrerelease = config.update.allowPrerelease;
+			autoUpdater.allowDowngrade = config.update.allowDowngrade;
+
+			if (config.update.checkOnStartup) {
+				appConsole.log(dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
+				await autoUpdater.checkForUpdatesAndNotify();
+			}
+
+			await (async function checkForUpdatesAndNotify(isFirst: boolean) {
+				if (config.update.autoCheck) {
+					if (isFirst) {
+						appConsole.log(dictionary.textFeedback.index.updater.starting);
+					} else {
+						await autoUpdater.checkForUpdatesAndNotify();
+					}
+				}
+				setTimeout(function () {
+					checkForUpdatesAndNotify(false);
+				}, config.update.checkInterval * 60 * 1000);
+			})(true);
+
 			if (!existsSync(userDataFolder)) {
 				await mkdir(userDataFolder, { recursive: true });
 			}
@@ -58,7 +81,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 			const speechSynthesis = await new SpeechSynthesisEngine(chromePage).init(config.feedback);
 
-			__app.init({ isDev, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage, speechRecognition, speechSynthesis, console: appConsole, settingsUpdate, userDataFolder });
+			__app.init({ isDev, isBeta, ipcMain, mainWindow, config, macros, versions, dictionary, chromePage, speechRecognition, speechSynthesis, console: appConsole, settingsUpdate, userDataFolder });
 
 			let voiceRecognitionEnabled = false;
 			let autoReleaseTimer: string | number | NodeJS.Timeout | null | undefined = null;

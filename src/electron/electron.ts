@@ -60,6 +60,8 @@ function createWindow() {
 
 	windowState.manage(mainWindow);
 	mainWindow.on('close', () => {
+		// autoUpdater.checkForUpdatesAndNotify();
+
 		windowState.saveState(mainWindow!);
 	});
 
@@ -90,13 +92,15 @@ async function createMainWindow() {
 		mainWindow = null;
 	});
 
-	autoUpdater.allowPrerelease = isBeta;
-	autoUpdater.checkForUpdatesAndNotify();
-
 	if (isDev) loadVite(port);
 	else await serveURL(mainWindow);
 
-	new EventRouter(ipcMain, mainWindow, isDev);
+	new EventRouter(ipcMain, mainWindow, isDev, isBeta);
+
+	// autoUpdater.allowPrerelease = isBeta;
+	// autoUpdater.allowDowngrade = true;
+	// autoUpdater.checkForUpdatesAndNotify();
+	// setInterval(autoUpdater.checkForUpdatesAndNotify, 15 * 60 * 1000);
 }
 
 app.once('ready', createMainWindow);

@@ -22,6 +22,78 @@
 
 	<div class="fixed overflow-hidden overflow-y-scroll w-full h-[calc(100%-64px-48px)] flex flex-col gap-4 px-4 py-2">
 		<Section>
+			<span slot="title">{$dict.settings.update.this.name}</span>
+			<span slot="description">{$dict.settings.update.this.description}</span>
+
+			<div slot="content">
+				<SubSection>
+					<span slot="title">{$dict.settings.update.checkOnStartup.name}</span>
+					<span slot="description">{$dict.settings.update.checkOnStartup.description}</span>
+
+					<Select
+						slot="content"
+						bind:value="{$config.update.checkOnStartup}"
+					>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
+					</Select>
+				</SubSection>
+
+				<SubSection>
+					<span slot="title">{$dict.settings.update.allowPrerelease.name}</span>
+					<span slot="description">{$dict.settings.update.allowPrerelease.description}</span>
+
+					<Select
+						slot="content"
+						bind:value="{$config.update.allowPrerelease}"
+					>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
+					</Select>
+				</SubSection>
+
+				<SubSection>
+					<span slot="title">{$dict.settings.update.allowDowngrade.name}</span>
+					<span slot="description">{$dict.settings.update.allowDowngrade.description}</span>
+
+					<Select
+						slot="content"
+						bind:value="{$config.update.allowDowngrade}"
+					>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
+					</Select>
+				</SubSection>
+
+				<SubSection>
+					<span slot="title">{$dict.settings.update.autoCheck.name}</span>
+					<span slot="description">{$dict.settings.update.autoCheck.description}</span>
+
+					<Select
+						slot="content"
+						bind:value="{$config.update.autoCheck}"
+					>
+						<Option value="{true}">{$dict.states.enable}</Option>
+						<Option value="{false}">{$dict.states.disable}</Option>
+					</Select>
+				</SubSection>
+
+				<SubSection>
+					<span slot="title">{$dict.settings.update.checkInterval.name}</span>
+					<span slot="description">{$dict.settings.update.checkInterval.description}</span>
+
+					<Input
+						slot="content"
+						bind:value="{$config.update.checkInterval}"
+						type="number"
+						text="{$dict.time.normal.m}"
+						textPos="after"
+					/>
+				</SubSection>
+			</div>
+		</Section>
+
+		<Section>
 			<span slot="title">{$dict.settings.logs.this.name}</span>
 			<span slot="description">{$dict.settings.logs.this.description}</span>
 

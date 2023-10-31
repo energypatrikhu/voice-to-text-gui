@@ -1,7 +1,10 @@
 {
 	"speechFeedback": {
 		"index": {
-			"appStarted": "Application started!"
+			"appStarted": "Application started!",
+			"updater": {
+				"updateAvailable": "There is an update available! Please restart the application to start the update!"
+			}
 		},
 
 		"commandHandler": {
@@ -51,6 +54,10 @@
 			"chrome": {
 				"starting": "Starting chrome in headless mode...",
 				"initializing": "Initializing chrome instance..."
+			},
+			"updater": {
+				"starting": "Starting auto update checker...",
+				"updateAvailable": "There is an update available! Please restart the application to start the update!"
 			},
 			"registering": {
 				"ioHook": "Registering io hook...",
@@ -102,6 +109,14 @@
 			"exposingPageFunctions": "Exposing page functions...",
 			"speechRecognition": {
 				"starting": "Starting speech recognition engine..."
+			}
+		},
+
+		"update": {
+			"checkAppUpdate": {
+				"checkingUpdate": "Checking for update...",
+				"upToDate": "App is up to date!",
+				"notUpToDate": "App is not up to date! Please wait, updating application..."
 			}
 		},
 
@@ -244,6 +259,32 @@
 			"saveToFile": {
 				"name": "Save to file",
 				"description": "Save logs to file"
+			}
+		},
+		"update": {
+			"this": {
+				"name": "Updater",
+				"description": "App updater settings"
+			},
+			"checkOnStartup": {
+				"name": "Check on startup",
+				"description": "Check update on every app startup"
+			},
+			"allowPrerelease": {
+				"name": "Beta versions",
+				"description": "Check for beta/prerelease versions"
+			},
+			"allowDowngrade": {
+				"name": "Older versions",
+				"description": "Allow download of older versions"
+			},
+			"autoCheck": {
+				"name": "Auto checking",
+				"description": "Automatically check for updates within the specified time"
+			},
+			"checkInterval": {
+				"name": "Check interval",
+				"description": "Interval for checking for updates"
 			}
 		},
 		"input": {

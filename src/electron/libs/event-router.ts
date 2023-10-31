@@ -11,12 +11,14 @@ export class EventRouter {
 	private ipcMain;
 	private mainWindow;
 	private isDev;
+	private isBeta;
 	private isReady: boolean = false;
 
-	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean) {
+	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean, isBeta: boolean) {
 		this.ipcMain = ipcMain;
 		this.mainWindow = mainWindow;
 		this.isDev = isDev;
+		this.isBeta = isBeta;
 
 		this.router();
 	}
@@ -25,7 +27,7 @@ export class EventRouter {
 		this.ipcMain.on('electron', async (_event, { event, data }) => {
 			switch (event) {
 				case 'ready': {
-					await main(this.ipcMain, this.mainWindow, this.isDev);
+					await main(this.ipcMain, this.mainWindow, this.isDev, this.isBeta);
 					this.isReady = true;
 					break;
 				}

@@ -2,26 +2,10 @@ export interface Dictionary {
 	speechFeedback: SpeechFeedback;
 	textFeedback: TextFeedback;
 	states: States;
+	time: Time;
 	buttons: EnButtons;
 	navigation: Navigation;
 	settings: Settings;
-	time: Time;
-}
-
-export interface Time {
-	normal: Normal;
-	short: Normal;
-}
-
-export interface Normal {
-	ms: string;
-	s: string;
-	m: string;
-	h: string;
-	d: string;
-	w: string;
-	mo: string;
-	y: string;
 }
 
 export interface States {
@@ -61,6 +45,7 @@ export interface Navigation {
 
 export interface Settings {
 	logs: Logs;
+	update: SettingsUpdate;
 	input: Input;
 	output: Output;
 	feedback: Feedback;
@@ -198,6 +183,15 @@ export interface CustomWordsAndPhrasesTable {
 	button: string;
 }
 
+export interface SettingsUpdate {
+	this: TartuGecko;
+	checkOnStartup: TartuGecko;
+	allowPrerelease: TartuGecko;
+	allowDowngrade: TartuGecko;
+	autoCheck: TartuGecko;
+	checkInterval: TartuGecko;
+}
+
 export interface WindowAllowList {
 	this: TartuGecko;
 	windows: Windows;
@@ -261,6 +255,11 @@ export interface PurpleShowActiveButtons {
 
 export interface SpeechFeedbackIndex {
 	appStarted: string;
+	updater: PurpleUpdater;
+}
+
+export interface PurpleUpdater {
+	updateAvailable: string;
 }
 
 export interface TextFeedback {
@@ -269,6 +268,7 @@ export interface TextFeedback {
 	config: TextFeedbackConfig;
 	commandHandler: CommandHandler;
 	chromeInstance: ChromeInstance;
+	update: TextFeedbackUpdate;
 	commands: TextFeedbackCommands;
 	chromeFunctions: ChromeFunctions;
 }
@@ -394,6 +394,7 @@ export interface Dictionary {
 export interface TextFeedbackIndex {
 	app: App;
 	chrome: IndexChrome;
+	updater: FluffyUpdater;
 	registering: Registering;
 	keyPressed: string;
 	activeButtons: string;
@@ -428,6 +429,37 @@ export interface Registering {
 	commands: string;
 }
 
+export interface FluffyUpdater {
+	starting: string;
+	updateAvailable: string;
+}
+
 export interface SoundWrapper {
 	playingSound: string;
+}
+
+export interface TextFeedbackUpdate {
+	checkAppUpdate: CheckAppUpdate;
+}
+
+export interface CheckAppUpdate {
+	checkingUpdate: string;
+	upToDate: string;
+	notUpToDate: string;
+}
+
+export interface Time {
+	normal: Normal;
+	short: Normal;
+}
+
+export interface Normal {
+	ms: string;
+	s: string;
+	m: string;
+	h: string;
+	d: string;
+	w: string;
+	mo: string;
+	y: string;
 }

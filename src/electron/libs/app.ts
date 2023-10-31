@@ -10,6 +10,7 @@ import type { SettingsUpdate } from './send-settings-update.js';
 
 export class App {
 	isDev!: boolean;
+	isBeta!: boolean;
 
 	ipcMain!: Electron.IpcMain;
 	mainWindow!: Electron.BrowserWindow;

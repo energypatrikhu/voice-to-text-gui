@@ -62,6 +62,13 @@ const defaultConfig: ConfigOptions = {
 		prefix: '!',
 		splitter: ':',
 	},
+	update: {
+		checkOnStartup: true,
+		allowPrerelease: __app.isBeta,
+		allowDowngrade: false,
+		autoCheck: true,
+		checkInterval: 15,
+	},
 	others: {
 		mtaConsoleInputMode: false,
 		showActiveButtons: false,
