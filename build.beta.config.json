@@ -3,7 +3,11 @@
 	"productName": "Voice To Text Beta",
 	"compression": "maximum",
 	"publish": {
-		"releaseType": "prerelease"
+		"provider": "github",
+		"owner": "EnergyPatrikHU",
+		"repo": "voice-to-text-gui",
+		"releaseType": "prerelease",
+		"publishAutoUpdate": true
 	},
 	"directories": {
 		"output": "dist"

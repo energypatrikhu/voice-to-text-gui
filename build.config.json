@@ -3,7 +3,11 @@
 	"productName": "Voice To Text",
 	"compression": "maximum",
 	"publish": {
-		"releaseType": "release"
+		"provider": "github",
+		"owner": "EnergyPatrikHU",
+		"repo": "voice-to-text-gui",
+		"releaseType": "release",
+		"publishAutoUpdate": true
 	},
 	"directories": {
 		"output": "dist"
