@@ -203,7 +203,7 @@
 								max="1"
 								step="0.01"
 								bind:value="{$config.feedback.sounds.volume}"
-								disabled="{!$config.feedback.sounds.enabled || $config.feedback.sounds.mode !== 'custom'}"
+								disabled="{!$config.feedback.sounds.enabled}"
 							/>
 							<span>{Math.round($config.feedback.sounds.volume * 100)}%</span>
 						</div>
@@ -327,6 +327,8 @@
 						slot="content"
 						bind:items="{$config.speechRecognition.customWordsAndPhrases}"
 						itemName="customWordsAndPhrases"
+						disabled="{true}"
+						disabledText="Not implemented!"
 					/>
 				</SubSection>
 			</div>
@@ -386,6 +388,7 @@
 
 					<WordsPhrasesWindows
 						disabled="{!$config.windowAllowList.enabled}"
+						disabledText="{'(' + $dict.settings.windowAllowList.this.name + ' ' + $dict.states.disabled.toLowerCase() + ')'}"
 						slot="content"
 						bind:items="{$config.windowAllowList.windows}"
 						itemName="windows"
