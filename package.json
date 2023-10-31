@@ -1,6 +1,6 @@
 {
 	"name": "voice-to-text",
-	"version": "0.6.15",
+	"version": "0.6.3",
 	"private": true,
 	"description": "Voice To Text",
 	"main": "resources/app/electron.cjs",
@@ -11,13 +11,21 @@
 		"url": "https://github.com/energypatrikhu/voice-to-text-gui.git"
 	},
 	"scripts": {
-		"dev": "cross-env NODE_ENV=dev concurrently --kill-others -n=svelte,electron -c='#ff3e00',blue \"vite dev\" \"node electron.esbuild.config.mjs && electron resources/app/electron.cjs\"",
-		"build": "cross-env NODE_ENV=production node electron.esbuild.config.mjs && vite build && electron-builder -w --config build.config.json",
-		"build:beta": "cross-env NODE_ENV=production APP_STATE=beta node electron.esbuild.config.mjs && vite build && electron-builder -w --config build.beta.config.json",
-		"release": "cross-env-file -p .env.json release-it --config release.release-it.json",
-		"release:beta": "cross-env-file -p .env.json release-it --config preRelease.release-it.json",
-		"build:release": "npm run build && npm run release",
-		"build:release:beta": "npm run build:beta && m run release:beta"
+		"dev": "cross-env-file -p .env.dev.json concurrently --kill-others -n=svelte,electron -c='#ff3e00',blue \"vite dev\" \"node electron.esbuild.config.mjs && electron resources/app/electron.cjs\"",
+		"pack:electron": "cross-env-file -p .env.prod.json node electron.esbuild.config.mjs",
+		"pack:electron:beta": "cross-env-file -p .env.prod.beta.json node electron.esbuild.config.mjs",
+		"pack:vite": "cross-env-file -p .env.prod.json vite build",
+		"pack:vite:beta": "cross-env-file -p .env.prod.beta.json vite build",
+		"build:electron": "cross-env-file -p .env.prod.json electron-builder -w --config build.config.json",
+		"build:electron:beta": "cross-env-file -p .env.prod.beta.json electron-builder -w --config build.beta.config.json",
+		"build:electron:release": "cross-env-file -p .env.prod.json electron-builder -p always -w --config build.config.json",
+		"build:electron:release:beta": "cross-env-file -p .env.prod.beta.json electron-builder -p always -w --config build.beta.config.json",
+		"release-it:release": "cross-env-file -p .env.prod.json release-it --config release.release-it.json",
+		"release-it:release:beta": "cross-env-file -p .env.prod.beta.json release-it --config preRelease.release-it.json",
+		"build": "npm run pack:electron && npm run pack:vite && npm run build:electron",
+		"build:beta": "npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:beta",
+		"release": "npm run pack:electron && npm run pack:vite && npm run build:electron:release",
+		"release:beta": "npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:release:beta"
 	},
 	"browserslist": [
 		"Chrome 89"
