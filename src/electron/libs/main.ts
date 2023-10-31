@@ -64,9 +64,12 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 						await autoUpdater.checkForUpdatesAndNotify();
 					}
 				}
-				setTimeout(function () {
-					checkForUpdatesAndNotify(false);
-				}, config.update.checkInterval * 60 * 1000);
+				setTimeout(
+					function () {
+						checkForUpdatesAndNotify(false);
+					},
+					config.update.checkInterval < 1 ? 5 : config.update.checkInterval * 60 * 1000,
+				);
 			})(true);
 
 			if (!existsSync(userDataFolder)) {
