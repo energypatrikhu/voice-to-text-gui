@@ -6,6 +6,10 @@
 	"main": "resources/app/electron.cjs",
 	"type": "module",
 	"author": "EnergyPatrikHU",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/energypatrikhu/voice-to-text-gui.git"
+	},
 	"scripts": {
 		"dev": "cross-env NODE_ENV=dev concurrently --kill-others -n=svelte,electron -c='#ff3e00',blue \"vite dev\" \"node electron.esbuild.config.mjs && electron resources/app/electron.cjs\"",
 		"build": "cross-env NODE_ENV=production node electron.esbuild.config.mjs && vite build && electron-builder -w --config build.config.json",
