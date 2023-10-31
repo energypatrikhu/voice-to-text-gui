@@ -226,7 +226,7 @@ export class SpeechRecognitionEngine {
 			await printText(this.partialOutput.slice(this._partialOutput.length));
 		}
 
-		this.appConsole.debugLog(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.transcript.partialOutput, this.partialOutput));
+		this.appConsole.log(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.transcript.partialOutput, this.partialOutput));
 
 		this.mainWindow.webContents.send('speech:recognition', {
 			event: 'transcript:partial',
