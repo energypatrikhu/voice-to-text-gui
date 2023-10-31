@@ -8,6 +8,7 @@
 	export let items: ConfigOptions['speechRecognition']['customWordsAndPhrases'] | ConfigOptions['windowAllowList']['windows'];
 	export let itemName: 'customWordsAndPhrases' | 'windows';
 	export let disabled: boolean = false;
+	export let disabledText: string | undefined = undefined;
 
 	let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none' = 'none';
 
@@ -16,8 +17,9 @@
 
 <div class="w-full relative text-white flex flex-col gap-1">
 	{#if disabled}
-		<div class="absolute w-full h-full z-10 flex justify-center items-center text-3xl">
+		<div class="absolute w-full h-full z-10 flex flex-col justify-center items-center text-3xl">
 			<span>{$dict.states.disabled}</span>
+			<span class="text-xl text-neutral-300">{disabledText ?? ''}</span>
 		</div>
 	{/if}
 	<div class="relative flex flex-col rounded-md border border-neutral-500">
