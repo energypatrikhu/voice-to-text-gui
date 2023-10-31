@@ -12,6 +12,7 @@
 	},
 	"scripts": {
 		"dev": "cross-env-file -p .env.dev.json concurrently --kill-others -n=svelte,electron -c='#ff3e00',blue \"vite dev\" \"node electron.esbuild.config.mjs && electron resources/app/electron.cjs\"",
+		"clear-dist": "node rm.mjs ./dist",
 		"pack:electron": "cross-env-file -p .env.prod.json node electron.esbuild.config.mjs",
 		"pack:electron:beta": "cross-env-file -p .env.prod.beta.json node electron.esbuild.config.mjs",
 		"pack:vite": "cross-env-file -p .env.prod.json vite build",
