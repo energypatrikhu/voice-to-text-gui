@@ -2,7 +2,7 @@ import { __app } from '../app.js';
 import { cmd } from '../command-handler.js';
 
 cmd.registerCommand(
-	async (speechSynthesis) => {
+	async function (speechSynthesis) {
 		try {
 			await speechSynthesis.speak(__app.dictionary.speechFeedback.commands.exit.closingApp);
 
