@@ -24,8 +24,8 @@
 		"release-it:release:beta": "cross-env-file -p .env.prod.beta.json release-it --config preRelease.release-it.json",
 		"build": "npm run pack:electron && npm run pack:vite && npm run build:electron",
 		"build:beta": "npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:beta",
-		"release": "npm run pack:electron && npm run pack:vite && npm run build:electron:release",
-		"release:beta": "npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:release:beta"
+		"release": "npm run release-it:release && npm run pack:electron && npm run pack:vite && npm run build:electron:release",
+		"release:beta": "npm run release-it:release:beta && npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:release:beta"
 	},
 	"browserslist": [
 		"Chrome 89"
