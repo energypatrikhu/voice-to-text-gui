@@ -10,8 +10,10 @@
 		"dev": "cross-env NODE_ENV=dev concurrently --kill-others -n=svelte,electron -c='#ff3e00',blue \"vite dev\" \"node electron.esbuild.config.mjs && electron resources/app/electron.cjs\"",
 		"build": "cross-env NODE_ENV=production node electron.esbuild.config.mjs && vite build && electron-builder -w --config build.config.json",
 		"build:beta": "cross-env NODE_ENV=production APP_STATE=beta node electron.esbuild.config.mjs && vite build && electron-builder -w --config build.beta.config.json",
-		"release": "npm run build && release-it --config release.release-it.json",
-		"release:beta": "npm run build:beta && release-it --config preRelease.release-it.json"
+		"release": "release-it --config release.release-it.json",
+		"release:beta": " release-it --config preRelease.release-it.json",
+		"build:release": "npm run build && npm run release",
+		"build:release:beta": "npm run build:beta && m run release:beta"
 	},
 	"browserslist": [
 		"Chrome 89"
