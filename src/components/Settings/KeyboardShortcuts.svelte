@@ -37,9 +37,8 @@
 							<span>{shortcut.join(' + ')}</span>
 						</td>
 						<td>
-							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<!-- svelte-ignore a11y-no-static-element-interactions -->
-							<div
+							<Button
+								class="bg-transparent hover:bg-transparent !p-0"
 								on:click="{function () {
 									indexOfShortcutToModify = index;
 									actionMode = 'edit-shortcut';
@@ -50,10 +49,9 @@
 									class="w-6 h-6 cursor-pointer"
 									iconClass="hover:fill-green-600"
 								/>
-							</div>
-							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<!-- svelte-ignore a11y-no-static-element-interactions -->
-							<div
+							</Button>
+							<Button
+								class="bg-transparent hover:bg-transparent !p-0"
 								on:click="{function () {
 									indexOfShortcutToModify = index;
 									actionMode = 'remove-shortcut';
@@ -64,7 +62,7 @@
 									class="w-6 h-6 cursor-pointer"
 									iconClass="hover:fill-red-600"
 								/>
-							</div>
+							</Button>
 						</td>
 					</tr>
 					<div class="w-full h-[1px] left-0 bg-neutral-700"></div>
