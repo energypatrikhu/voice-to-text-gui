@@ -221,6 +221,7 @@ export interface CommandHandler {
 }
 
 export interface SpeechFeedbackCommands {
+	updateApp: PurpleUpdateApp;
 	showActiveButtons: PurpleShowActiveButtons;
 	mtaMode: PurpleMTAMode;
 	exitMta: PurpleExitMTA;
@@ -251,6 +252,10 @@ export interface MTAConsoleInputMode {
 
 export interface PurpleShowActiveButtons {
 	showActiveButtons: MTAConsoleInputMode;
+}
+
+export interface PurpleUpdateApp {
+	updateAvailabe: string;
 }
 
 export interface SpeechFeedbackIndex {
@@ -315,6 +320,7 @@ export interface ChromeInstanceSpeechRecognition {
 }
 
 export interface TextFeedbackCommands {
+	updateApp: FluffyUpdateApp;
 	showActiveButtons: FluffyShowActiveButtons;
 	mtaMode: FluffyMTAMode;
 	exitMta: FluffyExitMTA;
@@ -366,6 +372,13 @@ export interface FluffyMTAMode {
 export interface FluffyShowActiveButtons {
 	description: string;
 	showActiveButtons: MTAConsoleInputMode;
+}
+
+export interface FluffyUpdateApp {
+	description: string;
+	checkingUpdate: string;
+	noUpdateAvailabe: string;
+	updateAvailabe: string;
 }
 
 export interface TextFeedbackConfig {

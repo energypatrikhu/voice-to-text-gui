@@ -13,6 +13,10 @@
 		},
 
 		"commands": {
+			"updateApp": {
+				"updateAvailabe": "Update available! Please wait, updating application..."
+			},
+
 			"showActiveButtons": {
 				"showActiveButtons": {
 					"enabled": "Show active buttons: Enabled",
@@ -121,6 +125,13 @@
 		},
 
 		"commands": {
+			"updateApp": {
+				"description": "Check for an update to the app.",
+				"checkingUpdate": "Checking for update...",
+				"noUpdateAvailabe": "No update available.",
+				"updateAvailabe": "Update available! Please wait, updating application..."
+			},
+
 			"showActiveButtons": {
 				"description": "Prints the list of active buttons, useful for setting the desired button combination to activate voice-to-text.",
 				"showActiveButtons": {

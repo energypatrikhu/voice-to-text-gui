@@ -13,6 +13,10 @@
 		},
 
 		"commands": {
+			"updateApp": {
+				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, az alkalmazás frissítése folyamatban..."
+			},
+
 			"showActiveButtons": {
 				"showActiveButtons": {
 					"enabled": "Aktív gombok megjelenítése: Engedélyezve",
@@ -121,6 +125,13 @@
 		},
 
 		"commands": {
+			"updateApp": {
+				"description": "Frissítést keress az alkalmazáshoz.",
+				"checkingUpdate": "Frissítés keresése...",
+				"noUpdateAvailabe": "Nincs elérhető frissítés.",
+				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, az alkalmazás frissítése..."
+			},
+
 			"showActiveButtons": {
 				"description": "Kiírja az aktív gombok listáját, hasznos arra, hogy be állítsd a kívánt gomb kombinációt a voice-to-text aktíválásához.",
 				"showActiveButtons": {
