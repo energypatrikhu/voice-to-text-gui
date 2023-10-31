@@ -14,12 +14,16 @@ export async function saveJson(name: string, data: any) {
 }
 
 export async function loadJson<T>(name: string): Promise<T | null> {
-	const userDataFolder = process.env.NODE_ENV == 'dev' ? resolve('./local') : join(app.getPath('userData'), app.name);
+	try {
+		const userDataFolder = process.env.NODE_ENV == 'dev' ? resolve('./local') : join(app.getPath('userData'), app.name);
 
-	if (!existsSync(join(userDataFolder, `${name}.json`))) {
+		if (!existsSync(join(userDataFolder, `${name}.json`))) {
+			return null;
+		}
+
+		const content = await readFile(join(userDataFolder, `${name}.json`), 'utf8');
+		return content ? JSON.parse(content) : null;
+	} catch {
 		return null;
 	}
-
-	const content = await readFile(join(userDataFolder, `${name}.json`), 'utf8');
-	return content ? JSON.parse(content) : null;
 }
