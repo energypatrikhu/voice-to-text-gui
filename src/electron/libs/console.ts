@@ -4,12 +4,12 @@ import { appendFile, mkdir } from 'fs/promises';
 import { EOL } from 'os';
 import { join } from 'path';
 
+import { __app } from './app.js';
 import { convertTextArray } from './convert-text-array.js';
 import { getLocaleTime } from './get-locale-time.js';
 
 import type { Console as AppConsole } from '../../types/Console.js';
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
-
 export class Console {
 	private ipcMain;
 	private mainWindow;
@@ -65,7 +65,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Info', lang: 'json', textArray: messages });
 	}
 	debugLogJson(...messages: Array<any>) {
-		if (!this.logsConfig.debug) return;
+		if (__app ? !__app.config.logs.debug : !this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Info', lang: 'json', textArray: messages });
 	}
 
@@ -73,7 +73,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Info', textArray: messages });
 	}
 	debugLog(...messages: Array<any>) {
-		if (!this.logsConfig.debug) return;
+		if (__app ? !__app.config.logs.debug : !this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Info', textArray: messages });
 	}
 
@@ -81,7 +81,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Warning', textArray: messages });
 	}
 	debugWarningLog(...messages: Array<any>) {
-		if (!this.logsConfig.debug) return;
+		if (__app ? !__app.config.logs.debug : !this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Warning', textArray: messages });
 	}
 
@@ -89,7 +89,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Error', textArray: messages });
 	}
 	debugErrorLog(...messages: Array<any>) {
-		if (!this.logsConfig.debug) return;
+		if (__app ? !__app.config.logs.debug : !this.logsConfig.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Error', textArray: messages });
 	}
 }
