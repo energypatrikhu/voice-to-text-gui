@@ -64,7 +64,7 @@ const defaultConfig: ConfigOptions = {
 	},
 	update: {
 		checkOnStartup: true,
-		allowPrerelease: __app.isBeta,
+		allowPrerelease: false,
 		allowDowngrade: false,
 		autoCheck: true,
 		checkInterval: 15,
