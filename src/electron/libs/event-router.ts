@@ -1,4 +1,4 @@
-import { app, dialog } from 'electron';
+import { dialog } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import _ from 'lodash';
 import { basename } from 'path';
@@ -38,10 +38,7 @@ export class EventRouter {
 
 						switch (__app.updateReason) {
 							case 'manual': {
-								setTimeout(function () {
-									app.relaunch();
-									app.exit();
-								}, 1000);
+								autoUpdater.quitAndInstall(true);
 								break;
 							}
 
