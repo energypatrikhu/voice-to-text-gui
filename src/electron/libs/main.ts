@@ -55,7 +55,7 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 			userDataFolder,
 			checkingForUpdate: false,
 			updateReason: null,
-			downloadedUpdate: true,
+			downloadedUpdate: false,
 		};
 
 		if (isDev) {
