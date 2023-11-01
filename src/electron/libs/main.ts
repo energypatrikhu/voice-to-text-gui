@@ -68,8 +68,9 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 
 			if (config.update.checkOnStartup) {
 				appConsole.log(dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
-				await autoUpdater.checkForUpdatesAndNotify();
-				defaultVariables.updateReason = 'automatic';
+				if (versions.appVersion !== (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version) {
+					defaultVariables.updateReason = 'automatic';
+				}
 			}
 
 			await (async function checkForUpdatesAndNotify(isFirst: boolean) {
@@ -79,8 +80,9 @@ export function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev
 					} else {
 						if (!__app.checkingForUpdate && !__app.downloadedUpdate) {
 							appConsole.log(dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
-							await autoUpdater.checkForUpdatesAndNotify();
-							defaultVariables.updateReason = 'automatic';
+							if (versions.appVersion !== (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version) {
+								defaultVariables.updateReason = 'automatic';
+							}
 						}
 					}
 				}
