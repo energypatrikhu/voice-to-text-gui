@@ -20,7 +20,7 @@ export class Updater {
 						await __app.speechSynthesis.speak(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
 					}
 
-					autoUpdater.quitAndInstall(false, true);
+					autoUpdater.quitAndInstall(true, true);
 					app.exit();
 					break;
 				}
@@ -42,12 +42,21 @@ export class Updater {
 	}
 
 	async checker(mode: 'automatic' | 'manual') {
-		if (__app.versions.appVersion !== (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version) {
-			__app.set({ updateReason: mode });
+		__app.set({ updateReason: mode });
 
-			if (mode === 'manual') {
-				__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.notUpToDate);
-				return true;
+		switch (mode) {
+			case 'manual': {
+				if (__app.versions.appVersion !== (await autoUpdater.checkForUpdates())?.updateInfo.version) {
+					__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.notUpToDate);
+					return true;
+				}
+				break;
+			}
+			case 'automatic': {
+				if (__app.versions.appVersion !== (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version) {
+					return true;
+				}
+				break;
 			}
 		}
 
