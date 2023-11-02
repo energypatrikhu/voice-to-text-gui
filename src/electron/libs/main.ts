@@ -97,7 +97,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 				.filter((btn) => btn[1] === true)
 				.map((btn) => btn[0]);
 
-			if (JSON.stringify(lastActiveButtons) != JSON.stringify(activeButtons)) {
+			if (JSON.stringify(lastActiveButtons) !== JSON.stringify(activeButtons)) {
 				__app.console.debugLog(textReplacer(__app.dictionary.textFeedback.index.activeButtons, activeButtons));
 				lastActiveButtons = activeButtons;
 			}

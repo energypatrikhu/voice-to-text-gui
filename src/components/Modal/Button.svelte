@@ -13,7 +13,7 @@
 
 <button
 	on:click
-	class="text-white py-1 px-2 outline-none rounded-md {btnType == 'submit'
+	class="text-white py-1 px-2 outline-none rounded-md {btnType === 'submit'
 		? 'bg-green-600 hover:bg-green-700'
 		: 'bg-red-600 hover:bg-red-700'} disabled:brightness-75 disabled:grayscale transition-all duration-100 flex justify-center items-center {_class}"
 	{type}

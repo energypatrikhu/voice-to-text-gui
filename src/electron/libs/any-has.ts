@@ -5,7 +5,7 @@ export function anyHas(string: string | Array<string>, include: null | string | 
 		}
 		if ('object' === typeof exclude) {
 			for (const exc of exclude) {
-				if (string.includes(exc) && '' != exc) {
+				if (string.includes(exc) && '' !== exc) {
 					return false;
 				}
 			}
@@ -18,7 +18,7 @@ export function anyHas(string: string | Array<string>, include: null | string | 
 		}
 		if ('object' === typeof include) {
 			for (const inc of include) {
-				if (string.includes(inc) && '' != inc) {
+				if (string.includes(inc) && '' !== inc) {
 					return true;
 				}
 			}

@@ -27,10 +27,10 @@
 </script>
 
 <label class="w-full flex flex-row items-center {labelClass}">
-	{#if text != '' && textPos == 'before'}<span class="w-full flex justify-start ml-1 {textClass}">
+	{#if text !== '' && textPos === 'before'}<span class="w-full flex justify-start ml-1 {textClass}">
 			{text}
 		</span>{/if}
-	{#if type == 'text'}
+	{#if type === 'text'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -43,7 +43,7 @@
 			placeholder="{placeholder}"
 			bind:value="{value}"
 		/>
-	{:else if type == 'checkbox'}
+	{:else if type === 'checkbox'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -55,7 +55,7 @@
 			type="checkbox"
 			bind:checked="{checked}"
 		/>
-	{:else if type == 'color'}
+	{:else if type === 'color'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -67,7 +67,7 @@
 			type="color"
 			bind:value="{value}"
 		/>
-	{:else if type == 'date'}
+	{:else if type === 'date'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -79,7 +79,7 @@
 			type="date"
 			bind:value="{value}"
 		/>
-	{:else if type == 'datetime'}
+	{:else if type === 'datetime'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -91,7 +91,7 @@
 			type="datetime"
 			bind:value="{value}"
 		/>
-	{:else if type == 'datetime-local'}
+	{:else if type === 'datetime-local'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -103,7 +103,7 @@
 			type="datetime-local"
 			bind:value="{value}"
 		/>
-	{:else if type == 'email'}
+	{:else if type === 'email'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -116,7 +116,7 @@
 			placeholder="{placeholder}"
 			bind:value="{value}"
 		/>
-	{:else if type == 'file'}
+	{:else if type === 'file'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -130,7 +130,7 @@
 			multiple="{multiple}"
 			bind:value="{value}"
 		/>
-	{:else if type == 'search'}
+	{:else if type === 'search'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -143,7 +143,7 @@
 			placeholder="{placeholder}"
 			bind:value="{value}"
 		/>
-	{:else if type == 'image'}
+	{:else if type === 'image'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -157,7 +157,7 @@
 			alt="{alt}"
 			multiple="{multiple}"
 		/>
-	{:else if type == 'number'}
+	{:else if type === 'number'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -170,7 +170,7 @@
 			placeholder="{placeholder}"
 			bind:value="{value}"
 		/>
-	{:else if type == 'password'}
+	{:else if type === 'password'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -183,7 +183,7 @@
 			placeholder="{placeholder}"
 			bind:value="{value}"
 		/>
-	{:else if type == 'radio'}
+	{:else if type === 'radio'}
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -209,7 +209,7 @@
 			bind:value="{value}"
 		/>
 	{/if}
-	{#if text != '' && textPos == 'after'}<span class="w-full flex justify-start ml-1 {textClass}">
+	{#if text !== '' && textPos === 'after'}<span class="w-full flex justify-start ml-1 {textClass}">
 			{text}
 		</span>{/if}
 </label>

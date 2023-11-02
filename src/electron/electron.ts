@@ -18,8 +18,8 @@ const serveURL = electronServe({
 });
 
 const port = process.env.PORT || 5173;
-const isDev = !app.isPackaged || process.env.NODE_ENV == 'dev';
-const isBeta = process.env.APP_STATE == 'beta';
+const isDev = !app.isPackaged || process.env.NODE_ENV === 'dev';
+const isBeta = process.env.APP_STATE === 'beta';
 
 let mainWindow: BrowserWindow | null = null;
 

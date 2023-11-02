@@ -154,7 +154,7 @@ export class SpeechRecognitionEngine {
 				const replacedGameChatPrefix = replaceGameChatPrefixMap(replacedChar)!;
 				const replacedAppendixPrefix = appendixPrefixer(replacedGameChatPrefix)!;
 
-				if (replacedAppendixPrefix == '') {
+				if (replacedAppendixPrefix === '') {
 					return;
 				}
 

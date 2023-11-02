@@ -12,6 +12,6 @@
 		rel="{navElement.external ? 'external' : ''}"
 		icon="{navElement.icon ?? ''}"
 		iconPos="before"
-		active="{navElement.href != '/' ? $page.url.pathname.startsWith(navElement.href) : $page.url.pathname == navElement.href}"
+		active="{navElement.href !== '/' ? $page.url.pathname.startsWith(navElement.href) : $page.url.pathname === navElement.href}"
 	/>
 {/each}

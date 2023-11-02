@@ -6,11 +6,11 @@
 </script>
 
 <span
-	class="{_class} [word-break:break-word] {type == 'info'
+	class="{_class} [word-break:break-word] {type === 'info'
 		? ''
-		: type == 'warning'
+		: type === 'warning'
 		? 'text-orange-500'
-		: type == 'error'
+		: type === 'error'
 		? 'text-red-500'
 		: ''}"
 >

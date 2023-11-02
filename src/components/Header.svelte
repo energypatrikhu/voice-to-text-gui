@@ -29,7 +29,7 @@
 				slot="left"
 				class="gap-1"
 			>
-				{#if $pageInfo?.navPos == 'side' || sideBarAvailable}
+				{#if $pageInfo?.navPos === 'side' || sideBarAvailable}
 					<button
 						type="button"
 						on:click="{() => (sideBarOpen = !sideBarOpen)}"
@@ -56,7 +56,7 @@
 				<NavRightLayout />
 			</div>
 		</NavbarContainer>
-		{#if ($pageInfo?.navPos == 'side' || sideBarAvailable) && sideBarOpen}
+		{#if ($pageInfo?.navPos === 'side' || sideBarAvailable) && sideBarOpen}
 			<SideNavBar bind:open="{sideBarOpen}" />
 		{/if}
 	</header>

@@ -21,14 +21,14 @@
 		rel="{rel}"
 		on:click
 	>
-		{#if iconPos == 'before' || iconPos == 'both'}
+		{#if iconPos === 'before' || iconPos === 'both'}
 			<Svg
 				class="w-7 h-7 pr-1 {iconClass}"
 				src="symbols/{icon}"
 			/>
 		{/if}
 		<span>{title}</span>
-		{#if iconPos == 'after' || iconPos == 'both'}
+		{#if iconPos === 'after' || iconPos === 'both'}
 			<Svg
 				class="w-7 h-7 pl-1 {iconClass}"
 				src="symbols/{icon}"
@@ -41,14 +41,14 @@
 		class="hover:bg-green-600/50 h-9 flex items-center px-3 rounded-md transition-colors duration-100 {btnClass} {active ? 'bg-green-600/25' : ''}"
 		on:click
 	>
-		{#if iconPos == 'before' || iconPos == 'both'}
+		{#if iconPos === 'before' || iconPos === 'both'}
 			<Svg
 				class="w-7 h-7 pr-1 {iconClass}"
 				src="symbols/{icon}"
 			/>
 		{/if}
 		<span>{title}</span>
-		{#if iconPos == 'after' || iconPos == 'both'}
+		{#if iconPos === 'after' || iconPos === 'both'}
 			<Svg
 				class="w-7 h-7 pl-1 {iconClass}"
 				src="symbols/{icon}"
