@@ -54,7 +54,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		return;
 	}
 
-	__app.console.debugLog(__app.dictionary.textFeedback.index.app.loading);
+	__app.console.log(__app.dictionary.textFeedback.index.app.loading);
 
 	if (await new Updater().init()) return;
 
