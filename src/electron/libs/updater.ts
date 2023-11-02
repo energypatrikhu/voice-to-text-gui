@@ -16,7 +16,9 @@ export class Updater {
 			switch (__app.updateReason) {
 				case 'manual': {
 					__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
-					await __app.speechSynthesis.speak(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
+					if (__app.speechSynthesis) {
+						await __app.speechSynthesis.speak(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
+					}
 
 					autoUpdater.quitAndInstall(false, true);
 					app.exit();
