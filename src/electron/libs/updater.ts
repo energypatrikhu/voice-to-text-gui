@@ -1,3 +1,4 @@
+import { app } from 'electron';
 import { autoUpdater } from 'electron-updater';
 
 import { __app } from './app.js';
@@ -14,7 +15,8 @@ export class Updater {
 
 			switch (__app.updateReason) {
 				case 'manual': {
-					autoUpdater.quitAndInstall(true);
+					autoUpdater.quitAndInstall();
+					app.exit();
 					break;
 				}
 				case 'automatic': {
