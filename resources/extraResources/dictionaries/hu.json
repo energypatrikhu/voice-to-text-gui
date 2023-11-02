@@ -14,7 +14,7 @@
 
 		"commands": {
 			"updateApp": {
-				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, az alkalmazás frissítése folyamatban..."
+				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, a frissítés letöltése folyamatban..."
 			},
 
 			"showActiveButtons": {
@@ -118,9 +118,10 @@
 
 		"update": {
 			"checkAppUpdate": {
-				"checkingUpdate": "Checking for update...",
-				"upToDate": "App is up to date!",
-				"notUpToDate": "App is not up to date! Please wait, updating application..."
+				"checkingUpdate": "Frissítés keresése...",
+				"upToDate": "Az alkalmazás naprakész!",
+				"notUpToDate": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban...",
+				"updateDownloaded": "A frissítés letöltődött, az alkalmazás most újraindul..."
 			}
 		},
 
@@ -129,7 +130,7 @@
 				"description": "Frissítést keress az alkalmazáshoz.",
 				"checkingUpdate": "Frissítés keresése...",
 				"noUpdateAvailabe": "Nincs elérhető frissítés.",
-				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, az alkalmazás frissítése..."
+				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban..."
 			},
 
 			"showActiveButtons": {

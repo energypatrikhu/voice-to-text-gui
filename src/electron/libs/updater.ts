@@ -8,14 +8,17 @@ export class Updater {
 		autoUpdater.allowPrerelease = __app.config.update.allowPrerelease;
 		autoUpdater.allowDowngrade = __app.config.update.allowDowngrade;
 
-		autoUpdater.on('update-downloaded', function () {
+		autoUpdater.on('update-downloaded', async function () {
 			if (!__app.updateReason) {
 				return;
 			}
 
 			switch (__app.updateReason) {
 				case 'manual': {
-					autoUpdater.quitAndInstall();
+					__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
+					await __app.speechSynthesis.speak(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
+
+					autoUpdater.quitAndInstall(false, true);
 					app.exit();
 					break;
 				}

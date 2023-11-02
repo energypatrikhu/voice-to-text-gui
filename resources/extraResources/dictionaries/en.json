@@ -14,7 +14,7 @@
 
 		"commands": {
 			"updateApp": {
-				"updateAvailabe": "Update available! Please wait, updating application..."
+				"updateAvailabe": "Update available! Please wait, downloading update..."
 			},
 
 			"showActiveButtons": {
@@ -120,7 +120,8 @@
 			"checkAppUpdate": {
 				"checkingUpdate": "Checking for update...",
 				"upToDate": "App is up to date!",
-				"notUpToDate": "App is not up to date! Please wait, updating application..."
+				"notUpToDate": "App is not up to date! Please wait, downloading update...",
+				"updateDownloaded": "Update downloaded, the applictaion now restarts..."
 			}
 		},
 
@@ -129,7 +130,7 @@
 				"description": "Check for an update to the app.",
 				"checkingUpdate": "Checking for update...",
 				"noUpdateAvailabe": "No update available.",
-				"updateAvailabe": "Update available! Please wait, updating application..."
+				"updateAvailabe": "Update available! Please wait, downloading update..."
 			},
 
 			"showActiveButtons": {

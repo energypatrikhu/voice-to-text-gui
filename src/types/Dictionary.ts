@@ -459,6 +459,7 @@ export interface CheckAppUpdate {
 	checkingUpdate: string;
 	upToDate: string;
 	notUpToDate: string;
+	updateDownloaded: string;
 }
 
 export interface Time {
