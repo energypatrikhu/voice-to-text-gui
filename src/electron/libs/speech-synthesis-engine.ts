@@ -1,31 +1,26 @@
-import { EventEmitter, Page } from 'puppeteer-core';
+import { EventEmitter } from 'puppeteer-core';
 
-import type { ConfigOptions } from '../../types/ConfigOptions.js';
+import { __app } from './app.js';
 
 export class SpeechSynthesisEngine {
-	private page;
 	private isSpeechFinished: boolean = true;
 
 	private pageEmitter = new EventEmitter();
 
-	constructor(page: Page) {
-		this.page = page;
-	}
-
-	async init(feedback: ConfigOptions['feedback']) {
+	async init() {
 		await this.initExposeFunctions();
-		await this.initEngine({ language: feedback.language, volume: feedback.speech.volume });
+		await this.initEngine({ language: __app.config.feedback.language, volume: __app.config.feedback.speech.volume });
 
 		return this;
 	}
 
 	private async initExposeFunctions() {
 		this.pageEmitter.on('speech:synthesis:finished', () => this.speechFinished());
-		await this.page.exposeFunction('callSpeechSynthesisFinished', (info: any) => this.pageEmitter.emit('speech:synthesis:finished', info));
+		await __app.chromePage.exposeFunction('callSpeechSynthesisFinished', (info: any) => this.pageEmitter.emit('speech:synthesis:finished', info));
 	}
 
 	private async initEngine(speechSynthesisOptions: any) {
-		await this.page.evaluate((speechSynthesisOptions) => {
+		await __app.chromePage.evaluate((speechSynthesisOptions) => {
 			const voices = Array.from(window.speechSynthesis.getVoices());
 
 			window.speechSynthesisOptions = {
@@ -36,14 +31,14 @@ export class SpeechSynthesisEngine {
 		}, speechSynthesisOptions);
 	}
 
-	updateEngine(feedback: ConfigOptions['feedback']) {
-		this.initEngine({ language: feedback.language, volume: feedback.speech.volume });
+	updateEngine() {
+		this.initEngine({ language: __app.config.feedback.language, volume: __app.config.feedback.speech.volume });
 	}
 
 	async speak(text: string) {
 		this.isSpeechFinished = false;
 
-		await this.page.evaluate((text) => {
+		await __app.chromePage.evaluate((text) => {
 			if (window.speechSynthesis.speaking) {
 				window.speechSynthesis.cancel();
 			}

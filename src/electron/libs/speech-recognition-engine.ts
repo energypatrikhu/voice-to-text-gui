@@ -1,5 +1,6 @@
-import { EventEmitter, Page } from 'puppeteer-core';
+import { EventEmitter } from 'puppeteer-core';
 
+import { __app } from './app.js';
 import { appendixPrefixer } from './appendix-prefixer.js';
 import { cmd } from './command-handler.js';
 import { printText } from './press-keys.js';
@@ -10,13 +11,8 @@ import { textReplacer } from './text-replacer.js';
 import { uioHookWrapper } from './uio-hook-wrapper.js';
 
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
-import type { Console } from './console.js';
-import type { Dictionary } from '../../types/Dictionary.js';
 
 export class SpeechRecognitionEngine {
-	private mainWindow;
-	private page;
-
 	private pageEmitter = new EventEmitter();
 
 	private _output: string = '';
@@ -28,17 +24,6 @@ export class SpeechRecognitionEngine {
 	private stopOutput: boolean = false;
 	private stopTimer: any = null;
 	private textParserRegex!: RegExp;
-	private appConsole;
-	private dictionary;
-	private config;
-
-	constructor(mainWindow: Electron.BrowserWindow, page: Page, config: ConfigOptions, appConsole: Console, dictionary: Dictionary) {
-		this.mainWindow = mainWindow;
-		this.page = page;
-		this.appConsole = appConsole;
-		this.dictionary = dictionary;
-		this.config = config;
-	}
 
 	async init() {
 		uioHookWrapper((event) => {
@@ -49,7 +34,7 @@ export class SpeechRecognitionEngine {
 				return;
 			}
 
-			this.appConsole.logJson(this.dictionary.textFeedback.chromeFunctions.speechRecognition.outputStopped);
+			__app.console.logJson(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.outputStopped);
 
 			this._output = '';
 			this._partialOutput = '';
@@ -57,24 +42,24 @@ export class SpeechRecognitionEngine {
 			this.stopOutput = true;
 		});
 
-		this.textParserRegex = new RegExp('(' + [...['makró', 'makrók', 'szöveg', 'szövegek'].map((macroPreffix) => `\\${this.config.commands.prefix}\\s${macroPreffix}\\${this.config.commands.splitter}\\s`)].join(')|(') + ')', 'gi');
+		this.textParserRegex = new RegExp('(' + [...['makró', 'makrók', 'szöveg', 'szövegek'].map((macroPreffix) => `\\${__app.config.commands.prefix}\\s${macroPreffix}\\${__app.config.commands.splitter}\\s`)].join(')|(') + ')', 'gi');
 
 		await this.initExposeFunctions();
-		await this.initSpeechRecognitionEngine(this.config.speechRecognition);
+		await this.initSpeechRecognitionEngine(__app.config.speechRecognition);
 
 		return this;
 	}
 
 	private async initExposeFunctions() {
 		this.pageEmitter.on('speech:recognition:info', (info: any) => this.speechRecognitionInfo(info));
-		await this.page.exposeFunction('callSpeechRecognitionInfo', (info: any) => this.pageEmitter.emit('speech:recognition:info', info));
+		await __app.chromePage.exposeFunction('callSpeechRecognitionInfo', (info: any) => this.pageEmitter.emit('speech:recognition:info', info));
 
 		this.pageEmitter.on('speech:recognition:transcript', (transcript: any) => this.speechRecognitionTranscript(transcript));
-		await this.page.exposeFunction('callSpeechRecognitionTranscript', (transcript: any) => this.pageEmitter.emit('speech:recognition:transcript', transcript));
+		await __app.chromePage.exposeFunction('callSpeechRecognitionTranscript', (transcript: any) => this.pageEmitter.emit('speech:recognition:transcript', transcript));
 	}
 
 	private async initSpeechRecognitionEngine(speechRecognitionOptions: ConfigOptions['speechRecognition']) {
-		await this.page.evaluate((speechRecognitionOptions) => {
+		await __app.chromePage.evaluate((speechRecognitionOptions) => {
 			window.speechRecognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 			window.speechGrammarList = new (window.SpeechGrammarList || window.webkitSpeechGrammarList)();
 
@@ -134,9 +119,9 @@ export class SpeechRecognitionEngine {
 
 		clearTimeout(this.stopTimer);
 
-		this.appConsole.debugLog(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.start.outputPrefix, _outputPrefix));
+		__app.console.debugLog(textReplacer(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.start.outputPrefix, _outputPrefix));
 
-		await this.page.evaluate(() => {
+		await __app.chromePage.evaluate(() => {
 			try {
 				window.speechRecognition.start();
 				window.speechRecognitionEnabled = true;
@@ -149,7 +134,7 @@ export class SpeechRecognitionEngine {
 	async stop() {
 		this.stopOutput = false;
 
-		await this.page.evaluate(() => {
+		await __app.chromePage.evaluate(() => {
 			try {
 				window.speechRecognition.stop();
 				window.speechRecognitionEnabled = false;
@@ -173,34 +158,34 @@ export class SpeechRecognitionEngine {
 					return;
 				}
 
-				const isCommand = replacedAppendixPrefix.startsWith(this.config.commands.prefix);
+				const isCommand = replacedAppendixPrefix.startsWith(__app.config.commands.prefix);
 
 				const isMacro = replacedAppendixPrefix.match(this.textParserRegex) !== null;
 
-				this.appConsole.debugLogJson({ __appConfigCommandsEnabled: this.config.commands.enabled, isCommand, isMacro, replacedAppendixPrefix, textParserRegex: this.textParserRegex });
+				__app.console.debugLogJson({ __appConfigCommandsEnabled: __app.config.commands.enabled, isCommand, isMacro, replacedAppendixPrefix, textParserRegex: this.textParserRegex });
 
 				let output = replacedAppendixPrefix.replace(/\shogy\s/g, ', hogy ');
 
-				if (this.config.others.mtaConsoleInputMode && !output.startsWith('/')) {
+				if (__app.config.others.mtaConsoleInputMode && !output.startsWith('/')) {
 					output = output.replace('say, ', 'say ');
 				}
 
-				if ((isCommand || isMacro) && this.config.commands.enabled) {
+				if ((isCommand || isMacro) && __app.config.commands.enabled) {
 					this._output = (await cmd.voiceCommandHandler(replacedAppendixPrefix.replace(this.textParserRegex, '!makró:'), this._output)) || this._output;
 					return;
 				} else {
 					this._output = output;
 				}
 
-				this.appConsole.log(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.info.output, output));
+				__app.console.log(textReplacer(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.info.output, output));
 
-				if (this.config.output.partial) {
+				if (__app.config.output.partial) {
 					return;
 				}
 
 				await printText(output);
 
-				this.mainWindow.webContents.send('speech:recognition', {
+				__app.mainWindow.webContents.send('speech:recognition', {
 					event: 'transcript',
 					data: this.partialOutput,
 				});
@@ -222,13 +207,13 @@ export class SpeechRecognitionEngine {
 
 		this.partialOutput = this.partialOutputMatrix.map((o) => o.join(', ')).join(', ');
 
-		if (this.config.output.partial) {
+		if (__app.config.output.partial) {
 			await printText(this.partialOutput.slice(this._partialOutput.length));
 		}
 
-		this.appConsole.log(textReplacer(this.dictionary.textFeedback.chromeFunctions.speechRecognition.transcript.partialOutput, this.partialOutput));
+		__app.console.log(textReplacer(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.transcript.partialOutput, this.partialOutput));
 
-		this.mainWindow.webContents.send('speech:recognition', {
+		__app.mainWindow.webContents.send('speech:recognition', {
 			event: 'transcript:partial',
 			data: this.partialOutput.slice(this._partialOutput.length),
 		});

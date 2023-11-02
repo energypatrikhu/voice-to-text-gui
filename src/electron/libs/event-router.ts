@@ -1,5 +1,4 @@
 import { dialog } from 'electron';
-import { autoUpdater } from 'electron-updater';
 import _ from 'lodash';
 import { basename } from 'path';
 
@@ -30,23 +29,6 @@ export class EventRouter {
 				case 'ready': {
 					await main(this.ipcMain, this.mainWindow, this.isDev, this.isBeta);
 					this.isReady = true;
-
-					autoUpdater.on('update-downloaded', function () {
-						if (!__app.updateReason) {
-							return;
-						}
-
-						switch (__app.updateReason) {
-							case 'manual': {
-								autoUpdater.quitAndInstall(true);
-								break;
-							}
-
-							case 'automatic': {
-								__app.downloadedUpdate = true;
-							}
-						}
-					});
 					break;
 				}
 

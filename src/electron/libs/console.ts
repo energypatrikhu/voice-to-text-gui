@@ -9,25 +9,12 @@ import { convertTextArray } from './convert-text-array.js';
 import { getLocaleTime } from './get-locale-time.js';
 
 import type { Console as AppConsole } from '../../types/Console.js';
-import type { ConfigOptions } from '../../types/ConfigOptions.js';
 
 export class Console {
-	private ipcMain;
-	private mainWindow;
-	private isDev;
-	private logsConfig;
-
 	private logsPath = join(app.getPath('documents'), 'Voice To Text Logs');
 
-	constructor(ipcMain: Electron.IpcMain, mainWindow: Electron.BrowserWindow, isDev: boolean, logsConfig: ConfigOptions['logs']) {
-		this.ipcMain = ipcMain;
-		this.mainWindow = mainWindow;
-		this.isDev = isDev;
-		this.logsConfig = logsConfig;
-	}
-
 	async init() {
-		if (!this.logsConfig.saveToFile || this.isDev) return this;
+		if (!__app.config.logs.saveToFile || __app.isDev) return this;
 
 		if (!existsSync(this.logsPath)) {
 			await mkdir(this.logsPath, {
@@ -35,7 +22,7 @@ export class Console {
 			});
 		}
 
-		this.ipcMain.on('electron', async (_, { event, data }) => {
+		__app.ipcMain.on('electron', async (_, { event, data }) => {
 			switch (event) {
 				case 'log': {
 					await appendFile(join(this.logsPath, data.filename), ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', '\n', ...data.textArray, EOL].join(' '));
@@ -48,7 +35,7 @@ export class Console {
 	}
 
 	private sendLog(data: Partial<AppConsole>) {
-		this.mainWindow.webContents.send('electron', {
+		__app.mainWindow.webContents.send('electron', {
 			event: 'log',
 			data: {
 				lang: 'txt',
@@ -66,7 +53,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Info', lang: 'json', textArray: messages });
 	}
 	debugLogJson(...messages: Array<any>) {
-		if (__app.config ? !__app.config.logs.debug : !this.logsConfig.debug) return;
+		if (!__app.config.logs.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Info', lang: 'json', textArray: messages });
 	}
 
@@ -74,7 +61,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Info', textArray: messages });
 	}
 	debugLog(...messages: Array<any>) {
-		if (__app.config ? !__app.config.logs.debug : !this.logsConfig.debug) return;
+		if (!__app.config.logs.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Info', textArray: messages });
 	}
 
@@ -82,7 +69,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Warning', textArray: messages });
 	}
 	debugWarningLog(...messages: Array<any>) {
-		if (__app.config ? !__app.config.logs.debug : !this.logsConfig.debug) return;
+		if (!__app.config.logs.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Warning', textArray: messages });
 	}
 
@@ -90,7 +77,7 @@ export class Console {
 		this.sendLog({ type: 'Normal', severity: 'Error', textArray: messages });
 	}
 	debugErrorLog(...messages: Array<any>) {
-		if (__app.config ? !__app.config.logs.debug : !this.logsConfig.debug) return;
+		if (!__app.config.logs.debug) return;
 		this.sendLog({ type: 'Debug', severity: 'Error', textArray: messages });
 	}
 }

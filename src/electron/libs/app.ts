@@ -19,10 +19,10 @@ export class App {
 	macros!: Array<Macro>;
 	versions!: Versions;
 	dictionary!: Dictionary;
-	chromePage!: Page | null;
+	chromePage!: Page;
 
-	speechRecognition!: SpeechRecognitionEngine | null;
-	speechSynthesis!: SpeechSynthesisEngine | null;
+	speechRecognition!: SpeechRecognitionEngine;
+	speechSynthesis!: SpeechSynthesisEngine;
 	console!: Console;
 	settingsUpdate!: SettingsUpdate;
 
@@ -32,9 +32,8 @@ export class App {
 
 	userDataFolder!: string;
 
-	init(data: Partial<App>) {
+	set(data: Partial<App>) {
 		Object.assign(this, data);
-		return this;
 	}
 }
 
