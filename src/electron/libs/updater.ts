@@ -50,7 +50,9 @@ export class Updater {
 	async autoRunChecker() {
 		if (__app.config.update.autoCheck) {
 			__app.console.debugLog(__app.dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
-			await this.checker('automatic');
+			if (!(await this.checker('automatic'))) {
+				__app.console.debugLog(__app.dictionary.textFeedback.update.checkAppUpdate.upToDate);
+			}
 		}
 
 		setTimeout(this.autoRunChecker, (__app.config.update.checkInterval < 1 ? 1 : __app.config.update.checkInterval) * 60 * 1000);
