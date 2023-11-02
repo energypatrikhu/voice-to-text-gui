@@ -34,29 +34,31 @@ export class EventRouter {
 
 				case 'config': {
 					if (this.isReady && !_.isEqual(__app.config, data)) {
-						console.log('Config Changed Event', { isReady: this.isReady, isEqual: _.isEqual(__app.config, data) });
+						console.log('Config Changed Event');
 
-						if (!_.isEqual(__app.config.feedback.language, data.feedback.language)) {
+						const { oldApp } = __app.set({ config: data });
+						await saveJson('config', data);
+						__app.console.debugLog('Config Changed!');
+
+						if (!_.isEqual(oldApp.config.feedback.language, __app.config.feedback.language)) {
 							console.log('feedback.language changed!');
 
-							const dictionary = await loadDictionary(data.feedback.language, this.isDev);
+							const dictionary = await loadDictionary();
+							__app.set({ dictionary });
 
-							__app.dictionary = dictionary;
-							__app.speechSynthesis?.updateEngine(data.feedback);
+							if (!this.isDev) {
+								__app.speechSynthesis.updateEngine();
+							}
 
 							this.mainWindow.webContents.send('electron', { event: 'dictionary', data: { dictionary } });
 						}
 
-						if (!_.isEqual(__app.config.speechRecognition, data.speechRecognition)) {
+						if (!_.isEqual(oldApp.config.speechRecognition, __app.config.speechRecognition)) {
 							console.log('speechRecognition changed!');
-
-							__app.speechRecognition?.updateEngine(data.speechRecognition);
+							if (!this.isDev) {
+								__app.speechRecognition.updateEngine();
+							}
 						}
-
-						__app.console.debugLog('Config Changed!');
-						__app.config = data;
-
-						await saveJson('config', data);
 					}
 					break;
 				}

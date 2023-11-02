@@ -7,6 +7,7 @@ import type { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import type { Page } from 'puppeteer-core';
 import type { Console } from './console.js';
 import type { SettingsUpdate } from './send-settings-update.js';
+import _ from 'lodash';
 
 export class App {
 	isDev!: boolean;
@@ -33,7 +34,9 @@ export class App {
 	userDataFolder!: string;
 
 	set(data: Partial<App>) {
+		const oldApp = _.omit(this, ['set']);
 		Object.assign(this, data);
+		return { newApp: data as App, oldApp };
 	}
 }
 

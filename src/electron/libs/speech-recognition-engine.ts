@@ -45,7 +45,7 @@ export class SpeechRecognitionEngine {
 		this.textParserRegex = new RegExp('(' + [...['makró', 'makrók', 'szöveg', 'szövegek'].map((macroPreffix) => `\\${__app.config.commands.prefix}\\s${macroPreffix}\\${__app.config.commands.splitter}\\s`)].join(')|(') + ')', 'gi');
 
 		await this.initExposeFunctions();
-		await this.initSpeechRecognitionEngine(__app.config.speechRecognition);
+		await this.initSpeechRecognitionEngine();
 
 		return this;
 	}
@@ -58,7 +58,7 @@ export class SpeechRecognitionEngine {
 		await __app.chromePage.exposeFunction('callSpeechRecognitionTranscript', (transcript: any) => this.pageEmitter.emit('speech:recognition:transcript', transcript));
 	}
 
-	private async initSpeechRecognitionEngine(speechRecognitionOptions: ConfigOptions['speechRecognition']) {
+	private async initSpeechRecognitionEngine() {
 		await __app.chromePage.evaluate((speechRecognitionOptions) => {
 			window.speechRecognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 			window.speechGrammarList = new (window.SpeechGrammarList || window.webkitSpeechGrammarList)();
@@ -102,11 +102,11 @@ export class SpeechRecognitionEngine {
 				window.callSpeechRecognitionInfo('stopped');
 				window.speechRecognitionRestart = false;
 			});
-		}, speechRecognitionOptions);
+		}, __app.config.speechRecognition);
 	}
 
-	updateEngine(speechRecognition: ConfigOptions['speechRecognition']) {
-		this.initSpeechRecognitionEngine(speechRecognition);
+	updateEngine() {
+		this.initSpeechRecognitionEngine();
 	}
 
 	async start(_outputPrefix: string | null) {

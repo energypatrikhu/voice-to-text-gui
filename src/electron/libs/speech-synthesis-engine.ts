@@ -9,7 +9,7 @@ export class SpeechSynthesisEngine {
 
 	async init() {
 		await this.initExposeFunctions();
-		await this.initEngine({ language: __app.config.feedback.language, volume: __app.config.feedback.speech.volume });
+		await this.initEngine();
 
 		return this;
 	}
@@ -19,20 +19,23 @@ export class SpeechSynthesisEngine {
 		await __app.chromePage.exposeFunction('callSpeechSynthesisFinished', (info: any) => this.pageEmitter.emit('speech:synthesis:finished', info));
 	}
 
-	private async initEngine(speechSynthesisOptions: any) {
-		await __app.chromePage.evaluate((speechSynthesisOptions) => {
-			const voices = Array.from(window.speechSynthesis.getVoices());
+	private async initEngine() {
+		await __app.chromePage.evaluate(
+			(speechSynthesisOptions) => {
+				const voices = Array.from(window.speechSynthesis.getVoices());
 
-			window.speechSynthesisOptions = {
-				lang: speechSynthesisOptions.language || voices.filter((voice) => voice.default)[0].lang,
-				voice: voices.filter((voice) => voice.lang.includes(speechSynthesisOptions.language))[0],
-				volume: speechSynthesisOptions.volume,
-			};
-		}, speechSynthesisOptions);
+				window.speechSynthesisOptions = {
+					lang: speechSynthesisOptions.language || voices.filter((voice) => voice.default)[0].lang,
+					voice: voices.filter((voice) => voice.lang.includes(speechSynthesisOptions.language))[0],
+					volume: speechSynthesisOptions.volume,
+				};
+			},
+			{ language: __app.config.feedback.language, volume: __app.config.feedback.speech.volume },
+		);
 	}
 
 	updateEngine() {
-		this.initEngine({ language: __app.config.feedback.language, volume: __app.config.feedback.speech.volume });
+		this.initEngine();
 	}
 
 	async speak(text: string) {

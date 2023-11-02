@@ -5,6 +5,7 @@ import { join, resolve } from 'path';
 import { __app } from './app.js';
 
 import type { Dictionary } from '../../types/Dictionary.js';
+
 export async function loadDictionary(): Promise<Dictionary> {
 	const dictionaryPath = resolve(join(__app.isDev ? './resources/extraResources' : './resources', 'dictionaries'));
 
