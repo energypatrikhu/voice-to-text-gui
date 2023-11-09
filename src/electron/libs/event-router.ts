@@ -37,8 +37,10 @@ export class EventRouter {
 						console.log('Config Changed Event');
 
 						const { oldApp } = __app.set({ config: data });
-						await saveJson('config', data);
 						__app.console.debugLog('Config Changed!');
+						console.log('Config Changed!');
+
+						console.log(oldApp.config.feedback.language, __app.config.feedback.language);
 
 						if (!_.isEqual(oldApp.config.feedback.language, __app.config.feedback.language)) {
 							console.log('feedback.language changed!');
@@ -59,7 +61,10 @@ export class EventRouter {
 								__app.speechRecognition.updateEngine();
 							}
 						}
+
+						await saveJson('config', data);
 					}
+
 					break;
 				}
 
