@@ -4,7 +4,7 @@
 
 	import { onMount } from 'svelte';
 	import { config, setReady } from '$stores/config';
-	import { dict } from '$stores/dict';
+	import { translations } from '$stores/translation';
 	import { app } from '$stores/app';
 	import { macros } from '$stores/macros';
 
@@ -35,7 +35,7 @@
 				$app = { ...$app, ...data.versions };
 				$config = data.config;
 				$macros = data.macros;
-				$dict = data.dictionary;
+				$translations = data.translation;
 
 				setReady(true);
 				break;
@@ -47,8 +47,8 @@
 				break;
 			}
 
-			case 'dictionary': {
-				$dict = data.dictionary;
+			case 'translation': {
+				$translations = data.translation;
 				break;
 			}
 

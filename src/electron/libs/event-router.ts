@@ -4,9 +4,9 @@ import { basename } from 'path';
 
 import { __app } from './app.js';
 import { cmd } from './command-handler.js';
-import { loadDictionary } from './dictionary.js';
 import { saveJson } from './json-storage.js';
 import { main } from './main.js';
+import { loadTranslation } from './translation.js';
 
 export class EventRouter {
 	private ipcMain;
@@ -46,14 +46,14 @@ export class EventRouter {
 						if (!_.isEqual(oldApp.config.feedback.language, __app.config.feedback.language)) {
 							console.log('feedback.language changed!');
 
-							const dictionary = await loadDictionary();
-							__app.set({ dictionary });
+							const translation = await loadTranslation();
+							__app.set({ translation });
 
 							if (!this.isDev) {
 								__app.speechSynthesis.updateEngine();
 							}
 
-							this.mainWindow.webContents.send('electron', { event: 'dictionary', data: { dictionary } });
+							this.mainWindow.webContents.send('electron', { event: 'translation', data: { translation } });
 						}
 
 						if (!_.isEqual(oldApp.config.speechRecognition, __app.config.speechRecognition)) {

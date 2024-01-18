@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Header from '$components/Header.svelte';
 	import Layout from '$components/Layout.svelte';
-	import { dict } from '$stores/dict';
+	import { translations } from '$stores/translation';
 	import { config } from '$stores/config';
 	import Input from '$components/Modal/Input.svelte';
 	import Option from '$components/Modal/Option.svelte';
@@ -17,76 +17,76 @@
 
 <Layout>
 	<div class="text-4xl px-4 h-16 border-b border-b-neutral-600 flex items-center">
-		<span>{$dict.navigation.settings}</span>
+		<span>{$translations.navigation.settings}</span>
 	</div>
 
 	<div class="fixed overflow-hidden overflow-y-scroll w-full h-[calc(100%-64px-48px)] flex flex-col gap-4 px-4 py-2">
 		<Section>
-			<span slot="title">{$dict.settings.update.this.name}</span>
-			<span slot="description">{$dict.settings.update.this.description}</span>
+			<span slot="title">{$translations.settings.update.this.name}</span>
+			<span slot="description">{$translations.settings.update.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.update.checkOnStartup.name}</span>
-					<span slot="description">{$dict.settings.update.checkOnStartup.description}</span>
+					<span slot="title">{$translations.settings.update.checkOnStartup.name}</span>
+					<span slot="description">{$translations.settings.update.checkOnStartup.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.update.checkOnStartup}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.update.allowPrerelease.name}</span>
-					<span slot="description">{$dict.settings.update.allowPrerelease.description}</span>
+					<span slot="title">{$translations.settings.update.allowPrerelease.name}</span>
+					<span slot="description">{$translations.settings.update.allowPrerelease.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.update.allowPrerelease}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.update.allowDowngrade.name}</span>
-					<span slot="description">{$dict.settings.update.allowDowngrade.description}</span>
+					<span slot="title">{$translations.settings.update.allowDowngrade.name}</span>
+					<span slot="description">{$translations.settings.update.allowDowngrade.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.update.allowDowngrade}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.update.autoCheck.name}</span>
-					<span slot="description">{$dict.settings.update.autoCheck.description}</span>
+					<span slot="title">{$translations.settings.update.autoCheck.name}</span>
+					<span slot="description">{$translations.settings.update.autoCheck.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.update.autoCheck}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.update.checkInterval.name}</span>
-					<span slot="description">{$dict.settings.update.checkInterval.description}</span>
+					<span slot="title">{$translations.settings.update.checkInterval.name}</span>
+					<span slot="description">{$translations.settings.update.checkInterval.description}</span>
 
 					<Input
 						slot="content"
 						bind:value="{$config.update.checkInterval}"
 						type="number"
-						text="{$dict.time.normal.m}"
+						text="{$translations.time.normal.m}"
 						textPos="after"
 					/>
 				</SubSection>
@@ -94,59 +94,59 @@
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.logs.this.name}</span>
-			<span slot="description">{$dict.settings.logs.this.description}</span>
+			<span slot="title">{$translations.settings.logs.this.name}</span>
+			<span slot="description">{$translations.settings.logs.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.logs.debug.name}</span>
-					<span slot="description">{$dict.settings.logs.debug.description}</span>
+					<span slot="title">{$translations.settings.logs.debug.name}</span>
+					<span slot="description">{$translations.settings.logs.debug.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.logs.debug}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.logs.saveToFile.name}</span>
-					<span slot="description">{$dict.settings.logs.saveToFile.description}</span>
+					<span slot="title">{$translations.settings.logs.saveToFile.name}</span>
+					<span slot="description">{$translations.settings.logs.saveToFile.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.logs.saveToFile}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 			</div>
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.input.this.name}</span>
-			<span slot="description">{$dict.settings.input.this.description}</span>
+			<span slot="title">{$translations.settings.input.this.name}</span>
+			<span slot="description">{$translations.settings.input.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.input.holdToActivate.name}</span>
-					<span slot="description">{$dict.settings.input.holdToActivate.description}</span>
+					<span slot="title">{$translations.settings.input.holdToActivate.name}</span>
+					<span slot="description">{$translations.settings.input.holdToActivate.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.input.holdToActivate}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.input.keyboardShortcuts.name}</span>
-					<span slot="description">{$dict.settings.input.keyboardShortcuts.description}</span>
+					<span slot="title">{$translations.settings.input.keyboardShortcuts.name}</span>
+					<span slot="description">{$translations.settings.input.keyboardShortcuts.description}</span>
 
 					<KeyboardShortcuts
 						slot="content"
@@ -155,27 +155,27 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.input.autoRelease.name}</span>
-					<span slot="description">{$dict.settings.input.autoRelease.description}</span>
+					<span slot="title">{$translations.settings.input.autoRelease.name}</span>
+					<span slot="description">{$translations.settings.input.autoRelease.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.input.autoRelease.enabled}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.input.releaseTime.name}</span>
-					<span slot="description">{$dict.settings.input.releaseTime.description}</span>
+					<span slot="title">{$translations.settings.input.releaseTime.name}</span>
+					<span slot="description">{$translations.settings.input.releaseTime.description}</span>
 
 					<Input
 						slot="content"
 						bind:value="{$config.input.autoRelease.releaseTime}"
 						type="number"
-						text="{$dict.time.normal.s}"
+						text="{$translations.time.normal.s}"
 						textPos="after"
 						disabled="{!$config.input.autoRelease.enabled}"
 					/>
@@ -184,45 +184,45 @@
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.output.this.name}</span>
-			<span slot="description">{$dict.settings.output.this.description}</span>
+			<span slot="title">{$translations.settings.output.this.name}</span>
+			<span slot="description">{$translations.settings.output.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.output.partial.name}</span>
-					<span slot="description">{$dict.settings.output.partial.description}</span>
+					<span slot="title">{$translations.settings.output.partial.name}</span>
+					<span slot="description">{$translations.settings.output.partial.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.output.partial}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.output.animated.name}</span>
-					<span slot="description">{$dict.settings.output.animated.description}</span>
+					<span slot="title">{$translations.settings.output.animated.name}</span>
+					<span slot="description">{$translations.settings.output.animated.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.output.animated}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.output.typingDelay.name}</span>
-					<span slot="description">{$dict.settings.output.typingDelay.description}</span>
+					<span slot="title">{$translations.settings.output.typingDelay.name}</span>
+					<span slot="description">{$translations.settings.output.typingDelay.description}</span>
 
 					<Input
 						bind:value="{$config.output.typingDelay}"
 						slot="content"
 						type="number"
-						text="{$dict.time.normal.ms}"
+						text="{$translations.time.normal.ms}"
 						textPos="after"
 						disabled="{!$config.output.animated}"
 					/>
@@ -231,40 +231,40 @@
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.feedback.this.name}</span>
-			<span slot="description">{$dict.settings.feedback.this.description}</span>
+			<span slot="title">{$translations.settings.feedback.this.name}</span>
+			<span slot="description">{$translations.settings.feedback.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.feedback.sounds.name}</span>
-					<span slot="description">{$dict.settings.feedback.sounds.description}</span>
+					<span slot="title">{$translations.settings.feedback.sounds.name}</span>
+					<span slot="description">{$translations.settings.feedback.sounds.description}</span>
 
 					<div slot="content">
 						<Select bind:value="{$config.feedback.sounds.enabled}">
-							<Option value="{true}">{$dict.states.enable}</Option>
-							<Option value="{false}">{$dict.states.disable}</Option>
+							<Option value="{true}">{$translations.states.enable}</Option>
+							<Option value="{false}">{$translations.states.disable}</Option>
 						</Select>
 					</div>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.feedback.sounds.audioMode.name}</span>
-					<span slot="description">{$dict.settings.feedback.sounds.audioMode.description}</span>
+					<span slot="title">{$translations.settings.feedback.sounds.audioMode.name}</span>
+					<span slot="description">{$translations.settings.feedback.sounds.audioMode.description}</span>
 
 					<div slot="content">
 						<Select
 							bind:value="{$config.feedback.sounds.mode}"
 							disabled="{!$config.feedback.sounds.enabled}"
 						>
-							<Option value="default">{$dict.states.default}</Option>
-							<Option value="custom">{$dict.states.custom}</Option>
+							<Option value="default">{$translations.states.default}</Option>
+							<Option value="custom">{$translations.states.custom}</Option>
 						</Select>
 					</div>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.feedback.sounds.audioVolume.name}</span>
-					<span slot="description">{$dict.settings.feedback.sounds.audioVolume.description}</span>
+					<span slot="title">{$translations.settings.feedback.sounds.audioVolume.name}</span>
+					<span slot="description">{$translations.settings.feedback.sounds.audioVolume.description}</span>
 
 					<div slot="content">
 						<div class="flex gap-1">
@@ -284,8 +284,8 @@
 
 				{#if $config.feedback.sounds.mode === 'custom' && $config.feedback.sounds.enabled}
 					<SubSection>
-						<span slot="title">{$dict.settings.feedback.sounds.customAudioFile.name}</span>
-						<span slot="description">{$dict.settings.feedback.sounds.customAudioFile.description}</span>
+						<span slot="title">{$translations.settings.feedback.sounds.customAudioFile.name}</span>
+						<span slot="description">{$translations.settings.feedback.sounds.customAudioFile.description}</span>
 
 						<div slot="content">
 							<div class="flex gap-1">
@@ -294,7 +294,7 @@
 										window.electron.send('electron', { event: 'selectAudioFile', data: null });
 									}}"
 								>
-									{$dict.settings.feedback.sounds.customAudioFile.select}
+									{$translations.settings.feedback.sounds.customAudioFile.select}
 								</Button>
 								{#if $config.feedback.sounds.file.filepath !== null}
 									<Button
@@ -307,7 +307,7 @@
 										}}"
 										btnType="cancel"
 									>
-										{$dict.buttons.reset}
+										{$translations.buttons.reset}
 									</Button>
 									<Button
 										on:click="{function () {
@@ -318,27 +318,27 @@
 									</Button>
 								{/if}
 							</div>
-							<span>{$dict.settings.feedback.sounds.customAudioFile.selected}: <span class="font-light">{$config.feedback.sounds.file.basename ? $config.feedback.sounds.file.basename : $dict.states.none}</span></span>
+							<span>{$translations.settings.feedback.sounds.customAudioFile.selected}: <span class="font-light">{$config.feedback.sounds.file.basename ? $config.feedback.sounds.file.basename : $translations.states.none}</span></span>
 						</div>
 					</SubSection>
 				{/if}
 
 				<SubSection>
-					<span slot="title">{$dict.settings.feedback.speech.name}</span>
-					<span slot="description">{$dict.settings.feedback.speech.description}</span>
+					<span slot="title">{$translations.settings.feedback.speech.name}</span>
+					<span slot="description">{$translations.settings.feedback.speech.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.feedback.speech.enabled}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.feedback.volume.name}</span>
-					<span slot="description">{$dict.settings.feedback.volume.description}</span>
+					<span slot="title">{$translations.settings.feedback.volume.name}</span>
+					<span slot="description">{$translations.settings.feedback.volume.description}</span>
 
 					<div
 						slot="content"
@@ -358,8 +358,8 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.feedback.language.name}</span>
-					<span slot="description">{$dict.settings.feedback.language.description}</span>
+					<span slot="title">{$translations.settings.feedback.language.name}</span>
+					<span slot="description">{$translations.settings.feedback.language.description}</span>
 
 					<Select
 						slot="content"
@@ -373,13 +373,13 @@
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.speechRecognition.this.name}</span>
-			<span slot="description">{$dict.settings.speechRecognition.this.description}</span>
+			<span slot="title">{$translations.settings.speechRecognition.this.name}</span>
+			<span slot="description">{$translations.settings.speechRecognition.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.speechRecognition.language.name}</span>
-					<span slot="description">{$dict.settings.speechRecognition.language.description}</span>
+					<span slot="title">{$translations.settings.speechRecognition.language.name}</span>
+					<span slot="description">{$translations.settings.speechRecognition.language.description}</span>
 
 					<Select
 						slot="content"
@@ -392,8 +392,8 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.speechRecognition.customWordsAndPhrases.name}</span>
-					<span slot="description">{$dict.settings.speechRecognition.customWordsAndPhrases.description}</span>
+					<span slot="title">{$translations.settings.speechRecognition.customWordsAndPhrases.name}</span>
+					<span slot="description">{$translations.settings.speechRecognition.customWordsAndPhrases.description}</span>
 
 					<WordsPhrasesWindows
 						slot="content"
@@ -405,41 +405,41 @@
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.replacers.this.name}</span>
-			<span slot="description">{$dict.settings.replacers.this.description}</span>
+			<span slot="title">{$translations.settings.replacers.this.name}</span>
+			<span slot="description">{$translations.settings.replacers.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.replacers.punctuationMarks.name}</span>
-					<span slot="description">{$dict.settings.replacers.punctuationMarks.description}</span>
+					<span slot="title">{$translations.settings.replacers.punctuationMarks.name}</span>
+					<span slot="description">{$translations.settings.replacers.punctuationMarks.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.replacers.punctuationMarks}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.replacers.gameChatPrefixes.name}</span>
-					<span slot="description">{$dict.settings.replacers.gameChatPrefixes.description}</span>
+					<span slot="title">{$translations.settings.replacers.gameChatPrefixes.name}</span>
+					<span slot="description">{$translations.settings.replacers.gameChatPrefixes.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.replacers.gameChatPrefixes}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 			</div>
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.windowAllowList.this.name}</span>
-			<span slot="description">{$dict.settings.windowAllowList.this.description}</span>
+			<span slot="title">{$translations.settings.windowAllowList.this.name}</span>
+			<span slot="description">{$translations.settings.windowAllowList.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
@@ -447,18 +447,18 @@
 						slot="content"
 						bind:value="{$config.windowAllowList.enabled}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.windowAllowList.windows.name}</span>
-					<span slot="description">{$dict.settings.windowAllowList.windows.description}</span>
+					<span slot="title">{$translations.settings.windowAllowList.windows.name}</span>
+					<span slot="description">{$translations.settings.windowAllowList.windows.description}</span>
 
 					<WordsPhrasesWindows
 						disabled="{!$config.windowAllowList.enabled}"
-						disabledText="{'(' + $dict.settings.windowAllowList.this.name + ' ' + $dict.states.disabled.toLowerCase() + ')'}"
+						disabledText="{'(' + $translations.settings.windowAllowList.this.name + ' ' + $translations.states.disabled.toLowerCase() + ')'}"
 						slot="content"
 						bind:items="{$config.windowAllowList.windows}"
 						itemName="windows"
@@ -468,8 +468,8 @@
 		</Section>
 
 		<Section>
-			<span slot="title">{$dict.settings.commands.this.name}</span>
-			<span slot="description">{$dict.settings.commands.this.description}</span>
+			<span slot="title">{$translations.settings.commands.this.name}</span>
+			<span slot="description">{$translations.settings.commands.this.description}</span>
 
 			<div
 				slot="content"
@@ -480,14 +480,14 @@
 						slot="content"
 						bind:value="{$config.commands.enabled}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.commands.prefix.name}</span>
-					<span slot="description">{$dict.settings.commands.prefix.description}</span>
+					<span slot="title">{$translations.settings.commands.prefix.name}</span>
+					<span slot="description">{$translations.settings.commands.prefix.description}</span>
 
 					<Input
 						slot="content"
@@ -497,8 +497,8 @@
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.commands.splitter.name}</span>
-					<span slot="description">{$dict.settings.commands.splitter.description}</span>
+					<span slot="title">{$translations.settings.commands.splitter.name}</span>
+					<span slot="description">{$translations.settings.commands.splitter.description}</span>
 
 					<Input
 						slot="content"
@@ -510,34 +510,34 @@
 		</Section>
 
 		<Section useSplitterLine="{false}">
-			<span slot="title">{$dict.settings.others.this.name}</span>
-			<span slot="description">{$dict.settings.others.this.description}</span>
+			<span slot="title">{$translations.settings.others.this.name}</span>
+			<span slot="description">{$translations.settings.others.this.description}</span>
 
 			<div slot="content">
 				<SubSection>
-					<span slot="title">{$dict.settings.others.mtaConsoleInputMode.name}</span>
-					<span slot="description">{$dict.settings.others.mtaConsoleInputMode.description}</span>
+					<span slot="title">{$translations.settings.others.mtaConsoleInputMode.name}</span>
+					<span slot="description">{$translations.settings.others.mtaConsoleInputMode.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.others.mtaConsoleInputMode}"
 						disabled="{!$config.replacers.gameChatPrefixes}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 
 				<SubSection>
-					<span slot="title">{$dict.settings.others.showActiveButtons.name}</span>
-					<span slot="description">{$dict.settings.others.showActiveButtons.description}</span>
+					<span slot="title">{$translations.settings.others.showActiveButtons.name}</span>
+					<span slot="description">{$translations.settings.others.showActiveButtons.description}</span>
 
 					<Select
 						slot="content"
 						bind:value="{$config.others.showActiveButtons}"
 					>
-						<Option value="{true}">{$dict.states.enable}</Option>
-						<Option value="{false}">{$dict.states.disable}</Option>
+						<Option value="{true}">{$translations.states.enable}</Option>
+						<Option value="{false}">{$translations.states.disable}</Option>
 					</Select>
 				</SubSection>
 			</div>

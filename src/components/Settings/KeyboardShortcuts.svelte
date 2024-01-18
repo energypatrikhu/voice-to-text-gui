@@ -3,7 +3,7 @@
 	import Button from '$components/Modal/Button.svelte';
 	import Svg from '$components/Svg.svelte';
 	import EditShortcut from '$components/Settings/EditShortcut.svelte';
-	import { dict } from '$stores/dict';
+	import { translations } from '$stores/translation';
 
 	export let keyboardShortcuts: ConfigOptions['input']['keyboardShortcuts'];
 
@@ -18,8 +18,8 @@
 			<div class="absolute w-[1px] h-full top-0 left-64 bg-neutral-500"></div>
 			<thead>
 				<tr>
-					<th>{$dict.settings.input.keyboardShortcuts.table.prefix}</th>
-					<th>{$dict.settings.input.keyboardShortcuts.table.shortcut}</th>
+					<th>{$translations.settings.input.keyboardShortcuts.table.prefix}</th>
+					<th>{$translations.settings.input.keyboardShortcuts.table.shortcut}</th>
 				</tr>
 			</thead>
 			<div class="absolute w-full h-[1px] left-0 bg-neutral-500"></div>
@@ -30,7 +30,7 @@
 							{#if outputPrefix}
 								<span>{outputPrefix}</span>
 							{:else}
-								<span class=" text-neutral-400">{$dict.states.none}</span>
+								<span class=" text-neutral-400">{$translations.states.none}</span>
 							{/if}
 						</td>
 						<td>
@@ -75,15 +75,15 @@
 			on:click="{function () {
 				indexOfShortcutToModify = -1;
 				actionMode = 'add-shortcut';
-			}}">{$dict.settings.input.keyboardShortcuts.table.button}</Button
+			}}">{$translations.settings.input.keyboardShortcuts.table.button}</Button
 		>
 	</div>
 </div>
 
 {#if actionMode !== 'none'}
 	<EditShortcut
-		bind:actionMode="{actionMode}"
-		bind:indexOfShortcutToModify="{indexOfShortcutToModify}"
+		bind:actionMode
+		bind:indexOfShortcutToModify
 	/>
 {/if}
 

@@ -34,7 +34,7 @@ export class SpeechRecognitionEngine {
 				return;
 			}
 
-			__app.console.logJson(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.outputStopped);
+			__app.console.logJson(__app.translation.textFeedback.chromeFunctions.speechRecognition.outputStopped);
 
 			this._output = '';
 			this._partialOutput = '';
@@ -119,7 +119,7 @@ export class SpeechRecognitionEngine {
 
 		clearTimeout(this.stopTimer);
 
-		__app.console.debugLog(textReplacer(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.start.outputPrefix, _outputPrefix));
+		__app.console.debugLog(textReplacer(__app.translation.textFeedback.chromeFunctions.speechRecognition.start.outputPrefix, _outputPrefix));
 
 		await __app.chromePage.evaluate(() => {
 			try {
@@ -177,7 +177,7 @@ export class SpeechRecognitionEngine {
 					this._output = output;
 				}
 
-				__app.console.log(textReplacer(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.info.output, output));
+				__app.console.log(textReplacer(__app.translation.textFeedback.chromeFunctions.speechRecognition.info.output, output));
 
 				if (__app.config.output.partial) {
 					return;
@@ -211,7 +211,7 @@ export class SpeechRecognitionEngine {
 			await printText(this.partialOutput.slice(this._partialOutput.length));
 		}
 
-		__app.console.log(textReplacer(__app.dictionary.textFeedback.chromeFunctions.speechRecognition.transcript.partialOutput, this.partialOutput));
+		__app.console.log(textReplacer(__app.translation.textFeedback.chromeFunctions.speechRecognition.transcript.partialOutput, this.partialOutput));
 
 		__app.mainWindow.webContents.send('speech:recognition', {
 			event: 'transcript:partial',

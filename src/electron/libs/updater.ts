@@ -15,9 +15,9 @@ export class Updater {
 
 			switch (__app.updateReason) {
 				case 'manual': {
-					__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
+					__app.console.log(__app.translation.textFeedback.update.checkAppUpdate.updateDownloaded);
 					if (__app.speechSynthesis) {
-						await __app.speechSynthesis.speak(__app.dictionary.textFeedback.update.checkAppUpdate.updateDownloaded);
+						await __app.speechSynthesis.speak(__app.translation.textFeedback.update.checkAppUpdate.updateDownloaded);
 					}
 
 					autoUpdater.quitAndInstall(true, true);
@@ -36,7 +36,7 @@ export class Updater {
 		setTimeout(this.autoRunChecker, (__app.config.update.checkInterval < 1 ? 1 : __app.config.update.checkInterval) * 60 * 1000);
 
 		if (__app.config.update.checkOnStartup) {
-			__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
+			__app.console.log(__app.translation.textFeedback.update.checkAppUpdate.checkingUpdate);
 			return await this.checker('manual');
 		}
 	}
@@ -47,7 +47,7 @@ export class Updater {
 		switch (mode) {
 			case 'manual': {
 				if (__app.versions.appVersion !== (await autoUpdater.checkForUpdates())?.updateInfo.version) {
-					__app.console.log(__app.dictionary.textFeedback.update.checkAppUpdate.notUpToDate);
+					__app.console.log(__app.translation.textFeedback.update.checkAppUpdate.notUpToDate);
 					return true;
 				}
 				break;
@@ -65,9 +65,9 @@ export class Updater {
 
 	async autoRunChecker() {
 		if (__app.config.update.autoCheck) {
-			__app.console.debugLog(__app.dictionary.textFeedback.update.checkAppUpdate.checkingUpdate);
+			__app.console.debugLog(__app.translation.textFeedback.update.checkAppUpdate.checkingUpdate);
 			if (!(await this.checker('automatic'))) {
-				__app.console.debugLog(__app.dictionary.textFeedback.update.checkAppUpdate.upToDate);
+				__app.console.debugLog(__app.translation.textFeedback.update.checkAppUpdate.upToDate);
 			}
 		}
 

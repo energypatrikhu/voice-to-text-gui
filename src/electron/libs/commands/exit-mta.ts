@@ -7,8 +7,8 @@ cmd.registerCommand(
 	async function (speechSynthesis) {
 		try {
 			if (!['gta_sa.exe', 'proxy_sa.exe'].includes(await getActiveWindowName())) {
-				__app.console.log(__app.dictionary.textFeedback.commands.exitMta.notInForeground);
-				speechSynthesis.speak(__app.dictionary.speechFeedback.commands.exitMta.notInForeground);
+				__app.console.log(__app.translation.textFeedback.commands.exitMta.notInForeground);
+				speechSynthesis.speak(__app.translation.speechFeedback.commands.exitMta.notInForeground);
 				return;
 			}
 
@@ -17,5 +17,5 @@ cmd.registerCommand(
 			__app.console.debugErrorLog(error);
 		}
 	},
-	['both', 'MTA:SA Bezárás', null, ['mtabezárás', 'mtakilépés', 'closemta', 'exitmta'], __app.dictionary.textFeedback.commands.exitMta.description],
+	['both', 'MTA:SA Bezárás', null, ['mtabezárás', 'mtakilépés', 'closemta', 'exitmta'], __app.translation.textFeedback.commands.exitMta.description],
 );

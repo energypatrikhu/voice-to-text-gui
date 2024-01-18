@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { webPaths } from '$libs/webPaths';
-	import { dict } from '$stores/dict';
+	import { translations } from '$stores/translation';
 
 	export let open: boolean = false;
 </script>
@@ -15,7 +15,7 @@
 	{#each webPaths as navElement}
 		<NavButton
 			btnClass="justify-start"
-			title="{$dict.navigation[navElement.title]}"
+			title="{$translations.navigation[navElement.title]}"
 			href="{navElement.href}"
 			rel="{navElement.external ? 'external' : ''}"
 			icon="{navElement.icon ?? ''}"

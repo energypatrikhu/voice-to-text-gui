@@ -95,8 +95,8 @@
 					"commandsPartial": "Config error! 'commands.enabled' cannot be 'true' while 'output.partial' is 'true'!"
 				}
 			},
-			"dictionary": {
-				"loaded": "Dictionary loaded!"
+			"translation": {
+				"loaded": "Translation loaded!"
 			}
 		},
 

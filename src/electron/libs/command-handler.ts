@@ -90,8 +90,8 @@ class CommandHandler {
 			return await textParser(macro.text);
 		}
 
-		this.speechSynthesis.speak(__app.dictionary.speechFeedback.commandHandler.unknownMacro);
-		__app.console.debugLog(__app.dictionary.textFeedback.commandHandler.unknownMacro);
+		this.speechSynthesis.speak(__app.translation.speechFeedback.commandHandler.unknownMacro);
+		__app.console.debugLog(__app.translation.textFeedback.commandHandler.unknownMacro);
 	}
 
 	private async callCommand(command: string, availability: Command$Availability, ...args: any[]) {
@@ -127,8 +127,8 @@ class CommandHandler {
 			return await command.func(this.speechSynthesis, ...args, ...cmd.args);
 		}
 
-		this.speechSynthesis.speak(__app.dictionary.speechFeedback.commandHandler.unknownCommand);
-		__app.console.debugLog(__app.dictionary.textFeedback.commandHandler.unknownCommand);
+		this.speechSynthesis.speak(__app.translation.speechFeedback.commandHandler.unknownCommand);
+		__app.console.debugLog(__app.translation.textFeedback.commandHandler.unknownCommand);
 	}
 
 	async textCommandHandler(command: string, ...args: any[]) {

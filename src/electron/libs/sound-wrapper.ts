@@ -8,7 +8,7 @@ export function soundWrapper() {
 			return;
 		}
 
-		__app.console.debugLog(__app.dictionary.textFeedback.soundWrapper.playingSound);
+		__app.console.debugLog(__app.translation.textFeedback.soundWrapper.playingSound);
 
 		__app.mainWindow.webContents.send('electron', {
 			event: 'playAudio',

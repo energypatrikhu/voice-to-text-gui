@@ -9,7 +9,6 @@ import { ChromeInstance } from './chrome-instance.js';
 import { cmd } from './command-handler.js';
 import { loadConfig } from './config.js';
 import { Console } from './console.js';
-import { loadDictionary } from './dictionary.js';
 import { getActiveWindowName } from './get-active-window-name.js';
 import { keyboardShortcutMapper } from './keyboard-shortcut-mapper.js';
 import { loadMacros } from './macros.js';
@@ -17,6 +16,7 @@ import { SettingsUpdate } from './send-settings-update.js';
 import { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import { textReplacer } from './text-replacer.js';
+import { loadTranslation } from './translation.js';
 import { uioHookWrapper } from './uio-hook-wrapper.js';
 import { Updater } from './updater.js';
 
@@ -43,18 +43,18 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 
 	__app.set({
 		console: await new Console().init(),
-		dictionary: await loadDictionary(),
+		translation: await loadTranslation(),
 		settingsUpdate: new SettingsUpdate(),
 	});
 
-	mainWindow.webContents.send('electron', { event: 'ready', data: _.pick(__app, ['versions', 'config', 'macros', 'dictionary']) });
+	mainWindow.webContents.send('electron', { event: 'ready', data: _.pick(__app, ['versions', 'config', 'macros', 'translation']) });
 
 	if (isDev) {
-		__app.console.log(__app.dictionary.speechFeedback.index.appStarted);
+		__app.console.log(__app.translation.speechFeedback.index.appStarted);
 		return;
 	}
 
-	__app.console.log(__app.dictionary.textFeedback.index.app.loading);
+	__app.console.log(__app.translation.textFeedback.index.app.loading);
 
 	if (await new Updater().init()) return;
 
@@ -62,10 +62,10 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		await mkdir(__app.userDataFolder, { recursive: true });
 	}
 
-	__app.console.debugLog(__app.dictionary.textFeedback.index.chrome.initializing);
+	__app.console.debugLog(__app.translation.textFeedback.index.chrome.initializing);
 	__app.set({ chromePage: await new ChromeInstance().init() });
 
-	__app.console.debugLog(__app.dictionary.textFeedback.chromeInstance.speechRecognition.starting);
+	__app.console.debugLog(__app.translation.textFeedback.chromeInstance.speechRecognition.starting);
 	__app.set({ speechRecognition: await new SpeechRecognitionEngine().init() });
 
 	__app.set({ speechSynthesis: await new SpeechSynthesisEngine().init() });
@@ -80,17 +80,17 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		}
 
 		voiceRecognitionEnabled = true;
-		__app.console.debugLog(textReplacer(__app.dictionary.textFeedback.index.keyPressed, voiceRecognitionEnabled));
+		__app.console.debugLog(textReplacer(__app.translation.textFeedback.index.keyPressed, voiceRecognitionEnabled));
 		__app.speechRecognition.start(outputPrefix);
 	}
 
 	function voiceRecognitionDisable() {
 		voiceRecognitionEnabled = false;
-		__app.console.debugLog(textReplacer(__app.dictionary.textFeedback.index.keyPressed, voiceRecognitionEnabled));
+		__app.console.debugLog(textReplacer(__app.translation.textFeedback.index.keyPressed, voiceRecognitionEnabled));
 		__app.speechRecognition.stop();
 	}
 
-	__app.console.debugLog(__app.dictionary.textFeedback.index.registering.ioHook);
+	__app.console.debugLog(__app.translation.textFeedback.index.registering.ioHook);
 	uioHookWrapper((event) => {
 		if (__app.config.others.showActiveButtons) {
 			const activeButtons = Object.entries(event.pressedKeys)
@@ -98,7 +98,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 				.map((btn) => btn[0]);
 
 			if (JSON.stringify(lastActiveButtons) !== JSON.stringify(activeButtons)) {
-				__app.console.debugLog(textReplacer(__app.dictionary.textFeedback.index.activeButtons, activeButtons));
+				__app.console.debugLog(textReplacer(__app.translation.textFeedback.index.activeButtons, activeButtons));
 				lastActiveButtons = activeButtons;
 			}
 		}
@@ -133,17 +133,17 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		}
 	});
 
-	__app.console.debugLog(__app.dictionary.textFeedback.index.registering.commands);
+	__app.console.debugLog(__app.translation.textFeedback.index.registering.commands);
 	await cmd.init(__app.speechSynthesis);
 
-	__app.console.logJson(__app.config.input.holdToActivate ? __app.dictionary.textFeedback.index.app.started.hold : __app.dictionary.textFeedback.index.app.started.toggle);
+	__app.console.logJson(__app.config.input.holdToActivate ? __app.translation.textFeedback.index.app.started.hold : __app.translation.textFeedback.index.app.started.toggle);
 
-	__app.console.log([__app.dictionary.textFeedback.index.creatorsCredits.wrapper, __app.dictionary.textFeedback.index.creatorsCredits.createdBy, __app.dictionary.textFeedback.index.creatorsCredits.ideaBy, __app.dictionary.textFeedback.index.creatorsCredits.wrapper].join('\n'));
+	__app.console.log([__app.translation.textFeedback.index.creatorsCredits.wrapper, __app.translation.textFeedback.index.creatorsCredits.createdBy, __app.translation.textFeedback.index.creatorsCredits.ideaBy, __app.translation.textFeedback.index.creatorsCredits.wrapper].join('\n'));
 
 	if (__app.config.commands.enabled) {
-		__app.console.logJson(textReplacer(__app.dictionary.textFeedback.index.commandsEnabled, __app.config.commands.prefix));
+		__app.console.logJson(textReplacer(__app.translation.textFeedback.index.commandsEnabled, __app.config.commands.prefix));
 	}
 
-	__app.console.log(__app.dictionary.speechFeedback.index.appStarted);
-	await __app.speechSynthesis.speak(__app.dictionary.speechFeedback.index.appStarted);
+	__app.console.log(__app.translation.speechFeedback.index.appStarted);
+	await __app.speechSynthesis.speak(__app.translation.speechFeedback.index.appStarted);
 }

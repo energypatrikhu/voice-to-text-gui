@@ -4,12 +4,12 @@ import { cmd } from '../command-handler.js';
 cmd.registerCommand(
 	async function (speechSynthesis) {
 		try {
-			await speechSynthesis.speak(__app.dictionary.speechFeedback.commands.exit.closingApp);
+			await speechSynthesis.speak(__app.translation.speechFeedback.commands.exit.closingApp);
 
 			process.exit();
 		} catch (error) {
 			__app.console.debugErrorLog(error);
 		}
 	},
-	['both', 'Alkalmazás bezárás', null, ['kilépés', 'bezárás', 'close', 'exit'], __app.dictionary.textFeedback.commands.exit.description],
+	['both', 'Alkalmazás bezárás', null, ['kilépés', 'bezárás', 'close', 'exit'], __app.translation.textFeedback.commands.exit.description],
 );

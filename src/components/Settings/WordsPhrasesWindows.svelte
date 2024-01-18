@@ -3,7 +3,7 @@
 	import Button from '$components/Modal/Button.svelte';
 	import Svg from '$components/Svg.svelte';
 	import EditItem from '$components/Settings/EditItem.svelte';
-	import { dict } from '$stores/dict';
+	import { translations } from '$stores/translation';
 
 	export let items: ConfigOptions['speechRecognition']['customWordsAndPhrases'] | ConfigOptions['windowAllowList']['windows'];
 	export let itemName: 'customWordsAndPhrases' | 'windows';
@@ -18,7 +18,7 @@
 <div class="w-full relative text-white flex flex-col gap-1">
 	{#if disabled}
 		<div class="absolute w-full h-full z-10 flex flex-col justify-center items-center text-3xl">
-			<span>{$dict.states.disabled}</span>
+			<span>{$translations.states.disabled}</span>
 			<span class="text-xl text-neutral-300">{disabledText ?? ''}</span>
 		</div>
 	{/if}
@@ -27,9 +27,9 @@
 			<thead>
 				<tr>
 					{#if itemName === 'customWordsAndPhrases'}
-						<th>{$dict.settings.speechRecognition.customWordsAndPhrases.table.title}</th>
+						<th>{$translations.settings.speechRecognition.customWordsAndPhrases.table.title}</th>
 					{:else}
-						<th>{$dict.settings.windowAllowList.windows.table.title}</th>
+						<th>{$translations.settings.windowAllowList.windows.table.title}</th>
 					{/if}
 				</tr>
 			</thead>
@@ -82,9 +82,9 @@
 			}}"
 		>
 			{#if itemName === 'customWordsAndPhrases'}
-				{$dict.settings.speechRecognition.customWordsAndPhrases.table.button}
+				{$translations.settings.speechRecognition.customWordsAndPhrases.table.button}
 			{:else}
-				{$dict.settings.windowAllowList.windows.table.button}
+				{$translations.settings.windowAllowList.windows.table.button}
 			{/if}
 		</Button>
 	</div>
@@ -92,9 +92,9 @@
 
 {#if actionMode !== 'none'}
 	<EditItem
-		bind:actionMode="{actionMode}"
-		bind:itemName="{itemName}"
-		bind:indexOfShortcutToModify="{indexOfShortcutToModify}"
+		bind:actionMode
+		bind:itemName
+		bind:indexOfShortcutToModify
 	/>
 {/if}
 

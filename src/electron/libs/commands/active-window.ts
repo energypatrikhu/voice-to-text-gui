@@ -7,8 +7,8 @@ cmd.registerCommand(
 	async function (speechSynthesis) {
 		let activeWindow = await getActiveWindowName();
 
-		__app.console.log(textReplacer(__app.dictionary.textFeedback.commands.activeWindow.activeWindow, activeWindow));
-		speechSynthesis.speak(textReplacer(__app.dictionary.speechFeedback.commands.activeWindow.activeWindow, activeWindow));
+		__app.console.log(textReplacer(__app.translation.textFeedback.commands.activeWindow.activeWindow, activeWindow));
+		speechSynthesis.speak(textReplacer(__app.translation.speechFeedback.commands.activeWindow.activeWindow, activeWindow));
 	},
-	['both', 'Aktív Ablak', null, 'aktívablak', __app.dictionary.textFeedback.commands.activeWindow.description],
+	['both', 'Aktív Ablak', null, 'aktívablak', __app.translation.textFeedback.commands.activeWindow.description],
 );

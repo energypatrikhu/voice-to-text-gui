@@ -9,15 +9,15 @@ cmd.registerCommand(
 			saveConfig(__app.config);
 
 			if (__app.config.others.mtaConsoleInputMode) {
-				__app.console.log(__app.dictionary.textFeedback.commands.mtaMode.mtaConsoleInputMode.enabled);
-				speechSynthesis.speak(__app.dictionary.speechFeedback.commands.mtaMode.mtaConsoleInputMode.enabled);
+				__app.console.log(__app.translation.textFeedback.commands.mtaMode.mtaConsoleInputMode.enabled);
+				speechSynthesis.speak(__app.translation.speechFeedback.commands.mtaMode.mtaConsoleInputMode.enabled);
 			} else {
-				__app.console.log(__app.dictionary.textFeedback.commands.mtaMode.mtaConsoleInputMode.disabled);
-				speechSynthesis.speak(__app.dictionary.speechFeedback.commands.mtaMode.mtaConsoleInputMode.disabled);
+				__app.console.log(__app.translation.textFeedback.commands.mtaMode.mtaConsoleInputMode.disabled);
+				speechSynthesis.speak(__app.translation.speechFeedback.commands.mtaMode.mtaConsoleInputMode.disabled);
 			}
 		} catch (error) {
 			__app.console.debugErrorLog(error);
 		}
 	},
-	['both', 'MTA:SA Mód', null, 'mtamód', __app.dictionary.textFeedback.commands.mtaMode.description],
+	['both', 'MTA:SA Mód', null, 'mtamód', __app.translation.textFeedback.commands.mtaMode.description],
 );
