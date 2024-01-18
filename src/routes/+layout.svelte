@@ -72,6 +72,11 @@
 				}
 				break;
 			}
+
+			case 'loaded': {
+				$app.ready = true;
+				break;
+			}
 		}
 	});
 

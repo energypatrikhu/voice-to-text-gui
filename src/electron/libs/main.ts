@@ -146,4 +146,6 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 
 	__app.console.log(__app.translations.speechFeedback.index.appStarted);
 	await __app.speechSynthesis.speak(__app.translations.speechFeedback.index.appStarted);
+
+	mainWindow.webContents.send('electron', { event: 'loaded', data: null });
 }
