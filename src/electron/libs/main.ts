@@ -16,7 +16,7 @@ import { SettingsUpdate } from './send-settings-update.js';
 import { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import { textReplacer } from './text-replacer.js';
-import { loadTranslation } from './translation.js';
+import { loadTranslation } from './translations.js';
 import { uioHookWrapper } from './uio-hook-wrapper.js';
 import { Updater } from './updater.js';
 
@@ -43,18 +43,18 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 
 	__app.set({
 		console: await new Console().init(),
-		translation: await loadTranslation(),
+		translations: await loadTranslation(),
 		settingsUpdate: new SettingsUpdate(),
 	});
 
-	mainWindow.webContents.send('electron', { event: 'ready', data: _.pick(__app, ['versions', 'config', 'macros', 'translation']) });
+	mainWindow.webContents.send('electron', { event: 'ready', data: _.pick(__app, ['versions', 'config', 'macros', 'translations']) });
 
 	if (isDev) {
-		__app.console.log(__app.translation.speechFeedback.index.appStarted);
+		__app.console.log(__app.translations.speechFeedback.index.appStarted);
 		return;
 	}
 
-	__app.console.log(__app.translation.textFeedback.index.app.loading);
+	__app.console.log(__app.translations.textFeedback.index.app.loading);
 
 	if (await new Updater().init()) return;
 
@@ -62,10 +62,10 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		await mkdir(__app.userDataFolder, { recursive: true });
 	}
 
-	__app.console.debugLog(__app.translation.textFeedback.index.chrome.initializing);
+	__app.console.debugLog(__app.translations.textFeedback.index.chrome.initializing);
 	__app.set({ chromePage: await new ChromeInstance().init() });
 
-	__app.console.debugLog(__app.translation.textFeedback.chromeInstance.speechRecognition.starting);
+	__app.console.debugLog(__app.translations.textFeedback.chromeInstance.speechRecognition.starting);
 	__app.set({ speechRecognition: await new SpeechRecognitionEngine().init() });
 
 	__app.set({ speechSynthesis: await new SpeechSynthesisEngine().init() });
@@ -80,17 +80,17 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		}
 
 		voiceRecognitionEnabled = true;
-		__app.console.debugLog(textReplacer(__app.translation.textFeedback.index.keyPressed, voiceRecognitionEnabled));
+		__app.console.debugLog(textReplacer(__app.translations.textFeedback.index.keyPressed, voiceRecognitionEnabled));
 		__app.speechRecognition.start(outputPrefix);
 	}
 
 	function voiceRecognitionDisable() {
 		voiceRecognitionEnabled = false;
-		__app.console.debugLog(textReplacer(__app.translation.textFeedback.index.keyPressed, voiceRecognitionEnabled));
+		__app.console.debugLog(textReplacer(__app.translations.textFeedback.index.keyPressed, voiceRecognitionEnabled));
 		__app.speechRecognition.stop();
 	}
 
-	__app.console.debugLog(__app.translation.textFeedback.index.registering.ioHook);
+	__app.console.debugLog(__app.translations.textFeedback.index.registering.ioHook);
 	uioHookWrapper((event) => {
 		if (__app.config.others.showActiveButtons) {
 			const activeButtons = Object.entries(event.pressedKeys)
@@ -98,7 +98,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 				.map((btn) => btn[0]);
 
 			if (JSON.stringify(lastActiveButtons) !== JSON.stringify(activeButtons)) {
-				__app.console.debugLog(textReplacer(__app.translation.textFeedback.index.activeButtons, activeButtons));
+				__app.console.debugLog(textReplacer(__app.translations.textFeedback.index.activeButtons, activeButtons));
 				lastActiveButtons = activeButtons;
 			}
 		}
@@ -133,17 +133,17 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		}
 	});
 
-	__app.console.debugLog(__app.translation.textFeedback.index.registering.commands);
+	__app.console.debugLog(__app.translations.textFeedback.index.registering.commands);
 	await cmd.init(__app.speechSynthesis);
 
-	__app.console.logJson(__app.config.input.holdToActivate ? __app.translation.textFeedback.index.app.started.hold : __app.translation.textFeedback.index.app.started.toggle);
+	__app.console.logJson(__app.config.input.holdToActivate ? __app.translations.textFeedback.index.app.started.hold : __app.translations.textFeedback.index.app.started.toggle);
 
-	__app.console.log([__app.translation.textFeedback.index.creatorsCredits.wrapper, __app.translation.textFeedback.index.creatorsCredits.createdBy, __app.translation.textFeedback.index.creatorsCredits.ideaBy, __app.translation.textFeedback.index.creatorsCredits.wrapper].join('\n'));
+	__app.console.log([__app.translations.textFeedback.index.creatorsCredits.wrapper, __app.translations.textFeedback.index.creatorsCredits.createdBy, __app.translations.textFeedback.index.creatorsCredits.ideaBy, __app.translations.textFeedback.index.creatorsCredits.wrapper].join('\n'));
 
 	if (__app.config.commands.enabled) {
-		__app.console.logJson(textReplacer(__app.translation.textFeedback.index.commandsEnabled, __app.config.commands.prefix));
+		__app.console.logJson(textReplacer(__app.translations.textFeedback.index.commandsEnabled, __app.config.commands.prefix));
 	}
 
-	__app.console.log(__app.translation.speechFeedback.index.appStarted);
-	await __app.speechSynthesis.speak(__app.translation.speechFeedback.index.appStarted);
+	__app.console.log(__app.translations.speechFeedback.index.appStarted);
+	await __app.speechSynthesis.speak(__app.translations.speechFeedback.index.appStarted);
 }

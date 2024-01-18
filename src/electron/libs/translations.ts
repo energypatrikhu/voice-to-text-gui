@@ -4,9 +4,9 @@ import { join, resolve } from 'path';
 
 import { __app } from './app.js';
 
-import type { Translation } from '../../types/Translation.js';
+import type { Translations } from '../../types/Translations.js';
 
-export async function loadTranslation(): Promise<Translation> {
+export async function loadTranslation(): Promise<Translations> {
 	const translationPath = resolve(join(__app.isDev ? './resources/extraResources' : './resources', 'translationsionaries'));
 
 	if (existsSync(join(translationPath, `/${__app.config.feedback.language}.json`))) {

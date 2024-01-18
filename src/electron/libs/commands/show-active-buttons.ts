@@ -8,12 +8,12 @@ cmd.registerCommand(
 		saveConfig(__app.config);
 
 		if (__app.config.others.showActiveButtons) {
-			__app.console.log(__app.translation.textFeedback.commands.showActiveButtons.showActiveButtons.enabled);
-			speechSynthesis.speak(__app.translation.speechFeedback.commands.showActiveButtons.showActiveButtons.enabled);
+			__app.console.log(__app.translations.textFeedback.commands.showActiveButtons.showActiveButtons.enabled);
+			speechSynthesis.speak(__app.translations.speechFeedback.commands.showActiveButtons.showActiveButtons.enabled);
 		} else {
-			__app.console.log(__app.translation.textFeedback.commands.showActiveButtons.showActiveButtons.disabled);
-			speechSynthesis.speak(__app.translation.speechFeedback.commands.showActiveButtons.showActiveButtons.disabled);
+			__app.console.log(__app.translations.textFeedback.commands.showActiveButtons.showActiveButtons.disabled);
+			speechSynthesis.speak(__app.translations.speechFeedback.commands.showActiveButtons.showActiveButtons.disabled);
 		}
 	},
-	['both', 'Aktív Gombok', null, ['aktívgombok', 'activebuttons'], __app.translation.textFeedback.commands.showActiveButtons.description],
+	['both', 'Aktív Gombok', null, ['aktívgombok', 'activebuttons'], __app.translations.textFeedback.commands.showActiveButtons.description],
 );

@@ -1,4 +1,4 @@
-export interface Translation {
+export interface Translations {
 	speechFeedback: SpeechFeedback;
 	textFeedback: TextFeedback;
 	states: States;
@@ -392,9 +392,9 @@ export interface FluffyUpdateApp {
 }
 
 export interface TextFeedbackConfig {
-	macro: Translation;
+	macro: Translations;
 	config: ConfigConfig;
-	translation: Translation;
+	translations: Translations;
 }
 
 export interface ConfigConfig {
@@ -410,7 +410,7 @@ export interface Error {
 	commandsPartial: string;
 }
 
-export interface Translation {
+export interface Translations {
 	loaded: string;
 }
 

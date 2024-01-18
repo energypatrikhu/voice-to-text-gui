@@ -1,7 +1,7 @@
 import type { ConfigOptions } from '../../types/ConfigOptions.js';
 import type { Macro } from '../../types/Macro.js';
 import type { Versions } from '../../types/electron/Versions.js';
-import type { Translation } from '../../types/Translation.js';
+import type { Translations } from '../../types/Translations.js';
 import type { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import type { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import type { Page } from 'puppeteer-core';
@@ -19,7 +19,7 @@ export class App {
 	config!: ConfigOptions;
 	macros!: Array<Macro>;
 	versions!: Versions;
-	translation!: Translation;
+	translations!: Translations;
 	chromePage!: Page;
 
 	speechRecognition!: SpeechRecognitionEngine;

@@ -95,7 +95,7 @@
 					"commandsPartial": "Konfigurációs hiba! A „commands.enabled” nem lehet „true”, míg az „output.partial” értéke „igaz”!"
 				}
 			},
-			"translation": {
+			"translations": {
 				"loaded": "Szótár betöltve!"
 			}
 		},

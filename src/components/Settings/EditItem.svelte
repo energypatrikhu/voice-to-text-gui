@@ -3,7 +3,7 @@
 	import Button from '$components/Modal/Button.svelte';
 	import { config } from '$stores/config';
 	import Input from '$components/Modal/Input.svelte';
-	import { translations } from '$stores/translation';
+	import { translations } from '$stores/translations';
 
 	export let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none';
 	export let itemName: 'customWordsAndPhrases' | 'windows';

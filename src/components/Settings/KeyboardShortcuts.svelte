@@ -3,7 +3,7 @@
 	import Button from '$components/Modal/Button.svelte';
 	import Svg from '$components/Svg.svelte';
 	import EditShortcut from '$components/Settings/EditShortcut.svelte';
-	import { translations } from '$stores/translation';
+	import { translations } from '$stores/translations';
 
 	export let keyboardShortcuts: ConfigOptions['input']['keyboardShortcuts'];
 
