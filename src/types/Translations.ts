@@ -455,6 +455,7 @@ export interface Registering {
 export interface FluffyUpdater {
 	starting: string;
 	updateAvailable: string;
+	updateDownloading: string;
 }
 
 export interface SoundWrapper {

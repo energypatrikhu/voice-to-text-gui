@@ -2,11 +2,16 @@ import { app } from 'electron';
 import { autoUpdater } from 'electron-updater';
 
 import { __app } from './app.js';
+import { textReplacer } from './text-replacer.js';
 
 export class Updater {
 	constructor() {
 		autoUpdater.allowPrerelease = __app.config.update.allowPrerelease;
 		autoUpdater.allowDowngrade = __app.config.update.allowDowngrade;
+
+		autoUpdater.on('download-progress', function (progObj) {
+			__app.console.log(textReplacer(__app.translations.textFeedback.index.updater.updateDownloading, progObj.bytesPerSecond, progObj.percent, progObj.transferred, progObj.total));
+		});
 
 		autoUpdater.on('update-downloaded', async function () {
 			if (!__app.updateReason) {

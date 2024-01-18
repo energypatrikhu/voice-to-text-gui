@@ -61,7 +61,8 @@
 			},
 			"updater": {
 				"starting": "Automatikus frissítés-ellenőrző indítása...",
-				"updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!"
+				"updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!",
+				"updateDownloading": "Letöltési sebesség: {0} - Letöltve {1}% ({2}/{3})"
 			},
 			"registering": {
 				"ioHook": "Io hook regisztrálása...",

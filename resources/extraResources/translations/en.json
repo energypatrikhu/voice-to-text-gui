@@ -61,7 +61,8 @@
 			},
 			"updater": {
 				"starting": "Starting auto update checker...",
-				"updateAvailable": "There is an update available! Please restart the application to start the update!"
+				"updateAvailable": "There is an update available! Please restart the application to start the update!",
+				"updateDownloading": "Download speed: {0} - Downloaded {1}% ({2}/{3})"
 			},
 			"registering": {
 				"ioHook": "Registering io hook...",
