@@ -91,7 +91,7 @@ class CommandHandler {
 		}
 
 		this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
-		__app.console.debugLog(__app.translations.textFeedback.commandHandler.unknownMacro);
+		__app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
 	}
 
 	private async callCommand(command: string, availability: Command$Availability, ...args: any[]) {
@@ -128,7 +128,7 @@ class CommandHandler {
 		}
 
 		this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownCommand);
-		__app.console.debugLog(__app.translations.textFeedback.commandHandler.unknownCommand);
+		__app.console.log(__app.translations.textFeedback.commandHandler.unknownCommand);
 	}
 
 	async textCommandHandler(command: string, ...args: any[]) {
