@@ -49,7 +49,6 @@ class CommandHandler {
 		this.speechSynthesis = speechSynthesis;
 
 		await this.initCommands();
-		this.initTextCommandHandler();
 	}
 
 	private async initCommands() {
@@ -132,17 +131,15 @@ class CommandHandler {
 		__app.console.debugLog(__app.dictionary.textFeedback.commandHandler.unknownCommand);
 	}
 
-	private initTextCommandHandler() {
-		this.consoleInterface.on('line', async (command) => {
-			if (!command || command === undefined || command === null || command === '') {
-				return;
-			}
-			if (!command.startsWith(__app.config.commands.prefix)) {
-				return;
-			}
+	async textCommandHandler(command: string, ...args: any[]) {
+		if (!command || command === undefined || command === null || command === '') {
+			return;
+		}
+		// if (!command.startsWith(__app.config.commands.prefix)) {
+		// 	return;
+		// }
 
-			await this.callCommand(command, 'text');
-		});
+		await this.callCommand(command, 'text', ...args);
 	}
 
 	async voiceCommandHandler(command: string, ...args: any[]) {

@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { basename } from 'path';
 
 import { __app } from './app.js';
+import { cmd } from './command-handler.js';
 import { loadDictionary } from './dictionary.js';
 import { saveJson } from './json-storage.js';
 import { main } from './main.js';
@@ -95,6 +96,11 @@ export class EventRouter {
 							volume: __app.config.feedback.sounds.volume,
 						},
 					});
+					break;
+				}
+
+				case 'textInput': {
+					cmd.textCommandHandler(__app.config.commands.prefix + data);
 					break;
 				}
 			}
