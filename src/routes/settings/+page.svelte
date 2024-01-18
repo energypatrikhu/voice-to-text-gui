@@ -521,6 +521,7 @@
 					<Select
 						slot="content"
 						bind:value="{$config.others.mtaConsoleInputMode}"
+						disabled="{!$config.replacers.gameChatPrefixes}"
 					>
 						<Option value="{true}">{$dict.states.enable}</Option>
 						<Option value="{false}">{$dict.states.disable}</Option>
