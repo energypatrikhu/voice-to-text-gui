@@ -36,7 +36,7 @@
 		"electron-context-menu": "latest",
 		"electron-reloader": "latest",
 		"electron-serve": "latest",
-		"electron-updater": "latest",
+		"electron-updater": "^6.1.7",
 		"electron-window-state": "latest",
 		"highlight.js": "latest",
 		"keysender": "latest",
