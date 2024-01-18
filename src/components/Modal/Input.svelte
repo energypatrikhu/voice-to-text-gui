@@ -15,6 +15,7 @@
 	export let textPos: 'before' | 'after' = 'after';
 	export let textClass = '';
 	export let labelClass = '';
+	export let autofocus: boolean = false;
 	export { _class as class };
 
 	export let onChanged: ((value: any) => void) | undefined = undefined;
@@ -36,12 +37,13 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="text"
-			placeholder="{placeholder}"
-			bind:value="{value}"
+			{placeholder}
+			bind:value
 		/>
 	{:else if type === 'checkbox'}
 		<input
@@ -49,11 +51,12 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="checkbox"
-			bind:checked="{checked}"
+			bind:checked
 		/>
 	{:else if type === 'color'}
 		<input
@@ -61,11 +64,12 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="color"
-			bind:value="{value}"
+			bind:value
 		/>
 	{:else if type === 'date'}
 		<input
@@ -73,11 +77,12 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="date"
-			bind:value="{value}"
+			bind:value
 		/>
 	{:else if type === 'datetime'}
 		<input
@@ -85,11 +90,12 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="datetime"
-			bind:value="{value}"
+			bind:value
 		/>
 	{:else if type === 'datetime-local'}
 		<input
@@ -97,11 +103,12 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="datetime-local"
-			bind:value="{value}"
+			bind:value
 		/>
 	{:else if type === 'email'}
 		<input
@@ -109,12 +116,13 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="email"
-			placeholder="{placeholder}"
-			bind:value="{value}"
+			{placeholder}
+			bind:value
 		/>
 	{:else if type === 'file'}
 		<input
@@ -122,13 +130,14 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="file"
-			bind:files="{files}"
-			multiple="{multiple}"
-			bind:value="{value}"
+			bind:files
+			{multiple}
+			bind:value
 		/>
 	{:else if type === 'search'}
 		<input
@@ -136,12 +145,13 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="search"
-			placeholder="{placeholder}"
-			bind:value="{value}"
+			{placeholder}
+			bind:value
 		/>
 	{:else if type === 'image'}
 		<input
@@ -149,13 +159,14 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="image"
-			bind:value="{value}"
-			alt="{alt}"
-			multiple="{multiple}"
+			bind:value
+			{alt}
+			{multiple}
 		/>
 	{:else if type === 'number'}
 		<input
@@ -163,12 +174,13 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="number"
-			placeholder="{placeholder}"
-			bind:value="{value}"
+			{placeholder}
+			bind:value
 		/>
 	{:else if type === 'password'}
 		<input
@@ -176,12 +188,13 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="password"
-			placeholder="{placeholder}"
-			bind:value="{value}"
+			{placeholder}
+			bind:value
 		/>
 	{:else if type === 'radio'}
 		<input
@@ -189,11 +202,12 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="radio"
-			bind:value="{value}"
+			bind:value
 		/>
 	{:else}
 		<input
@@ -201,12 +215,13 @@
 			on:input
 			on:focus
 			class="input-cmn {disabled ? 'input-cmn-disabled' : ''} {_class}"
-			name="{name}"
-			required="{required}"
-			disabled="{disabled}"
+			{name}
+			{required}
+			{disabled}
+			{autofocus}
 			type="text"
-			placeholder="{placeholder}"
-			bind:value="{value}"
+			{placeholder}
+			bind:value
 		/>
 	{/if}
 	{#if text !== '' && textPos === 'after'}<span class="w-full flex justify-start ml-1 {textClass}">

@@ -23,7 +23,7 @@
 
 <div
 	bind:this="{consoleWrapper}"
-	class="fixed overflow-hidden overflow-y-scroll w-full h-[inherit] flex flex-col"
+	class="fixed overflow-hidden overflow-y-scroll w-full h-[calc(100%-48px-36px)] flex flex-col"
 >
 	{#each $eConsole as { type, severity, timestamp, lang, textArray }}
 		<div class="w-full border-t border-t-neutral-600">
