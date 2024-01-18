@@ -8,7 +8,6 @@
 		"types": ["vite/client", "node", "@types/dom-speech-recognition"],
 		"typeRoots": ["node_modules/@types"],
 		"lib": ["ESNext", "DOM"],
-		"importsNotUsedAsValues": "error",
 		"isolatedModules": true,
 		"sourceMap": true,
 		"esModuleInterop": true,
