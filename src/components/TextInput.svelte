@@ -2,6 +2,7 @@
 	import Input from '$components/Modal/Input.svelte';
 	import Button from '$components/Modal/Button.svelte';
 	import { debugLog } from '$libs/functions/debugLog';
+	import { translations } from '../stores/translation';
 
 	let textInput = '';
 
@@ -23,7 +24,7 @@
 		bind:value="{textInput}"
 		autofocus="{true}"
 		class="bottom-0 w-full"
-		placeholder="Command (Without Prefix)"
+		placeholder="{$translations.console.input.placeholder}"
 	/>
-	<Button>Küldés</Button>
+	<Button>{$translations.console.input.submit}</Button>
 </form>

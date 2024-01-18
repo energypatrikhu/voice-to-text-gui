@@ -32,6 +32,7 @@
 			{text}
 		</span>{/if}
 	{#if type === 'text'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -46,6 +47,7 @@
 			bind:value
 		/>
 	{:else if type === 'checkbox'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -59,6 +61,7 @@
 			bind:checked
 		/>
 	{:else if type === 'color'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -72,6 +75,7 @@
 			bind:value
 		/>
 	{:else if type === 'date'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -85,6 +89,7 @@
 			bind:value
 		/>
 	{:else if type === 'datetime'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -98,6 +103,7 @@
 			bind:value
 		/>
 	{:else if type === 'datetime-local'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -111,6 +117,7 @@
 			bind:value
 		/>
 	{:else if type === 'email'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -125,6 +132,7 @@
 			bind:value
 		/>
 	{:else if type === 'file'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -140,6 +148,7 @@
 			bind:value
 		/>
 	{:else if type === 'search'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -154,6 +163,7 @@
 			bind:value
 		/>
 	{:else if type === 'image'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -169,6 +179,7 @@
 			{multiple}
 		/>
 	{:else if type === 'number'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -183,6 +194,7 @@
 			bind:value
 		/>
 	{:else if type === 'password'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -197,6 +209,7 @@
 			bind:value
 		/>
 	{:else if type === 'radio'}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input
@@ -210,6 +223,7 @@
 			bind:value
 		/>
 	{:else}
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			on:change="{selectChanged}"
 			on:input

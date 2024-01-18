@@ -5,6 +5,7 @@ export interface Translation {
 	time: Time;
 	buttons: EnButtons;
 	navigation: Navigation;
+	console: Console;
 	settings: Settings;
 }
 
@@ -41,6 +42,15 @@ export interface Navigation {
 	settings: string;
 	macros: string;
 	info: string;
+}
+
+export interface Console {
+	input: ConsoleInput;
+}
+
+export interface ConsoleInput {
+	placeholder: string;
+	submit: string;
 }
 
 export interface Settings {

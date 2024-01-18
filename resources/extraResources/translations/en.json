@@ -258,6 +258,13 @@
 		"info": "Info"
 	},
 
+	"console": {
+		"input": {
+			"placeholder": "Command input (without prefix)",
+			"submit": "Send"
+		}
+	},
+
 	"settings": {
 		"logs": {
 			"this": {

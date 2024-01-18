@@ -258,6 +258,13 @@
 		"info": "Infó"
 	},
 
+	"console": {
+		"input": {
+			"placeholder": "Parancs bemenet (előtag nélkül)",
+			"submit": "Küldés"
+		}
+	},
+
 	"settings": {
 		"logs": {
 			"this": {
