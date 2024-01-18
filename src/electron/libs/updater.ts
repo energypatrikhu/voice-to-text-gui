@@ -1,8 +1,8 @@
 import { app } from 'electron';
 import { autoUpdater } from 'electron-updater';
-import prettyBytes from 'pretty-bytes';
 
 import { __app } from './app.js';
+import { convertFileSize } from './convert-file-size.js';
 import { textReplacer } from './text-replacer.js';
 
 export class Updater {
@@ -11,7 +11,7 @@ export class Updater {
 		autoUpdater.allowDowngrade = __app.config.update.allowDowngrade;
 
 		autoUpdater.on('download-progress', function (progObj) {
-			__app.console.log(textReplacer(__app.translations.textFeedback.index.updater.updateDownloading, prettyBytes(progObj.bytesPerSecond), progObj.percent.toFixed(1), progObj.transferred, progObj.total));
+			__app.console.log(textReplacer(__app.translations.textFeedback.index.updater.updateDownloading, convertFileSize({ bytes: progObj.bytesPerSecond }), progObj.percent.toFixed(1), progObj.transferred, progObj.total));
 		});
 
 		autoUpdater.on('update-downloaded', async function () {
