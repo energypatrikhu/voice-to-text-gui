@@ -40,7 +40,6 @@
 		"keysender": "^2.3.0",
 		"lodash": "^4.17.21",
 		"moment": "^2.30.1",
-		"pretty-bytes": "^6.1.1",
 		"puppeteer-core": "^21.7.0",
 		"uiohook-napi": "^1.5.3"
 	},
@@ -52,7 +51,6 @@
 		"@types/dom-speech-recognition": "^0.0.4",
 		"@types/lodash": "^4.14.202",
 		"@types/node": "^20.11.5",
-		"@types/pretty-bytes": "^5.2.0",
 		"autoprefixer": "^10.4.17",
 		"concurrently": "^8.2.2",
 		"cross-env-file": "^1.0.0",
