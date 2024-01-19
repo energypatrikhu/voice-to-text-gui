@@ -19,5 +19,5 @@ cmd.registerCommand(
 			__app.console.debugErrorLog(error);
 		}
 	},
-	['both', 'MTA:SA Mód', null, 'mtamód', __app.translations.textFeedback.commands.mtaMode.description],
+	['both', 'MTA:SA Mód', null, ['mtamód', 'mtamode'], __app.translations.textFeedback.commands.mtaMode.description],
 );
