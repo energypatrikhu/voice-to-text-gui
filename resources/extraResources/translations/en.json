@@ -128,7 +128,7 @@
 
 		"commands": {
 			"updateApp": {
-				"description": "Check for an update to the app.",
+				"description": "Check for app update.",
 				"checkingUpdate": "Checking for update...",
 				"noUpdateAvailabe": "No update available.",
 				"updateAvailabe": "Update available! Please wait, downloading update..."
