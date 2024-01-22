@@ -5,8 +5,8 @@ node_modules
 dist
 build
 package
-logs
 chrome
+logs
 local
 
 .env
