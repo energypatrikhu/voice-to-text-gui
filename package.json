@@ -1,6 +1,6 @@
 {
 	"name": "voice-to-text",
-	"version": "0.9.10-2",
+	"version": "0.9.10",
 	"private": true,
 	"description": "Voice To Text",
 	"main": "resources/app/electron.cjs",
