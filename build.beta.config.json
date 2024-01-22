@@ -1,6 +1,6 @@
 {
-	"appId": "com.energypatrikhu.voice-to-text-beta",
-	"productName": "Voice To Text Beta",
+	"appId": "com.energypatrikhu.voice-to-text",
+	"productName": "Voice To Text",
 	"compression": "maximum",
 	"publish": {
 		"provider": "github",
