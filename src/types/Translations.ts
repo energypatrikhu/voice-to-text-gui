@@ -6,6 +6,7 @@ export interface Translations {
 	buttons: EnButtons;
 	navigation: Navigation;
 	console: Console;
+	firstStart: FirstStart;
 	settings: Settings;
 }
 
@@ -51,6 +52,23 @@ export interface Console {
 export interface ConsoleInput {
 	placeholder: string;
 	submit: string;
+}
+
+export interface FirstStart {
+	global: FirstStartGlobal;
+	chrome: FirstStartChrome;
+}
+
+export interface FirstStartGlobal {
+	run: string;
+	done: string;
+	skip: string;
+}
+
+export interface FirstStartChrome {
+	run: string;
+	done: string;
+	fail: string;
 }
 
 export interface Settings {
