@@ -266,6 +266,19 @@
 		}
 	},
 
+	"firstStart": {
+		"global": {
+			"run": "Running first start scripts...",
+			"done": "First start scripts completed!",
+			"skip": "Skipping first start scripts!"
+		},
+		"chrome": {
+			"run": "Uncompressing chrome files...",
+			"done": "Chrome files was uncompressed successfully!",
+			"fail": "Failed to uncompress chrome files!"
+		}
+	},
+
 	"settings": {
 		"logs": {
 			"this": {

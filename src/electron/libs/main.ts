@@ -64,11 +64,11 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 	}
 
 	if (__app.config.update.firstStart) {
-		__app.console.log('**running first start scripts**');
+		__app.console.debugLog(__app.translations.firstStart.global.run);
 		await firstStart();
-		__app.console.log('**first start scripts completed**');
+		__app.console.debugLog(__app.translations.firstStart.global.done);
 	} else {
-		__app.console.log('**skipping first start scripts**');
+		__app.console.debugLog(__app.translations.firstStart.global.skip);
 	}
 
 	__app.console.debugLog(__app.translations.textFeedback.index.chrome.initializing);
