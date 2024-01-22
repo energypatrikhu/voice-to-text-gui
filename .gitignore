@@ -6,7 +6,6 @@ dist
 build
 package
 logs
-chrome
 local
 
 .env
