@@ -1,8 +1,10 @@
 import { existsSync } from 'fs';
-import { fullArchive } from 'node-7z-archive';
 import { resolve } from 'path';
 
 import { __app } from './app.js';
+
+// import { fullArchive } from 'node-7z-archive';
+const { fullArchive } = require('node-7z-archive');
 
 async function uncompress7zChrome() {
 	const chrome7zPath = resolve('./resources/chrome.7z');
