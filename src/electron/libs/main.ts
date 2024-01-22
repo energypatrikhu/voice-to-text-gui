@@ -9,6 +9,7 @@ import { ChromeInstance } from './chrome-instance.js';
 import { cmd } from './command-handler.js';
 import { loadConfig } from './config.js';
 import { Console } from './console.js';
+import { firstStart } from './first-start.js';
 import { getActiveWindowName } from './get-active-window-name.js';
 import { keyboardShortcutMapper } from './keyboard-shortcut-mapper.js';
 import { loadMacros } from './macros.js';
@@ -62,10 +63,18 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		await mkdir(__app.userDataFolder, { recursive: true });
 	}
 
+	if (__app.config.update.firstStart) {
+		__app.console.log('**running first start scripts**');
+		await firstStart();
+		__app.console.log('**first start scripts completed**');
+	} else {
+		__app.console.log('**skipping first start scripts**');
+	}
+
 	__app.console.debugLog(__app.translations.textFeedback.index.chrome.initializing);
 	__app.set({ chromePage: await new ChromeInstance().init() });
 
-	__app.console.debugLog(__app.translations.textFeedback.chromeInstance.speechRecognition.starting);
+	__app.console.log(__app.translations.textFeedback.chromeInstance.speechRecognition.starting);
 	__app.set({ speechRecognition: await new SpeechRecognitionEngine().init() });
 
 	__app.set({ speechSynthesis: await new SpeechSynthesisEngine().init() });
