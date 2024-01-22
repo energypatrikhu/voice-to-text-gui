@@ -40,6 +40,7 @@
 		"keysender": "^2.3.0",
 		"lodash": "^4.17.21",
 		"moment": "^2.30.1",
+		"node-7z-archive": "^1.1.7",
 		"puppeteer-core": "^21.7.0",
 		"uiohook-napi": "^1.5.3"
 	},
