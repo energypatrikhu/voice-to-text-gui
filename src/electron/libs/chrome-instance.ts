@@ -18,6 +18,7 @@ class ChromeInstance {
 			return page;
 		} catch (error: any) {
 			__app.console.debugErrorLog(error.message ?? error);
+			throw error;
 		}
 	}
 }
