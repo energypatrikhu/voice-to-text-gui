@@ -5,16 +5,20 @@ import { __app } from './app.js';
 
 class ChromeInstance {
 	async init() {
-		const chromeInstance = await launch({
-			headless: 'new',
-			executablePath: resolve(join(__app.isDev ? './resources/extraResources' : './resources', 'chrome/chrome.exe')),
-		});
+		try {
+			const chromeInstance = await launch({
+				headless: 'new',
+				executablePath: resolve(join(__app.isDev ? './resources/extraResources' : './resources', 'chrome/chrome.exe')),
+			});
 
-		const page = (await chromeInstance.pages())[0];
+			const page = (await chromeInstance.pages())[0];
 
-		await page.goto('chrome://version//');
+			await page.goto('chrome://version');
 
-		return page;
+			return page;
+		} catch (error: any) {
+			__app.console.debugErrorLog(error.message ?? error);
+		}
 	}
 }
 
