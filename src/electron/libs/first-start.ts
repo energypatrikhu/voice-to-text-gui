@@ -11,6 +11,8 @@ async function uncompressChrome() {
 
 		if (!existsSync(chromeZipPath)) return;
 
+		__app.console.log(__app.translations.firstStart.chrome.run);
+
 		const chromeZipOutputPath = resolve('./resources');
 
 		const zip = new AdmZip(chromeZipPath);
@@ -18,7 +20,9 @@ async function uncompressChrome() {
 		zip.extractAllTo(chromeZipOutputPath);
 
 		await rm(chromeZipPath, { force: true, recursive: true });
+		__app.console.log(__app.translations.firstStart.chrome.done);
 	} catch (error: any) {
+		__app.console.errorLog(__app.translations.firstStart.chrome.fail);
 		__app.console.debugErrorLog(error.message ?? error);
 		throw error;
 	}
