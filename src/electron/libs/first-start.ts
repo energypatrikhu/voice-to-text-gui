@@ -4,6 +4,7 @@ import { rm } from 'fs/promises';
 import { resolve } from 'path';
 
 import { __app } from './app.js';
+import { saveConfig } from './config.js';
 
 async function uncompressChrome() {
 	try {
@@ -20,6 +21,7 @@ async function uncompressChrome() {
 		zip.extractAllTo(chromeZipOutputPath);
 
 		await rm(chromeZipPath, { force: true, recursive: true });
+
 		__app.console.log(__app.translations.firstStart.chrome.done);
 	} catch (error: any) {
 		__app.console.errorLog(__app.translations.firstStart.chrome.fail);
@@ -34,4 +36,5 @@ export async function firstStart() {
 	await uncompressChrome();
 
 	__app.config.update.firstStart = false;
+	await saveConfig(__app.config);
 }
