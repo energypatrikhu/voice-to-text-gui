@@ -4,6 +4,7 @@ import { autoUpdater } from 'electron-updater';
 import { __app } from './app.js';
 import { saveConfig } from './config.js';
 import { convertFileSize } from './convert-file-size.js';
+import { sleep } from './sleep.js';
 import { textReplacer } from './text-replacer.js';
 
 export class Updater {
@@ -29,6 +30,10 @@ export class Updater {
 
 					__app.config.update.firstStart = true;
 					await saveConfig(__app.config);
+
+					if (!__app.speechSynthesis) {
+						await sleep(3000);
+					}
 
 					autoUpdater.quitAndInstall(true, true);
 					app.exit();
