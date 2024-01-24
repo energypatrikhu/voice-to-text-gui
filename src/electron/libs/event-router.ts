@@ -4,7 +4,7 @@ import { basename } from 'path';
 
 import { __app } from './app.js';
 import { cmd } from './command-handler.js';
-import { saveJson } from './json-storage.js';
+import { saveConfig } from './config.js';
 import { main } from './main.js';
 import { loadTranslation } from './translations.js';
 
@@ -63,7 +63,7 @@ export class EventRouter {
 							}
 						}
 
-						await saveJson('config', data);
+						await saveConfig(data);
 					}
 
 					break;
