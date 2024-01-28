@@ -145,7 +145,6 @@ async function chromeDownloader() {
 
 export async function chromeUpdater() {
 	try {
-		__app.console.debugLog('await chromeDownloader();');
 		const chromeData = await chromeDownloader();
 
 		if (chromeData.version === __app.manifest.chromeVersion) {
@@ -153,32 +152,24 @@ export async function chromeUpdater() {
 			return;
 		}
 
-		__app.console.debugLog(`extractArchive(${chromeData.filename});`);
 		extractArchive(chromeData.filename);
 
-		__app.console.debugLog(`await rm(${chromeData.filename}, { force: true, recursive: true });`);
 		await rm(chromeData.filename, { force: true, recursive: true });
 
-		__app.console.debugLog("extractArchive('chrome.7z');");
-		extractArchive('chrome.7z');
+		extractArchive(join(__app.resources, 'chrome.7z'));
 
-		__app.console.debugLog(`join(${__app.resources}, 'chrome');`);
 		const chromePath = join(__app.resources, 'chrome');
 
-		__app.console.debugLog(`await rename(join(${__app.resources}, 'Chrome-bin'), ${chromePath});`);
 		await rename(join(__app.resources, 'Chrome-bin'), chromePath);
 
 		for (const item of ['chrome_proxy.exe']) {
-			__app.console.debugLog(`await rm(${join(chromePath, item)}, { force: true, recursive: true });`);
 			await rm(join(chromePath, item), { force: true, recursive: true });
 		}
 
 		for (const item of ['default_apps', 'Extensions', 'MEIPreload', 'VisualElements', 'WidevineCdm', 'notification_helper.exe']) {
-			__app.console.debugLog(`await rm(${join(chromePath, chromeData.version, item)}, { force: true, recursive: true });`);
 			await rm(join(chromePath, chromeData.version, item), { force: true, recursive: true });
 		}
 
-		__app.console.debugLog(`await saveManifest({ chromeVersion: ${chromeData.version} });`);
 		await saveManifest({ chromeVersion: chromeData.version });
 
 		__app.console.log(__app.translations.firstStart.chrome.done);
