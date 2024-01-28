@@ -273,9 +273,11 @@
 			"skip": "Skipping first start scripts!"
 		},
 		"chrome": {
-			"run": "Uncompressing chrome files...",
-			"done": "Chrome files was uncompressed successfully!",
-			"fail": "Failed to uncompress chrome files!"
+			"check": "Checking chrome updates...",
+			"no_update": "No new chrome update was found, skipping update!",
+			"update": "New chrome update found, updating chrome!",
+			"done": "Chrome was updated successfully!",
+			"fail": "Failed to updated chrome!"
 		}
 	},
 

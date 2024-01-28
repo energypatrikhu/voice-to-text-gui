@@ -66,7 +66,9 @@ export interface FirstStartGlobal {
 }
 
 export interface FirstStartChrome {
-	run: string;
+	check: string;
+	no_update: string;
+	update: string;
 	done: string;
 	fail: string;
 }
