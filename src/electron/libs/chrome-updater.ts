@@ -126,30 +126,14 @@ async function chromeDownloader() {
 					let chromeFileStream = createWriteStream(chromeFilePath);
 					Superagent.pipe(chromeFileStream);
 
-					Superagent.finally(() => promiseResolve({ filename: chromeFilePath, version: chromeData.version }));
+					await new Promise<void>((r) => {
+						chromeFileStream.on('finish', function () {
+							chromeFileStream.close();
+							r();
+						});
+					});
 
-					// const axiosResponse = await axios({
-					// 	url: join(chromeDownloadUrl, chromeData.filename),
-					// 	method: 'GET',
-					// 	headers: {
-					// 		'Accept-Encoding': '*',
-					// 		'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
-					// 	},
-					// 	responseType: 'stream',
-					// });
-
-					// let chromeFileStream = createWriteStream(chromeFilePath);
-					// axiosResponse.data.pipe(chromeFileStream);
-
-					// chromeFileStream.on('finish', async function () {
-					// 	chromeFileStream.close();
-
-					// 	promiseResolve({ filename: chromeFilePath, version: chromeData.version });
-					// });
-
-					// if (axiosResponse.status !== 404) {
-					return;
-					// }
+					return promiseResolve({ filename: chromeFilePath, version: chromeData.version });
 				} catch (error: any) {
 					__app.console.errorLog(__app.translations.firstStart.chrome.fail);
 					__app.console.debugErrorLog(error.message ?? error);
