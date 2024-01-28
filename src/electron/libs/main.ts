@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import { existsSync } from 'fs';
 import { mkdir, readFile } from 'fs/promises';
 import _ from 'lodash';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 import { __app } from './app.js';
 import { ChromeInstance } from './chrome-instance.js';
@@ -31,6 +31,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		mainWindow,
 		updateReason: null,
 		userDataFolder: join(app.getPath('userData'), app.name),
+		resources: resolve('./resources'),
 	});
 
 	__app.set({
