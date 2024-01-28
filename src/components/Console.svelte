@@ -20,6 +20,12 @@
 	onMount(function () {
 		consoleWrapper.scrollTo(0, consoleWrapper.scrollHeight);
 	});
+
+	let colorCodes = {
+		Error: 'bg-[rgb(255,0,0,0.1)]',
+		Info: 'bg-natural-800',
+		Warning: 'bg-[rgb(255,165,0,0.1)]',
+	};
 </script>
 
 <div
@@ -27,8 +33,8 @@
 	class="fixed overflow-hidden overflow-y-scroll w-full {$app.ready ? 'h-[calc(100%-48px-36px)]' : 'h-[calc(100%-48px)]'} flex flex-col"
 >
 	{#each $eConsole as { type, severity, timestamp, lang, textArray }}
-		<div class="w-full border-t border-t-neutral-600">
-			<div class="sticky top-0 bg-neutral-800 px-4 py-1">
+		<div class="w-full {type !== 'Debug' ? colorCodes[severity] : severity === 'Info' ? 'bg-[rgb(255,255,255,0.01)]' : colorCodes[severity]} border-t border-t-neutral-600">
+			<div class="sticky top-0 {type !== 'Debug' ? colorCodes[severity] : severity === 'Info' ? 'bg-[rgb(255,255,255,0.01)]' : colorCodes[severity]} px-4 py-1">
 				<span>[{type}]</span>
 				<span>[{dateToLocale(timestamp)}]</span>
 				<span>[{severity}]</span>
