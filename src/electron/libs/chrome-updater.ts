@@ -10,6 +10,8 @@ import { extractArchive } from './7z.js';
 import { __app } from './app.js';
 import { saveManifest } from './manifest.js';
 
+const listOfUnnecessaryFiles = ['default_apps', 'Extensions', 'MEIPreload', 'VisualElements', 'WidevineCdm', 'chrome.dll.sig', 'chrome.exe.sig', 'chrome_pwa_launcher.exe', 'chrome_wer.dll', 'dxcompiler.dll', 'dxil.dll', 'elevation_service.exe', 'eventlog_provider.dll', 'files.txt', 'mojo_core.dll', 'notification_helper.exe', 'optimization_guide_internal.dll', 'vk_swiftshader_icd.json', 'vulkan-1.dll'];
+
 async function cleanupChromeFiles() {
 	if (existsSync(join(__app.resources, 'chrome'))) {
 		await rm(join(__app.resources, 'chrome'), { force: true, recursive: true });
@@ -162,12 +164,12 @@ export async function chromeUpdater() {
 		const chromePath = join(__app.resources, 'chrome');
 		await rename(join(__app.resources, 'Chrome-bin'), chromePath);
 
-		for (const item of ['chrome_proxy.exe']) {
-			await rm(join(chromePath, item), { force: true, recursive: true });
+		for (const file of ['chrome_proxy.exe']) {
+			await rm(join(chromePath, file), { force: true, recursive: true });
 		}
 
-		for (const item of ['default_apps', 'Extensions', 'MEIPreload', 'VisualElements', 'WidevineCdm', 'notification_helper.exe']) {
-			await rm(join(chromePath, chromeData.version, item), { force: true, recursive: true });
+		for (const file of listOfUnnecessaryFiles) {
+			await rm(join(chromePath, chromeData.version, file), { force: true, recursive: true });
 		}
 
 		await saveManifest({ chromeVersion: chromeData.version });
