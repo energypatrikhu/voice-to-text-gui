@@ -109,11 +109,7 @@ async function chromeDownloader() {
 		return new Promise<{ filename: string; version: string }>(async (promiseResolve) => {
 			for (const chromeDownloadUrl of chromeData.urls) {
 				try {
-					const url = join(chromeDownloadUrl, chromeData.filename);
-
-					__app.console.debugLog(url);
-
-					const Superagent = superagent('get', url);
+					const Superagent = superagent('get', chromeDownloadUrl + chromeData.filename);
 					Superagent.set({
 						'Accept': '*',
 						'Accept-Encoding': '*',
