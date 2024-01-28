@@ -58,7 +58,6 @@ export interface ConfigOptions {
 		allowDowngrade: boolean;
 		autoCheck: boolean;
 		checkInterval: number;
-		firstStart: boolean;
 	};
 	others: {
 		mtaConsoleInputMode: boolean;

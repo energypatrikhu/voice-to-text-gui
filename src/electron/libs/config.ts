@@ -68,7 +68,6 @@ const defaultConfig: ConfigOptions = {
 		allowDowngrade: false,
 		autoCheck: true,
 		checkInterval: 60,
-		firstStart: true,
 	},
 	others: {
 		mtaConsoleInputMode: false,
