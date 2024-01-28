@@ -45,5 +45,5 @@ html:not([hide-scrollbar]) ::-webkit-scrollbar-thumb:hover {
 }
 
 html:not([hide-scrollbar]) ::-webkit-scrollbar {
-	width: 10px;
+	width: 5px;
 }
