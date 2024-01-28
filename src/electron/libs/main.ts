@@ -13,6 +13,7 @@ import { firstStart } from './first-start.js';
 import { getActiveWindowName } from './get-active-window-name.js';
 import { keyboardShortcutMapper } from './keyboard-shortcut-mapper.js';
 import { loadMacros } from './macros.js';
+import { loadManifest } from './manifest.js';
 import { SettingsUpdate } from './send-settings-update.js';
 import { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
@@ -37,6 +38,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 	__app.set({
 		config: await loadConfig(),
 		macros: await loadMacros(),
+		manifest: await loadManifest(),
 		versions: {
 			electronVersion: __app.isDev ? app.getVersion() : process.versions.electron,
 			appVersion: __app.isDev ? JSON.parse(await readFile('./package.json', 'utf-8')).version : app.getVersion(),
