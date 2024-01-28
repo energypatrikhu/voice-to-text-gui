@@ -1,6 +1,3 @@
-import { stdin } from 'process';
-import { createInterface } from 'readline';
-
 import { anyHas } from './any-has.js';
 import { __app } from './app.js';
 import { textParser } from './text-parser.js';
@@ -35,7 +32,6 @@ interface CmdParsed {
 class CommandHandler {
 	private commands: Array<Command> = [];
 	private macros: Array<Macro> = __app.macros;
-	private consoleInterface = createInterface({ input: stdin });
 	private speechSynthesis!: SpeechSynthesisEngine;
 
 	get commandList() {
