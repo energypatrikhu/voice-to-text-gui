@@ -7,5 +7,5 @@ export async function firstStart() {
 
 	await chromeUpdater();
 
-	await saveManifest({ isFirstStart: true });
+	await saveManifest({ isFirstStart: false });
 }
