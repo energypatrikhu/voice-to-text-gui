@@ -153,13 +153,13 @@ export async function chromeUpdater() {
 		}
 
 		extractArchive(chromeData.filename);
-
 		await rm(chromeData.filename, { force: true, recursive: true });
 
-		extractArchive(join(__app.resources, 'chrome.7z'));
+		const chromeArchive = join(__app.resources, 'chrome.7z');
+		extractArchive(chromeArchive);
+		await rm(chromeArchive, { force: true, recursive: true });
 
 		const chromePath = join(__app.resources, 'chrome');
-
 		await rename(join(__app.resources, 'Chrome-bin'), chromePath);
 
 		for (const item of ['chrome_proxy.exe']) {
