@@ -152,11 +152,11 @@ export async function chromeUpdater() {
 			return;
 		}
 
-		await extractArchive(chromeData.filename);
+		extractArchive(chromeData.filename);
 
 		await rm(chromeData.filename, { force: true, recursive: true });
 
-		await extractArchive('chrome.7z');
+		extractArchive('chrome.7z');
 
 		const chromePath = join(__app.resources, 'chrome');
 
