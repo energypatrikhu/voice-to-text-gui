@@ -277,7 +277,7 @@
 			"no_update": "No new chrome update was found, skipping update!",
 			"update": "New chrome update found, updating chrome!",
 			"done": "Chrome was updated successfully!",
-			"fail": "Failed to updated chrome!"
+			"fail": "Failed to update chrome!"
 		}
 	},
 
