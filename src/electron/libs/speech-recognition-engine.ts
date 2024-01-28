@@ -1,7 +1,6 @@
 import { EventEmitter } from 'puppeteer-core';
 
 import { __app } from './app.js';
-import { appendixPrefixer } from './appendix-prefixer.js';
 import { cmd } from './command-handler.js';
 import { printText } from './press-keys.js';
 import { replaceCharMap } from './replace-char-map.js';
@@ -9,8 +8,6 @@ import { replaceGameChatPrefixMap } from './replace-game-chat-prefix-map.js';
 import { soundWrapper } from './sound-wrapper.js';
 import { textReplacer } from './text-replacer.js';
 import { uioHookWrapper } from './uio-hook-wrapper.js';
-
-import type { ConfigOptions } from '../../types/ConfigOptions.js';
 
 export class SpeechRecognitionEngine {
 	private pageEmitter = new EventEmitter();
@@ -152,26 +149,26 @@ export class SpeechRecognitionEngine {
 			if (info === 'stopped' && !this.stopOutput) {
 				const replacedChar = replaceCharMap(this.outputPrefix + this.partialOutput)!;
 				const replacedGameChatPrefix = replaceGameChatPrefixMap(replacedChar)!;
-				const replacedAppendixPrefix = appendixPrefixer(replacedGameChatPrefix)!;
+				// const replacedGameChatPrefix = appendixPrefixer(replacedGameChatPrefix)!;
 
-				if (replacedAppendixPrefix === '') {
+				if (replacedGameChatPrefix === '') {
 					return;
 				}
 
-				const isCommand = replacedAppendixPrefix.startsWith(__app.config.commands.prefix);
+				const isCommand = replacedGameChatPrefix.startsWith(__app.config.commands.prefix);
 
-				const isMacro = replacedAppendixPrefix.match(this.textParserRegex) !== null;
+				const isMacro = replacedGameChatPrefix.match(this.textParserRegex) !== null;
 
-				__app.console.debugLogJson({ __appConfigCommandsEnabled: __app.config.commands.enabled, isCommand, isMacro, replacedAppendixPrefix, textParserRegex: this.textParserRegex });
+				__app.console.debugLogJson({ __appConfigCommandsEnabled: __app.config.commands.enabled, isCommand, isMacro, replacedGameChatPrefix, textParserRegex: this.textParserRegex });
 
-				let output = replacedAppendixPrefix.replace(/\shogy\s/g, ', hogy ');
+				let output = replacedGameChatPrefix.replace(/\shogy\s/g, ', hogy ');
 
 				if (__app.config.others.mtaConsoleInputMode && !output.startsWith('/')) {
 					output = output.replace('say, ', 'say ');
 				}
 
 				if ((isCommand || isMacro) && __app.config.commands.enabled) {
-					this._output = (await cmd.voiceCommandHandler(replacedAppendixPrefix.replace(this.textParserRegex, '!makró:'), this._output)) || this._output;
+					this._output = (await cmd.voiceCommandHandler(replacedGameChatPrefix.replace(this.textParserRegex, '!makró:'), this._output)) || this._output;
 					return;
 				} else {
 					this._output = output;
