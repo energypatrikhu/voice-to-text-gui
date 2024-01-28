@@ -56,6 +56,17 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 
 	if (isDev) {
 		__app.console.log(__app.translations.speechFeedback.index.appStarted);
+
+		__app.console.logJson('__app.console.logJson');
+		__app.console.log('__app.console.log');
+		__app.console.errorLog('__app.console.errorLog');
+		__app.console.warningLog('__app.console.warningLog');
+
+		__app.console.debugLogJson('__app.console.debugLogJson');
+		__app.console.debugLog('__app.console.debugLog');
+		__app.console.debugErrorLog('__app.console.debugErrorLog');
+		__app.console.debugWarningLog('__app.console.debugWarningLog');
+
 		return;
 	}
 
