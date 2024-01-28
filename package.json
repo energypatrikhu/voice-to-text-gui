@@ -30,8 +30,10 @@
 		"release:beta": "npm run release-it:release:beta && npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:release:beta"
 	},
 	"dependencies": {
+		"@rgrove/parse-xml": "^4.1.0",
 		"active-win": "^8.1.1",
 		"adm-zip": "^0.5.10",
+		"axios": "^1.6.7",
 		"electron-context-menu": "^3.6.1",
 		"electron-reloader": "^1.2.3",
 		"electron-serve": "^1.2.0",
