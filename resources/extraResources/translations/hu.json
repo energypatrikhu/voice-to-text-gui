@@ -273,9 +273,11 @@
 			"skip": "Az első indítás szkriptek kihagyva!"
 		},
 		"chrome": {
-			"run": "Chrome fájlok kicsomagolása...",
-			"done": "Chrome fájlok sikeresen kicsomagolva!",
-			"fail": "Nem sikerült kicsomagolni a Chrome-fájlokat!"
+			"check": "A Chrome frissítéseinek ellenőrzése...",
+			"no_update": "Nem található új Chrome-frissítés, a frissítés kihagyása!",
+			"update": "Új Chrome-frissítés található, a chrome frissítése folyamatban van!",
+			"done": "A Chrome frissítése sikeresen megtörtént!",
+			"fail": "Nem sikerült frissíteni a Chrome-ot!"
 		}
 	},
 
