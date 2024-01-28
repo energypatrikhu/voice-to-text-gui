@@ -126,6 +126,8 @@ async function chromeDownloader() {
 					let chromeFileStream = createWriteStream(chromeFilePath);
 					Superagent.pipe(chromeFileStream);
 
+					Superagent.finally(() => promiseResolve({ filename: chromeFilePath, version: chromeData.version }));
+
 					// const axiosResponse = await axios({
 					// 	url: join(chromeDownloadUrl, chromeData.filename),
 					// 	method: 'GET',
