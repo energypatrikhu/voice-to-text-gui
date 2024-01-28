@@ -9,6 +9,8 @@ import type { Console } from './console.js';
 import type { SettingsUpdate } from './send-settings-update.js';
 import _ from 'lodash';
 
+import type { Manifest } from '../../types/electron/Manifest.js';
+
 export class App {
 	isDev!: boolean;
 	isBeta!: boolean;
@@ -21,6 +23,7 @@ export class App {
 	versions!: Versions;
 	translations!: Translations;
 	chromePage!: Page;
+	manifest!: Manifest;
 
 	speechRecognition!: SpeechRecognitionEngine;
 	speechSynthesis!: SpeechSynthesisEngine;
@@ -32,6 +35,7 @@ export class App {
 	downloadedUpdate!: boolean;
 
 	userDataFolder!: string;
+	resources!: string;
 
 	set(data: Partial<App>) {
 		const oldApp = _.omit(this, ['set']);
