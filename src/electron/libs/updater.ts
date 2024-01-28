@@ -2,8 +2,8 @@ import { app } from 'electron';
 import { autoUpdater } from 'electron-updater';
 
 import { __app } from './app.js';
-import { saveConfig } from './config.js';
 import { convertFileSize } from './convert-file-size.js';
+import { saveManifest } from './manifest.js';
 import { sleep } from './sleep.js';
 import { textReplacer } from './text-replacer.js';
 
@@ -28,8 +28,7 @@ export class Updater {
 						await __app.speechSynthesis.speak(__app.translations.textFeedback.update.checkAppUpdate.updateDownloaded);
 					}
 
-					__app.config.update.firstStart = true;
-					await saveConfig(__app.config);
+					await saveManifest({ isFirstStart: true });
 
 					if (!__app.speechSynthesis) {
 						await sleep(3000);
