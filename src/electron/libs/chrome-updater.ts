@@ -112,6 +112,7 @@ async function chromeDownloader() {
 						url: join(chromeDownloadUrl, chromeData.filename),
 						method: 'GET',
 						headers: {
+							'Accept-Encoding': '*',
 							'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
 						},
 						responseType: 'stream',
