@@ -100,7 +100,7 @@ async function chromeDownloader() {
 
 		const chromeFilePath = join(__app.resources, 'chrome-installer.exe');
 
-		if (chromeData.version === __app.manifest.chromeVersion) {
+		if (chromeData.version === __app.manifest.chromeVersion && !__app.manifest.isFirstStart) {
 			return { filename: chromeFilePath, version: chromeData.version };
 		}
 
@@ -149,7 +149,7 @@ export async function chromeUpdater() {
 	try {
 		const chromeData = await chromeDownloader();
 
-		if (chromeData.version === __app.manifest.chromeVersion) {
+		if (chromeData.version === __app.manifest.chromeVersion && !__app.manifest.isFirstStart) {
 			__app.console.log(__app.translations.firstStart.chrome.no_update);
 			return;
 		}
