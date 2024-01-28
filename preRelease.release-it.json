@@ -4,6 +4,7 @@
 	},
 	"github": {
 		"release": true,
+		"preRelease": true,
 		"tokenRef": "GH_TOKEN",
 		"comments": {
 			"submit": true,
