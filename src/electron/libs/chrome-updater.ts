@@ -44,14 +44,18 @@ function getLatestChrome() {
 			responseType: 'text',
 		});
 
+		axiosResponse.catch(function (reason) {
+			__app.console.debugErrorLog(reason.message ?? reason);
+		});
+
 		return new Promise<{
 			urls: Array<string>;
 			version: string;
 			filename: string;
 			filesize: number;
 		}>((promiseResolve) => {
-			axiosResponse.then(function (_response) {
-				const parsedXml: any = parseXml(_response.data).toJSON();
+			axiosResponse.then(function (response) {
+				const parsedXml: any = parseXml(response.data).toJSON();
 
 				const xml_response = parsedXml.children[0];
 
