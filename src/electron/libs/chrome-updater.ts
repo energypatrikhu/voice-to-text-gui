@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createWriteStream, existsSync } from 'fs';
 import { rename, rm } from 'fs/promises';
 import { join } from 'path';
+import superagent from 'superagent';
 
 import { parseXml } from '@rgrove/parse-xml';
 
@@ -106,35 +107,51 @@ async function chromeDownloader() {
 		await cleanupChromeFiles();
 
 		return new Promise<{ filename: string; version: string }>(async (promiseResolve) => {
-			try {
-				for (const chromeDownloadUrl of chromeData.urls) {
-					const axiosResponse = await axios({
-						url: join(chromeDownloadUrl, chromeData.filename),
-						method: 'GET',
-						headers: {
-							'Accept-Encoding': '*',
-							'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
-						},
-						responseType: 'stream',
+			for (const chromeDownloadUrl of chromeData.urls) {
+				try {
+					const url = join(chromeDownloadUrl, chromeData.filename);
+
+					__app.console.debugLog(url);
+
+					const Superagent = superagent('get', url);
+					Superagent.set({
+						'Accept': '*',
+						'Accept-Encoding': '*',
+						'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
 					});
+					Superagent.withCredentials();
+					Superagent.responseType('arraybuffer');
+					Superagent.buffer(true);
 
 					let chromeFileStream = createWriteStream(chromeFilePath);
-					axiosResponse.data.pipe(chromeFileStream);
+					Superagent.pipe(chromeFileStream);
 
-					chromeFileStream.on('finish', async function () {
-						chromeFileStream.close();
+					// const axiosResponse = await axios({
+					// 	url: join(chromeDownloadUrl, chromeData.filename),
+					// 	method: 'GET',
+					// 	headers: {
+					// 		'Accept-Encoding': '*',
+					// 		'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
+					// 	},
+					// 	responseType: 'stream',
+					// });
 
-						promiseResolve({ filename: chromeFilePath, version: chromeData.version });
-					});
+					// let chromeFileStream = createWriteStream(chromeFilePath);
+					// axiosResponse.data.pipe(chromeFileStream);
 
-					if (axiosResponse.status !== 404) {
-						return;
-					}
+					// chromeFileStream.on('finish', async function () {
+					// 	chromeFileStream.close();
+
+					// 	promiseResolve({ filename: chromeFilePath, version: chromeData.version });
+					// });
+
+					// if (axiosResponse.status !== 404) {
+					return;
+					// }
+				} catch (error: any) {
+					__app.console.errorLog(__app.translations.firstStart.chrome.fail);
+					__app.console.debugErrorLog(error.message ?? error);
 				}
-			} catch (error: any) {
-				__app.console.errorLog(__app.translations.firstStart.chrome.fail);
-				__app.console.debugErrorLog(error.message ?? error);
-				throw error;
 			}
 		});
 	} catch (error: any) {
