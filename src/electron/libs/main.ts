@@ -6,6 +6,7 @@ import { join, resolve } from 'path';
 
 import { __app } from './app.js';
 import { ChromeInstance } from './chrome-instance.js';
+import { chromeUpdater } from './chrome-updater.js';
 import { cmd } from './command-handler.js';
 import { loadConfig } from './config.js';
 import { Console } from './console.js';
@@ -73,6 +74,8 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 	} else {
 		__app.console.debugLog(__app.translations.firstStart.global.skip);
 	}
+
+	await chromeUpdater();
 
 	__app.console.debugLog(__app.translations.textFeedback.index.chrome.initializing);
 	__app.set({ chromePage: await new ChromeInstance().init() });
