@@ -44,6 +44,7 @@
 		"lodash": "^4.17.21",
 		"moment": "^2.30.1",
 		"puppeteer-core": "^21.9.0",
+		"superagent": "^8.1.2",
 		"uiohook-napi": "^1.5.3"
 	},
 	"devDependencies": {
@@ -55,6 +56,7 @@
 		"@types/dom-speech-recognition": "^0.0.4",
 		"@types/lodash": "^4.14.202",
 		"@types/node": "^20.11.8",
+		"@types/superagent": "^8.1.3",
 		"autoprefixer": "^10.4.17",
 		"concurrently": "^8.2.2",
 		"cross-env-file": "^1.0.0",
