@@ -93,6 +93,8 @@ function getLatestChrome() {
 async function chromeDownloader() {
 	try {
 		const chromeData = await getLatestChrome();
+		__app.console.debugLogJson(chromeData);
+
 		const chromeFilePath = join(__app.resources, 'chrome-installer.exe');
 
 		if (chromeData.version === __app.manifest.chromeVersion) {
@@ -104,28 +106,34 @@ async function chromeDownloader() {
 		await cleanupChromeFiles();
 
 		return new Promise<{ filename: string; version: string }>(async (promiseResolve) => {
-			for (const chromeDownloadUrl of chromeData.urls) {
-				const axiosResponse = await axios({
-					url: join(chromeDownloadUrl, chromeData.filename),
-					method: 'GET',
-					headers: {
-						'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
-					},
-					responseType: 'stream',
-				});
+			try {
+				for (const chromeDownloadUrl of chromeData.urls) {
+					const axiosResponse = await axios({
+						url: join(chromeDownloadUrl, chromeData.filename),
+						method: 'GET',
+						headers: {
+							'User-Agent': 'Google Update/1.3.36.352;winhttp;cup-ecdsa',
+						},
+						responseType: 'stream',
+					});
 
-				let chromeFileStream = createWriteStream(chromeFilePath);
-				axiosResponse.data.pipe(chromeFileStream);
+					let chromeFileStream = createWriteStream(chromeFilePath);
+					axiosResponse.data.pipe(chromeFileStream);
 
-				chromeFileStream.on('finish', async function () {
-					chromeFileStream.close();
+					chromeFileStream.on('finish', async function () {
+						chromeFileStream.close();
 
-					promiseResolve({ filename: chromeFilePath, version: chromeData.version });
-				});
+						promiseResolve({ filename: chromeFilePath, version: chromeData.version });
+					});
 
-				if (axiosResponse.status !== 404) {
-					return;
+					if (axiosResponse.status !== 404) {
+						return;
+					}
 				}
+			} catch (error: any) {
+				__app.console.errorLog(__app.translations.firstStart.chrome.fail);
+				__app.console.debugErrorLog(error.message ?? error);
+				throw error;
 			}
 		});
 	} catch (error: any) {
