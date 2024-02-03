@@ -21,5 +21,6 @@ export async function loadManifest() {
 
 export async function saveManifest(manifest: Partial<Manifest>) {
 	const loadedManifest = __app.manifest ?? defaultManifest;
-	await saveJson('manifest', { ...loadedManifest, ...manifest });
+	const newValues = { ...loadedManifest, ...manifest };
+	await saveJson('manifest', newValues);
 }
