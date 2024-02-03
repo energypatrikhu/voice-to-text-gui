@@ -9,14 +9,18 @@ export function printText(output: string, isCommand: boolean = false) {
 				return;
 			}
 
+			const outputSegments = output.match(/\S.{1,90}(?=\s|$)/g);
+
 			const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
 
-			if (__app.config.others.mtaConsoleInputMode || isCommand) {
-				await keyboard.sendKey('f8', delay, delay);
-				await keyboard.printText(output, delay, delay);
-				await keyboard.sendKeys(['enter', 'f8'], delay, delay);
-			} else {
-				await keyboard.printText(output, delay, delay);
+			for (const _output of outputSegments!) {
+				if (__app.config.others.mtaConsoleInputMode || isCommand) {
+					await keyboard.sendKey('f8', delay, delay);
+					await keyboard.printText(_output, delay, delay);
+					await keyboard.sendKeys(['enter', 'f8'], delay, delay);
+				} else {
+					await keyboard.printText(_output, delay, delay);
+				}
 			}
 
 			setTimeout(resolve, 0);
