@@ -78,6 +78,8 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 		await mkdir(__app.userDataFolder, { recursive: true });
 	}
 
+	await chromeUpdater();
+
 	if (__app.manifest.isFirstStart) {
 		__app.console.debugLog(__app.translations.firstStart.global.run);
 		await firstStart();
@@ -85,8 +87,6 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 	} else {
 		__app.console.debugLog(__app.translations.firstStart.global.skip);
 	}
-
-	await chromeUpdater();
 
 	__app.console.debugLog(__app.translations.textFeedback.index.chrome.initializing);
 	__app.set({ chromePage: await new ChromeInstance().init() });
