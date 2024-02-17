@@ -15,8 +15,8 @@ export interface States {
 	enabled: string;
 	active: string;
 	inactive: string;
-	actived: string;
-	deactived: string;
+	activated: string;
+	deactivated: string;
 	none: string;
 	enable: string;
 	disable: string;
@@ -285,7 +285,7 @@ export interface PurpleShowActiveButtons {
 }
 
 export interface PurpleUpdateApp {
-	updateAvailabe: string;
+	updateAvailable: string;
 }
 
 export interface SpeechFeedbackIndex {
@@ -407,8 +407,8 @@ export interface FluffyShowActiveButtons {
 export interface FluffyUpdateApp {
 	description: string;
 	checkingUpdate: string;
-	noUpdateAvailabe: string;
-	updateAvailabe: string;
+	noUpdateAvailable: string;
+	updateAvailable: string;
 }
 
 export interface TextFeedbackConfig {
