@@ -97,6 +97,7 @@ async function chromeDownloader() {
 	try {
 		const chromeData = await getLatestChrome();
 		__app.console.debugLogJson(chromeData);
+		__app.console.debugLog('Old Chrome version:', __app.manifest.chromeVersion);
 
 		const chromeFilePath = join(__app.resources, 'chrome-installer.exe');
 

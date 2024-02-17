@@ -23,4 +23,6 @@ export async function saveManifest(manifest: Partial<Manifest>) {
 	const loadedManifest = __app.manifest ?? defaultManifest;
 	__app.manifest = { ...loadedManifest, ...manifest };
 	await saveJson('manifest', __app.manifest);
+	__app.console.debugLog('Manifest updated!');
+	__app.console.debugLogJson(__app.manifest);
 }
