@@ -39,7 +39,7 @@ export class SpeechRecognitionEngine {
 			this.stopOutput = true;
 		});
 
-		this.textParserRegex = new RegExp('(' + [...['makró', 'makrók', 'szöveg', 'szövegek'].map((macroPreffix) => `\\${__app.config.commands.prefix}\\s${macroPreffix}\\${__app.config.commands.splitter}\\s`)].join(')|(') + ')', 'gi');
+		this.textParserRegex = new RegExp('(' + [...['makró', 'makrók', 'szöveg', 'szövegek'].map((macroPrefix) => `\\${__app.config.commands.prefix}\\s${macroPrefix}\\${__app.config.commands.splitter}\\s`)].join(')|(') + ')', 'gi');
 
 		await this.initExposeFunctions();
 		await this.initSpeechRecognitionEngine();

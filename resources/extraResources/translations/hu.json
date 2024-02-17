@@ -1,7 +1,7 @@
 {
 	"speechFeedback": {
 		"index": {
-			"appStarted": "Az alkalmazás elindult!",
+			"appStarted": "Az alkalmazás el indult!",
 			"updater": {
 				"updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!"
 			}
@@ -14,7 +14,7 @@
 
 		"commands": {
 			"updateApp": {
-				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, a frissítés letöltése folyamatban..."
+				"updateAvailable": "Frissítés elérhető! Kérjük, várjon, a frissítés letöltése folyamatban..."
 			},
 
 			"showActiveButtons": {
@@ -130,8 +130,8 @@
 			"updateApp": {
 				"description": "Frissítést keress az alkalmazáshoz.",
 				"checkingUpdate": "Frissítés keresése...",
-				"noUpdateAvailabe": "Nincs elérhető frissítés.",
-				"updateAvailabe": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban..."
+				"noUpdateAvailable": "Nincs elérhető frissítés.",
+				"updateAvailable": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban..."
 			},
 
 			"showActiveButtons": {
@@ -206,8 +206,8 @@
 		"enabled": "Engedélyezve",
 		"active": "Aktív",
 		"inactive": "Inaktív",
-		"actived": "Aktiválva",
-		"deactived": "Deaktiválva",
+		"activated": "Aktiválva",
+		"deactivated": "Deaktiválva",
 		"none": "Nincs",
 		"enable": "Engedélyezés",
 		"disable": "Tiltás",
@@ -233,7 +233,7 @@
 			"y": "év"
 		},
 		"short": {
-			"ms": "századmp",
+			"ms": "szmp",
 			"s": "mp",
 			"m": "p",
 			"h": "ó",
@@ -303,7 +303,7 @@
 			},
 			"checkOnStartup": {
 				"name": "Ellenőrzés indításkor",
-				"description": "Ellenőrizze a frissítést minden alkalmazás indításakor"
+				"description": "Ellenőrizze a frissítést minden alkalmazás indításkor"
 			},
 			"allowPrerelease": {
 				"name": "Béta verziók",
@@ -333,7 +333,7 @@
 			},
 			"keyboardShortcuts": {
 				"name": "Gyorsbillentyűk",
-				"description": "Az aktiváláshoz szükséges gyorsgombok beállítása",
+				"description": "Az aktiváláshoz szükséges gyors gombok beállítása",
 				"table": {
 					"prefix": "Kimeneti előtag",
 					"shortcut": "Gyorsbillentyű",
@@ -355,7 +355,7 @@
 			},
 			"autoRelease": {
 				"name": "Automatikus felengedés",
-				"description": "Automatikus felengedéshez kapcsolatos beállítások"
+				"description": "Automatikus felengedéssel kapcsolatos beállítások"
 			},
 			"releaseTime": {
 				"name": "Automatikus felengedés idő",
@@ -386,21 +386,21 @@
 				"description": "Visszajelzéssel kapcsolatos beállítások"
 			},
 			"sounds": {
-				"name": "Hangok aktiválása/deaktiválása",
+				"name": "Hangok bekapcsolása/kikapcsolása",
 				"description": "Hangok használata az alkalmazásban",
 				"audioMode": {
-					"name": "Audió mód",
-					"description": "Audió mód a hangvisszajelzéshez"
+					"name": "Hang mód",
+					"description": "Hang mód a hangvisszajelzéshez"
 				},
 				"customAudioFile": {
 					"name": "Egyedi hangfájl",
-					"description": "Egyedi hang aktiváláshoz/deaktiváláshoz",
+					"description": "Egyedi hang bekapcsoláshoz/kikapcsoláshoz",
 					"select": "Hangfájl kiválasztása",
 					"selected": "Kiválasztva"
 				},
 				"audioVolume": {
-					"name": "Audió hangerő",
-					"description": "Audió hangereje"
+					"name": "hangerő",
+					"description": "Visszajelzés hangereje"
 				}
 			},
 			"speech": {
