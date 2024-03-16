@@ -48,13 +48,11 @@ class CommandHandler {
 	}
 
 	private async initCommands() {
-		require('./commands/command-list.js');
-		require('./commands/active-window.js');
-		require('./commands/exit.js');
-		require('./commands/exit-mta.js');
-		require('./commands/mta-mode.js');
-		require('./commands/show-active-buttons.js');
-		require('./commands/update-app.js');
+		const commandFiles = ['./commands/command-list.js', './commands/active-window.js', './commands/exit.js', './commands/exit-mta.js', './commands/mta-mode.js', './commands/show-active-buttons.js', './commands/update-app.js'];
+
+		for (const file of commandFiles) {
+			require(file);
+		}
 	}
 
 	registerCommand(func: Command$Func, [availability, name, syntax, handler, description]: [Command$Availability, Command$Name, Command$Syntax, Command$Handler, Command$Description]) {
