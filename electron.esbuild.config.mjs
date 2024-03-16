@@ -7,43 +7,59 @@ const __destination = './resources/app';
 const isDev = process.env.NODE_ENV === 'dev';
 const isBeta = process.env.APP_SATE === 'beta';
 
-(async function removeOldEntries(absoluteDir) {
+async function removeOldEntries(absoluteDir) {
 	for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
 		const direntDir = join(absoluteDir, dirent.name);
 
-		if (dirent.isFile()) await rm(direntDir, { force: true });
-		else if (dirent.isDirectory()) await removeOldEntries(direntDir);
+		if (dirent.isFile()) {
+			await rm(direntDir, { force: true });
+		} else if (dirent.isDirectory()) {
+			await removeOldEntries(direntDir);
+		}
 	}
-})(__destination);
+}
 
-let entries = [];
-await (async function searchEntries(absoluteDir) {
+async function searchEntries(absoluteDir) {
+	let entries = [];
 	for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
 		const direntDir = join(absoluteDir, dirent.name);
 
-		if (dirent.isFile()) await entries.push(direntDir);
-		else if (dirent.isDirectory()) await searchEntries(direntDir);
+		if (dirent.isFile()) {
+			entries.push(direntDir);
+		} else if (dirent.isDirectory()) {
+			entries.push(...(await searchEntries(direntDir)));
+		}
 	}
-})(__source);
+	return entries;
+}
 
-await build({
-	entryPoints: entries,
-	platform: 'node',
-	outdir: __destination,
-	logLevel: 'debug',
-	minify: !isDev && !isBeta,
-	drop: !isDev && !isBeta ? ['console', 'debugger'] : [],
-	treeShaking: !isDev && !isBeta,
-	mangleQuoted: !isDev && !isBeta,
-	format: 'cjs',
-	outExtension: { '.js': '.cjs' },
-});
-
-(async function editFiles(absoluteDir) {
+async function editFiles(absoluteDir) {
 	for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
 		const direntDir = join(absoluteDir, dirent.name);
 
-		if (dirent.isFile()) await writeFile(direntDir, (await readFile(direntDir, 'utf-8')).replace(/\.js\"/gi, '.cjs"'));
-		else if (dirent.isDirectory()) await editFiles(direntDir);
+		if (dirent.isFile()) {
+			const fileContent = await readFile(direntDir, 'utf-8');
+			await writeFile(direntDir, fileContent.replace(/\.js\"/gi, '.cjs"'));
+		} else if (dirent.isDirectory()) {
+			await editFiles(direntDir);
+		}
 	}
-})(__destination);
+}
+
+(async function () {
+	await removeOldEntries(__destination);
+	const entries = await searchEntries(__source);
+	await build({
+		entryPoints: entries,
+		platform: 'node',
+		outdir: __destination,
+		logLevel: 'debug',
+		minify: !isDev && !isBeta,
+		drop: !isDev && !isBeta ? ['console', 'debugger'] : [],
+		treeShaking: !isDev && !isBeta,
+		mangleQuoted: !isDev && !isBeta,
+		format: 'cjs',
+		outExtension: { '.js': '.cjs' },
+	});
+	await editFiles(__destination);
+})();
