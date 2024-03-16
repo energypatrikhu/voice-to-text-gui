@@ -5,7 +5,7 @@ import { textReplacer } from '../text-replacer.js';
 
 cmd.registerCommand(
 	async function (speechSynthesis) {
-		let activeWindow = await getActiveWindowName();
+		const activeWindow = await getActiveWindowName();
 
 		__app.console.log(textReplacer(__app.translations.textFeedback.commands.activeWindow.activeWindow, activeWindow));
 		speechSynthesis.speak(textReplacer(__app.translations.speechFeedback.commands.activeWindow.activeWindow, activeWindow));

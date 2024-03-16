@@ -122,7 +122,7 @@ async function chromeDownloader() {
 					Superagent.responseType('arraybuffer');
 					Superagent.buffer(true);
 
-					let chromeFileStream = createWriteStream(chromeFilePath);
+					const chromeFileStream = createWriteStream(chromeFilePath);
 					Superagent.pipe(chromeFileStream);
 
 					await new Promise<void>((r) => {
