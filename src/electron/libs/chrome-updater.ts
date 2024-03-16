@@ -13,17 +13,12 @@ import { saveManifest } from './manifest.js';
 const listOfUnnecessaryFiles = ['default_apps', 'Extensions', 'MEIPreload', 'VisualElements', 'WidevineCdm', 'chrome.dll.sig', 'chrome.exe.sig', 'chrome_pwa_launcher.exe', 'chrome_wer.dll', 'dxcompiler.dll', 'dxil.dll', 'elevation_service.exe', 'eventlog_provider.dll', 'files.txt', 'mojo_core.dll', 'notification_helper.exe', 'optimization_guide_internal.dll', 'vk_swiftshader_icd.json', 'vulkan-1.dll'];
 
 async function cleanupChromeFiles() {
-	if (existsSync(join(__app.resources, 'chrome'))) {
-		await rm(join(__app.resources, 'chrome'), { force: true, recursive: true });
-	}
-	if (existsSync(join(__app.resources, 'Chrome-bin'))) {
-		await rm(join(__app.resources, 'Chrome-bin'), { force: true, recursive: true });
-	}
-	if (existsSync(join(__app.resources, 'chrome-installer.exe'))) {
-		await rm(join(__app.resources, 'chrome-installer.exe'), { force: true, recursive: true });
-	}
-	if (existsSync(join(__app.resources, 'chrome.7z'))) {
-		await rm(join(__app.resources, 'chrome.7z'), { force: true, recursive: true });
+	const filesToDelete = ['chrome', 'Chrome-bin', 'chrome-installer.exe', 'chrome.7z'];
+
+	for (const file of filesToDelete) {
+		if (existsSync(join(__app.resources, file))) {
+			await rm(join(__app.resources, file), { force: true, recursive: true });
+		}
 	}
 }
 
