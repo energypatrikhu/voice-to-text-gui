@@ -14,11 +14,11 @@ const isDev = process.env.NODE_ENV === 'dev';
 
 function copyUsedMaterialSymbols() {
 	return new Promise<void>(async (resolve) => {
-		let nodeModulesSvgs = `./node_modules/@material-symbols/svg-400/rounded/`;
-		let srcSvgs = `./src/svg/symbols/`;
+		const nodeModulesSvgs = `./node_modules/@material-symbols/svg-400/rounded/`;
+		const srcSvgs = `./src/svg/symbols/`;
 
-		let { symbols } = availableSvgs as any;
-		for (let symbol of symbols) {
+		const { symbols } = availableSvgs as any;
+		for (const symbol of symbols) {
 			if (!existsSync(`${nodeModulesSvgs}${symbol}.svg`)) {
 				throw new Error('SVG does not exists!');
 			}
@@ -30,9 +30,9 @@ function copyUsedMaterialSymbols() {
 			}
 		}
 
-		let srcContents = await readdir(srcSvgs);
-		for (let srcContent of srcContents) {
-			let iconName = basename(srcContent, extname(srcContent)) as tSvgSrcFolderIcons;
+		const srcContents = await readdir(srcSvgs);
+		for (const srcContent of srcContents) {
+			const iconName = basename(srcContent, extname(srcContent)) as tSvgSrcFolderIcons;
 			if (!symbols.includes(iconName)) {
 				console.log('removing:', srcContent);
 
