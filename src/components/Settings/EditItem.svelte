@@ -68,8 +68,10 @@
 						}
 
 						actionMode = 'none';
-					}}">{$translations.buttons.save}</Button
+					}}"
 				>
+					{$translations.buttons.save}
+				</Button>
 			{:else}
 				<Button
 					type="button"
@@ -89,8 +91,10 @@
 						}
 
 						actionMode = 'none';
-					}}">{$translations.buttons.remove}</Button
+					}}"
 				>
+					{$translations.buttons.remove}
+				</Button>
 			{/if}
 
 			<Button

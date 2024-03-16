@@ -5,6 +5,8 @@
 
 <option
 	class="text-white bg-neutral-700 py-1 px-3"
-	value="{value}"
-	selected="{selected}"><slot /></option
+	{value}
+	{selected}
 >
+	<slot />
+</option>

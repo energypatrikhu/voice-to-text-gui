@@ -238,9 +238,11 @@
 			bind:value
 		/>
 	{/if}
-	{#if text !== '' && textPos === 'after'}<span class="w-full flex justify-start ml-1 {textClass}">
+	{#if text !== '' && textPos === 'after'}
+		<span class="w-full flex justify-start ml-1 {textClass}">
 			{text}
-		</span>{/if}
+		</span>
+	{/if}
 </label>
 
 <style>
