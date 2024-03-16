@@ -75,8 +75,10 @@
 			on:click="{function () {
 				indexOfShortcutToModify = -1;
 				actionMode = 'add-shortcut';
-			}}">{$translations.settings.input.keyboardShortcuts.table.button}</Button
+			}}"
 		>
+			{$translations.settings.input.keyboardShortcuts.table.button}
+		</Button>
 	</div>
 </div>
 

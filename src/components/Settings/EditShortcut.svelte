@@ -70,8 +70,10 @@
 					disabled="{buttons.length > 3}"
 					on:click="{function () {
 						if (buttons.length < 4) buttons.length += 1;
-					}}">{$translations.settings.input.keyboardShortcuts.modal.buttons['add-button']}</Button
+					}}"
 				>
+					{$translations.settings.input.keyboardShortcuts.modal.buttons['add-button']}
+				</Button>
 
 				<Button
 					type="button"
@@ -79,8 +81,10 @@
 					disabled="{buttons.length < 2}"
 					on:click="{function () {
 						if (buttons.length > 1) buttons.length -= 1;
-					}}">{$translations.settings.input.keyboardShortcuts.modal.buttons['remove-button']}</Button
+					}}"
 				>
+					{$translations.settings.input.keyboardShortcuts.modal.buttons['remove-button']}
+				</Button>
 			</div>
 		{/if}
 
@@ -104,8 +108,10 @@
 						}
 
 						actionMode = 'none';
-					}}">{$translations.buttons.save}</Button
+					}}"
 				>
+					{$translations.buttons.save}
+				</Button>
 			{:else}
 				<Button
 					type="button"
@@ -113,8 +119,10 @@
 						$config.input.keyboardShortcuts.splice(indexOfShortcutToModify, 1);
 						$config.input.keyboardShortcuts = $config.input.keyboardShortcuts;
 						actionMode = 'none';
-					}}">{$translations.buttons.remove}</Button
+					}}"
 				>
+					{$translations.buttons.remove}
+				</Button>
 			{/if}
 
 			<Button
