@@ -8,19 +8,17 @@ export const macros = <Writable<Array<Macro>>>writable([]);
 
 let isReady = false;
 
-export function setReady(state: boolean) {
+export function setMacrosReady(state: boolean) {
   isReady = state;
 
-  console.log('setReady', { isReady });
+  console.log('setMacrosReady', { isReady });
 }
 
 macros.subscribe(function (values) {
-  if (browser) {
-    if (browser && isReady) {
-      window.electron.send('electron', {
-        event: 'macros',
-        data: values,
-      });
-    }
+  if (browser && isReady) {
+    window.electron.send('electron', {
+      event: 'macros',
+      data: values,
+    });
   }
 });
