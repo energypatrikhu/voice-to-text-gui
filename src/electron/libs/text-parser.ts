@@ -125,7 +125,7 @@ export async function textParser(text: string) {
   for (let i = 0; i < strings.length; i++) {
     if (strings[i]) {
       __app.console.debugLog('[text]', strings[i]);
-      await printText(strings[i]);
+      await printText(strings[i], false, true);
     }
 
     if (fillerKeys && fillerKeys[i]) {

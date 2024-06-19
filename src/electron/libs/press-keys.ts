@@ -2,7 +2,7 @@ import type { KeyboardButton } from 'keysender';
 import { __app } from './app.js';
 import { keyboard } from './hardware.js';
 
-export function printText(output: string, isCommand: boolean = false) {
+export function printText(output: string, isCommand: boolean = false, isMacro: boolean = false) {
   return new Promise<void>(async (resolve) => {
     try {
       if (output === '') {
@@ -13,13 +13,13 @@ export function printText(output: string, isCommand: boolean = false) {
       const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
 
       for (const _output of outputSegments!) {
-        if (__app.config.others.mtaConsoleInputMode || isCommand) {
+        if ((__app.config.others.mtaConsoleInputMode || isCommand) && !isMacro) {
           await sendKeys('f8');
         }
 
         await keyboard.printText(_output, delay, delay);
 
-        if (__app.config.others.mtaConsoleInputMode || isCommand) {
+        if ((__app.config.others.mtaConsoleInputMode || isCommand) && !isMacro) {
           await sendKeys('enter', 'f8');
         }
       }
