@@ -1,510 +1,514 @@
 {
-	"speechFeedback": {
-		"index": {
-			"appStarted": "Az alkalmazás el indult!",
-			"updater": {
-				"updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!"
-			}
-		},
+  "speechFeedback": {
+    "index": {
+      "appStarted": "Az alkalmazás el indult!",
+      "updater": {
+        "updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!"
+      }
+    },
 
-		"commandHandler": {
-			"unknownMacro": "Ismeretlen makró!",
-			"unknownCommand": "Ismeretlen parancs!"
-		},
+    "commandHandler": {
+      "unknownMacro": "Ismeretlen makró!",
+      "unknownCommand": "Ismeretlen parancs!"
+    },
 
-		"commands": {
-			"updateApp": {
-				"updateAvailable": "Frissítés elérhető! Kérjük, várjon, a frissítés letöltése folyamatban..."
-			},
+    "commands": {
+      "updateApp": {
+        "updateAvailable": "Frissítés elérhető! Kérjük, várjon, a frissítés letöltése folyamatban..."
+      },
 
-			"showActiveButtons": {
-				"showActiveButtons": {
-					"enabled": "Aktív gombok megjelenítése: Engedélyezve",
-					"disabled": "Aktív gombok megjelenítése: Letiltva"
-				}
-			},
+      "showActiveButtons": {
+        "showActiveButtons": {
+          "enabled": "Aktív gombok megjelenítése: Engedélyezve",
+          "disabled": "Aktív gombok megjelenítése: Letiltva"
+        }
+      },
 
-			"mtaMode": {
-				"mtaConsoleInputMode": {
-					"enabled": "MTA konzol beviteli mód: Engedélyezve",
-					"disabled": "MTA konzol beviteli mód: Letiltva"
-				}
-			},
+      "mtaMode": {
+        "mtaConsoleInputMode": {
+          "enabled": "MTA konzol beviteli mód: Engedélyezve",
+          "disabled": "MTA konzol beviteli mód: Letiltva"
+        }
+      },
 
-			"exitMta": {
-				"notInForeground": "Az MTA San Andreas nincs előtérben!"
-			},
+      "exitMta": {
+        "notInForeground": "Az MTA San Andreas nincs előtérben!"
+      },
 
-			"exit": {
-				"closingApp": "Az alkalmazás bezárása folyamatban..."
-			},
+      "exit": {
+        "closingApp": "Az alkalmazás bezárása folyamatban..."
+      },
 
-			"activeWindow": {
-				"activeWindow": "Aktív ablak: {0}"
-			}
-		}
-	},
+      "activeWindow": {
+        "activeWindow": "Aktív ablak: {0}"
+      }
+    }
+  },
 
-	"textFeedback": {
-		"index": {
-			"app": {
-				"loading": "Alkalmazás betöltése, kérjük, várjon...",
-				"version": "Alkalmazás verziója: {0}",
-				"started": {
-					"hold": "A Voice To Text alkalmazás elindult, nyomja meg és tartsa lenyomva az egyik meghatározott billentyűparancsot az alkalmazás használatához",
-					"toggle": "A Voice To Text alkalmazás elindult, nyomja meg az egyik meghatározott billentyűparancsot az alkalmazás használatához"
-				}
-			},
-			"chrome": {
-				"starting": "A Google Chrome indítása fej nélküli módban...",
-				"initializing": "A Chrome-példány inicializálása..."
-			},
-			"updater": {
-				"starting": "Automatikus frissítés-ellenőrző indítása...",
-				"updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!",
-				"updateDownloading": "Letöltési sebesség: {0} - Letöltve {1}% ({2}/{3})"
-			},
-			"registering": {
-				"ioHook": "Io hook regisztrálása...",
-				"commands": "Parancsok regisztrálása..."
-			},
-			"keyPressed": "Lenyomva: {0}",
-			"activeButtons": "Aktív gombok: {0}",
-			"creatorsCredits": {
-				"wrapper": "> = = = = = < alkotók & kreditek > = = = = = <",
-				"createdBy": " Készítette: EnergyPatrikHU (https://energypatrik.hu)",
-				"ideaBy": " Ötlet Írta: HUMROLI1 (https://humroli1.hu)"
-			},
-			"commandsEnabled": "Mondja vagy írja be, hogy '{0}parancsok' az elérhető parancsok listázásához!"
-		},
+  "textFeedback": {
+    "index": {
+      "app": {
+        "loading": "Alkalmazás betöltése, kérjük, várjon...",
+        "version": "Alkalmazás verziója: {0}",
+        "started": {
+          "hold": "A Voice To Text alkalmazás elindult, nyomja meg és tartsa lenyomva az egyik meghatározott billentyűparancsot az alkalmazás használatához",
+          "toggle": "A Voice To Text alkalmazás elindult, nyomja meg az egyik meghatározott billentyűparancsot az alkalmazás használatához"
+        }
+      },
+      "chrome": {
+        "starting": "A Google Chrome indítása fej nélküli módban...",
+        "initializing": "A Chrome-példány inicializálása..."
+      },
+      "updater": {
+        "starting": "Automatikus frissítés-ellenőrző indítása...",
+        "updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!",
+        "updateDownloading": "Letöltési sebesség: {0} - Letöltve {1}% ({2}/{3})"
+      },
+      "registering": {
+        "ioHook": "Io hook regisztrálása...",
+        "commands": "Parancsok regisztrálása..."
+      },
+      "keyPressed": "Lenyomva: {0}",
+      "activeButtons": "Aktív gombok: {0}",
+      "creatorsCredits": {
+        "wrapper": "> = = = = = < alkotók & kreditek > = = = = = <",
+        "createdBy": " Készítette: EnergyPatrikHU (https://energypatrik.hu)",
+        "ideaBy": " Ötlet Írta: HUMROLI1 (https://humroli1.hu)"
+      },
+      "commandsEnabled": "Mondja vagy írja be, hogy '{0}parancsok' az elérhető parancsok listázásához!"
+    },
 
-		"soundWrapper": {
-			"playingSound": "Hang lejátszása..."
-		},
+    "soundWrapper": {
+      "playingSound": "Hang lejátszása..."
+    },
 
-		"config": {
-			"macro": {
-				"loaded": "Makrók betöltve!"
-			},
-			"config": {
-				"wrapper": "> = = = = = < konfiguráció > = = = = = <",
-				"loaded": "Konfiguráció betöltve!",
-				"error": {
-					"partialHoldToActivate": "Konfigurációs hiba! Az „output.partial” nem lehet „true”, míg az „input.holdToActivate” „true”!",
-					"punctuationMarksPartial": "Konfigurációs hiba! A „replacers.punctuationMarks” nem lehet „true”, míg az „output.partial” értéke „igaz”!",
-					"gameChatPrefixesPartial": "Konfigurációs hiba! A „replacers.gameChatPrefixes” nem lehet „true”, míg az „output.partial” „true”!",
-					"commandsPartial": "Konfigurációs hiba! A „commands.enabled” nem lehet „true”, míg az „output.partial” értéke „igaz”!"
-				}
-			},
-			"translations": {
-				"loaded": "Szótár betöltve!"
-			}
-		},
+    "config": {
+      "macro": {
+        "loaded": "Makrók betöltve!"
+      },
+      "config": {
+        "wrapper": "> = = = = = < konfiguráció > = = = = = <",
+        "loaded": "Konfiguráció betöltve!",
+        "error": {
+          "partialHoldToActivate": "Konfigurációs hiba! Az „output.partial” nem lehet „true”, míg az „input.holdToActivate” „true”!",
+          "punctuationMarksPartial": "Konfigurációs hiba! A „replacers.punctuationMarks” nem lehet „true”, míg az „output.partial” értéke „igaz”!",
+          "gameChatPrefixesPartial": "Konfigurációs hiba! A „replacers.gameChatPrefixes” nem lehet „true”, míg az „output.partial” „true”!",
+          "commandsPartial": "Konfigurációs hiba! A „commands.enabled” nem lehet „true”, míg az „output.partial” értéke „igaz”!"
+        }
+      },
+      "translations": {
+        "loaded": "Szótár betöltve!"
+      }
+    },
 
-		"commandHandler": {
-			"unknownMacro": "Ismeretlen makró!",
-			"unknownCommand": "Ismeretlen parancs!"
-		},
+    "commandHandler": {
+      "unknownMacro": "Ismeretlen makró!",
+      "unknownCommand": "Ismeretlen parancs!"
+    },
 
-		"chromeInstance": {
-			"chrome": {
-				"navigating": "Navigálás a Chrome-ban...",
-				"registeringEvents": "Chrome-események regisztrálása..."
-			},
-			"exposingPageFunctions": "Oldalfunkciók megjelenítése...",
-			"speechRecognition": {
-				"starting": "Beszédfelismerő motor indítása..."
-			}
-		},
+    "chromeInstance": {
+      "chrome": {
+        "navigating": "Navigálás a Chrome-ban...",
+        "registeringEvents": "Chrome-események regisztrálása..."
+      },
+      "exposingPageFunctions": "Oldalfunkciók megjelenítése...",
+      "speechRecognition": {
+        "starting": "Beszédfelismerő motor indítása..."
+      }
+    },
 
-		"update": {
-			"checkAppUpdate": {
-				"checkingUpdate": "Frissítés keresése...",
-				"upToDate": "Az alkalmazás naprakész!",
-				"notUpToDate": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban...",
-				"updateDownloaded": "A frissítés letöltődött, az alkalmazás most újraindul..."
-			}
-		},
+    "update": {
+      "checkAppUpdate": {
+        "checkingUpdate": "Frissítés keresése...",
+        "upToDate": "Az alkalmazás naprakész!",
+        "notUpToDate": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban...",
+        "updateDownloaded": "A frissítés letöltődött, az alkalmazás most újraindul..."
+      }
+    },
 
-		"commands": {
-			"updateApp": {
-				"description": "Frissítést keress az alkalmazáshoz.",
-				"checkingUpdate": "Frissítés keresése...",
-				"noUpdateAvailable": "Nincs elérhető frissítés.",
-				"updateAvailable": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban..."
-			},
+    "commands": {
+      "updateApp": {
+        "description": "Frissítést keress az alkalmazáshoz.",
+        "checkingUpdate": "Frissítés keresése...",
+        "noUpdateAvailable": "Nincs elérhető frissítés.",
+        "updateAvailable": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban..."
+      },
 
-			"showActiveButtons": {
-				"description": "Kiírja az aktív gombok listáját, hasznos arra, hogy be állítsd a kívánt gomb kombinációt a voice-to-text aktíválásához.",
-				"showActiveButtons": {
-					"enabled": "Aktív gombok megjelenítése: Engedélyezve",
-					"disabled": "Aktív gombok megjelenítése: Letiltva"
-				}
-			},
+      "showActiveButtons": {
+        "description": "Kiírja az aktív gombok listáját, hasznos arra, hogy be állítsd a kívánt gomb kombinációt a voice-to-text aktíválásához.",
+        "showActiveButtons": {
+          "enabled": "Aktív gombok megjelenítése: Engedélyezve",
+          "disabled": "Aktív gombok megjelenítése: Letiltva"
+        }
+      },
 
-			"mtaMode": {
-				"description": "Az 'mtaConsoleInputMode' beállítás jelenlegi értékének az ellenkezőjére állítja be. (true => false | false => true)",
-				"mtaConsoleInputMode": {
-					"enabled": "MTA konzol beviteli mód: Engedélyezve",
-					"disabled": "MTA konzol beviteli mód: Letiltva"
-				}
-			},
+      "mtaMode": {
+        "description": "Az 'mtaConsoleInputMode' beállítás jelenlegi értékének az ellenkezőjére állítja be. (true => false | false => true)",
+        "mtaConsoleInputMode": {
+          "enabled": "MTA konzol beviteli mód: Engedélyezve",
+          "disabled": "MTA konzol beviteli mód: Letiltva"
+        }
+      },
 
-			"exitMta": {
-				"description": "Bezárja az MTA San Andreas programot.",
-				"notInForeground": "MTA:SA nincs előtérben!"
-			},
+      "exitMta": {
+        "description": "Bezárja az MTA San Andreas programot.",
+        "notInForeground": "MTA:SA nincs előtérben!"
+      },
 
-			"exit": {
-				"description": "Bezárja ezt a programot.",
-				"closingApp": "Az alkalmazás bezárása..."
-			},
+      "exit": {
+        "description": "Bezárja ezt a programot.",
+        "closingApp": "Az alkalmazás bezárása..."
+      },
 
-			"commandList": {
-				"description": "Parancs lista.",
-				"list": {
-					"wrapper": "> = = = = = < commands > = = = = = <",
-					"name": " Név:",
-					"availability": " Elérhetőség:",
-					"syntax": " Használat:",
-					"description": " Leírás:"
-				},
-				"availabilityMap": {
-					"both": "szöveg és beszéd",
-					"text": "csak szöveg",
-					"speech": "csak beszéd"
-				}
-			},
+      "commandList": {
+        "description": "Parancs lista.",
+        "list": {
+          "wrapper": "> = = = = = < commands > = = = = = <",
+          "name": " Név:",
+          "availability": " Elérhetőség:",
+          "syntax": " Használat:",
+          "description": " Leírás:"
+        },
+        "availabilityMap": {
+          "both": "szöveg és beszéd",
+          "text": "csak szöveg",
+          "speech": "csak beszéd"
+        }
+      },
 
-			"activeWindow": {
-				"description": "Jelenleg előtérben lévő ablak lekérése.",
-				"activeWindow": "Aktív ablak: {0}"
-			}
-		},
+      "activeWindow": {
+        "description": "Jelenleg előtérben lévő ablak lekérése.",
+        "activeWindow": "Aktív ablak: {0}"
+      }
+    },
 
-		"chromeFunctions": {
-			"speechRecognition": {
-				"outputStopped": "Kimenet leállítva a 'Escape' megnyomása gomb által!",
-				"start": {
-					"outputPrefix": "Kimeneti előtag: {0}"
-				},
-				"info": {
-					"started": "Beszédfelismerés elindult",
-					"stopped": "Beszédfelismerés leállt",
-					"restarted": "Beszédfelismerés újraindítva",
-					"output": "Kimenet: {0}"
-				},
-				"transcript": {
-					"partialOutput": "Részleges kimenet: {0}"
-				}
-			}
-		}
-	},
+    "chromeFunctions": {
+      "speechRecognition": {
+        "outputStopped": "Kimenet leállítva a 'Escape' megnyomása gomb által!",
+        "start": {
+          "outputPrefix": "Kimeneti előtag: {0}"
+        },
+        "info": {
+          "started": "Beszédfelismerés elindult",
+          "stopped": "Beszédfelismerés leállt",
+          "restarted": "Beszédfelismerés újraindítva",
+          "output": "Kimenet: {0}"
+        },
+        "transcript": {
+          "partialOutput": "Részleges kimenet: {0}"
+        }
+      }
+    }
+  },
 
-	"states": {
-		"disabled": "Letiltva",
-		"enabled": "Engedélyezve",
-		"active": "Aktív",
-		"inactive": "Inaktív",
-		"activated": "Aktiválva",
-		"deactivated": "Deaktiválva",
-		"none": "Nincs",
-		"enable": "Engedélyezés",
-		"disable": "Tiltás",
-		"on": "Be",
-		"off": "Ki",
-		"onLong": "Bekapcsolás",
-		"offLong": "Kikapcsolás",
-		"onMid": "Bekapcsol",
-		"offMid": "Kikapcsol",
-		"custom": "Egyedi",
-		"default": "Alapértelmezett"
-	},
+  "states": {
+    "disabled": "Letiltva",
+    "enabled": "Engedélyezve",
+    "active": "Aktív",
+    "inactive": "Inaktív",
+    "activated": "Aktiválva",
+    "deactivated": "Deaktiválva",
+    "none": "Nincs",
+    "enable": "Engedélyezés",
+    "disable": "Tiltás",
+    "on": "Be",
+    "off": "Ki",
+    "onLong": "Bekapcsolás",
+    "offLong": "Kikapcsolás",
+    "onMid": "Bekapcsol",
+    "offMid": "Kikapcsol",
+    "custom": "Egyedi",
+    "default": "Alapértelmezett"
+  },
 
-	"time": {
-		"normal": {
-			"ms": "századmásodperc",
-			"s": "másodperc",
-			"m": "perc",
-			"h": "óra",
-			"d": "nap",
-			"w": "hét",
-			"mo": "hónap",
-			"y": "év"
-		},
-		"short": {
-			"ms": "szmp",
-			"s": "mp",
-			"m": "p",
-			"h": "ó",
-			"d": "n",
-			"w": "h",
-			"mo": "hó",
-			"y": "év"
-		}
-	},
+  "time": {
+    "normal": {
+      "ms": "századmásodperc",
+      "s": "másodperc",
+      "m": "perc",
+      "h": "óra",
+      "d": "nap",
+      "w": "hét",
+      "mo": "hónap",
+      "y": "év"
+    },
+    "short": {
+      "ms": "szmp",
+      "s": "mp",
+      "m": "p",
+      "h": "ó",
+      "d": "n",
+      "w": "h",
+      "mo": "hó",
+      "y": "év"
+    }
+  },
 
-	"buttons": {
-		"add": "Hozzáadás",
-		"remove": "Eltávolítás",
-		"save": "Mentés",
-		"cancel": "Mégsem",
-		"reset": "Visszaállítás"
-	},
+  "buttons": {
+    "add": "Hozzáadás",
+    "remove": "Eltávolítás",
+    "save": "Mentés",
+    "cancel": "Mégsem",
+    "reset": "Visszaállítás"
+  },
 
-	"navigation": {
-		"home": "Otthon",
-		"settings": "Beállítások",
-		"macros": "Makrók",
-		"info": "Infó"
-	},
+  "navigation": {
+    "home": "Otthon",
+    "settings": "Beállítások",
+    "macros": "Makrók",
+    "info": "Infó"
+  },
 
-	"console": {
-		"input": {
-			"placeholder": "Parancs bemenet (előtag nélkül)",
-			"submit": "Küldés"
-		}
-	},
+  "console": {
+    "input": {
+      "placeholder": "Parancs bemenet (előtag nélkül)",
+      "submit": "Küldés"
+    }
+  },
 
-	"firstStart": {
-		"global": {
-			"run": "Első indítás szkriptek futtatása...",
-			"done": "Az első indítás szkriptek elkészültek!",
-			"skip": "Az első indítás szkriptek kihagyva!"
-		},
-		"chrome": {
-			"check": "A Chrome frissítéseinek ellenőrzése...",
-			"no_update": "Nem található új Chrome-frissítés, a frissítés kihagyása!",
-			"update": "Új Chrome-frissítés található, a chrome frissítése folyamatban van!",
-			"done": "A Chrome frissítése sikeresen megtörtént!",
-			"fail": "Nem sikerült frissíteni a Chrome-ot!"
-		}
-	},
+  "firstStart": {
+    "global": {
+      "run": "Első indítás szkriptek futtatása...",
+      "done": "Az első indítás szkriptek elkészültek!",
+      "skip": "Az első indítás szkriptek kihagyva!"
+    },
+    "chrome": {
+      "check": "A Chrome frissítéseinek ellenőrzése...",
+      "no_update": "Nem található új Chrome-frissítés, a frissítés kihagyása!",
+      "update": "Új Chrome-frissítés található, a chrome frissítése folyamatban van!",
+      "done": "A Chrome frissítése sikeresen megtörtént!",
+      "fail": "Nem sikerült frissíteni a Chrome-ot!"
+    }
+  },
 
-	"settings": {
-		"logs": {
-			"this": {
-				"name": "Naplózás",
-				"description": "Naplózással kapcsolatos beállítások"
-			},
-			"debug": {
-				"name": "Hibakeresés",
-				"description": "Hibakeresési naplózás mutatása"
-			},
-			"saveToFile": {
-				"name": "Mentés fájlba",
-				"description": "Naplók fájlba mentése"
-			}
-		},
-		"update": {
-			"this": {
-				"name": "Frissítő",
-				"description": "Alkalmazás frissítő beállításai"
-			},
-			"checkOnStartup": {
-				"name": "Ellenőrzés indításkor",
-				"description": "Ellenőrizze a frissítést minden alkalmazás indításkor"
-			},
-			"allowPrerelease": {
-				"name": "Béta verziók",
-				"description": "Béta/előzetes verziók keresése"
-			},
-			"allowDowngrade": {
-				"name": "Régebbi verziók",
-				"description": "A régebbi verziók letöltésének engedélyezése"
-			},
-			"autoCheck": {
-				"name": "Automatikus ellenőrzés",
-				"description": "Automatikusan ellenőrzi a frissítéseket a megadott időn belül"
-			},
-			"checkInterval": {
-				"name": "Ellenőrzési időköz",
-				"description": "A frissítések ellenőrzésének intervalluma"
-			}
-		},
-		"input": {
-			"this": {
-				"name": "Bevitel",
-				"description": "Bevitellel kapcsolatos beállítások"
-			},
-			"holdToActivate": {
-				"name": "Bevitelhez nyomva tartás",
-				"description": "Bevitelhez nyomva tartás vagy ki/bekapcsolás beállítása"
-			},
-			"keyboardShortcuts": {
-				"name": "Gyorsbillentyűk",
-				"description": "Az aktiváláshoz szükséges gyors gombok beállítása",
-				"table": {
-					"prefix": "Kimeneti előtag",
-					"shortcut": "Gyorsbillentyű",
-					"button": "Új előtag és gyorsbillentyű hozzáadása"
-				},
-				"modal": {
-					"titles": {
-						"add-shortcut": "Előtag és parancsikon hozzáadása",
-						"edit-shortcut": "Előtag és gyorsbillentyű szerkesztése",
-						"remove-shortcut": "Előtag és gyorsbillentyű eltávolítása"
-					},
-					"prefix": "Kimeneti előtag",
-					"shortcut": "Gyorsbillentyű",
-					"buttons": {
-						"add-button": "+1 Gomb",
-						"remove-button": "-1 Gomb"
-					}
-				}
-			},
-			"autoRelease": {
-				"name": "Automatikus felengedés",
-				"description": "Automatikus felengedéssel kapcsolatos beállítások"
-			},
-			"releaseTime": {
-				"name": "Automatikus felengedés idő",
-				"description": "A megadott idő után való automatikus felengedés"
-			}
-		},
-		"output": {
-			"this": {
-				"name": "Kimenet",
-				"description": "A kimeneti szöveghez kapcsolódó beállítások"
-			},
-			"partial": {
-				"name": "Részleges",
-				"description": "Részleges kimeneti szöveg használata"
-			},
-			"animated": {
-				"name": "Animált",
-				"description": "A kimeneti szöveg animált kiíratása"
-			},
-			"typingDelay": {
-				"name": "Gépelési késleltetés",
-				"description": "Az animált kiíratásban a betűk közötti késleltetés"
-			}
-		},
-		"feedback": {
-			"this": {
-				"name": "Visszajelzés",
-				"description": "Visszajelzéssel kapcsolatos beállítások"
-			},
-			"sounds": {
-				"name": "Hangok bekapcsolása/kikapcsolása",
-				"description": "Hangok használata az alkalmazásban",
-				"audioMode": {
-					"name": "Hang mód",
-					"description": "Hang mód a hangvisszajelzéshez"
-				},
-				"customAudioFile": {
-					"name": "Egyedi hangfájl",
-					"description": "Egyedi hang bekapcsoláshoz/kikapcsoláshoz",
-					"select": "Hangfájl kiválasztása",
-					"selected": "Kiválasztva"
-				},
-				"audioVolume": {
-					"name": "hangerő",
-					"description": "Visszajelzés hangereje"
-				}
-			},
-			"speech": {
-				"name": "Beszéd",
-				"description": "Beszéd visszajelzés használata"
-			},
-			"volume": {
-				"name": "Beszéd hangereje",
-				"description": "Beszéd visszajelzés hangereje"
-			},
-			"language": {
-				"name": "Nyelv",
-				"description": "Beszéd visszajelzés és alkalmazás nyelve"
-			}
-		},
-		"speechRecognition": {
-			"this": {
-				"name": "Beszédfelismerés",
-				"description": "Hangfelismeréssel kapcsolatos beállítások"
-			},
-			"language": {
-				"name": "Nyelv",
-				"description": "A hangfelismerés nyelve"
-			},
-			"customWordsAndPhrases": {
-				"name": "Egyedi szavak/mondatok",
-				"description": "Egyedi szavak és mondatok listája a hangfelismeréshez",
-				"table": {
-					"title": "Szó / Mondat",
-					"button": "Új szó / mondat hozzáadása"
-				},
-				"modal": {
-					"titles": {
-						"add-item": "Szó / mondat hozzáadása",
-						"edit-item": "Szó / mondat szerkesztése",
-						"remove-item": "Szó / mondat eltávolítása"
-					},
-					"wordPhrase": "Szó / Mondat"
-				}
-			}
-		},
-		"replacers": {
-			"this": {
-				"name": "Helyettesítők",
-				"description": "Helyettesítő beállítások"
-			},
-			"punctuationMarks": {
-				"name": "Írásjelek",
-				"description": "Írásjel helyettesítők használata, mint például [ ! , . ? ]"
-			},
-			"gameChatPrefixes": {
-				"name": "Játék chat előtagok SeeMTA számára",
-				"description": "SeeMTA játékban szöveg helyettesítők használata"
-			}
-		},
-		"windowAllowList": {
-			"this": {
-				"name": "Ablak engedélyezési lista",
-				"description": "Engedélyezett ablakok használata"
-			},
-			"windows": {
-				"name": "Ablak lista",
-				"description": "Az engedélyezett ablak(ok) listája",
-				"table": {
-					"title": "Ablak neve",
-					"button": "Új ablak név hozzáadása"
-				},
-				"modal": {
-					"titles": {
-						"add-item": "Ablaknév hozzáadása",
-						"edit-item": "Ablaknév szerkesztése",
-						"remove-item": "Ablaknév eltávolítása"
-					},
-					"windowName": "Ablak neve"
-				}
-			}
-		},
-		"commands": {
-			"this": {
-				"name": "Parancsok",
-				"description": "Parancsok használata"
-			},
-			"prefix": {
-				"name": "Előtag",
-				"description": "A parancs használatához szükséges jel vagy szöveg"
-			},
-			"splitter": {
-				"name": "Elválasztó",
-				"description": "A parancsban lévő értékek elválasztásához szükséges jel vagy szöveg"
-			}
-		},
-		"others": {
-			"this": {
-				"name": "Egyebek",
-				"description": "Egyéb beállítások"
-			},
-			"mtaConsoleInputMode": {
-				"name": "MTA:SA konzol beviteli mód",
-				"description": "MTA:SA játékban automatikus szövegbevitel használata"
-			},
-			"showActiveButtons": {
-				"name": "Megnyomott gombok megjelenítése",
-				"description": "Jelenleg aktív gombok kiíratása"
-			}
-		}
-	}
+  "settings": {
+    "logs": {
+      "this": {
+        "name": "Naplózás",
+        "description": "Naplózással kapcsolatos beállítások"
+      },
+      "debug": {
+        "name": "Hibakeresés",
+        "description": "Hibakeresési naplózás mutatása"
+      },
+      "saveToFile": {
+        "name": "Mentés fájlba",
+        "description": "Naplók fájlba mentése"
+      }
+    },
+    "update": {
+      "this": {
+        "name": "Frissítő",
+        "description": "Alkalmazás frissítő beállításai"
+      },
+      "checkOnStartup": {
+        "name": "Ellenőrzés indításkor",
+        "description": "Ellenőrizze a frissítést minden alkalmazás indításkor"
+      },
+      "allowPrerelease": {
+        "name": "Béta verziók",
+        "description": "Béta/előzetes verziók keresése"
+      },
+      "allowDowngrade": {
+        "name": "Régebbi verziók",
+        "description": "A régebbi verziók letöltésének engedélyezése"
+      },
+      "autoCheck": {
+        "name": "Automatikus ellenőrzés",
+        "description": "Automatikusan ellenőrzi a frissítéseket a megadott időn belül"
+      },
+      "checkInterval": {
+        "name": "Ellenőrzési időköz",
+        "description": "A frissítések ellenőrzésének intervalluma"
+      },
+      "checkChromeUpdates": {
+        "name": "Chrome frissítések ellenőrzése",
+        "description": "Chrome frissítések ellenőrzése az alkalmazás indításakor"
+      }
+    },
+    "input": {
+      "this": {
+        "name": "Bevitel",
+        "description": "Bevitellel kapcsolatos beállítások"
+      },
+      "holdToActivate": {
+        "name": "Bevitelhez nyomva tartás",
+        "description": "Bevitelhez nyomva tartás vagy ki/bekapcsolás beállítása"
+      },
+      "keyboardShortcuts": {
+        "name": "Gyorsbillentyűk",
+        "description": "Az aktiváláshoz szükséges gyors gombok beállítása",
+        "table": {
+          "prefix": "Kimeneti előtag",
+          "shortcut": "Gyorsbillentyű",
+          "button": "Új előtag és gyorsbillentyű hozzáadása"
+        },
+        "modal": {
+          "titles": {
+            "add-shortcut": "Előtag és parancsikon hozzáadása",
+            "edit-shortcut": "Előtag és gyorsbillentyű szerkesztése",
+            "remove-shortcut": "Előtag és gyorsbillentyű eltávolítása"
+          },
+          "prefix": "Kimeneti előtag",
+          "shortcut": "Gyorsbillentyű",
+          "buttons": {
+            "add-button": "+1 Gomb",
+            "remove-button": "-1 Gomb"
+          }
+        }
+      },
+      "autoRelease": {
+        "name": "Automatikus felengedés",
+        "description": "Automatikus felengedéssel kapcsolatos beállítások"
+      },
+      "releaseTime": {
+        "name": "Automatikus felengedés idő",
+        "description": "A megadott idő után való automatikus felengedés"
+      }
+    },
+    "output": {
+      "this": {
+        "name": "Kimenet",
+        "description": "A kimeneti szöveghez kapcsolódó beállítások"
+      },
+      "partial": {
+        "name": "Részleges",
+        "description": "Részleges kimeneti szöveg használata"
+      },
+      "animated": {
+        "name": "Animált",
+        "description": "A kimeneti szöveg animált kiíratása"
+      },
+      "typingDelay": {
+        "name": "Gépelési késleltetés",
+        "description": "Az animált kiíratásban a betűk közötti késleltetés"
+      }
+    },
+    "feedback": {
+      "this": {
+        "name": "Visszajelzés",
+        "description": "Visszajelzéssel kapcsolatos beállítások"
+      },
+      "sounds": {
+        "name": "Hangok bekapcsolása/kikapcsolása",
+        "description": "Hangok használata az alkalmazásban",
+        "audioMode": {
+          "name": "Hang mód",
+          "description": "Hang mód a hangvisszajelzéshez"
+        },
+        "customAudioFile": {
+          "name": "Egyedi hangfájl",
+          "description": "Egyedi hang bekapcsoláshoz/kikapcsoláshoz",
+          "select": "Hangfájl kiválasztása",
+          "selected": "Kiválasztva"
+        },
+        "audioVolume": {
+          "name": "hangerő",
+          "description": "Visszajelzés hangereje"
+        }
+      },
+      "speech": {
+        "name": "Beszéd",
+        "description": "Beszéd visszajelzés használata"
+      },
+      "volume": {
+        "name": "Beszéd hangereje",
+        "description": "Beszéd visszajelzés hangereje"
+      },
+      "language": {
+        "name": "Nyelv",
+        "description": "Beszéd visszajelzés és alkalmazás nyelve"
+      }
+    },
+    "speechRecognition": {
+      "this": {
+        "name": "Beszédfelismerés",
+        "description": "Hangfelismeréssel kapcsolatos beállítások"
+      },
+      "language": {
+        "name": "Nyelv",
+        "description": "A hangfelismerés nyelve"
+      },
+      "customWordsAndPhrases": {
+        "name": "Egyedi szavak/mondatok",
+        "description": "Egyedi szavak és mondatok listája a hangfelismeréshez",
+        "table": {
+          "title": "Szó / Mondat",
+          "button": "Új szó / mondat hozzáadása"
+        },
+        "modal": {
+          "titles": {
+            "add-item": "Szó / mondat hozzáadása",
+            "edit-item": "Szó / mondat szerkesztése",
+            "remove-item": "Szó / mondat eltávolítása"
+          },
+          "wordPhrase": "Szó / Mondat"
+        }
+      }
+    },
+    "replacers": {
+      "this": {
+        "name": "Helyettesítők",
+        "description": "Helyettesítő beállítások"
+      },
+      "punctuationMarks": {
+        "name": "Írásjelek",
+        "description": "Írásjel helyettesítők használata, mint például [ ! , . ? ]"
+      },
+      "gameChatPrefixes": {
+        "name": "Játék chat előtagok SeeMTA számára",
+        "description": "SeeMTA játékban szöveg helyettesítők használata"
+      }
+    },
+    "windowAllowList": {
+      "this": {
+        "name": "Ablak engedélyezési lista",
+        "description": "Engedélyezett ablakok használata"
+      },
+      "windows": {
+        "name": "Ablak lista",
+        "description": "Az engedélyezett ablak(ok) listája",
+        "table": {
+          "title": "Ablak neve",
+          "button": "Új ablak név hozzáadása"
+        },
+        "modal": {
+          "titles": {
+            "add-item": "Ablaknév hozzáadása",
+            "edit-item": "Ablaknév szerkesztése",
+            "remove-item": "Ablaknév eltávolítása"
+          },
+          "windowName": "Ablak neve"
+        }
+      }
+    },
+    "commands": {
+      "this": {
+        "name": "Parancsok",
+        "description": "Parancsok használata"
+      },
+      "prefix": {
+        "name": "Előtag",
+        "description": "A parancs használatához szükséges jel vagy szöveg"
+      },
+      "splitter": {
+        "name": "Elválasztó",
+        "description": "A parancsban lévő értékek elválasztásához szükséges jel vagy szöveg"
+      }
+    },
+    "others": {
+      "this": {
+        "name": "Egyebek",
+        "description": "Egyéb beállítások"
+      },
+      "mtaConsoleInputMode": {
+        "name": "MTA:SA konzol beviteli mód",
+        "description": "MTA:SA játékban automatikus szövegbevitel használata"
+      },
+      "showActiveButtons": {
+        "name": "Megnyomott gombok megjelenítése",
+        "description": "Jelenleg aktív gombok kiíratása"
+      }
+    }
+  }
 }
