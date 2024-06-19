@@ -120,6 +120,7 @@ export async function textParser(text: string) {
   );
   const fillerKeys = text.match(textParserRegex);
   const strings = text.split(textParserRegex);
+  __app.console.debugLog('[full text]', text);
 
   for (let i = 0; i < strings.length; i++) {
     if (strings[i]) {
