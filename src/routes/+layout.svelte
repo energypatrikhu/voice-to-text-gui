@@ -1,107 +1,113 @@
 <script lang="ts">
-	import '../app.css';
-	import Loading from '$components/Loading.svelte';
+  import '../app.css';
+  import Loading from '$components/Loading.svelte';
 
-	import { onMount } from 'svelte';
-	import { config, setReady } from '$stores/config';
-	import { translations } from '$stores/translations';
-	import { app } from '$stores/app';
-	import { macros } from '$stores/macros';
+  import { onMount } from 'svelte';
+  import { config, setConfigReady } from '$stores/config';
+  import { macros, setMacrosReady } from '$stores/macros';
+  import { translations } from '$stores/translations';
+  import { app } from '$stores/app';
 
-	import { getLocaleTime } from '$libs/functions/getLocaleTime';
-	import { preloadSvgs } from '$libs/functions/preloadSvgs';
-	import { updateConsoleStore } from '$stores/console';
+  import { getLocaleTime } from '$libs/functions/getLocaleTime';
+  import { preloadSvgs } from '$libs/functions/preloadSvgs';
+  import { updateConsoleStore } from '$stores/console';
 
-	window.audioPlayback = new Audio();
+  window.audioPlayback = new Audio();
 
-	window.addEventListener('mouseup', function (mouseEvent) {
-		if ([1, 3, 4].includes(mouseEvent.button)) {
-			mouseEvent.preventDefault();
-			mouseEvent.stopPropagation();
-		}
-	});
+  window.addEventListener('mouseup', function (mouseEvent) {
+    if ([1, 3, 4].includes(mouseEvent.button)) {
+      mouseEvent.preventDefault();
+      mouseEvent.stopPropagation();
+    }
+  });
 
-	document.addEventListener('auxclick', function (mouseEvent) {
-		mouseEvent.preventDefault();
-		mouseEvent.stopPropagation();
-	});
+  document.addEventListener('auxclick', function (mouseEvent) {
+    mouseEvent.preventDefault();
+    mouseEvent.stopPropagation();
+  });
 
-	let ready: boolean = false;
+  let ready: boolean = false;
 
-	window.electron.receive('electron', function ({ event, data }) {
-		switch (event) {
-			case 'ready': {
-				ready = true;
-				$app = { ...$app, ...data.versions };
-				$config = data.config;
-				$macros = data.macros;
-				$translations = data.translations;
+  window.electron.receive('electron', function ({ event, data }) {
+    switch (event) {
+      case 'ready': {
+        ready = true;
+        $app = { ...$app, ...data.versions };
+        $config = data.config;
+        $macros = data.macros;
+        $translations = data.translations;
 
-				setReady(true);
-				break;
-			}
+        setConfigReady(true);
+        setMacrosReady(true);
+        break;
+      }
 
-			case 'log': {
-				updateConsoleStore(data);
-				window.electron.send('electron', { event: 'log', data: { ...data, filename: $app.startupDate + '.log' } });
-				break;
-			}
+      case 'log': {
+        updateConsoleStore(data);
+        window.electron.send('electron', { event: 'log', data: { ...data, filename: $app.startupDate + '.log' } });
+        break;
+      }
 
-			case 'translations': {
-				$translations = data.translations;
-				break;
-			}
+      case 'translations': {
+        $translations = data.translations;
+        break;
+      }
 
-			case 'config': {
-				$config = data.config;
-				break;
-			}
+      case 'config': {
+        $config = data.config;
+        break;
+      }
 
-			case 'selectAudioFile': {
-				if (data) {
-					$config.feedback.sounds.file = data;
-				}
-				break;
-			}
+      case 'macros': {
+        $macros = data.macros;
+        break;
+      }
 
-			case 'playAudio': {
-				if (data.src && data.volume) {
-					window.audioPlayback.src = data.src;
-					window.audioPlayback.volume = data.volume;
-					window.audioPlayback.play();
-				}
-				break;
-			}
+      case 'selectAudioFile': {
+        if (data) {
+          $config.feedback.sounds.file = data;
+        }
+        break;
+      }
 
-			case 'loaded': {
-				$app.ready = true;
-				break;
-			}
-		}
-	});
+      case 'playAudio': {
+        if (data.src && data.volume) {
+          window.audioPlayback.src = data.src;
+          window.audioPlayback.volume = data.volume;
+          window.audioPlayback.play();
+        }
+        break;
+      }
 
-	async function loadSettings() {
-		console.log("setting 'startupDate'");
-		$app.startupDate = getLocaleTime();
+      case 'loaded': {
+        $app.ready = true;
+        break;
+      }
+    }
+  });
 
-		console.log('preload svgs');
-		await preloadSvgs();
-	}
+  async function loadSettings() {
+    console.log("setting 'startupDate'");
+    $app.startupDate = getLocaleTime();
 
-	onMount(async function () {
-		await loadSettings();
+    console.log('preload svgs');
+    await preloadSvgs();
+  }
 
-		window.electron.send('electron', {
-			event: 'ready',
-			data: null,
-		});
-	});
+  onMount(async function () {
+    await loadSettings();
+
+    window.electron.send('electron', {
+      event: 'ready',
+      data: null,
+    });
+  });
 </script>
 
 {#if ready}
-	<slot />
+  <slot />
 {:else}
-	<div class="absolute flex justify-center items-center h-full w-full">
-		<Loading />
-	</div>
+  <div class="absolute flex justify-center items-center h-full w-full">
+    <Loading />
+  </div>
 {/if}

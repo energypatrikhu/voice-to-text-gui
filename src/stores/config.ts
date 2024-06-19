@@ -8,19 +8,19 @@ export const config = <Writable<ConfigOptions>>writable({});
 
 let isReady = false;
 
-export function setReady(state: boolean) {
-	isReady = state;
+export function setConfigReady(state: boolean) {
+  isReady = state;
 
-	console.log('setReady', { isReady });
+  console.log('setConfigReady', { isReady });
 }
 
 config.subscribe(function (values) {
-	console.log({ browser, isReady });
+  console.log({ browser, isReady });
 
-	if (browser && isReady) {
-		window.electron.send('electron', {
-			event: 'config',
-			data: values,
-		});
-	}
+  if (browser && isReady) {
+    window.electron.send('electron', {
+      event: 'config',
+      data: values,
+    });
+  }
 });
