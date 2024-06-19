@@ -92,24 +92,24 @@ class CommandHandler {
   private async callMacro(handler: Macro$Handler, outputLocation: 'return' | 'write') {
     const filteredMacros = this.macros.filter((macro) => macro.handler === handler);
 
-    __app.console.debugLogJson({ macro: filteredMacros, outputLocation });
+    __app.console.debugLogJson({ filteredMacros, outputLocation });
 
-    if (filteredMacros.length > 0) {
-      const macro = filteredMacros[0];
-
-      if (outputLocation === 'return') {
-        return macro.text;
-      }
-
-      if (__app.config.others.mtaConsoleInputMode) {
-        return await textParser(`{f8}say ${macro.text}{enter}{f8}`);
-      }
-
-      return await textParser(macro.text);
+    if (filteredMacros.length === 0) {
+      this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
+      __app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
     }
 
-    this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
-    __app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
+    const macro = filteredMacros[0];
+
+    if (outputLocation === 'return') {
+      return macro.text;
+    }
+
+    if (__app.config.others.mtaConsoleInputMode) {
+      return await textParser(`{f8}say ${macro.text}{enter}{f8}`);
+    }
+
+    return await textParser(macro.text);
   }
 
   private async callCommand(command: string, availability: Command$Availability, ...args: any[]) {
@@ -125,12 +125,14 @@ class CommandHandler {
 
     __app.console.debugLogJson({ cmd, isMacro: anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek']) });
 
-    if (anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek'])) {
+    if (__app.config.macros.enabled && anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek'])) {
       if (cmd.args.length === 0) {
         this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
         __app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
         return;
       }
+
+      __app.console.debugLogJson({ macros: this.macros });
 
       return await this.callMacro(cmd.args[0], args.length > 1 ? args[1] : 'write');
     }
