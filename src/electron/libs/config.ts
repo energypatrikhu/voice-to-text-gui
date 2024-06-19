@@ -57,6 +57,9 @@ const defaultConfig: ConfigOptions = {
     enabled: false,
     windows: [],
   },
+  macros: {
+    enabled: true,
+  },
   commands: {
     enabled: true,
     prefix: '!',

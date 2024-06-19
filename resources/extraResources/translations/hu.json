@@ -496,6 +496,30 @@
         "description": "A parancsban lévő értékek elválasztásához szükséges jel vagy szöveg"
       }
     },
+    "macros": {
+      "this": {
+        "name": "Makrók",
+        "description": "Makrók használata (Használat: Parancs előtag + [ makró, makrók, szöveg, szövegek ]) (Pl.: !makrók:szép napot)"
+      },
+      "macros": {
+        "name": "Makrók listája",
+        "description": "A makrók listája",
+        "table": {
+          "prefix": "Aktivátor Előtag",
+          "text": "Kimeneti Szöveg",
+          "button": "Új makró hozzáadása"
+        },
+        "modal": {
+          "titles": {
+            "add-macro": "Makró hozzáadása",
+            "edit-macro": "Makró szerkesztése",
+            "remove-macro": "Makró eltávolítása"
+          },
+          "prefix": "Aktivátor Előtag",
+          "text": "Kimeneti Szöveg"
+        }
+      }
+    },
     "others": {
       "this": {
         "name": "Egyebek",
