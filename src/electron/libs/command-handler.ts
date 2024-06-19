@@ -117,7 +117,7 @@ class CommandHandler {
       return;
     }
 
-    const commandArray = command.slice(1).replace(/\s+/g, '').split(__app.config.commands.splitter).concat(args);
+    const commandArray = command.slice(1).replace(/\s+/g, '').split(__app.config.commands.splitter);
     const cmd: CmdParsed = {
       handler: commandArray[0],
       args: commandArray.slice(1),
@@ -134,7 +134,7 @@ class CommandHandler {
 
       __app.console.debugLogJson({ macros: __app.macros });
 
-      return await this.callMacro(cmd.args[0], args.length > 1 ? args[1] : 'write');
+      return await this.callMacro(cmd.args[0], args.length !== 0 ? args[0] : 'write');
     }
 
     const filteredCommands = this.commands.filter((_command) =>
