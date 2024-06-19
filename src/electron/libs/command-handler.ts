@@ -92,6 +92,8 @@ class CommandHandler {
   private async callMacro(handler: Macro$Handler, outputLocation: 'return' | 'write') {
     const macro = this.macros.find((macro) => macro.handler === handler);
 
+    __app.console.debugLogJson({ macro, outputLocation });
+
     if (macro) {
       if (outputLocation === 'return') {
         return macro.text;
