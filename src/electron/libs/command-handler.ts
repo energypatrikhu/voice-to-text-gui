@@ -97,6 +97,7 @@ class CommandHandler {
     if (filteredMacros.length === 0) {
       this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
       __app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
+      return;
     }
 
     const macro = filteredMacros[0];
