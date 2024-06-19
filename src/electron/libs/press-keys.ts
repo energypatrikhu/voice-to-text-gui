@@ -14,13 +14,13 @@ export function printText(output: string, isCommand: boolean = false) {
 
       for (const _output of outputSegments!) {
         if (__app.config.others.mtaConsoleInputMode || isCommand) {
-          await keyboard.sendKey('f8', delay, delay);
+          await sendKeys('f8');
         }
 
         await keyboard.printText(_output, delay, delay);
 
         if (__app.config.others.mtaConsoleInputMode || isCommand) {
-          await keyboard.sendKeys(['enter', 'f8'], delay, delay);
+          await sendKeys('enter', 'f8');
         }
       }
 
@@ -31,16 +31,21 @@ export function printText(output: string, isCommand: boolean = false) {
   });
 }
 
-export async function sendKey(key: KeyboardButton) {
-  try {
-    if (!key) {
-      return;
+export function sendKeys(...keys: KeyboardButton[]) {
+  return new Promise<void>(async (resolve) => {
+    try {
+      if (keys.length === 0) {
+        setTimeout(resolve, 0);
+        return;
+      }
+
+      const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
+
+      await keyboard.sendKeys(keys, delay, delay);
+
+      setTimeout(resolve, 0);
+    } catch (error) {
+      __app.console.debugErrorLog(error);
     }
-
-    const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
-
-    await keyboard.sendKey(key, delay, delay);
-  } catch (error) {
-    __app.console.debugErrorLog(error);
-  }
+  });
 }
