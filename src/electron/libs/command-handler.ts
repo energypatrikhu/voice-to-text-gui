@@ -117,7 +117,7 @@ class CommandHandler {
       return;
     }
 
-    const commandArray = command.slice(1).replace(/\s+/g, '').split(__app.config.commands.splitter);
+    const commandArray = command.slice(1).replace(/\s+/g, '').split(__app.config.commands.splitter).concat(args);
     const cmd: CmdParsed = {
       handler: commandArray[0],
       args: commandArray.slice(1),
