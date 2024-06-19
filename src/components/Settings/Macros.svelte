@@ -73,7 +73,7 @@
         actionMode = 'add-macro';
       }}"
     >
-      {$translations.settings.input.keyboardShortcuts.table.button}
+      {$translations.settings.macros.macros.table.button}
     </Button>
   </div>
 </div>

@@ -555,7 +555,7 @@
 
         <SubSection>
           <span slot="title">{$translations.settings.macros.macros.name}</span>
-          <span slot="description">{$translations.settings.macros.macros.name}</span>
+          <span slot="description">{$translations.settings.macros.macros.description}</span>
 
           <Macros
             slot="content"
