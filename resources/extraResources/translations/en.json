@@ -496,6 +496,30 @@
         "description": "Symbol or text to separate the values in the command"
       }
     },
+    "macros": {
+      "this": {
+        "name": "Macros",
+        "description": "Use of Macros (Usage: command prefix + [ makró, makrók, szöveg, szövegek ]) (Example: !makrók:szép napot)"
+      },
+      "macros": {
+        "name": "Macros",
+        "description": "List of macros",
+        "table": {
+          "prefix": "Activator Prefix",
+          "text": "Output Text",
+          "button": "Add new macro"
+        },
+        "modal": {
+          "titles": {
+            "add-macro": "Add macro",
+            "edit-macro": "Edit macro",
+            "remove-macro": "Remove macro"
+          },
+          "prefix": "Activator Prefix",
+          "text": "Output Text"
+        }
+      }
+    },
     "others": {
       "this": {
         "name": "Others",

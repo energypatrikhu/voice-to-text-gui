@@ -3,46 +3,19 @@ export interface Translations {
   textFeedback: TextFeedback;
   states: States;
   time: Time;
-  buttons: EnButtons;
+  buttons: Buttons;
   navigation: Navigation;
   console: Console;
   firstStart: FirstStart;
   settings: Settings;
 }
 
-export interface States {
-  disabled: string;
-  enabled: string;
-  active: string;
-  inactive: string;
-  activated: string;
-  deactivated: string;
-  none: string;
-  enable: string;
-  disable: string;
-  on: string;
-  off: string;
-  onLong: string;
-  offLong: string;
-  onMid: string;
-  offMid: string;
-  custom: string;
-  default: string;
-}
-
-export interface EnButtons {
+export interface Buttons {
   add: string;
   remove: string;
   save: string;
   cancel: string;
   reset: string;
-}
-
-export interface Navigation {
-  home: string;
-  settings: string;
-  macros: string;
-  info: string;
 }
 
 export interface Console {
@@ -55,14 +28,8 @@ export interface ConsoleInput {
 }
 
 export interface FirstStart {
-  global: FirstStartGlobal;
+  global: Global;
   chrome: FirstStartChrome;
-}
-
-export interface FirstStartGlobal {
-  run: string;
-  done: string;
-  skip: string;
 }
 
 export interface FirstStartChrome {
@@ -73,44 +40,58 @@ export interface FirstStartChrome {
   fail: string;
 }
 
+export interface Global {
+  run: string;
+  done: string;
+  skip: string;
+}
+
+export interface Navigation {
+  home: string;
+  settings: string;
+  macros: string;
+  info: string;
+}
+
 export interface Settings {
   logs: Logs;
   update: SettingsUpdate;
-  input: Input;
+  input: SettingsInput;
   output: Output;
   feedback: Feedback;
   speechRecognition: SettingsSpeechRecognition;
   replacers: Replacers;
   windowAllowList: WindowAllowList;
   commands: SettingsCommands;
+  macros: SettingsMacros;
   others: Others;
 }
 
 export interface SettingsCommands {
-  this: TartuGecko;
-  prefix: TartuGecko;
-  splitter: TartuGecko;
+  this: Prefix;
+  prefix: Prefix;
+  splitter: Prefix;
 }
 
-export interface TartuGecko {
+export interface Prefix {
   name: string;
   description: string;
 }
 
 export interface Feedback {
-  this: TartuGecko;
+  this: Prefix;
   sounds: Sounds;
-  speech: TartuGecko;
-  volume: TartuGecko;
-  language: TartuGecko;
+  speech: Prefix;
+  volume: Prefix;
+  language: Prefix;
 }
 
 export interface Sounds {
   name: string;
   description: string;
-  audioMode: TartuGecko;
+  audioMode: Prefix;
   customAudioFile: CustomAudioFile;
-  audioVolume: TartuGecko;
+  audioVolume: Prefix;
 }
 
 export interface CustomAudioFile {
@@ -120,12 +101,12 @@ export interface CustomAudioFile {
   selected: string;
 }
 
-export interface Input {
-  this: TartuGecko;
-  holdToActivate: TartuGecko;
+export interface SettingsInput {
+  this: Prefix;
+  holdToActivate: Prefix;
   keyboardShortcuts: KeyboardShortcuts;
-  autoRelease: TartuGecko;
-  releaseTime: TartuGecko;
+  autoRelease: Prefix;
+  releaseTime: Prefix;
 }
 
 export interface KeyboardShortcuts {
@@ -160,33 +141,63 @@ export interface KeyboardShortcutsTable {
 }
 
 export interface Logs {
-  this: TartuGecko;
-  debug: TartuGecko;
-  saveToFile: TartuGecko;
+  this: Prefix;
+  debug: Prefix;
+  saveToFile: Prefix;
+}
+
+export interface SettingsMacros {
+  this: Prefix;
+  macros: MacrosMacros;
+}
+
+export interface MacrosMacros {
+  name: string;
+  description: string;
+  table: MacrosTable;
+  modal: MacrosModal;
+}
+
+export interface MacrosModal {
+  titles: FluffyTitles;
+  prefix: string;
+  text: string;
+}
+
+export interface FluffyTitles {
+  'add-macro': string;
+  'edit-macro': string;
+  'remove-macro': string;
+}
+
+export interface MacrosTable {
+  prefix: string;
+  text: string;
+  button: string;
 }
 
 export interface Others {
-  this: TartuGecko;
-  mtaConsoleInputMode: TartuGecko;
-  showActiveButtons: TartuGecko;
+  this: Prefix;
+  mtaConsoleInputMode: Prefix;
+  showActiveButtons: Prefix;
 }
 
 export interface Output {
-  this: TartuGecko;
-  partial: TartuGecko;
-  animated: TartuGecko;
-  typingDelay: TartuGecko;
+  this: Prefix;
+  partial: Prefix;
+  animated: Prefix;
+  typingDelay: Prefix;
 }
 
 export interface Replacers {
-  this: TartuGecko;
-  punctuationMarks: TartuGecko;
-  gameChatPrefixes: TartuGecko;
+  this: Prefix;
+  punctuationMarks: Prefix;
+  gameChatPrefixes: Prefix;
 }
 
 export interface SettingsSpeechRecognition {
-  this: TartuGecko;
-  language: TartuGecko;
+  this: Prefix;
+  language: Prefix;
   customWordsAndPhrases: CustomWordsAndPhrases;
 }
 
@@ -198,11 +209,11 @@ export interface CustomWordsAndPhrases {
 }
 
 export interface CustomWordsAndPhrasesModal {
-  titles: FluffyTitles;
+  titles: TentacledTitles;
   wordPhrase: string;
 }
 
-export interface FluffyTitles {
+export interface TentacledTitles {
   'add-item': string;
   'edit-item': string;
   'remove-item': string;
@@ -214,17 +225,17 @@ export interface CustomWordsAndPhrasesTable {
 }
 
 export interface SettingsUpdate {
-  this: TartuGecko;
-  checkOnStartup: TartuGecko;
-  allowPrerelease: TartuGecko;
-  allowDowngrade: TartuGecko;
-  autoCheck: TartuGecko;
-  checkInterval: TartuGecko;
-  checkChromeUpdates: TartuGecko;
+  this: Prefix;
+  checkOnStartup: Prefix;
+  allowPrerelease: Prefix;
+  allowDowngrade: Prefix;
+  autoCheck: Prefix;
+  checkInterval: Prefix;
+  checkChromeUpdates: Prefix;
 }
 
 export interface WindowAllowList {
-  this: TartuGecko;
+  this: Prefix;
   windows: Windows;
 }
 
@@ -236,7 +247,7 @@ export interface Windows {
 }
 
 export interface WindowsModal {
-  titles: FluffyTitles;
+  titles: TentacledTitles;
   windowName: string;
 }
 
@@ -252,7 +263,7 @@ export interface CommandHandler {
 }
 
 export interface SpeechFeedbackCommands {
-  updateApp: PurpleUpdateApp;
+  updateApp: UpdateAppClass;
   showActiveButtons: PurpleShowActiveButtons;
   mtaMode: PurpleMTAMode;
   exitMta: PurpleExitMTA;
@@ -285,17 +296,33 @@ export interface PurpleShowActiveButtons {
   showActiveButtons: MTAConsoleInputMode;
 }
 
-export interface PurpleUpdateApp {
+export interface UpdateAppClass {
   updateAvailable: string;
 }
 
 export interface SpeechFeedbackIndex {
   appStarted: string;
-  updater: PurpleUpdater;
+  updater: UpdateAppClass;
 }
 
-export interface PurpleUpdater {
-  updateAvailable: string;
+export interface States {
+  disabled: string;
+  enabled: string;
+  active: string;
+  inactive: string;
+  activated: string;
+  deactivated: string;
+  none: string;
+  enable: string;
+  disable: string;
+  on: string;
+  off: string;
+  onLong: string;
+  offLong: string;
+  onMid: string;
+  offMid: string;
+  custom: string;
+  default: string;
 }
 
 export interface TextFeedback {
@@ -351,7 +378,7 @@ export interface ChromeInstanceSpeechRecognition {
 }
 
 export interface TextFeedbackCommands {
-  updateApp: FluffyUpdateApp;
+  updateApp: UpdateApp;
   showActiveButtons: FluffyShowActiveButtons;
   mtaMode: FluffyMTAMode;
   exitMta: FluffyExitMTA;
@@ -405,7 +432,7 @@ export interface FluffyShowActiveButtons {
   showActiveButtons: MTAConsoleInputMode;
 }
 
-export interface FluffyUpdateApp {
+export interface UpdateApp {
   description: string;
   checkingUpdate: string;
   noUpdateAvailable: string;
@@ -413,9 +440,9 @@ export interface FluffyUpdateApp {
 }
 
 export interface TextFeedbackConfig {
-  macro: Translations;
+  macro: Macro;
   config: ConfigConfig;
-  translations: Translations;
+  translations: Macro;
 }
 
 export interface ConfigConfig {
@@ -431,14 +458,14 @@ export interface Error {
   commandsPartial: string;
 }
 
-export interface Translations {
+export interface Macro {
   loaded: string;
 }
 
 export interface TextFeedbackIndex {
   app: App;
   chrome: IndexChrome;
-  updater: FluffyUpdater;
+  updater: Updater;
   registering: Registering;
   keyPressed: string;
   activeButtons: string;
@@ -473,7 +500,7 @@ export interface Registering {
   commands: string;
 }
 
-export interface FluffyUpdater {
+export interface Updater {
   starting: string;
   updateAvailable: string;
   updateDownloading: string;

@@ -1,51 +1,43 @@
 <script lang="ts">
-  import type { ConfigOptions } from '$types/ConfigOptions';
   import Button from '$components/Modal/Button.svelte';
   import Svg from '$components/Svg.svelte';
-  import EditItem from '$components/Settings/EditWordsPhrasesWindows.svelte';
   import { translations } from '$stores/translations';
+  import type { Macro } from '../../types/Macro';
+  import EditMacros from './EditMacros.svelte';
 
-  export let items: ConfigOptions['speechRecognition']['customWordsAndPhrases'] | ConfigOptions['windowAllowList']['windows'];
-  export let itemName: 'customWordsAndPhrases' | 'windows';
-  export let disabled: boolean = false;
-  export let disabledText: string | undefined = undefined;
+  export let macros: Array<Macro>;
 
-  let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none' = 'none';
+  let actionMode: 'add-macro' | 'edit-macro' | 'remove-macro' | 'none' = 'none';
 
   let indexToModify: number = -1;
 </script>
 
-<div class="w-full relative text-white flex flex-col gap-1">
-  {#if disabled}
-    <div class="absolute w-full h-full z-10 flex flex-col justify-center items-center text-3xl">
-      <span>{$translations.states.disabled}</span>
-      <span class="text-xl text-neutral-300">{disabledText ?? ''}</span>
-    </div>
-  {/if}
+<div class="w-full text-white flex flex-col gap-1">
   <div class="relative flex flex-col rounded-md border border-neutral-500">
     <table>
+      <div class="absolute w-[1px] h-full top-0 left-64 bg-neutral-500"></div>
       <thead>
         <tr>
-          {#if itemName === 'customWordsAndPhrases'}
-            <th>{$translations.settings.speechRecognition.customWordsAndPhrases.table.title}</th>
-          {:else}
-            <th>{$translations.settings.windowAllowList.windows.table.title}</th>
-          {/if}
+          <th>{$translations.settings.macros.macros.modal.prefix}</th>
+          <th>{$translations.settings.macros.macros.modal.text}</th>
         </tr>
       </thead>
       <div class="absolute w-full h-[1px] left-0 bg-neutral-500"></div>
       <tbody class="small-scrollbar">
-        {#each items as item, index}
+        {#each macros as { handler, text }, index}
           <tr>
             <td>
-              <span>{item}</span>
+              <span>{handler}</span>
+            </td>
+            <td>
+              <span>{text}</span>
             </td>
             <td>
               <Button
                 class="bg-transparent hover:bg-transparent !p-0"
                 on:click="{function () {
                   indexToModify = index;
-                  actionMode = 'edit-item';
+                  actionMode = 'edit-macro';
                 }}"
               >
                 <Svg
@@ -58,7 +50,7 @@
                 class="bg-transparent hover:bg-transparent !p-0"
                 on:click="{function () {
                   indexToModify = index;
-                  actionMode = 'remove-item';
+                  actionMode = 'remove-macro';
                 }}"
               >
                 <Svg
@@ -78,30 +70,29 @@
     <Button
       on:click="{function () {
         indexToModify = -1;
-        actionMode = 'add-item';
+        actionMode = 'add-macro';
       }}"
     >
-      {#if itemName === 'customWordsAndPhrases'}
-        {$translations.settings.speechRecognition.customWordsAndPhrases.table.button}
-      {:else}
-        {$translations.settings.windowAllowList.windows.table.button}
-      {/if}
+      {$translations.settings.input.keyboardShortcuts.table.button}
     </Button>
   </div>
 </div>
 
 {#if actionMode !== 'none'}
-  <EditItem
+  <EditMacros
     bind:actionMode
-    bind:itemName
     bind:indexToModify
   />
 {/if}
 
 <style>
+  th:first-child,
+  td:first-child {
+    @apply w-64;
+  }
   th,
   td {
-    @apply w-[calc((256px+384px)-48px)] text-left py-1 px-3;
+    @apply w-[calc(384px-48px)] text-left py-1 px-3;
   }
 
   td:last-child {

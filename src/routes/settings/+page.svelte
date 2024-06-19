@@ -3,6 +3,7 @@
   import Layout from '$components/Layout.svelte';
   import { translations } from '$stores/translations';
   import { config } from '$stores/config';
+  import { macros } from '$stores/macros';
   import Input from '$components/Modal/Input.svelte';
   import Option from '$components/Modal/Option.svelte';
   import Select from '$components/Modal/Select.svelte';
@@ -11,6 +12,7 @@
   import KeyboardShortcuts from '$components/Settings/KeyboardShortcuts.svelte';
   import WordsPhrasesWindows from '$components/Settings/WordsPhrasesWindows.svelte';
   import Button from '$components/Modal/Button.svelte';
+  import Macros from '$components/Settings/Macros.svelte';
 </script>
 
 <Header />
@@ -528,6 +530,36 @@
             slot="content"
             bind:value="{$config.commands.splitter}"
             disabled="{!$config.commands.enabled}"
+          />
+        </SubSection>
+      </div>
+    </Section>
+
+    <Section>
+      <span slot="title">{$translations.settings.macros.this.name}</span>
+      <span slot="description">{$translations.settings.macros.this.description}</span>
+
+      <div
+        slot="content"
+        class="relative"
+      >
+        <SubSection>
+          <Select
+            slot="content"
+            bind:value="{$config.macros.enabled}"
+          >
+            <Option value="{true}">{$translations.states.enable}</Option>
+            <Option value="{false}">{$translations.states.disable}</Option>
+          </Select>
+        </SubSection>
+
+        <SubSection>
+          <span slot="title">{$translations.settings.macros.macros.name}</span>
+          <span slot="description">{$translations.settings.macros.macros.name}</span>
+
+          <Macros
+            slot="content"
+            bind:macros="{$macros}"
           />
         </SubSection>
       </div>

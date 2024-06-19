@@ -47,6 +47,9 @@ export interface ConfigOptions {
     enabled: boolean;
     windows: Array<string>;
   };
+  macros: {
+    enabled: boolean;
+  };
   commands: {
     enabled: boolean;
     prefix: string;
