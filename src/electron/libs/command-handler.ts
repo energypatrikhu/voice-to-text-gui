@@ -124,6 +124,12 @@ class CommandHandler {
     __app.console.debugLogJson({ cmd, isMacro: anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek']) });
 
     if (anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek'])) {
+      if (cmd.args.length === 0) {
+        this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
+        __app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
+        return;
+      }
+
       return await this.callMacro(cmd.args[0], args.length > 1 ? args[1] : 'write');
     }
 
