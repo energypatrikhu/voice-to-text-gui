@@ -1,510 +1,514 @@
 {
-	"speechFeedback": {
-		"index": {
-			"appStarted": "Application started!",
-			"updater": {
-				"updateAvailable": "There is an update available! Please restart the application to start the update!"
-			}
-		},
+  "speechFeedback": {
+    "index": {
+      "appStarted": "Application started!",
+      "updater": {
+        "updateAvailable": "There is an update available! Please restart the application to start the update!"
+      }
+    },
 
-		"commandHandler": {
-			"unknownMacro": "Unknown macro!",
-			"unknownCommand": "Unknown command!"
-		},
+    "commandHandler": {
+      "unknownMacro": "Unknown macro!",
+      "unknownCommand": "Unknown command!"
+    },
 
-		"commands": {
-			"updateApp": {
-				"updateAvailable": "Update available! Please wait, downloading update..."
-			},
+    "commands": {
+      "updateApp": {
+        "updateAvailable": "Update available! Please wait, downloading update..."
+      },
 
-			"showActiveButtons": {
-				"showActiveButtons": {
-					"enabled": "Show active buttons: Enabled",
-					"disabled": "Show active buttons: Disabled"
-				}
-			},
+      "showActiveButtons": {
+        "showActiveButtons": {
+          "enabled": "Show active buttons: Enabled",
+          "disabled": "Show active buttons: Disabled"
+        }
+      },
 
-			"mtaMode": {
-				"mtaConsoleInputMode": {
-					"enabled": "MTA Console Input Mode: Enabled",
-					"disabled": "MTA Console Input Mode: Disabled"
-				}
-			},
+      "mtaMode": {
+        "mtaConsoleInputMode": {
+          "enabled": "MTA Console Input Mode: Enabled",
+          "disabled": "MTA Console Input Mode: Disabled"
+        }
+      },
 
-			"exitMta": {
-				"notInForeground": "MTA San Andreas is not in foreground!"
-			},
+      "exitMta": {
+        "notInForeground": "MTA San Andreas is not in foreground!"
+      },
 
-			"exit": {
-				"closingApp": "Closing application..."
-			},
+      "exit": {
+        "closingApp": "Closing application..."
+      },
 
-			"activeWindow": {
-				"activeWindow": "Active window: {0}"
-			}
-		}
-	},
+      "activeWindow": {
+        "activeWindow": "Active window: {0}"
+      }
+    }
+  },
 
-	"textFeedback": {
-		"index": {
-			"app": {
-				"loading": "Loading app, please wait...",
-				"version": "App version: {0}",
-				"started": {
-					"hold": "Voice To Text app started, press and hold one of the defined keyboard shortcuts to use voice-to-text",
-					"toggle": "Voice To Text app started, press one of the defined keyboard shortcuts to toggle voice-to-text"
-				}
-			},
-			"chrome": {
-				"starting": "Starting chrome in headless mode...",
-				"initializing": "Initializing chrome instance..."
-			},
-			"updater": {
-				"starting": "Starting auto update checker...",
-				"updateAvailable": "There is an update available! Please restart the application to start the update!",
-				"updateDownloading": "Download speed: {0} - Downloaded {1}% ({2}/{3})"
-			},
-			"registering": {
-				"ioHook": "Registering io hook...",
-				"commands": "Registering commands..."
-			},
-			"keyPressed": "Pressed: {0}",
-			"activeButtons": "Active buttons: {0}",
-			"creatorsCredits": {
-				"wrapper": "> = = = = = < creators & credits > = = = = = <",
-				"createdBy": " Created By: EnergyPatrikHU (https://energypatrik.hu)",
-				"ideaBy": " Idea By: HUMROLI1 (https://humroli1.hu)"
-			},
-			"commandsEnabled": "Say or write '{0}parancsok' to list available commands!"
-		},
+  "textFeedback": {
+    "index": {
+      "app": {
+        "loading": "Loading app, please wait...",
+        "version": "App version: {0}",
+        "started": {
+          "hold": "Voice To Text app started, press and hold one of the defined keyboard shortcuts to use voice-to-text",
+          "toggle": "Voice To Text app started, press one of the defined keyboard shortcuts to toggle voice-to-text"
+        }
+      },
+      "chrome": {
+        "starting": "Starting chrome in headless mode...",
+        "initializing": "Initializing chrome instance..."
+      },
+      "updater": {
+        "starting": "Starting auto update checker...",
+        "updateAvailable": "There is an update available! Please restart the application to start the update!",
+        "updateDownloading": "Download speed: {0} - Downloaded {1}% ({2}/{3})"
+      },
+      "registering": {
+        "ioHook": "Registering io hook...",
+        "commands": "Registering commands..."
+      },
+      "keyPressed": "Pressed: {0}",
+      "activeButtons": "Active buttons: {0}",
+      "creatorsCredits": {
+        "wrapper": "> = = = = = < creators & credits > = = = = = <",
+        "createdBy": " Created By: EnergyPatrikHU (https://energypatrik.hu)",
+        "ideaBy": " Idea By: HUMROLI1 (https://humroli1.hu)"
+      },
+      "commandsEnabled": "Say or write '{0}parancsok' to list available commands!"
+    },
 
-		"soundWrapper": {
-			"playingSound": "Playing sound..."
-		},
+    "soundWrapper": {
+      "playingSound": "Playing sound..."
+    },
 
-		"config": {
-			"macro": {
-				"loaded": "Macros loaded!"
-			},
-			"config": {
-				"wrapper": "> = = = = = < config > = = = = = <",
-				"loaded": "Config loaded!",
-				"error": {
-					"partialHoldToActivate": "Config error! 'output.partial' cannot be 'true' while 'input.holdToActivate' is 'true'!",
-					"punctuationMarksPartial": "Config error! 'replacers.punctuationMarks' cannot be 'true' while 'output.partial' is 'true'!",
-					"gameChatPrefixesPartial": "Config error! 'replacers.gameChatPrefixes' cannot be 'true' while 'output.partial' is 'true'!",
-					"commandsPartial": "Config error! 'commands.enabled' cannot be 'true' while 'output.partial' is 'true'!"
-				}
-			},
-			"translations": {
-				"loaded": "Translations loaded!"
-			}
-		},
+    "config": {
+      "macro": {
+        "loaded": "Macros loaded!"
+      },
+      "config": {
+        "wrapper": "> = = = = = < config > = = = = = <",
+        "loaded": "Config loaded!",
+        "error": {
+          "partialHoldToActivate": "Config error! 'output.partial' cannot be 'true' while 'input.holdToActivate' is 'true'!",
+          "punctuationMarksPartial": "Config error! 'replacers.punctuationMarks' cannot be 'true' while 'output.partial' is 'true'!",
+          "gameChatPrefixesPartial": "Config error! 'replacers.gameChatPrefixes' cannot be 'true' while 'output.partial' is 'true'!",
+          "commandsPartial": "Config error! 'commands.enabled' cannot be 'true' while 'output.partial' is 'true'!"
+        }
+      },
+      "translations": {
+        "loaded": "Translations loaded!"
+      }
+    },
 
-		"commandHandler": {
-			"unknownMacro": "Unknown macro!",
-			"unknownCommand": "Unknown command!"
-		},
+    "commandHandler": {
+      "unknownMacro": "Unknown macro!",
+      "unknownCommand": "Unknown command!"
+    },
 
-		"chromeInstance": {
-			"chrome": {
-				"navigating": "Navigating chrome...",
-				"registeringEvents": "Registering chrome events..."
-			},
-			"exposingPageFunctions": "Exposing page functions...",
-			"speechRecognition": {
-				"starting": "Starting speech recognition engine..."
-			}
-		},
+    "chromeInstance": {
+      "chrome": {
+        "navigating": "Navigating chrome...",
+        "registeringEvents": "Registering chrome events..."
+      },
+      "exposingPageFunctions": "Exposing page functions...",
+      "speechRecognition": {
+        "starting": "Starting speech recognition engine..."
+      }
+    },
 
-		"update": {
-			"checkAppUpdate": {
-				"checkingUpdate": "Checking for update...",
-				"upToDate": "App is up to date!",
-				"notUpToDate": "App is not up to date! Please wait, downloading update...",
-				"updateDownloaded": "Update downloaded, the application now restarts..."
-			}
-		},
+    "update": {
+      "checkAppUpdate": {
+        "checkingUpdate": "Checking for update...",
+        "upToDate": "App is up to date!",
+        "notUpToDate": "App is not up to date! Please wait, downloading update...",
+        "updateDownloaded": "Update downloaded, the application now restarts..."
+      }
+    },
 
-		"commands": {
-			"updateApp": {
-				"description": "Check for app update.",
-				"checkingUpdate": "Checking for update...",
-				"noUpdateAvailable": "No update available.",
-				"updateAvailable": "Update available! Please wait, downloading update..."
-			},
+    "commands": {
+      "updateApp": {
+        "description": "Check for app update.",
+        "checkingUpdate": "Checking for update...",
+        "noUpdateAvailable": "No update available.",
+        "updateAvailable": "Update available! Please wait, downloading update..."
+      },
 
-			"showActiveButtons": {
-				"description": "Prints the list of active buttons, useful for setting the desired button combination to activate voice-to-text.",
-				"showActiveButtons": {
-					"enabled": "Show active buttons: Enabled",
-					"disabled": "Show active buttons: Disabled"
-				}
-			},
+      "showActiveButtons": {
+        "description": "Prints the list of active buttons, useful for setting the desired button combination to activate voice-to-text.",
+        "showActiveButtons": {
+          "enabled": "Show active buttons: Enabled",
+          "disabled": "Show active buttons: Disabled"
+        }
+      },
 
-			"mtaMode": {
-				"description": "Sets it to the opposite of the current value of 'mtaConsoleInputMode'. (true => false | false => true)",
-				"mtaConsoleInputMode": {
-					"enabled": "MTA Console Input Mode: Enabled",
-					"disabled": "MTA Console Input Mode: Disabled"
-				}
-			},
+      "mtaMode": {
+        "description": "Sets it to the opposite of the current value of 'mtaConsoleInputMode'. (true => false | false => true)",
+        "mtaConsoleInputMode": {
+          "enabled": "MTA Console Input Mode: Enabled",
+          "disabled": "MTA Console Input Mode: Disabled"
+        }
+      },
 
-			"exitMta": {
-				"description": "Closes the MTA San Andreas program.",
-				"notInForeground": "MTA:SA is not in foreground!"
-			},
+      "exitMta": {
+        "description": "Closes the MTA San Andreas program.",
+        "notInForeground": "MTA:SA is not in foreground!"
+      },
 
-			"exit": {
-				"description": "Close this program.",
-				"closingApp": "Closing application..."
-			},
+      "exit": {
+        "description": "Close this program.",
+        "closingApp": "Closing application..."
+      },
 
-			"commandList": {
-				"description": "Command list.",
-				"list": {
-					"wrapper": "> = = = = = < commands > = = = = = <",
-					"name": " Name:",
-					"availability": " Availability:",
-					"syntax": " Syntax:",
-					"description": " Description:"
-				},
-				"availabilityMap": {
-					"both": "text & speech",
-					"text": "text only",
-					"speech": "speech only"
-				}
-			},
+      "commandList": {
+        "description": "Command list.",
+        "list": {
+          "wrapper": "> = = = = = < commands > = = = = = <",
+          "name": " Name:",
+          "availability": " Availability:",
+          "syntax": " Syntax:",
+          "description": " Description:"
+        },
+        "availabilityMap": {
+          "both": "text & speech",
+          "text": "text only",
+          "speech": "speech only"
+        }
+      },
 
-			"activeWindow": {
-				"description": "Get the currently foreground window.",
-				"activeWindow": "Active Window: {0}"
-			}
-		},
+      "activeWindow": {
+        "description": "Get the currently foreground window.",
+        "activeWindow": "Active Window: {0}"
+      }
+    },
 
-		"chromeFunctions": {
-			"speechRecognition": {
-				"outputStopped": "Output stopped by pressing 'Escape'!",
-				"start": {
-					"outputPrefix": "outputPrefix: {0}"
-				},
-				"info": {
-					"started": "speechRecognition started",
-					"stopped": "speechRecognition stopped",
-					"restarted": "speechRecognition restarted",
-					"output": "output: {0}"
-				},
-				"transcript": {
-					"partialOutput": "partialOutput: {0}"
-				}
-			}
-		}
-	},
+    "chromeFunctions": {
+      "speechRecognition": {
+        "outputStopped": "Output stopped by pressing 'Escape'!",
+        "start": {
+          "outputPrefix": "outputPrefix: {0}"
+        },
+        "info": {
+          "started": "speechRecognition started",
+          "stopped": "speechRecognition stopped",
+          "restarted": "speechRecognition restarted",
+          "output": "output: {0}"
+        },
+        "transcript": {
+          "partialOutput": "partialOutput: {0}"
+        }
+      }
+    }
+  },
 
-	"states": {
-		"disabled": "Disabled",
-		"enabled": "Enabled",
-		"active": "Active",
-		"inactive": "Inactive",
-		"activated": "Activated",
-		"deactivated": "Deactivated",
-		"none": "None",
-		"enable": "Enable",
-		"disable": "Disable",
-		"on": "On",
-		"off": "Off",
-		"onLong": "On",
-		"offLong": "Off",
-		"onMid": "On",
-		"offMid": "Off",
-		"custom": "Custom",
-		"default": "Default"
-	},
+  "states": {
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activated": "Activated",
+    "deactivated": "Deactivated",
+    "none": "None",
+    "enable": "Enable",
+    "disable": "Disable",
+    "on": "On",
+    "off": "Off",
+    "onLong": "On",
+    "offLong": "Off",
+    "onMid": "On",
+    "offMid": "Off",
+    "custom": "Custom",
+    "default": "Default"
+  },
 
-	"time": {
-		"normal": {
-			"ms": "millisecond(s)",
-			"s": "second(s)",
-			"m": "minute(s)",
-			"h": "hour(s)",
-			"d": "day(s)",
-			"w": "week(s)",
-			"mo": "month(s)",
-			"y": "year(s)"
-		},
-		"short": {
-			"ms": "ms",
-			"s": "s",
-			"m": "m",
-			"h": "h",
-			"d": "d",
-			"w": "w",
-			"mo": "mo",
-			"y": "y"
-		}
-	},
+  "time": {
+    "normal": {
+      "ms": "millisecond(s)",
+      "s": "second(s)",
+      "m": "minute(s)",
+      "h": "hour(s)",
+      "d": "day(s)",
+      "w": "week(s)",
+      "mo": "month(s)",
+      "y": "year(s)"
+    },
+    "short": {
+      "ms": "ms",
+      "s": "s",
+      "m": "m",
+      "h": "h",
+      "d": "d",
+      "w": "w",
+      "mo": "mo",
+      "y": "y"
+    }
+  },
 
-	"buttons": {
-		"add": "Add",
-		"remove": "Remove",
-		"save": "Save",
-		"cancel": "Cancel",
-		"reset": "Reset"
-	},
+  "buttons": {
+    "add": "Add",
+    "remove": "Remove",
+    "save": "Save",
+    "cancel": "Cancel",
+    "reset": "Reset"
+  },
 
-	"navigation": {
-		"home": "Home",
-		"settings": "Settings",
-		"macros": "Macros",
-		"info": "Info"
-	},
+  "navigation": {
+    "home": "Home",
+    "settings": "Settings",
+    "macros": "Macros",
+    "info": "Info"
+  },
 
-	"console": {
-		"input": {
-			"placeholder": "Command input (without prefix)",
-			"submit": "Send"
-		}
-	},
+  "console": {
+    "input": {
+      "placeholder": "Command input (without prefix)",
+      "submit": "Send"
+    }
+  },
 
-	"firstStart": {
-		"global": {
-			"run": "Running first start scripts...",
-			"done": "First start scripts completed!",
-			"skip": "Skipping first start scripts!"
-		},
-		"chrome": {
-			"check": "Checking chrome updates...",
-			"no_update": "No new chrome update was found, skipping update!",
-			"update": "New chrome update found, updating chrome!",
-			"done": "Chrome was updated successfully!",
-			"fail": "Failed to update chrome!"
-		}
-	},
+  "firstStart": {
+    "global": {
+      "run": "Running first start scripts...",
+      "done": "First start scripts completed!",
+      "skip": "Skipping first start scripts!"
+    },
+    "chrome": {
+      "check": "Checking chrome updates...",
+      "no_update": "No new chrome update was found, skipping update!",
+      "update": "New chrome update found, updating chrome!",
+      "done": "Chrome was updated successfully!",
+      "fail": "Failed to update chrome!"
+    }
+  },
 
-	"settings": {
-		"logs": {
-			"this": {
-				"name": "Logging",
-				"description": "Logging related settings"
-			},
-			"debug": {
-				"name": "Debugging",
-				"description": "Show debugging logs"
-			},
-			"saveToFile": {
-				"name": "Save to file",
-				"description": "Save logs to file"
-			}
-		},
-		"update": {
-			"this": {
-				"name": "Updater",
-				"description": "App updater settings"
-			},
-			"checkOnStartup": {
-				"name": "Check on startup",
-				"description": "Check update on every app startup"
-			},
-			"allowPrerelease": {
-				"name": "Beta versions",
-				"description": "Check for beta/prerelease versions"
-			},
-			"allowDowngrade": {
-				"name": "Older versions",
-				"description": "Allow download of older versions"
-			},
-			"autoCheck": {
-				"name": "Auto checking",
-				"description": "Automatically check for updates within the specified time"
-			},
-			"checkInterval": {
-				"name": "Check interval",
-				"description": "Interval for checking for updates"
-			}
-		},
-		"input": {
-			"this": {
-				"name": "Input",
-				"description": "Input related settings"
-			},
-			"holdToActivate": {
-				"name": "Press and hold to activate",
-				"description": "Press and hold or on/off to activate"
-			},
-			"keyboardShortcuts": {
-				"name": "Shortcuts",
-				"description": "Hotkeys for activation",
-				"table": {
-					"prefix": "Output Prefix",
-					"shortcut": "Shortcut",
-					"button": "Add new prefix & shortcut"
-				},
-				"modal": {
-					"titles": {
-						"add-shortcut": "Add prefix & shortcut",
-						"edit-shortcut": "Edit prefix & shortcut",
-						"remove-shortcut": "Remove prefix & shortcut"
-					},
-					"prefix": "Output prefix",
-					"shortcut": "Shortcut",
-					"buttons": {
-						"add-button": "+1 Button",
-						"remove-button": "-1 Button"
-					}
-				}
-			},
-			"autoRelease": {
-				"name": "Automatic release",
-				"description": "Automatic release for on/off mode"
-			},
-			"releaseTime": {
-				"name": "Automatic release time",
-				"description": "Automatic release after the specified time"
-			}
-		},
-		"output": {
-			"this": {
-				"name": "Output",
-				"description": "Settings related to the output text"
-			},
-			"partial": {
-				"name": "Partial",
-				"description": "Using partial output text"
-			},
-			"animated": {
-				"name": "Animated",
-				"description": "Animated printout of the output text"
-			},
-			"typingDelay": {
-				"name": "Typing delay",
-				"description": "The delay between letters in animated spelling"
-			}
-		},
-		"feedback": {
-			"this": {
-				"name": "Feedback",
-				"description": "Feedback related settings"
-			},
-			"sounds": {
-				"name": "Use activate/deactivate sounds",
-				"description": "Use sounds in the app",
-				"audioMode": {
-					"name": "Audio mode",
-					"description": "Audio mode for sound feedback"
-				},
-				"customAudioFile": {
-					"name": "Custom audio file",
-					"description": "Custom audio for activation/deactivation",
-					"select": "Select audio file",
-					"selected": "Selected"
-				},
-				"audioVolume": {
-					"name": "Audio volume",
-					"description": "Audio feedback volume"
-				}
-			},
-			"speech": {
-				"name": "Speech",
-				"description": "Use speech feedback"
-			},
-			"volume": {
-				"name": "Speech volume",
-				"description": "Speech feedback volume"
-			},
-			"language": {
-				"name": "Language",
-				"description": "Speech feedback and application language"
-			}
-		},
-		"speechRecognition": {
-			"this": {
-				"name": "Speech recognition",
-				"description": "Voice recognition related settings"
-			},
-			"language": {
-				"name": "Language",
-				"description": "Language of voice recognition"
-			},
-			"customWordsAndPhrases": {
-				"name": "Custom words/phrases",
-				"description": "List of custom words and phrases for voice recognition",
-				"table": {
-					"title": "Word / Phrase",
-					"button": "Add new word / phrase"
-				},
-				"modal": {
-					"titles": {
-						"add-item": "Add word / phrase",
-						"edit-item": "Edit word / phrase",
-						"remove-item": "Remove word / phrase"
-					},
-					"wordPhrase": "Word / Phrase"
-				}
-			}
-		},
-		"replacers": {
-			"this": {
-				"name": "Replacers",
-				"description": "Replacer settings"
-			},
-			"punctuationMarks": {
-				"name": "Punctuation marks",
-				"description": "Using punctuation placeholders such as [ ! , . ? ]"
-			},
-			"gameChatPrefixes": {
-				"name": "Game chat prefixes for SeeMTA",
-				"description": "Use of text replacers in the SeeMTA game"
-			}
-		},
-		"windowAllowList": {
-			"this": {
-				"name": "Window whitelist",
-				"description": "Use of enabled windows"
-			},
-			"windows": {
-				"name": "Window list",
-				"description": "List of allowed window(s).",
-				"table": {
-					"title": "Window Name",
-					"button": "Add new window name"
-				},
-				"modal": {
-					"titles": {
-						"add-item": "Add window name",
-						"edit-item": "Edit window name",
-						"remove-item": "Remove window name"
-					},
-					"windowName": "Window Name"
-				}
-			}
-		},
-		"commands": {
-			"this": {
-				"name": "Commands",
-				"description": "Use of commands"
-			},
-			"prefix": {
-				"name": "Prefix",
-				"description": "Symbol or text required to use the command"
-			},
-			"splitter": {
-				"name": "Separator",
-				"description": "Symbol or text to separate the values in the command"
-			}
-		},
-		"others": {
-			"this": {
-				"name": "Others",
-				"description": "Other settings"
-			},
-			"mtaConsoleInputMode": {
-				"name": "MTA:SA console input mode",
-				"description": "Use automatic text input in MTA:SA"
-			},
-			"showActiveButtons": {
-				"name": "Show pressed buttons",
-				"description": "Show currently active buttons"
-			}
-		}
-	}
+  "settings": {
+    "logs": {
+      "this": {
+        "name": "Logging",
+        "description": "Logging related settings"
+      },
+      "debug": {
+        "name": "Debugging",
+        "description": "Show debugging logs"
+      },
+      "saveToFile": {
+        "name": "Save to file",
+        "description": "Save logs to file"
+      }
+    },
+    "update": {
+      "this": {
+        "name": "Updater",
+        "description": "App updater settings"
+      },
+      "checkOnStartup": {
+        "name": "Check on startup",
+        "description": "Check update on every app startup"
+      },
+      "allowPrerelease": {
+        "name": "Beta versions",
+        "description": "Check for beta/prerelease versions"
+      },
+      "allowDowngrade": {
+        "name": "Older versions",
+        "description": "Allow download of older versions"
+      },
+      "autoCheck": {
+        "name": "Auto checking",
+        "description": "Automatically check for updates within the specified time"
+      },
+      "checkInterval": {
+        "name": "Check interval",
+        "description": "Interval for checking for updates"
+      },
+      "checkChromeUpdates": {
+        "name": "Check chrome updates",
+        "description": "Check for chrome updates on every app startup"
+      }
+    },
+    "input": {
+      "this": {
+        "name": "Input",
+        "description": "Input related settings"
+      },
+      "holdToActivate": {
+        "name": "Press and hold to activate",
+        "description": "Press and hold or on/off to activate"
+      },
+      "keyboardShortcuts": {
+        "name": "Shortcuts",
+        "description": "Hotkeys for activation",
+        "table": {
+          "prefix": "Output Prefix",
+          "shortcut": "Shortcut",
+          "button": "Add new prefix & shortcut"
+        },
+        "modal": {
+          "titles": {
+            "add-shortcut": "Add prefix & shortcut",
+            "edit-shortcut": "Edit prefix & shortcut",
+            "remove-shortcut": "Remove prefix & shortcut"
+          },
+          "prefix": "Output prefix",
+          "shortcut": "Shortcut",
+          "buttons": {
+            "add-button": "+1 Button",
+            "remove-button": "-1 Button"
+          }
+        }
+      },
+      "autoRelease": {
+        "name": "Automatic release",
+        "description": "Automatic release for on/off mode"
+      },
+      "releaseTime": {
+        "name": "Automatic release time",
+        "description": "Automatic release after the specified time"
+      }
+    },
+    "output": {
+      "this": {
+        "name": "Output",
+        "description": "Settings related to the output text"
+      },
+      "partial": {
+        "name": "Partial",
+        "description": "Using partial output text"
+      },
+      "animated": {
+        "name": "Animated",
+        "description": "Animated printout of the output text"
+      },
+      "typingDelay": {
+        "name": "Typing delay",
+        "description": "The delay between letters in animated spelling"
+      }
+    },
+    "feedback": {
+      "this": {
+        "name": "Feedback",
+        "description": "Feedback related settings"
+      },
+      "sounds": {
+        "name": "Use activate/deactivate sounds",
+        "description": "Use sounds in the app",
+        "audioMode": {
+          "name": "Audio mode",
+          "description": "Audio mode for sound feedback"
+        },
+        "customAudioFile": {
+          "name": "Custom audio file",
+          "description": "Custom audio for activation/deactivation",
+          "select": "Select audio file",
+          "selected": "Selected"
+        },
+        "audioVolume": {
+          "name": "Audio volume",
+          "description": "Audio feedback volume"
+        }
+      },
+      "speech": {
+        "name": "Speech",
+        "description": "Use speech feedback"
+      },
+      "volume": {
+        "name": "Speech volume",
+        "description": "Speech feedback volume"
+      },
+      "language": {
+        "name": "Language",
+        "description": "Speech feedback and application language"
+      }
+    },
+    "speechRecognition": {
+      "this": {
+        "name": "Speech recognition",
+        "description": "Voice recognition related settings"
+      },
+      "language": {
+        "name": "Language",
+        "description": "Language of voice recognition"
+      },
+      "customWordsAndPhrases": {
+        "name": "Custom words/phrases",
+        "description": "List of custom words and phrases for voice recognition",
+        "table": {
+          "title": "Word / Phrase",
+          "button": "Add new word / phrase"
+        },
+        "modal": {
+          "titles": {
+            "add-item": "Add word / phrase",
+            "edit-item": "Edit word / phrase",
+            "remove-item": "Remove word / phrase"
+          },
+          "wordPhrase": "Word / Phrase"
+        }
+      }
+    },
+    "replacers": {
+      "this": {
+        "name": "Replacers",
+        "description": "Replacer settings"
+      },
+      "punctuationMarks": {
+        "name": "Punctuation marks",
+        "description": "Using punctuation placeholders such as [ ! , . ? ]"
+      },
+      "gameChatPrefixes": {
+        "name": "Game chat prefixes for SeeMTA",
+        "description": "Use of text replacers in the SeeMTA game"
+      }
+    },
+    "windowAllowList": {
+      "this": {
+        "name": "Window whitelist",
+        "description": "Use of enabled windows"
+      },
+      "windows": {
+        "name": "Window list",
+        "description": "List of allowed window(s).",
+        "table": {
+          "title": "Window Name",
+          "button": "Add new window name"
+        },
+        "modal": {
+          "titles": {
+            "add-item": "Add window name",
+            "edit-item": "Edit window name",
+            "remove-item": "Remove window name"
+          },
+          "windowName": "Window Name"
+        }
+      }
+    },
+    "commands": {
+      "this": {
+        "name": "Commands",
+        "description": "Use of commands"
+      },
+      "prefix": {
+        "name": "Prefix",
+        "description": "Symbol or text required to use the command"
+      },
+      "splitter": {
+        "name": "Separator",
+        "description": "Symbol or text to separate the values in the command"
+      }
+    },
+    "others": {
+      "this": {
+        "name": "Others",
+        "description": "Other settings"
+      },
+      "mtaConsoleInputMode": {
+        "name": "MTA:SA console input mode",
+        "description": "Use automatic text input in MTA:SA"
+      },
+      "showActiveButtons": {
+        "name": "Show pressed buttons",
+        "description": "Show currently active buttons"
+      }
+    }
+  }
 }
