@@ -31,14 +31,13 @@ interface CmdParsed {
 
 class CommandHandler {
   private commands: Array<Command> = [];
-  private macros: Array<Macro> = __app.macros;
   private speechSynthesis!: SpeechSynthesisEngine;
 
   get commandList() {
     return this.commands;
   }
   get macroList() {
-    return this.macros;
+    return __app.macros;
   }
 
   async init(speechSynthesis: SpeechSynthesisEngine) {
@@ -90,7 +89,7 @@ class CommandHandler {
   }
 
   private async callMacro(handler: Macro$Handler, outputLocation: 'return' | 'write') {
-    const filteredMacros = this.macros.filter((macro) => macro.handler === handler);
+    const filteredMacros = __app.macros.filter((macro) => macro.handler === handler);
 
     __app.console.debugLogJson({ filteredMacros, outputLocation });
 
@@ -133,7 +132,7 @@ class CommandHandler {
         return;
       }
 
-      __app.console.debugLogJson({ macros: this.macros });
+      __app.console.debugLogJson({ macros: __app.macros });
 
       return await this.callMacro(cmd.args[0], args.length > 1 ? args[1] : 'write');
     }
