@@ -106,8 +106,7 @@
 
             if (actionMode === 'add-shortcut') {
               if (buttons.length > 0) {
-                $config.input.keyboardShortcuts.push(shortcut);
-                $config.input.keyboardShortcuts = $config.input.keyboardShortcuts;
+                $config.input.keyboardShortcuts = [...$config.input.keyboardShortcuts, shortcut];
               }
             } else if (actionMode === 'edit-shortcut') {
               $config.input.keyboardShortcuts[indexToModify] = shortcut;

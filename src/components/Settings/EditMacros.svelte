@@ -4,6 +4,7 @@
   import { macros } from '$stores/macros';
   import Input from '$components/Modal/Input.svelte';
   import { translations } from '$stores/translations';
+  import Textarea from '../Modal/Textarea.svelte';
 
   export let actionMode: 'add-macro' | 'edit-macro' | 'remove-macro' | 'none';
   export let indexToModify: number;
@@ -28,14 +29,14 @@
     <span>{$translations.settings.macros.macros.modal.prefix}:</span>
     <Input
       placeholder="{$translations.settings.macros.macros.modal.prefix}"
-      bind:text="{handler}"
+      bind:value="{handler}"
       disabled="{actionMode === 'remove-macro'}"
     />
 
     <span>{$translations.settings.macros.macros.modal.text}:</span>
-    <Input
+    <Textarea
       placeholder="{$translations.settings.macros.macros.modal.text}"
-      bind:text
+      bind:value="{text}"
       disabled="{actionMode === 'remove-macro'}"
     />
 
@@ -46,8 +47,7 @@
           on:click="{function () {
             switch (actionMode) {
               case 'add-macro': {
-                $macros.push({ handler, text });
-                $macros = $macros;
+                $macros = [...$macros, { handler, text }];
                 break;
               }
 

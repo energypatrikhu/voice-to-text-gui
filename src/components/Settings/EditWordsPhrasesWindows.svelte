@@ -57,14 +57,15 @@
               case 'add-item': {
                 switch (itemName) {
                   case 'customWordsAndPhrases': {
-                    $config.speechRecognition.customWordsAndPhrases.push(value);
-                    $config.speechRecognition.customWordsAndPhrases = $config.speechRecognition.customWordsAndPhrases;
+                    $config.speechRecognition.customWordsAndPhrases = [
+                      ...$config.speechRecognition.customWordsAndPhrases,
+                      value,
+                    ];
                     break;
                   }
 
                   case 'windows': {
-                    $config.windowAllowList.windows.push(value);
-                    $config.windowAllowList.windows = $config.windowAllowList.windows;
+                    $config.windowAllowList.windows = [...$config.windowAllowList.windows, value];
                     break;
                   }
                 }
