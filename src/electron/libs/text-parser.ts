@@ -1,7 +1,7 @@
 import type { KeyboardButton } from 'keysender';
 import { __app } from './app.js';
 import { cmd } from './command-handler.js';
-import { printText, sendKeys } from './press-keys.js';
+import { printText, sendKey } from './press-keys.js';
 
 const buttonRemap = {
   'backspace': 'backspace',
@@ -140,7 +140,7 @@ export async function textParser(text: string) {
         }
 
         __app.console.debugLog('[key]', keyOrCommand);
-        await sendKeys(keyOrCommand as KeyboardButton);
+        await sendKey(keyOrCommand as KeyboardButton);
       }
     }
   }
