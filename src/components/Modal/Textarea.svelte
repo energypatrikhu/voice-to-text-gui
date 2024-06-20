@@ -4,6 +4,7 @@
   export let rows: number | undefined = undefined;
   export let placeholder: string | undefined = undefined;
   export let disabled: boolean = false;
+  export let required: boolean = false;
   export let value: string = '';
   export { _class as class };
 
@@ -17,6 +18,7 @@
   {rows}
   {placeholder}
   {disabled}
+  {required}
   on:keyup
   on:keydown
   on:input
