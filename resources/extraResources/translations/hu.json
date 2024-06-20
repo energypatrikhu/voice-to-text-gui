@@ -505,7 +505,8 @@
         "name": "Makrók listája",
         "description": "A makrók listája",
         "table": {
-          "prefix": "Aktivátor Előtag",
+          "handler": "Makró",
+          "prefix": "Kimeneti Előtag",
           "text": "Kimeneti Szöveg",
           "button": "Új makró hozzáadása"
         },
@@ -515,7 +516,8 @@
             "edit-macro": "Makró szerkesztése",
             "remove-macro": "Makró eltávolítása"
           },
-          "prefix": "Aktivátor Előtag",
+          "handler": "Makró",
+          "prefix": "Kimeneti Előtag",
           "text": "Kimeneti Szöveg"
         }
       }

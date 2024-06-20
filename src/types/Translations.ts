@@ -160,6 +160,7 @@ export interface MacrosMacros {
 
 export interface MacrosModal {
   titles: FluffyTitles;
+  handler: string;
   prefix: string;
   text: string;
 }
@@ -171,6 +172,7 @@ export interface FluffyTitles {
 }
 
 export interface MacrosTable {
+  handler: string;
   prefix: string;
   text: string;
   button: string;

@@ -1,4 +1,5 @@
 export interface Macro {
-	handler: string;
-	text: string;
+  handler: string;
+  prefix: string;
+  text: string;
 }

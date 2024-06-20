@@ -5,13 +5,25 @@ import { loadJson, saveJson } from './json-storage.js';
 const defaultMacros: Array<Macro> = [
   {
     handler: 'teszt',
+    prefix: '',
     text: "Ez egy teszt makró, mely kiírja a 'szépnapot' makrót: {!makró:szépnapot}",
   },
   {
     handler: 'szépnapot',
+    prefix: '',
     text: 'Szép napot kívánok, hogy tetszik lenni?',
   },
 ];
+
+function migrateMacros(macros: Array<Macro>) {
+  return macros.map((macro) => {
+    return {
+      handler: macro.handler,
+      prefix: '',
+      text: macro.text,
+    };
+  });
+}
 
 export async function loadMacros() {
   const savedMacros = await loadJson<Array<Macro>>('macros');
@@ -19,6 +31,10 @@ export async function loadMacros() {
 
   if (!savedMacros) {
     await saveJson('macros', loadedMacros);
+  }
+
+  if (Object.keys(loadedMacros).length !== Object.keys(defaultMacros).length) {
+    await saveJson('macros', migrateMacros(loadedMacros));
   }
 
   return loadedMacros;
