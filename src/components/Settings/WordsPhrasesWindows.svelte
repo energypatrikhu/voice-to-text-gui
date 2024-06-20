@@ -41,32 +41,34 @@
               <span>{item}</span>
             </td>
             <td>
-              <Button
-                class="bg-transparent hover:bg-transparent !p-0"
-                on:click="{function () {
-                  indexToModify = index;
-                  actionMode = 'edit-item';
-                }}"
-              >
-                <Svg
-                  src="symbols/edit"
-                  class="w-6 h-6 cursor-pointer"
-                  iconClass="hover:fill-green-600"
-                />
-              </Button>
-              <Button
-                class="bg-transparent hover:bg-transparent !p-0"
-                on:click="{function () {
-                  indexToModify = index;
-                  actionMode = 'remove-item';
-                }}"
-              >
-                <Svg
-                  src="symbols/delete"
-                  class="w-6 h-6 cursor-pointer"
-                  iconClass="hover:fill-red-600"
-                />
-              </Button>
+              <div class="flex">
+                <Button
+                  class="bg-transparent hover:bg-transparent !p-0"
+                  on:click="{function () {
+                    indexToModify = index;
+                    actionMode = 'edit-item';
+                  }}"
+                >
+                  <Svg
+                    src="symbols/edit"
+                    class="w-6 h-6 cursor-pointer"
+                    iconClass="hover:fill-green-600"
+                  />
+                </Button>
+                <Button
+                  class="bg-transparent hover:bg-transparent !p-0"
+                  on:click="{function () {
+                    indexToModify = index;
+                    actionMode = 'remove-item';
+                  }}"
+                >
+                  <Svg
+                    src="symbols/delete"
+                    class="w-6 h-6 cursor-pointer"
+                    iconClass="hover:fill-red-600"
+                  />
+                </Button>
+              </div>
             </td>
           </tr>
           <div class="w-full h-[1px] left-0 bg-neutral-700"></div>
@@ -101,11 +103,11 @@
 <style>
   th,
   td {
-    @apply w-[calc((256px+384px)-48px)] text-left py-1 px-3;
+    @apply w-[calc((48rem)-48px)] text-left py-1 px-3;
   }
 
   td:last-child {
-    @apply w-fit px-0 flex flex-row;
+    @apply w-fit px-0 flex;
   }
 
   tbody {
@@ -114,11 +116,11 @@
 
   thead,
   tbody tr {
-    @apply table table-fixed w-[calc(256px+384px)];
+    @apply table table-fixed w-[48rem];
   }
 
   thead {
-    @apply pr-[10px] w-[calc((256px+(384px-48px))-10px)];
+    @apply pr-[10px] w-[calc((48rem-48px)-10px)];
   }
 
   table {

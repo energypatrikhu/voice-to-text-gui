@@ -62,7 +62,10 @@
       <span>{$translations.settings.input.keyboardShortcuts.modal.shortcut}{buttons.length > 1 ? ' (Combo)' : ''}:</span>
       <div class="flex flex-col gap-0">
         {#each buttons as button}
-          <Select bind:value="{button}">
+          <Select
+            bind:value="{button}"
+            required
+          >
             {#each shortcutKeys as key}
               <Option value="{key}">{key}</Option>
             {/each}
