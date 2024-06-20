@@ -505,7 +505,8 @@
         "name": "Macros",
         "description": "List of macros",
         "table": {
-          "prefix": "Activator Prefix",
+          "handler": "Macro",
+          "prefix": "Output Prefix",
           "text": "Output Text",
           "button": "Add new macro"
         },
@@ -515,7 +516,8 @@
             "edit-macro": "Edit macro",
             "remove-macro": "Remove macro"
           },
-          "prefix": "Activator Prefix",
+          "handler": "Macro",
+          "prefix": "Output Prefix",
           "text": "Output Text"
         }
       }

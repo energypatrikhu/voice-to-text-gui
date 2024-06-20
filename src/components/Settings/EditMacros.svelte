@@ -9,7 +9,7 @@
   export let actionMode: 'add-macro' | 'edit-macro' | 'remove-macro' | 'none';
   export let indexToModify: number;
 
-  let { handler, text } = indexToModify !== -1 ? $macros[indexToModify] : { handler: '', text: '' };
+  let { handler, prefix, text } = indexToModify !== -1 ? $macros[indexToModify] : { handler: '', prefix: '', text: '' };
 
   $: title =
     actionMode !== 'none'
@@ -26,10 +26,18 @@
   class="w-full h-[calc(100%-48px)] top-12 left-0 flex items-center justify-center fixed bg-black/25 backdrop-blur"
 >
   <Modal header="{title}">
+    <span>{$translations.settings.macros.macros.modal.handler}:</span>
+    <Input
+      placeholder="{$translations.settings.macros.macros.modal.handler}"
+      bind:value="{handler}"
+      disabled="{actionMode === 'remove-macro'}"
+      required
+    />
+
     <span>{$translations.settings.macros.macros.modal.prefix}:</span>
     <Input
-      placeholder="{$translations.settings.macros.macros.modal.prefix}"
-      bind:value="{handler}"
+      placeholder="{$translations.states.none}"
+      bind:value="{prefix}"
       disabled="{actionMode === 'remove-macro'}"
     />
 
@@ -38,6 +46,7 @@
       placeholder="{$translations.settings.macros.macros.modal.text}"
       bind:value="{text}"
       disabled="{actionMode === 'remove-macro'}"
+      required
     />
 
     <div class="flex justify-around w-full">
@@ -45,14 +54,16 @@
         <Button
           type="button"
           on:click="{function () {
+            if (!handler || !text) return;
+
             switch (actionMode) {
               case 'add-macro': {
-                $macros = [...$macros, { handler, text }];
+                $macros = [...$macros, { handler, prefix, text }];
                 break;
               }
 
               case 'edit-macro': {
-                $macros[indexToModify] = { handler, text };
+                $macros[indexToModify] = { handler, prefix, text };
                 break;
               }
             }
