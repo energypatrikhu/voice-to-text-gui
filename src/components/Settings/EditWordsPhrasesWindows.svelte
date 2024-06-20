@@ -46,6 +46,7 @@
         : $translations.settings.windowAllowList.windows.modal.windowName}"
       bind:value
       disabled="{actionMode === 'remove-item'}"
+      required
     />
 
     <div class="flex justify-around w-full">
@@ -53,6 +54,8 @@
         <Button
           type="button"
           on:click="{function () {
+            if (!value) return;
+
             switch (actionMode) {
               case 'add-item': {
                 switch (itemName) {
