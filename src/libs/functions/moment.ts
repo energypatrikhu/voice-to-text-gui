@@ -5,7 +5,7 @@ const userLang = globalThis.navigator && globalThis.navigator.language;
 moment.locale((userLang ?? 'hu').split('-')[0]);
 
 export function formatDate(date: number) {
-	return moment(Number(date)).format('LLLL');
+  return moment(Number(date)).format('LLLL');
 }
 
 export { moment };

@@ -1,4 +1,4 @@
 export interface Manifest {
-	isFirstStart: boolean;
-	chromeVersion: string;
+  isFirstStart: boolean;
+  chromeVersion: string;
 }

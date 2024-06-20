@@ -3,7 +3,7 @@ import type { Macro } from '$types/Macro';
 import type { Versions } from '$types/electron/Versions';
 
 export interface App {
-	config: ConfigOptions;
-	macros: Array<Macro>;
-	versions: Versions;
+  config: ConfigOptions;
+  macros: Array<Macro>;
+  versions: Versions;
 }

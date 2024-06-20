@@ -1,4 +1,4 @@
 export interface KeyboardShortcut {
-	outputPrefix: string | null;
-	shortcut: string[];
+  outputPrefix: string | null;
+  shortcut: string[];
 }
