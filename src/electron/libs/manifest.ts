@@ -4,25 +4,25 @@ import { loadJson, saveJson } from './json-storage.js';
 import type { Manifest } from '../../types/electron/Manifest.js';
 
 const defaultManifest: Manifest = {
-	isFirstStart: true,
-	chromeVersion: '',
+  isFirstStart: true,
+  chromeVersion: '',
 };
 
 export async function loadManifest() {
-	const savedManifest = await loadJson<Manifest>('manifest');
-	const loadedManifest = savedManifest ?? defaultManifest;
+  const savedManifest = await loadJson<Manifest>('manifest');
+  const loadedManifest = savedManifest ?? defaultManifest;
 
-	if (!loadedManifest) {
-		await saveJson('manifest', loadedManifest);
-	}
+  if (!loadedManifest) {
+    await saveJson('manifest', loadedManifest);
+  }
 
-	return loadedManifest;
+  return loadedManifest;
 }
 
 export async function saveManifest(manifest: Partial<Manifest>) {
-	const loadedManifest = __app.manifest ?? defaultManifest;
-	__app.manifest = { ...loadedManifest, ...manifest };
-	await saveJson('manifest', __app.manifest);
-	__app.console.debugLog('Manifest updated!');
-	__app.console.debugLogJson(__app.manifest);
+  const loadedManifest = __app.manifest ?? defaultManifest;
+  __app.manifest = { ...loadedManifest, ...manifest };
+  await saveJson('manifest', __app.manifest);
+  __app.console.debugLog('Manifest updated!');
+  __app.console.debugLogJson(__app.manifest);
 }

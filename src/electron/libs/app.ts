@@ -12,36 +12,36 @@ import _ from 'lodash';
 import type { Manifest } from '../../types/electron/Manifest.js';
 
 export class App {
-	isDev!: boolean;
-	isBeta!: boolean;
+  isDev!: boolean;
+  isBeta!: boolean;
 
-	ipcMain!: Electron.IpcMain;
-	mainWindow!: Electron.BrowserWindow;
+  ipcMain!: Electron.IpcMain;
+  mainWindow!: Electron.BrowserWindow;
 
-	config!: ConfigOptions;
-	macros!: Array<Macro>;
-	versions!: Versions;
-	translations!: Translations;
-	chromePage!: Page;
-	manifest!: Manifest;
+  config!: ConfigOptions;
+  macros!: Array<Macro>;
+  versions!: Versions;
+  translations!: Translations;
+  chromePage!: Page;
+  manifest!: Manifest;
 
-	speechRecognition!: SpeechRecognitionEngine;
-	speechSynthesis!: SpeechSynthesisEngine;
-	console!: Console;
-	settingsUpdate!: SettingsUpdate;
+  speechRecognition!: SpeechRecognitionEngine;
+  speechSynthesis!: SpeechSynthesisEngine;
+  console!: Console;
+  settingsUpdate!: SettingsUpdate;
 
-	checkingForUpdate!: boolean;
-	updateReason!: 'manual' | 'automatic' | null;
-	downloadedUpdate!: boolean;
+  checkingForUpdate!: boolean;
+  updateReason!: 'manual' | 'automatic' | null;
+  downloadedUpdate!: boolean;
 
-	userDataFolder!: string;
-	resources!: string;
+  userDataFolder!: string;
+  resources!: string;
 
-	set(data: Partial<App>) {
-		const oldApp = _.omit(this, ['set']);
-		Object.assign(this, data);
-		return { newApp: data as App, oldApp };
-	}
+  set(data: Partial<App>) {
+    const oldApp = _.omit(this, ['set']);
+    Object.assign(this, data);
+    return { newApp: data as App, oldApp };
+  }
 }
 
 export const __app = new App();
