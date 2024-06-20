@@ -123,9 +123,15 @@ class CommandHandler {
       args: commandArray.slice(1),
     };
 
-    __app.console.debugLogJson({ cmd, isMacro: anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek']) });
+    __app.console.debugLogJson({
+      cmd,
+      isMacro: anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek', 'macro', 'macros', 'text', 'texts']),
+    });
 
-    if (__app.config.macros.enabled && anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek'])) {
+    if (
+      __app.config.macros.enabled &&
+      anyHas(cmd.handler, ['makró', 'makrók', 'szöveg', 'szövegek', 'macro', 'macros', 'text', 'texts'])
+    ) {
       if (cmd.args.length === 0) {
         this.speechSynthesis.speak(__app.translations.speechFeedback.commandHandler.unknownMacro);
         __app.console.log(__app.translations.textFeedback.commandHandler.unknownMacro);
