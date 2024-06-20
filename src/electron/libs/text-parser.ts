@@ -115,12 +115,12 @@ const buttonRemap = {
 
 export async function textParser(text: string) {
   const textParserRegex = new RegExp(
-    '{' + [...Object.keys(buttonRemap), `\\${__app.config.commands.prefix}.*?`].join('}|{') + '}',
+    '{' + [...Object.keys(buttonRemap), `\\${__app.config.commands.prefix}.*?`, `\\/.*?`].join('}|{') + '}',
     'gi',
   );
-  const fillerKeys = text.match(textParserRegex);
+  const fillers = text.match(textParserRegex);
   const strings = text.split(textParserRegex);
-  __app.console.debugLog('[full text]', text, strings, fillerKeys);
+  __app.console.debugLog('[full text]', text, strings, fillers);
 
   for (let i = 0; i < strings.length; i++) {
     if (strings[i]) {
@@ -128,8 +128,8 @@ export async function textParser(text: string) {
       await printText(strings[i], false, true);
     }
 
-    if (fillerKeys && fillerKeys[i]) {
-      const keyOrCommand = fillerKeys[i].slice(1, -1);
+    if (fillers && fillers[i]) {
+      const keyOrCommand = fillers[i].slice(1, -1);
 
       if (keyOrCommand.startsWith(__app.config.commands.prefix)) {
         __app.console.debugLog('[command]', keyOrCommand);
