@@ -46,6 +46,7 @@
       placeholder="{$translations.settings.macros.macros.modal.text}"
       bind:value="{text}"
       disabled="{actionMode === 'remove-macro'}"
+      rows="{3}"
       required
     />
 
