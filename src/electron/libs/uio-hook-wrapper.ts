@@ -202,5 +202,4 @@ class UioHookWrapper {
   }
 }
 
-const uioHookWrapper = new UioHookWrapper();
-export default uioHookWrapper;
+export const uioHookWrapper = new UioHookWrapper();
