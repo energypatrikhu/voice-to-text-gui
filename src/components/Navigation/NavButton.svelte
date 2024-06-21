@@ -1,6 +1,6 @@
 <script lang="ts">
   import Svg from '$components/Svg.svelte';
-  import type { Icon } from '../../types/Mdi';
+  import type { Icon } from '$types/Mdi';
 
   export let title: string;
   export let active: boolean;

@@ -1,5 +1,5 @@
-import type { Icon } from '../types/Mdi';
-import type { Navigation } from '../types/Translations';
+import type { Icon } from '$types/Mdi';
+import type { Navigation } from '$types/Translations';
 
 type WebPath = {
   title: keyof Navigation;
