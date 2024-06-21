@@ -30,6 +30,7 @@
 		"release:beta": "npm run release-it:release:beta && npm run pack:electron:beta && npm run pack:vite:beta && npm run build:electron:release:beta"
 	},
 	"dependencies": {
+		"@mdi/js": "^7.4.47",
 		"@rgrove/parse-xml": "^4.1.0",
 		"active-win": "^8.1.1",
 		"adm-zip": "^0.5.10",
@@ -48,8 +49,6 @@
 		"uiohook-napi": "^1.5.3"
 	},
 	"devDependencies": {
-		"@material-symbols/svg-400": "^0.15.0",
-		"@poppanator/sveltekit-svg": "^4.2.1",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.5.0",
 		"@types/adm-zip": "^0.5.5",

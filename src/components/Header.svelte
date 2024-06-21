@@ -36,8 +36,8 @@
           >
             <Svg
               class="w-9 h-9 flex justify-center items-center rounded-full p-0.5"
-              iconClass="hover:fill-green-600 {sideBarOpen ? '!fill-green-600' : ''}"
-              src="symbols/menu"
+              svgClass="hover:fill-green-600 {sideBarOpen ? '!fill-green-600' : ''}"
+              icon="mdiMenu"
             />
           </button>
         {:else if $offsetWidth > 0}
