@@ -2,7 +2,7 @@ import { EventEmitter } from 'puppeteer-core';
 
 import { __app } from './app.js';
 import { cmd } from './command-handler.js';
-import { printText } from './press-keys.js';
+import { printTextSegments } from './press-keys.js';
 import { replaceCharMap } from './replace-char-map.js';
 import { replaceGameChatPrefixMap } from './replace-game-chat-prefix-map.js';
 import { soundWrapper } from './sound-wrapper.js';
@@ -205,7 +205,7 @@ export class SpeechRecognitionEngine {
           return;
         }
 
-        await printText(output);
+        await printTextSegments(output);
 
         __app.mainWindow.webContents.send('speech:recognition', {
           event: 'transcript',
@@ -232,7 +232,7 @@ export class SpeechRecognitionEngine {
     this.partialOutput = this.partialOutputMatrix.map((o) => o.join(', ')).join(', ');
 
     if (__app.config.output.partial) {
-      await printText(this.partialOutput.slice(this._partialOutput.length));
+      await printTextSegments(this.partialOutput.slice(this._partialOutput.length));
     }
 
     __app.console.log(

@@ -1,8 +1,6 @@
-import type { KeyboardButton } from 'keysender';
 import { __app } from './app.js';
 import { cmd } from './command-handler.js';
-import { printText } from './press-keys.js';
-import { keyboard } from './hardware.js';
+import { printTextSegments, sendKey } from './press-keys.js';
 
 const buttonRemap = {
   'backspace': 'backspace',
@@ -121,14 +119,13 @@ export async function textParser(text: string) {
   );
   const fillers = text.match(textParserRegex);
   const strings = text.split(textParserRegex);
-  const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
 
   __app.console.debugLog('[full text]', text, strings, fillers);
 
   for (let i = 0; i < strings.length; i++) {
     if (strings[i]) {
       __app.console.debugLog('[text]', strings[i]);
-      await printText(strings[i], false, true);
+      await printTextSegments(strings[i], false, true);
     }
 
     if (fillers && fillers[i]) {
@@ -143,7 +140,7 @@ export async function textParser(text: string) {
         }
 
         __app.console.debugLog('[key]', keyOrCommand);
-        await keyboard.sendKey(keyOrCommand as KeyboardButton, delay, delay);
+        await sendKey(keyOrCommand);
       }
     }
   }
