@@ -462,9 +462,8 @@
     <Section>
       <span slot="title">{$translations.settings.windowAllowList.this.name}</span>
       <span slot="description">{$translations.settings.windowAllowList.this.description}</span>
-
-      <div slot="content">
-        <SubSection>
+      <div slot="extra">
+        <SubSection connectedSubSection="{true}">
           <Select
             slot="content"
             bind:value="{$config.windowAllowList.enabled}"
@@ -473,7 +472,9 @@
             <Option value="{false}">{$translations.states.disable}</Option>
           </Select>
         </SubSection>
+      </div>
 
+      <div slot="content">
         <SubSection>
           <span slot="title">{$translations.settings.windowAllowList.windows.name}</span>
           <span slot="description">{$translations.settings.windowAllowList.windows.description}</span>
@@ -496,12 +497,8 @@
     <Section>
       <span slot="title">{$translations.settings.commands.this.name}</span>
       <span slot="description">{$translations.settings.commands.this.description}</span>
-
-      <div
-        slot="content"
-        class="relative"
-      >
-        <SubSection>
+      <div slot="extra">
+        <SubSection connectedSubSection="{true}">
           <Select
             slot="content"
             bind:value="{$config.commands.enabled}"
@@ -510,7 +507,12 @@
             <Option value="{false}">{$translations.states.disable}</Option>
           </Select>
         </SubSection>
+      </div>
 
+      <div
+        slot="content"
+        class="relative"
+      >
         <SubSection>
           <span slot="title">{$translations.settings.commands.prefix.name}</span>
           <span slot="description">{$translations.settings.commands.prefix.description}</span>
@@ -538,12 +540,8 @@
     <Section>
       <span slot="title">{$translations.settings.macros.this.name}</span>
       <span slot="description">{$translations.settings.macros.this.description}</span>
-
-      <div
-        slot="content"
-        class="relative"
-      >
-        <SubSection>
+      <div slot="extra">
+        <SubSection connectedSubSection="{true}">
           <Select
             slot="content"
             bind:value="{$config.macros.enabled}"
@@ -552,7 +550,12 @@
             <Option value="{false}">{$translations.states.disable}</Option>
           </Select>
         </SubSection>
+      </div>
 
+      <div
+        slot="content"
+        class="relative"
+      >
         <SubSection>
           <span slot="title">{$translations.settings.macros.macros.name}</span>
           <span slot="description">{$translations.settings.macros.macros.description}</span>

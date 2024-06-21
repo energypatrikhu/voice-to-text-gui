@@ -1,4 +1,8 @@
-<div class="px-4 py-2 w-[calc(75%)]">
+<script>
+  export let connectedSubSection = false;
+</script>
+
+<div class="{connectedSubSection ? 'px-3 py-1' : 'px-4 py-2'} w-[calc(75%)]">
   <div>
     <div class="text-xl">
       <slot name="title" />
