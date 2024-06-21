@@ -1,7 +1,7 @@
 import { __app } from '../app.js';
 import { cmd } from '../command-handler.js';
 import { getActiveWindowName } from '../get-active-window-name.js';
-import { printText } from '../press-keys.js';
+import { printTextSegments } from '../press-keys.js';
 
 cmd.registerCommand(
   async function (speechSynthesis) {
@@ -12,7 +12,7 @@ cmd.registerCommand(
         return;
       }
 
-      await printText('exit', true);
+      await printTextSegments('exit', true);
     } catch (error) {
       __app.console.debugErrorLog(error);
     }
