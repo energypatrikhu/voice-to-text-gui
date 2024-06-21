@@ -20,7 +20,7 @@ import { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import { textReplacer } from './text-replacer.js';
 import { loadTranslation } from './translations.js';
-import uioHookWrapper from './uio-hook-wrapper.js';
+import { uioHookWrapper } from './uio-hook-wrapper.js';
 import { Updater } from './updater.js';
 
 export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev: boolean, isBeta: boolean) {
