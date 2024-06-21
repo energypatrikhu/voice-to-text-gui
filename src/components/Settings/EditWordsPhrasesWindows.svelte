@@ -4,6 +4,7 @@
   import config from '$stores/config';
   import Input from '$components/Modal/Input.svelte';
   import translations from '$stores/translations';
+  import Textarea from '../Modal/Textarea.svelte';
 
   export let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none';
   export let itemName: 'customWordsAndPhrases' | 'windows';
@@ -40,14 +41,21 @@
         ? $translations.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase
         : $translations.settings.windowAllowList.windows.modal.windowName}:</span
     >
-    <Input
-      placeholder="{itemName === 'customWordsAndPhrases'
-        ? $translations.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase
-        : $translations.settings.windowAllowList.windows.modal.windowName}"
-      bind:value
-      disabled="{actionMode === 'remove-item'}"
-      required
-    />
+    {#if itemName === 'customWordsAndPhrases'}
+      <Textarea
+        placeholder="{$translations.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase}"
+        bind:value
+        disabled="{actionMode === 'remove-item'}"
+        required
+      />
+    {:else if itemName === 'windows'}
+      <Input
+        placeholder="{$translations.settings.windowAllowList.windows.modal.windowName}"
+        bind:value
+        disabled="{actionMode === 'remove-item'}"
+        required
+      />
+    {/if}
 
     <div class="flex justify-around w-full">
       {#if actionMode !== 'remove-item'}
