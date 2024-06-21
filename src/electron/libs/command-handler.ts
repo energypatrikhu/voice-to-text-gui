@@ -106,7 +106,7 @@ class CommandHandler {
     }
 
     if (__app.config.others.mtaConsoleInputMode) {
-      return await textParser(`{f8}${macro.prefix ? `${macro.prefix.slice(1)} ` : ''}${macro.text}{enter}{f8}`);
+      return await textParser(`{f8}${macro.prefix ? `${macro.prefix.slice(1)} ` : 'say '}${macro.text}{enter}{f8}`);
     }
 
     return await textParser(`${macro.prefix ? `${macro.prefix} ` : ''}${macro.text}`);
