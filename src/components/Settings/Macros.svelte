@@ -64,7 +64,7 @@
                   }}"
                 >
                   <Svg
-                    icon="mdiDelete"
+                    icon="mdiTrashCanOutline"
                     class="w-6 h-6 cursor-pointer"
                     svgClass="hover:fill-red-600"
                   />
