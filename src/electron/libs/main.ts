@@ -20,7 +20,7 @@ import { SpeechRecognitionEngine } from './speech-recognition-engine.js';
 import { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 import { textReplacer } from './text-replacer.js';
 import { loadTranslation } from './translations.js';
-import { uioHookWrapper } from './uio-hook-wrapper.js';
+import uioHookWrapper from './uio-hook-wrapper.js';
 import { Updater } from './updater.js';
 
 export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow, isDev: boolean, isBeta: boolean) {
@@ -120,7 +120,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
   }
 
   __app.console.debugLog(__app.translations.textFeedback.index.registering.ioHook);
-  uioHookWrapper((event) => {
+  uioHookWrapper.subscribe((event) => {
     if (__app.config.others.showActiveButtons) {
       const activeButtons = Object.entries(event.pressedKeys)
         .filter((btn) => btn[1] === true)

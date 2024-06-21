@@ -1,6 +1,4 @@
-import { EventType, uIOhook } from 'uiohook-napi';
-
-import type { UiohookKeyboardEvent, UiohookMouseEvent, UiohookWheelEvent } from 'uiohook-napi';
+import { EventType, uIOhook, type UiohookKeyboardEvent, type UiohookMouseEvent, type UiohookWheelEvent } from 'uiohook-napi';
 
 const uiohookKeys = {
   14: 'backspace',
@@ -121,32 +119,25 @@ const uiohookKeys = {
   3653: 'pauseBreak',
 } as const;
 
-export const keys = Object.values(uiohookKeys);
-
-export type Key = (typeof uiohookKeys)[keyof typeof uiohookKeys];
+export type KeyCode = keyof typeof uiohookKeys;
+export type Key = (typeof uiohookKeys)[KeyCode];
 
 const pressedKeys: Partial<Record<Key, boolean>> = {};
-
 export interface ioStdout {
   key: Key;
   pressedKeys: typeof pressedKeys;
 }
 
-interface F$UioHookInputParser {
-  event: UiohookKeyboardEvent | UiohookMouseEvent | UiohookWheelEvent;
-}
-
-function uioHookInputParser({ event }: F$UioHookInputParser): ioStdout {
+function uioHookInputParser(event: UiohookKeyboardEvent | UiohookMouseEvent | UiohookWheelEvent) {
   const isKey = event.type === EventType.EVENT_KEY_PRESSED || event.type === EventType.EVENT_KEY_RELEASED;
   const isMouse = event.type === EventType.EVENT_MOUSE_PRESSED || event.type === EventType.EVENT_MOUSE_RELEASED;
 
   if (!isKey && !isMouse) {
-    // @ts-ignore
     return;
   }
 
-  let isPressed: boolean;
-  let keyName: string;
+  let isPressed: boolean = false;
+  let keyName: string = '';
 
   if (isKey) {
     switch (event.type) {
@@ -159,48 +150,57 @@ function uioHookInputParser({ event }: F$UioHookInputParser): ioStdout {
         break;
       }
     }
-  } else if (isMouse) {
-    switch (event.type) {
-      case EventType.EVENT_MOUSE_PRESSED: {
-        isPressed = true;
-        break;
-      }
-      case EventType.EVENT_MOUSE_RELEASED: {
-        isPressed = false;
-        break;
-      }
-    }
-  }
 
-  if (isKey) {
     const keyboardEvent = event as UiohookKeyboardEvent;
 
     if (keyboardEvent.keycode in uiohookKeys) {
-      // @ts-ignore
-      keyName = uiohookKeys[keyboardEvent.keycode];
+      keyName = uiohookKeys[keyboardEvent.keycode as KeyCode];
     } else {
       keyName = `unknown[${keyboardEvent.keycode}]`;
     }
   } else if (isMouse) {
+    switch (event.type) {
+      case EventType.EVENT_MOUSE_PRESSED:
+        isPressed = true;
+        break;
+      case EventType.EVENT_MOUSE_RELEASED:
+        isPressed = false;
+        break;
+    }
+
     const mouseEvent = event as UiohookMouseEvent;
 
     keyName = `mouse${mouseEvent.button}`;
   }
 
-  // @ts-ignore
-  pressedKeys[keyName] = isPressed;
+  pressedKeys[keyName as Key] = isPressed;
 
-  // @ts-ignore
   return { key: keyName as Key, pressedKeys };
 }
 
-export function uioHookWrapper(callbackFn: (keyEvent: ioStdout) => void) {
-  uIOhook.on('input', (event) => {
-    const uioHookParserData = uioHookInputParser({ event });
-    if (uioHookParserData) {
-      callbackFn(uioHookParserData);
-    }
-  });
-  uIOhook.start();
-  return uIOhook;
+class UioHookWrapper {
+  subscribers = new Set<(keyEvent: ioStdout) => void>();
+
+  constructor() {
+    uIOhook.on('input', (event) => {
+      const uioHookParserData = uioHookInputParser(event);
+      if (uioHookParserData) {
+        this.subscribers.forEach((callbackFn) => {
+          callbackFn(uioHookParserData);
+        });
+      }
+    });
+    uIOhook.start();
+  }
+
+  subscribe(callbackFn: (keyEvent: ioStdout) => void) {
+    this.subscribers.add(callbackFn);
+  }
+
+  unsubscribe(callbackFn: (keyEvent: ioStdout) => void) {
+    this.subscribers.delete(callbackFn);
+  }
 }
+
+const uioHookWrapper = new UioHookWrapper();
+export default uioHookWrapper;
