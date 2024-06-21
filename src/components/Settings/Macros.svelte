@@ -1,9 +1,9 @@
 <script lang="ts">
   import Button from '$components/Modal/Button.svelte';
   import Svg from '$components/Svg.svelte';
-  import { translations } from '$stores/translations';
-  import type { Macro } from '../../types/Macro';
-  import EditMacros from './EditMacros.svelte';
+  import translations from '$stores/translations';
+  import type { Macro } from '$types/Macro';
+  import EditMacros from '$components/Settings/EditMacros.svelte';
 
   export let macros: Array<Macro>;
 

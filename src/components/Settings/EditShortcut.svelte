@@ -6,7 +6,7 @@
   import { shortcutKeys } from '$libs/shortcutKeys';
   import config from '$stores/config';
   import Input from '$components/Modal/Input.svelte';
-  import { translations } from '$stores/translations';
+  import translations from '$stores/translations';
 
   export let actionMode: 'add-shortcut' | 'edit-shortcut' | 'remove-shortcut' | 'none';
   export let indexToModify: number;

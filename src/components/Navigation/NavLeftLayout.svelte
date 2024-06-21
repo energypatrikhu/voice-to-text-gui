@@ -2,7 +2,7 @@
   import NavButton from '$components/Navigation/NavButton.svelte';
   import { page } from '$app/stores';
   import { webPaths } from '$libs/webPaths';
-  import { translations } from '$stores/translations';
+  import translations from '$stores/translations';
 </script>
 
 {#each webPaths as navElement}

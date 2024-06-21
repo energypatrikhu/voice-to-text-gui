@@ -3,7 +3,7 @@
   import { fly } from 'svelte/transition';
   import { page } from '$app/stores';
   import { webPaths } from '$libs/webPaths';
-  import { translations } from '$stores/translations';
+  import translations from '$stores/translations';
 
   export let open: boolean = false;
 </script>

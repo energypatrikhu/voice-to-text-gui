@@ -3,7 +3,7 @@
   import Button from '$components/Modal/Button.svelte';
   import Svg from '$components/Svg.svelte';
   import EditItem from '$components/Settings/EditWordsPhrasesWindows.svelte';
-  import { translations } from '$stores/translations';
+  import translations from '$stores/translations';
 
   export let items: ConfigOptions['speechRecognition']['customWordsAndPhrases'] | ConfigOptions['windowAllowList']['windows'];
   export let itemName: 'customWordsAndPhrases' | 'windows';
