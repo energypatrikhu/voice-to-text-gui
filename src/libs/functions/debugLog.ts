@@ -1,5 +1,5 @@
 import { saveToLogFile } from '$libs/functions/saveToLogFile';
-import { config } from '$stores/config';
+import config from '$stores/config';
 import { get } from 'svelte/store';
 
 export function debugLog(...messages: any) {

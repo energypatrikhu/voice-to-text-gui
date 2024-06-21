@@ -1,6 +1,6 @@
 import { dateToLocale } from '$libs/functions/dateToLocale';
-import { app } from '$stores/app';
-import { config } from '$stores/config';
+import app from '$stores/app';
+import config from '$stores/config';
 import { cDebugLog, cError, cLog } from '$stores/console';
 import { get } from 'svelte/store';
 

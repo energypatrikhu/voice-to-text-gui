@@ -1,7 +1,7 @@
 <script lang="ts">
   import Modal from '$components/Modal/Modal.svelte';
   import Button from '$components/Modal/Button.svelte';
-  import { config } from '$stores/config';
+  import config from '$stores/config';
   import Input from '$components/Modal/Input.svelte';
   import { translations } from '$stores/translations';
 

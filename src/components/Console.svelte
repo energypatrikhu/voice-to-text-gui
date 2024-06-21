@@ -6,7 +6,7 @@
   import languageJson from 'svelte-highlight/languages/json';
   import languagePlaintext from 'svelte-highlight/languages/plaintext';
   import 'svelte-highlight/styles/github-dark-dimmed.css';
-  import { app } from '../stores/app';
+  import app from '$stores/app';
 
   let consoleWrapper: HTMLDivElement;
 

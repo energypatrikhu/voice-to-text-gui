@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app } from '$stores/app';
+  import app from '$stores/app';
 </script>
 
 <div class="h-9 flex justify-center items-center overflow-hidden">

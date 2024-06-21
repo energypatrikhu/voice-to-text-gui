@@ -3,7 +3,7 @@
   import Button from '$components/Modal/Button.svelte';
   import { debugLog } from '$libs/functions/debugLog';
   import { translations } from '$stores/translations';
-  import { app } from '../stores/app';
+  import app from '$stores/app';
 
   let textInput = '';
 
