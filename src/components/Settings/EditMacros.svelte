@@ -3,8 +3,8 @@
   import Button from '$components/Modal/Button.svelte';
   import macros from '$stores/macros';
   import Input from '$components/Modal/Input.svelte';
-  import { translations } from '$stores/translations';
-  import Textarea from '../Modal/Textarea.svelte';
+  import translations from '$stores/translations';
+  import Textarea from '$components/Modal/Textarea.svelte';
 
   export let actionMode: 'add-macro' | 'edit-macro' | 'remove-macro' | 'none';
   export let indexToModify: number;

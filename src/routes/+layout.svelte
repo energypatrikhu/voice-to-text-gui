@@ -5,7 +5,7 @@
   import { onMount } from 'svelte';
   import config from '$stores/config';
   import macros from '$stores/macros';
-  import { translations } from '$stores/translations';
+  import translations from '$stores/translations';
   import app from '$stores/app';
 
   import { getLocaleTime } from '$libs/functions/getLocaleTime';
