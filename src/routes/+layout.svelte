@@ -25,16 +25,13 @@
     mouseEvent.stopPropagation();
   });
 
-  let ready: boolean = false;
-
   window.electron.receive('electron', function ({ event, data }) {
     switch (event) {
       case 'ready': {
-        ready = true;
         $config = data.config;
         $macros = data.macros;
         $translations = data.translations;
-        $app = { ...$app, ...data.versions, ready };
+        $app = { ...$app, ...data.versions };
         break;
       }
 
@@ -74,6 +71,12 @@
         }
         break;
       }
+
+      case 'loaded': {
+        $app.mode = data.mode;
+        $app.ready = true;
+        break;
+      }
     }
   });
 
@@ -92,7 +95,7 @@
   });
 </script>
 
-{#if ready}
+{#if $app.ready}
   <slot />
 {:else}
   <div class="absolute flex justify-center items-center h-full w-full">

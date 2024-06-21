@@ -30,7 +30,7 @@
 
 <div
   bind:this="{consoleWrapper}"
-  class="fixed overflow-hidden overflow-y-scroll w-full {$app.ready
+  class="fixed overflow-hidden overflow-y-scroll w-full {$app.ready && $app.mode === 'production'
     ? 'h-[calc(100%-48px-36px)]'
     : 'h-[calc(100%-48px)]'} flex flex-col"
 >

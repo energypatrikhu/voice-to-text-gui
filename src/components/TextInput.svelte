@@ -17,7 +17,7 @@
   }
 </script>
 
-{#if $app.ready}
+{#if $app.ready && $app.mode === 'production'}
   <form
     on:submit="{submit}"
     class="fixed bottom-0 w-full flex h-9 overflow-hidden"
