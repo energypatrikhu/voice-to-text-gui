@@ -1,8 +1,23 @@
-export const webPaths = [
+import type { Icon } from '../types/Mdi';
+import type { Navigation } from '../types/Translations';
+
+type WebPath = {
+  title: keyof Navigation;
+  href: string;
+  icon: Icon;
+  navPos: 'top' | 'bottom';
+  enabled: boolean;
+  external: boolean;
+  permissions: string[];
+  customs: Record<string, any>;
+  children: WebPath[];
+};
+
+export const webPaths: Array<WebPath> = [
   {
     title: 'home',
     href: '/',
-    icon: 'home',
+    icon: 'mdiHome',
     navPos: 'top',
     enabled: true,
     external: false,
@@ -13,7 +28,7 @@ export const webPaths = [
   {
     title: 'settings',
     href: '/settings',
-    icon: 'settings',
+    icon: 'mdiCog',
     navPos: 'top',
     enabled: true,
     external: false,

@@ -1,11 +1,13 @@
 <script lang="ts">
   import Svg from '$components/Svg.svelte';
-  import type { tSvgSrcFolderIcons } from '$types/Svgs';
+  // import type { tSvgSrcFolderIcons } from '$types/Svgs';
+  import type { Icon } from '../../types/Mdi';
 
   export let title: string;
   export let active: boolean;
   export let btnClass: string = '';
-  export let icon: tSvgSrcFolderIcons | string;
+  // export let icon: tSvgSrcFolderIcons | string;
+  export let icon: Icon;
   export let iconPos: 'before' | 'after' | 'both';
   export let iconClass: string = '';
   export let href: string | null = null;
@@ -26,14 +28,14 @@
     {#if iconPos === 'before' || iconPos === 'both'}
       <Svg
         class="w-7 h-7 pr-1 {iconClass}"
-        src="symbols/{icon}"
+        {icon}
       />
     {/if}
     <span>{title}</span>
     {#if iconPos === 'after' || iconPos === 'both'}
       <Svg
         class="w-7 h-7 pl-1 {iconClass}"
-        src="symbols/{icon}"
+        {icon}
       />
     {/if}
   </a>
@@ -48,14 +50,14 @@
     {#if iconPos === 'before' || iconPos === 'both'}
       <Svg
         class="w-7 h-7 pr-1 {iconClass}"
-        src="symbols/{icon}"
+        {icon}
       />
     {/if}
     <span>{title}</span>
     {#if iconPos === 'after' || iconPos === 'both'}
       <Svg
         class="w-7 h-7 pl-1 {iconClass}"
-        src="symbols/{icon}"
+        {icon}
       />
     {/if}
   </button>

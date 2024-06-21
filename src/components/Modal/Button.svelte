@@ -24,8 +24,8 @@
     <div transition:scale|local>
       <Svg
         class="w-7 h-7 pl-1"
-        iconClass="animate-rotate"
-        src="symbols/autorenew"
+        svgClass="animate-rotate"
+        icon="mdiAutorenew"
       />
     </div>
   {/if}

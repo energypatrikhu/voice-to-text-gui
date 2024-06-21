@@ -23,8 +23,8 @@
         >
           <Svg
             class="w-7 h-7"
-            iconClass="animate-rotate"
-            src="symbols/autorenew"
+            svgClass="animate-rotate"
+            icon="mdiAutorenew"
           />
         </div>
       {/if}

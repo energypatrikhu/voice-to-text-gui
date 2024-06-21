@@ -9,7 +9,6 @@
   import { app } from '$stores/app';
 
   import { getLocaleTime } from '$libs/functions/getLocaleTime';
-  import { preloadSvgs } from '$libs/functions/preloadSvgs';
   import { updateConsoleStore } from '$stores/console';
 
   window.audioPlayback = new Audio();
@@ -89,9 +88,6 @@
   async function loadSettings() {
     console.log("setting 'startupDate'");
     $app.startupDate = getLocaleTime();
-
-    console.log('preload svgs');
-    await preloadSvgs();
   }
 
   onMount(async function () {

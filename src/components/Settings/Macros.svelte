@@ -51,9 +51,9 @@
                   }}"
                 >
                   <Svg
-                    src="symbols/edit"
+                    icon="mdiPencil"
                     class="w-6 h-6 cursor-pointer"
-                    iconClass="hover:fill-green-600"
+                    svgClass="hover:fill-green-600"
                   />
                 </Button>
                 <Button
@@ -64,9 +64,9 @@
                   }}"
                 >
                   <Svg
-                    src="symbols/delete"
+                    icon="mdiDelete"
                     class="w-6 h-6 cursor-pointer"
-                    iconClass="hover:fill-red-600"
+                    svgClass="hover:fill-red-600"
                   />
                 </Button>
               </div>

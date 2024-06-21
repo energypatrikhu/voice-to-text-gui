@@ -1,23 +1,28 @@
 <script lang="ts">
-  import { svgs } from '$libs/functions/variables';
-  import type { tSvgSrc, tSvgSrcFolder } from '$types/Svgs';
+  import * as icons from '@mdi/js';
+  import type { Icon } from '../types/Mdi';
 
   let className: string = '';
+  export let icon: Icon;
 
-  export let iconClass: string = '';
-  export let src: tSvgSrc | `${tSvgSrcFolder}/${string}`;
-  export let style: string = '';
+  export let svgClass: string = '';
+  export let svgStyle: string = '';
+
+  export let pathClass: string = '';
+  export let pathStyle: string = '';
   export { className as class };
-
-  let getSvg = async (filepath: string) => svgs[filepath].default;
 </script>
 
 <div class="flex justify-center items-center {className}">
-  {#await getSvg(src) then Svg}
-    <svelte:component
-      this="{Svg}"
-      class="fill-white w-full h-full {iconClass}"
-      {style}
-    />
-  {/await}
+  <svg
+    viewBox="0 0 24 24"
+    class="fill-white w-full h-full {svgClass}"
+    style="{svgStyle}"
+  >
+    <path
+      class="{pathClass}"
+      style="{pathStyle}"
+      d="{icons[icon]}"
+    ></path>
+  </svg>
 </div>
