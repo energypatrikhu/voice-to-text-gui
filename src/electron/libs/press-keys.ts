@@ -13,29 +13,15 @@ export async function printText(output: string, isCommand: boolean = false, isMa
 
     for (const _output of outputSegments!) {
       if ((__app.config.others.mtaConsoleInputMode || isCommand) && !isMacro) {
-        await sendKeys('f8');
+        await keyboard.sendKey('f8', delay, delay);
       }
 
       await keyboard.printText(_output, delay, delay);
 
       if ((__app.config.others.mtaConsoleInputMode || isCommand) && !isMacro) {
-        await sendKeys('enter', 'f8');
+        await keyboard.sendKeys(['enter', 'f8'], delay, delay);
       }
     }
-  } catch (error) {
-    __app.console.debugErrorLog(error);
-  }
-}
-
-export async function sendKeys(...keys: KeyboardButton[]) {
-  try {
-    if (keys.length === 0) {
-      return;
-    }
-
-    const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
-
-    await keyboard.sendKeys(keys, delay, delay);
   } catch (error) {
     __app.console.debugErrorLog(error);
   }
