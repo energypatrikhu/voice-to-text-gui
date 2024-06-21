@@ -2,7 +2,6 @@ import { anyHas } from './any-has.js';
 import { __app } from './app.js';
 import { textParser } from './text-parser.js';
 
-import type { Macro } from '../../types/Macro.js';
 import type { SpeechSynthesisEngine } from './speech-synthesis-engine.js';
 
 type Command$Name = string;
