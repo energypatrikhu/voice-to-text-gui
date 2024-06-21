@@ -25,6 +25,8 @@
     mouseEvent.stopPropagation();
   });
 
+  let ready = false;
+
   window.electron.receive('electron', function ({ event, data }) {
     switch (event) {
       case 'ready': {
@@ -32,6 +34,7 @@
         $macros = data.macros;
         $translations = data.translations;
         $app = { ...$app, ...data.versions };
+        ready = true;
         break;
       }
 
@@ -95,7 +98,7 @@
   });
 </script>
 
-{#if $app.ready}
+{#if ready}
   <slot />
 {:else}
   <div class="absolute flex justify-center items-center h-full w-full">
