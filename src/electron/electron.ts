@@ -137,3 +137,9 @@ autoUpdater.on('download-progress', (progressObj) => {
 autoUpdater.on('update-downloaded', (info) => {
   console.log('Update downloaded');
 });
+
+process.on('uncaughtException', (error) => {
+  if (mainWindow) {
+    mainWindow.webContents.send('electron', { event: 'log', data: { severity: 'Error', type: 'Normal', textArray: error } });
+  }
+});
