@@ -10,6 +10,7 @@
     <div class="pl-1 text-neutral-300">
       <slot name="description" />
     </div>
+    <slot name="extra" />
   </div>
   <slot name="content" />
 </div>
