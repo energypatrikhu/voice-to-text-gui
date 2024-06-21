@@ -121,6 +121,8 @@ export async function textParser(text: string) {
   );
   const fillers = text.match(textParserRegex);
   const strings = text.split(textParserRegex);
+  const delay = __app.config.output.animated ? __app.config.output.typingDelay : 0;
+
   __app.console.debugLog('[full text]', text, strings, fillers);
 
   for (let i = 0; i < strings.length; i++) {
@@ -141,7 +143,7 @@ export async function textParser(text: string) {
         }
 
         __app.console.debugLog('[key]', keyOrCommand);
-        await keyboard.sendKey(keyOrCommand as KeyboardButton);
+        await keyboard.sendKey(keyOrCommand as KeyboardButton, delay, delay);
       }
     }
   }
