@@ -4,7 +4,7 @@
   import Select from '$components/Modal/Select.svelte';
   import Option from '$components/Modal/Option.svelte';
   import { shortcutKeys } from '$libs/shortcutKeys';
-  import { config } from '$stores/config';
+  import config from '$stores/config';
   import Input from '$components/Modal/Input.svelte';
   import { translations } from '$stores/translations';
 

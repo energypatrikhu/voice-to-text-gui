@@ -1,12 +1,10 @@
 <script lang="ts">
   import Svg from '$components/Svg.svelte';
-  // import type { tSvgSrcFolderIcons } from '$types/Svgs';
   import type { Icon } from '../../types/Mdi';
 
   export let title: string;
   export let active: boolean;
   export let btnClass: string = '';
-  // export let icon: tSvgSrcFolderIcons | string;
   export let icon: Icon;
   export let iconPos: 'before' | 'after' | 'both';
   export let iconClass: string = '';

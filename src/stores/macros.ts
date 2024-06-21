@@ -1,21 +1,15 @@
 import { browser } from '$app/environment';
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
+import app from '$stores/app';
 
 import type { Writable } from 'svelte/store';
 import type { Macro } from '$types/Macro';
 
-export const macros = <Writable<Array<Macro>>>writable([]);
-
-let isReady = false;
-
-export function setMacrosReady(state: boolean) {
-  isReady = state;
-
-  console.log('setMacrosReady', { isReady });
-}
+const macros = <Writable<Array<Macro>>>writable([]);
+export default macros;
 
 macros.subscribe(function (values) {
-  if (browser && isReady) {
+  if (browser && get(app).ready) {
     window.electron.send('electron', {
       event: 'macros',
       data: values,

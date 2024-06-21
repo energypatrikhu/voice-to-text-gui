@@ -3,10 +3,10 @@
   import Loading from '$components/Loading.svelte';
 
   import { onMount } from 'svelte';
-  import { config, setConfigReady } from '$stores/config';
-  import { macros, setMacrosReady } from '$stores/macros';
+  import config from '$stores/config';
+  import macros from '$stores/macros';
   import { translations } from '$stores/translations';
-  import { app } from '$stores/app';
+  import app from '$stores/app';
 
   import { getLocaleTime } from '$libs/functions/getLocaleTime';
   import { updateConsoleStore } from '$stores/console';
@@ -31,13 +31,10 @@
     switch (event) {
       case 'ready': {
         ready = true;
-        $app = { ...$app, ...data.versions };
         $config = data.config;
         $macros = data.macros;
         $translations = data.translations;
-
-        setConfigReady(true);
-        setMacrosReady(true);
+        $app = { ...$app, ...data.versions, ready };
         break;
       }
 
@@ -75,11 +72,6 @@
           window.audioPlayback.volume = data.volume;
           window.audioPlayback.play();
         }
-        break;
-      }
-
-      case 'loaded': {
-        $app.ready = true;
         break;
       }
     }

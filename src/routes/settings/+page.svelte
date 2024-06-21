@@ -2,8 +2,8 @@
   import Header from '$components/Header.svelte';
   import Layout from '$components/Layout.svelte';
   import { translations } from '$stores/translations';
-  import { config } from '$stores/config';
-  import { macros } from '$stores/macros';
+  import config from '$stores/config';
+  import macros from '$stores/macros';
   import Input from '$components/Modal/Input.svelte';
   import Option from '$components/Modal/Option.svelte';
   import Select from '$components/Modal/Select.svelte';
