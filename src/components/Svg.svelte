@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as icons from '@mdi/js';
-  import type { Icon } from '../types/Mdi';
+  import type { Icon } from '$types/Mdi';
 
   let className: string = '';
   export let icon: Icon;
