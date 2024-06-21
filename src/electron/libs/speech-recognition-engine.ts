@@ -7,7 +7,7 @@ import { replaceCharMap } from './replace-char-map.js';
 import { replaceGameChatPrefixMap } from './replace-game-chat-prefix-map.js';
 import { soundWrapper } from './sound-wrapper.js';
 import { textReplacer } from './text-replacer.js';
-import { uioHookWrapper } from './uio-hook-wrapper.js';
+import uioHookWrapper from './uio-hook-wrapper.js';
 
 export class SpeechRecognitionEngine {
   private pageEmitter = new EventEmitter();
@@ -23,7 +23,7 @@ export class SpeechRecognitionEngine {
   private textParserRegex!: RegExp;
 
   async init() {
-    uioHookWrapper((event) => {
+    uioHookWrapper.subscribe((event) => {
       if (!event.pressedKeys['escape']) {
         return;
       }
