@@ -1,7 +1,9 @@
-import { autoUpdater } from 'electron-updater';
+import electronUpdater from 'electron-updater';
 
 import { __app } from '../app.js';
 import { cmd } from '../command-handler.js';
+
+const { autoUpdater } = electronUpdater;
 
 cmd.registerCommand(
   async function (speechSynthesis) {
