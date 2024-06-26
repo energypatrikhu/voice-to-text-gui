@@ -1,41 +1,41 @@
 {
-	"appId": "com.energypatrikhu.voice-to-text",
-	"productName": "Voice To Text",
-	"compression": "maximum",
-	"publish": {
-		"provider": "github",
-		"owner": "EnergyPatrikHU",
-		"repo": "voice-to-text-gui",
-		"releaseType": "prerelease",
-		"publishAutoUpdate": true
-	},
-	"directories": {
-		"output": "dist"
-	},
-	"win": {
-		"target": "nsis",
-		"requestedExecutionLevel": "requireAdministrator"
-	},
-	"nsis": {
-		"createDesktopShortcut": true,
-		"oneClick": false,
-		"allowElevation": true,
-		"allowToChangeInstallationDirectory": true,
-		"perMachine": true,
-		"menuCategory": "EnergyPatrikHU"
-	},
-	"files": [
-		"resources/app/**/*.cjs",
-		{
-			"from": "build",
-			"to": ""
-		}
-	],
-	"extraResources": [
-		{
-			"from": "./resources/extraResources/",
-			"to": "",
-			"filter": ["**/*"]
-		}
-	]
+  "appId": "com.energypatrikhu.voice-to-text",
+  "productName": "Voice To Text",
+  "compression": "maximum",
+  "publish": {
+    "provider": "github",
+    "owner": "EnergyPatrikHU",
+    "repo": "voice-to-text-gui",
+    "releaseType": "prerelease",
+    "publishAutoUpdate": true
+  },
+  "directories": {
+    "output": "dist"
+  },
+  "win": {
+    "target": "nsis",
+    "requestedExecutionLevel": "requireAdministrator"
+  },
+  "nsis": {
+    "createDesktopShortcut": true,
+    "oneClick": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "perMachine": true,
+    "menuCategory": "EnergyPatrikHU"
+  },
+  "files": [
+    "resources/app/**/*.mjs",
+    {
+      "from": "build",
+      "to": ""
+    }
+  ],
+  "extraResources": [
+    {
+      "from": "./resources/extraResources/",
+      "to": "",
+      "filter": ["**/*"]
+    }
+  ]
 }

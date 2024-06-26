@@ -39,7 +39,7 @@ async function editFiles(absoluteDir) {
 
     if (dirent.isFile()) {
       const fileContent = await readFile(direntDir, 'utf-8');
-      await writeFile(direntDir, fileContent.replace(/\.js\"/gi, '.cjs"'));
+      await writeFile(direntDir, fileContent.replace(/\.js\"/gi, '.mjs"'));
     } else if (dirent.isDirectory()) {
       await editFiles(direntDir);
     }
@@ -58,8 +58,8 @@ async function editFiles(absoluteDir) {
     drop: !isDev && !isBeta ? ['console', 'debugger'] : [],
     treeShaking: !isDev && !isBeta,
     mangleQuoted: !isDev && !isBeta,
-    format: 'cjs',
-    outExtension: { '.js': '.cjs' },
+    format: 'esm',
+    outExtension: { '.js': '.mjs' },
   });
   await editFiles(__destination);
 })();
