@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "private": true,
   "description": "Voice To Text",
-  "main": "resources/app/electron.cjs",
+  "main": "resources/app/electron.mjs",
   "type": "module",
   "author": "EnergyPatrikHU",
   "repository": {
