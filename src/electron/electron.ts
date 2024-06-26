@@ -1,18 +1,12 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import electronContextMenu from 'electron-context-menu';
 import electronServe from 'electron-serve';
-import { autoUpdater } from 'electron-updater';
+import electronUpdater from 'electron-updater';
 import electronWindowState from 'electron-window-state';
 import { join } from 'path';
-
 import { EventRouter } from './libs/event-router.js';
 
-try {
-  require('electron-reloader')(module);
-} catch (e) {
-  console.error(e);
-}
-
+const { autoUpdater } = electronUpdater;
 const serveURL = electronServe({
   directory: '.',
 });
@@ -40,7 +34,7 @@ function createWindow() {
       nodeIntegration: true,
       spellcheck: true,
       devTools: isDev || isBeta,
-      preload: join(__dirname, 'preload.cjs'),
+      preload: join(import.meta.dirname, 'preload.mjs'),
       disableBlinkFeatures: 'Auxclick',
       webSecurity: false,
     },

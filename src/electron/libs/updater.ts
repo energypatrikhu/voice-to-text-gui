@@ -1,11 +1,12 @@
 import { app } from 'electron';
-import { autoUpdater } from 'electron-updater';
-
+import electronUpdater from 'electron-updater';
 import { __app } from './app.js';
 import { convertFileSize } from './convert-file-size.js';
 import { saveManifest } from './manifest.js';
 import { sleep } from './sleep.js';
 import { textReplacer } from './text-replacer.js';
+
+const { autoUpdater } = electronUpdater;
 
 export class Updater {
   constructor() {
