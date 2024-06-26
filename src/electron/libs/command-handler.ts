@@ -46,13 +46,13 @@ class CommandHandler {
   }
 
   private async initCommands() {
-    require('./commands/command-list.js');
-    require('./commands/active-window.js');
-    require('./commands/exit.js');
-    require('./commands/exit-mta.js');
-    require('./commands/mta-mode.js');
-    require('./commands/show-active-buttons.js');
-    require('./commands/update-app.js');
+    await import('./commands/command-list.js');
+    await import('./commands/active-window.js');
+    await import('./commands/exit.js');
+    await import('./commands/exit-mta.js');
+    await import('./commands/mta-mode.js');
+    await import('./commands/show-active-buttons.js');
+    await import('./commands/update-app.js');
   }
 
   registerCommand(
