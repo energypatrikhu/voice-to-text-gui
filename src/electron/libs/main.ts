@@ -1,6 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { existsSync } from 'fs';
-import { mkdir, readFile } from 'fs/promises';
+import { existsSync, mkdirSync, readFileSync } from 'fs';
 import _ from 'lodash';
 import { join, resolve } from 'path';
 
@@ -42,7 +41,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
     manifest: await loadManifest(),
     versions: {
       electronVersion: __app.isDev ? app.getVersion() : process.versions.electron,
-      appVersion: __app.isDev ? JSON.parse(await readFile('./package.json', 'utf-8')).version : app.getVersion(),
+      appVersion: __app.isDev ? JSON.parse(readFileSync('./package.json', 'utf-8')).version : app.getVersion(),
     },
   });
 
@@ -80,7 +79,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
   if (await new Updater().init()) return;
 
   if (!existsSync(__app.userDataFolder)) {
-    await mkdir(__app.userDataFolder, { recursive: true });
+    mkdirSync(__app.userDataFolder, { recursive: true });
   }
 
   await chromeUpdater();

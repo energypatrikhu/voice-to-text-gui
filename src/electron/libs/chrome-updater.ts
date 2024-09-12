@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { createWriteStream, existsSync } from 'fs';
-import { rename, rm } from 'fs/promises';
+import { createWriteStream, existsSync, renameSync, rmSync } from 'fs';
 import { join } from 'path';
 import superagent from 'superagent';
 
@@ -37,7 +36,7 @@ async function cleanupChromeFiles() {
 
   for (const file of filesToDelete) {
     if (existsSync(join(__app.resources, file))) {
-      await rm(join(__app.resources, file), { force: true, recursive: true });
+      rmSync(join(__app.resources, file), { force: true, recursive: true });
     }
   }
 }
@@ -179,21 +178,21 @@ export async function chromeUpdater() {
     }
 
     extractArchive(chromeData.filename);
-    await rm(chromeData.filename, { force: true, recursive: true });
+    rmSync(chromeData.filename, { force: true, recursive: true });
 
     const chromeArchive = join(__app.resources, 'chrome.7z');
     extractArchive(chromeArchive);
-    await rm(chromeArchive, { force: true, recursive: true });
+    rmSync(chromeArchive, { force: true, recursive: true });
 
     const chromePath = join(__app.resources, 'chrome');
-    await rename(join(__app.resources, 'Chrome-bin'), chromePath);
+    renameSync(join(__app.resources, 'Chrome-bin'), chromePath);
 
     for (const file of ['chrome_proxy.exe']) {
-      await rm(join(chromePath, file), { force: true, recursive: true });
+      rmSync(join(chromePath, file), { force: true, recursive: true });
     }
 
     for (const file of listOfUnnecessaryFiles) {
-      await rm(join(chromePath, chromeData.version, file), { force: true, recursive: true });
+      rmSync(join(chromePath, chromeData.version, file), { force: true, recursive: true });
     }
 
     await saveManifest({ chromeVersion: chromeData.version });
