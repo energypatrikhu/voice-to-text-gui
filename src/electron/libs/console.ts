@@ -1,6 +1,5 @@
 import { app } from 'electron';
-import { existsSync } from 'fs';
-import { appendFile, mkdir } from 'fs/promises';
+import { appendFileSync, existsSync, mkdirSync } from 'fs';
 import { EOL } from 'os';
 import { join } from 'path';
 
@@ -17,7 +16,7 @@ export class Console {
     if (!__app.config.logs.saveToFile || __app.isDev) return this;
 
     if (!existsSync(this.logsPath)) {
-      await mkdir(this.logsPath, {
+      mkdirSync(this.logsPath, {
         recursive: true,
       });
     }
@@ -25,7 +24,7 @@ export class Console {
     __app.ipcMain.on('electron', async (_, { event, data }) => {
       switch (event) {
         case 'log': {
-          await appendFile(
+          appendFileSync(
             join(this.logsPath, data.filename),
             ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', '\n', ...data.textArray, EOL].join(
               ' ',

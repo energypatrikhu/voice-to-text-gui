@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { readFile, readdir, rm, writeFile } from 'fs/promises';
+import { readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 const __source = './src/electron';
@@ -8,11 +8,11 @@ const isDev = process.env.NODE_ENV === 'dev';
 const isBeta = process.env.APP_SATE === 'beta';
 
 async function removeOldEntries(absoluteDir) {
-  for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
+  for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
     const direntDir = join(absoluteDir, dirent.name);
 
     if (dirent.isFile()) {
-      await rm(direntDir, { force: true });
+      rmSync(direntDir, { force: true });
     } else if (dirent.isDirectory()) {
       await removeOldEntries(direntDir);
     }
@@ -21,7 +21,7 @@ async function removeOldEntries(absoluteDir) {
 
 async function searchEntries(absoluteDir) {
   let entries = [];
-  for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
+  for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
     const direntDir = join(absoluteDir, dirent.name);
 
     if (dirent.isFile()) {
@@ -34,12 +34,12 @@ async function searchEntries(absoluteDir) {
 }
 
 async function editFiles(absoluteDir) {
-  for (const dirent of await readdir(absoluteDir, { withFileTypes: true })) {
+  for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
     const direntDir = join(absoluteDir, dirent.name);
 
     if (dirent.isFile()) {
-      const fileContent = await readFile(direntDir, 'utf-8');
-      await writeFile(direntDir, fileContent.replace(/\.js\"/gi, '.mjs"'));
+      const fileContent = readFileSync(direntDir, 'utf-8');
+      writeFileSync(direntDir, fileContent.replace(/\.js\"/gi, '.mjs"'));
     } else if (dirent.isDirectory()) {
       await editFiles(direntDir);
     }
