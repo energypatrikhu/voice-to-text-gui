@@ -26,9 +26,14 @@ export class Console {
         case 'log': {
           appendFileSync(
             join(this.logsPath, data.filename),
-            ['[' + data.type + ']', '[' + data.timestamp + ']', '[' + data.severity + ']', '\n', ...data.textArray, EOL].join(
-              ' ',
-            ),
+            [
+              '[' + data.type + ']',
+              '[' + new Date(data.timestamp).toLocaleString() + ']',
+              '[' + data.severity + ']',
+              '\n',
+              ...data.textArray,
+              EOL,
+            ].join(' '),
           );
           break;
         }
