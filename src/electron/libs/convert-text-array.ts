@@ -1,9 +1,7 @@
-export function convertTextArray(textArray: Array<any>) {
-  return textArray.map(function (text: string | object) {
-    if (typeof text === 'object') {
-      return JSON.stringify(text, null, '\t') + '\n';
-    }
+function isDataObject(data: any) {
+  return typeof data === 'object' && data !== null;
+}
 
-    return text;
-  });
+export function convertTextArray(textArray: Array<any>) {
+  return textArray.map((_data: any) => (isDataObject(_data) ? JSON.stringify(_data, null, '\t') : _data));
 }
