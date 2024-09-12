@@ -7,19 +7,19 @@ const __destination = './resources/app';
 const isDev = process.env.NODE_ENV === 'dev';
 const isBeta = process.env.APP_SATE === 'beta';
 
-async function removeOldEntries(absoluteDir) {
+function removeOldEntries(absoluteDir) {
   for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
     const direntDir = join(absoluteDir, dirent.name);
 
     if (dirent.isFile()) {
       rmSync(direntDir, { force: true });
     } else if (dirent.isDirectory()) {
-      await removeOldEntries(direntDir);
+      removeOldEntries(direntDir);
     }
   }
 }
 
-async function searchEntries(absoluteDir) {
+function searchEntries(absoluteDir) {
   let entries = [];
   for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
     const direntDir = join(absoluteDir, dirent.name);
@@ -27,13 +27,13 @@ async function searchEntries(absoluteDir) {
     if (dirent.isFile()) {
       entries.push(direntDir);
     } else if (dirent.isDirectory()) {
-      entries.push(...(await searchEntries(direntDir)));
+      entries.push(...searchEntries(direntDir));
     }
   }
   return entries;
 }
 
-async function editFiles(absoluteDir) {
+function editFiles(absoluteDir) {
   for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
     const direntDir = join(absoluteDir, dirent.name);
 
@@ -41,14 +41,14 @@ async function editFiles(absoluteDir) {
       const fileContent = readFileSync(direntDir, 'utf-8');
       writeFileSync(direntDir, fileContent.replace(/\.js\"/gi, '.mjs"'));
     } else if (dirent.isDirectory()) {
-      await editFiles(direntDir);
+      editFiles(direntDir);
     }
   }
 }
 
 (async function () {
-  await removeOldEntries(__destination);
-  const entries = await searchEntries(__source);
+  removeOldEntries(__destination);
+  const entries = searchEntries(__source);
   await build({
     entryPoints: entries,
     platform: 'node',
@@ -61,5 +61,5 @@ async function editFiles(absoluteDir) {
     format: 'esm',
     outExtension: { '.js': '.mjs' },
   });
-  await editFiles(__destination);
+  editFiles(__destination);
 })();

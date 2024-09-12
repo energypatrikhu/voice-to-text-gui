@@ -37,7 +37,7 @@ export class Updater {
             await __app.speechSynthesis.speak(__app.translations.textFeedback.update.checkAppUpdate.updateDownloaded);
           }
 
-          await saveManifest({ isFirstStart: true });
+          saveManifest({ isFirstStart: true });
 
           if (!__app.speechSynthesis) {
             await sleep(3000);

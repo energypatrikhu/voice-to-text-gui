@@ -47,7 +47,7 @@ export class EventRouter {
             if (!_.isEqual(oldApp.config.feedback.language, __app.config.feedback.language)) {
               console.log('feedback.language changed!');
 
-              const translations = await loadTranslation();
+              const translations = loadTranslation();
               __app.set({ translations });
 
               if (!this.isDev) {
@@ -64,7 +64,7 @@ export class EventRouter {
               }
             }
 
-            await saveConfig(data);
+            saveConfig(data);
           }
 
           break;
@@ -77,7 +77,7 @@ export class EventRouter {
 
             __app.set({ macros: data });
 
-            await saveMacros(data);
+            saveMacros(data);
           }
 
           break;

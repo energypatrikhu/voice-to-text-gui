@@ -83,13 +83,13 @@
     }
   });
 
-  async function loadSettings() {
+  function loadSettings() {
     console.log("setting 'startupDate'");
     $app.startupDate = getLocaleTime();
   }
 
-  onMount(async function () {
-    await loadSettings();
+  onMount(function () {
+    loadSettings();
 
     window.electron.send('electron', {
       event: 'ready',
