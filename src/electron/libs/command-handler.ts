@@ -46,13 +46,15 @@ class CommandHandler {
   }
 
   private async initCommands() {
-    await import('./commands/command-list.js');
-    await import('./commands/active-window.js');
-    await import('./commands/exit.js');
-    await import('./commands/exit-mta.js');
-    await import('./commands/mta-mode.js');
-    await import('./commands/show-active-buttons.js');
-    await import('./commands/update-app.js');
+    await Promise.all([
+      import('./commands/command-list.js'),
+      import('./commands/active-window.js'),
+      import('./commands/exit.js'),
+      import('./commands/exit-mta.js'),
+      import('./commands/mta-mode.js'),
+      import('./commands/show-active-buttons.js'),
+      import('./commands/update-app.js'),
+    ]);
   }
 
   registerCommand(
