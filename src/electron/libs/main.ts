@@ -36,9 +36,9 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
   });
 
   __app.set({
-    config: await loadConfig(),
-    macros: await loadMacros(),
-    manifest: await loadManifest(),
+    config: loadConfig(),
+    macros: loadMacros(),
+    manifest: loadManifest(),
     versions: {
       electronVersion: __app.isDev ? app.getVersion() : process.versions.electron,
       appVersion: __app.isDev ? JSON.parse(readFileSync('./package.json', 'utf-8')).version : app.getVersion(),
@@ -46,8 +46,8 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
   });
 
   __app.set({
-    console: await new Console().init(),
-    translations: await loadTranslation(),
+    console: new Console().init(),
+    translations: loadTranslation(),
     settingsUpdate: new SettingsUpdate(),
   });
 
@@ -86,7 +86,7 @@ export async function main(ipcMain: Electron.IpcMain, mainWindow: BrowserWindow,
 
   if (__app.manifest.isFirstStart) {
     __app.console.debugLog(__app.translations.firstStart.global.run);
-    await firstStart();
+    firstStart();
     __app.console.debugLog(__app.translations.firstStart.global.done);
   } else {
     __app.console.debugLog(__app.translations.firstStart.global.skip);

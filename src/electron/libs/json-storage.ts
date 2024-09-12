@@ -3,7 +3,7 @@ import { join, resolve } from 'path';
 
 import { __app } from './app.js';
 
-export async function saveJson(name: string, data: any) {
+export function saveJson(name: string, data: any) {
   const userDataFolder = process.env.NODE_ENV === 'dev' ? resolve('./local') : __app.userDataFolder;
 
   if (!existsSync(userDataFolder)) {
@@ -13,7 +13,7 @@ export async function saveJson(name: string, data: any) {
   writeFileSync(join(userDataFolder, `${name}.json`), JSON.stringify(data), 'utf8');
 }
 
-export async function loadJson<T>(name: string): Promise<T | null> {
+export function loadJson<T>(name: string): T | null {
   try {
     const userDataFolder = process.env.NODE_ENV === 'dev' ? resolve('./local') : __app.userDataFolder;
 

@@ -25,22 +25,22 @@ function migrateMacros(macros: Array<Macro>) {
   });
 }
 
-export async function loadMacros() {
-  const savedMacros = await loadJson<Array<Macro>>('macros');
+export function loadMacros() {
+  const savedMacros = loadJson<Array<Macro>>('macros');
   const loadedMacros = savedMacros ?? defaultMacros;
 
   if (!savedMacros) {
-    await saveJson('macros', loadedMacros);
+    saveJson('macros', loadedMacros);
   }
 
   if (Object.keys(loadedMacros).length !== Object.keys(defaultMacros).length) {
-    await saveJson('macros', migrateMacros(loadedMacros));
+    saveJson('macros', migrateMacros(loadedMacros));
   }
 
   return loadedMacros;
 }
 
-export async function saveMacros(macros: Array<Macro>) {
-  await saveJson('macros', macros);
+export function saveMacros(macros: Array<Macro>) {
+  saveJson('macros', macros);
   __app.settingsUpdate.send('macros');
 }

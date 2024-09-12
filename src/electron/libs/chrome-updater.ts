@@ -31,7 +31,7 @@ const listOfUnnecessaryFiles = [
   'vulkan-1.dll',
 ];
 
-async function cleanupChromeFiles() {
+function cleanupChromeFiles() {
   const filesToDelete = ['chrome', 'Chrome-bin', 'chrome-installer.exe', 'chrome.7z'];
 
   for (const file of filesToDelete) {
@@ -125,7 +125,7 @@ async function chromeDownloader() {
 
     __app.console.log(__app.translations.firstStart.chrome.update);
 
-    await cleanupChromeFiles();
+    cleanupChromeFiles();
 
     return new Promise<{ filename: string; version: string }>(async (promiseResolve) => {
       for (const chromeDownloadUrl of chromeData.urls) {

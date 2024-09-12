@@ -8,21 +8,21 @@ const defaultManifest: Manifest = {
   chromeVersion: '',
 };
 
-export async function loadManifest() {
-  const savedManifest = await loadJson<Manifest>('manifest');
+export function loadManifest() {
+  const savedManifest = loadJson<Manifest>('manifest');
   const loadedManifest = savedManifest ?? defaultManifest;
 
   if (!loadedManifest) {
-    await saveJson('manifest', loadedManifest);
+    saveJson('manifest', loadedManifest);
   }
 
   return loadedManifest;
 }
 
-export async function saveManifest(manifest: Partial<Manifest>) {
+export function saveManifest(manifest: Partial<Manifest>) {
   const loadedManifest = __app.manifest ?? defaultManifest;
   __app.manifest = { ...loadedManifest, ...manifest };
-  await saveJson('manifest', __app.manifest);
+  saveJson('manifest', __app.manifest);
   __app.console.debugLog('Manifest updated!');
   __app.console.debugLogJson(__app.manifest);
 }

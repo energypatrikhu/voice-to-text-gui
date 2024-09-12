@@ -12,7 +12,7 @@ import type { Console as AppConsole } from '../../types/Console.js';
 export class Console {
   private logsPath = join(app.getPath('documents'), 'Voice To Text Logs');
 
-  async init() {
+  init() {
     if (!__app.config.logs.saveToFile || __app.isDev) return this;
 
     if (!existsSync(this.logsPath)) {
@@ -21,7 +21,7 @@ export class Console {
       });
     }
 
-    __app.ipcMain.on('electron', async (_, { event, data }) => {
+    __app.ipcMain.on('electron', (_, { event, data }) => {
       switch (event) {
         case 'log': {
           appendFileSync(
