@@ -11,7 +11,7 @@ tehát a *Google Chrome* köré kell építenem, mivel az API kulcs(?) be van é
 Az alkalmazás nem teljes, és biztosan lesznek benne hibák, de igyekszem mindent megtenni, hogy kijavítsam őket.
 
 # Hozzájárulás
-Ha bármilyen problémád van, vagy ötleted vannak új funkciókkal kapcsolatban, nyugodtan írj egy *issue*-t, vagy kérj *pull request*-et.
+Ha bármilyen problémád van, vagy ötleteid vannak új funkciókkal kapcsolatban, nyugodtan írj egy *issue*-t, vagy kérj *pull request*-et.
 
 <p align="right">
 ~ EnergyPatrikHU
