@@ -1,11 +1,21 @@
-import { build } from 'esbuild';
-import { readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "fs";
+import { join } from "path";
 
-const __source = './src/electron';
-const __destination = './resources/app';
-const isDev = process.env.NODE_ENV === 'dev';
-const isBeta = process.env.APP_SATE === 'beta';
+const __source = "./src/electron";
+const __destination = "./resources/app";
+const isDev = process.env.NODE_ENV === "dev";
+const isBeta = process.env.APP_SATE === "beta";
+
+if (!existsSync(__destination)) {
+  mkdirSync(__destination, { recursive: true });
+}
 
 function removeOldEntries(absoluteDir) {
   for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
@@ -35,11 +45,15 @@ function searchEntries(absoluteDir) {
 
 function editFiles(absoluteDir) {
   for (const dirent of readdirSync(absoluteDir, { withFileTypes: true })) {
-    const direntDir = join(absoluteDir, dirent.name);
+    let direntDir = join(absoluteDir, dirent.name);
 
     if (dirent.isFile()) {
-      const fileContent = readFileSync(direntDir, 'utf-8');
+      const fileContent = readFileSync(direntDir, "utf-8");
+
+      direntDir = direntDir.replace(/\.js$/, ".mjs");
       writeFileSync(direntDir, fileContent.replace(/\.js\"/gi, '.mjs"'));
+
+      rmSync(join(absoluteDir, dirent.name), { force: true });
     } else if (dirent.isDirectory()) {
       editFiles(direntDir);
     }
@@ -48,18 +62,18 @@ function editFiles(absoluteDir) {
 
 (async function () {
   removeOldEntries(__destination);
-  const entries = searchEntries(__source);
-  await build({
-    entryPoints: entries,
-    platform: 'node',
+
+  await Bun.build({
+    entrypoints: searchEntries(__source),
+    root: __source,
     outdir: __destination,
-    logLevel: 'debug',
-    minify: !isDev && !isBeta,
-    drop: !isDev && !isBeta ? ['console', 'debugger'] : [],
-    treeShaking: !isDev && !isBeta,
-    mangleQuoted: !isDev && !isBeta,
-    format: 'esm',
-    outExtension: { '.js': '.mjs' },
+    drop: !isDev && !isBeta ? ["console", "debugger"] : [],
+    minify: true,
+    splitting: true,
+    target: "node",
+    format: "esm",
+    packages: "external",
   });
+
   editFiles(__destination);
 })();
