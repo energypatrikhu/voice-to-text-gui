@@ -1,14 +1,14 @@
-import { resolve } from 'path';
-import { UserConfig } from 'vite';
+import { resolve } from "path";
+import { UserConfig } from "vite";
 
-import { sveltekit } from '@sveltejs/kit/vite';
+import { sveltekit } from "@sveltejs/kit/vite";
 
-const isDev = process.env.NODE_ENV === 'dev';
+const isDev = process.env.NODE_ENV === "dev";
 
 const config: UserConfig = {
   plugins: [sveltekit()],
   build: {
-    minify: 'terser',
+    minify: "esbuild",
     terserOptions: {
       compress: {
         arrows: false,
@@ -29,12 +29,12 @@ const config: UserConfig = {
   },
   resolve: {
     alias: {
-      $components: resolve('./src/components'),
-      $stores: resolve('./src/stores'),
-      $types: resolve('./src/types'),
-      $libs: resolve('./src/libs'),
-      $css: resolve('./src/css'),
-      $static: resolve('./static'),
+      $components: resolve("./src/components"),
+      $stores: resolve("./src/stores"),
+      $types: resolve("./src/types"),
+      $libs: resolve("./src/libs"),
+      $css: resolve("./src/css"),
+      $static: resolve("./static"),
     },
   },
 };
