@@ -23,7 +23,7 @@
       },
       "devDependencies": {
         "@electron/packager": "^18.3.6",
-        "@sveltejs/adapter-static": "^3.0.2",
+        "@sveltejs/adapter-static": "^3.0.8",
         "@sveltejs/kit": "^2.5.17",
         "@types/adm-zip": "^0.5.7",
         "@types/bun": "^1.2.10",
@@ -290,7 +290,7 @@
 
     "@sindresorhus/merge-streams": ["@sindresorhus/merge-streams@4.0.0", "", {}, "sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ=="],
 
-    "@sveltejs/adapter-static": ["@sveltejs/adapter-static@3.0.2", "", { "peerDependencies": { "@sveltejs/kit": "^2.0.0" } }, "sha512-/EBFydZDwfwFfFEuF1vzUseBoRziwKP7AoHAwv+Ot3M084sE/HTVBHf9mCmXfdM9ijprY5YEugZjleflncX5fQ=="],
+    "@sveltejs/adapter-static": ["@sveltejs/adapter-static@3.0.8", "", { "peerDependencies": { "@sveltejs/kit": "^2.0.0" } }, "sha512-YaDrquRpZwfcXbnlDsSrBQNCChVOT9MGuSg+dMAyfsAa1SmiAhrA5jUYUiIMC59G92kIbY/AaQOWcBdq+lh+zg=="],
 
     "@sveltejs/kit": ["@sveltejs/kit@2.5.17", "", { "dependencies": { "@types/cookie": "^0.6.0", "cookie": "^0.6.0", "devalue": "^5.0.0", "esm-env": "^1.0.0", "import-meta-resolve": "^4.1.0", "kleur": "^4.1.5", "magic-string": "^0.30.5", "mrmime": "^2.0.0", "sade": "^1.8.1", "set-cookie-parser": "^2.6.0", "sirv": "^2.0.4", "tiny-glob": "^0.2.9" }, "peerDependencies": { "@sveltejs/vite-plugin-svelte": "^3.0.0", "svelte": "^4.0.0 || ^5.0.0-next.0", "vite": "^5.0.3" }, "bin": { "svelte-kit": "svelte-kit.js" } }, "sha512-wiADwq7VreR3ctOyxilAZOfPz3Jiy2IIp2C8gfafhTdQaVuGIHllfqQm8dXZKADymKr3uShxzgLZFT+a+CM4kA=="],
 
