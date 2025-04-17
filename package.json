@@ -45,7 +45,6 @@
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "puppeteer-core": "^24.6.1",
-    "superagent": "^10.2.0",
     "uiohook-napi": "^1.5.4"
   },
   "devDependencies": {
@@ -62,7 +61,7 @@
     "concurrently": "^9.1.2",
     "cross-env-file": "^1.0.0",
     "dotenv": "^16.5.0",
-    "electron": "^31.1.0",
+    "electron": "^35.1.5",
     "electron-builder": "^26.0.12",
     "electron-connect": "^0.6.3",
     "esbuild": "^0.25.2",
