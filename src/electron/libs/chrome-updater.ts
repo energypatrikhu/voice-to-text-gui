@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createWriteStream, existsSync, renameSync, rmSync } from "fs";
 import { join } from "path";
-import superagent from "superagent";
 
 import { parseXml } from "@rgrove/parse-xml";
 
@@ -141,21 +140,19 @@ async function chromeDownloader() {
       async (promiseResolve) => {
         for (const chromeDownloadUrl of chromeData.urls) {
           try {
-            const Superagent = superagent(
-              "get",
-              chromeDownloadUrl + chromeData.filename,
-            );
-            Superagent.set({
-              "Accept": "*",
-              "Accept-Encoding": "*",
-              "User-Agent": "Google Update/1.3.36.352;winhttp;cup-ecdsa",
+            const axiosResponse = await axios({
+              url: chromeDownloadUrl + chromeData.filename,
+              method: "GET",
+              headers: {
+                "Accept": "*",
+                "Accept-Encoding": "*",
+                "User-Agent": "Google Update/1.3.36.352;winhttp;cup-ecdsa",
+              },
+              responseType: "stream",
             });
-            Superagent.withCredentials();
-            Superagent.responseType("arraybuffer");
-            Superagent.buffer(true);
 
             const chromeFileStream = createWriteStream(chromeFilePath);
-            Superagent.pipe(chromeFileStream);
+            axiosResponse.data.pipe(chromeFileStream);
 
             await new Promise<void>((r) => {
               chromeFileStream.on("finish", function () {
