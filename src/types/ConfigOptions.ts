@@ -1,4 +1,4 @@
-import type { KeyboardShortcut } from '$types/KeyboardShortcut';
+import type { KeyboardShortcut } from "$types/KeyboardShortcut";
 
 export interface ConfigOptions {
   logs: {
@@ -22,7 +22,7 @@ export interface ConfigOptions {
     sounds: {
       enabled: boolean;
       volume: number;
-      mode: 'default' | 'custom';
+      mode: "default" | "custom";
       file: {
         filepath: string | null;
         basepath: string | null;
@@ -33,10 +33,10 @@ export interface ConfigOptions {
       enabled: boolean;
       volume: number;
     };
-    language: 'hu' | 'en';
+    language: "hu" | "en";
   };
   speechRecognition: {
-    language: 'hu-HU' | 'en-US' | 'en-GB';
+    language: "hu-HU" | "en-US" | "en-GB";
     customWordsAndPhrases: Array<string>;
   };
   replacers: {

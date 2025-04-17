@@ -1,11 +1,11 @@
-import type { Icon } from '$types/Mdi';
-import type { Navigation } from '$types/Translations';
+import type { Icon } from "$types/Mdi";
+import type { Navigation } from "$types/Translations";
 
 type WebPath = {
   title: keyof Navigation;
   href: string;
   icon: Icon;
-  navPos: 'top' | 'bottom';
+  navPos: "top" | "bottom";
   enabled: boolean;
   external: boolean;
   permissions: string[];
@@ -15,10 +15,10 @@ type WebPath = {
 
 export const webPaths: Array<WebPath> = [
   {
-    title: 'home',
-    href: '/',
-    icon: 'mdiHome',
-    navPos: 'top',
+    title: "home",
+    href: "/",
+    icon: "mdiHome",
+    navPos: "top",
     enabled: true,
     external: false,
     permissions: [],
@@ -26,10 +26,10 @@ export const webPaths: Array<WebPath> = [
     children: [],
   },
   {
-    title: 'settings',
-    href: '/settings',
-    icon: 'mdiCog',
-    navPos: 'top',
+    title: "settings",
+    href: "/settings",
+    icon: "mdiCog",
+    navPos: "top",
     enabled: true,
     external: false,
     permissions: [],

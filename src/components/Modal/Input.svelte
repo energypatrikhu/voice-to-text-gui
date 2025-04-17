@@ -1,50 +1,52 @@
 <script lang="ts">
   type InputTypes =
-    | 'text'
-    | 'checkbox'
-    | 'color'
-    | 'date'
-    | 'datetime'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'search'
-    | 'image'
-    | 'number'
-    | 'password'
-    | 'radio';
+    | "text"
+    | "checkbox"
+    | "color"
+    | "date"
+    | "datetime"
+    | "datetime-local"
+    | "email"
+    | "file"
+    | "search"
+    | "image"
+    | "number"
+    | "password"
+    | "radio";
 
-  export let value: any = '';
+  export let value: any = "";
   export let checked: boolean = false;
-  export let alt: string = '';
+  export let alt: string = "";
   export let files: FileList | null | undefined = undefined;
-  export let type: InputTypes = 'text';
+  export let type: InputTypes = "text";
   export let required: boolean = false;
   export let disabled: boolean = false;
-  export let placeholder: string = '';
+  export let placeholder: string = "";
   export let name: string | undefined = undefined;
   export let multiple: boolean = false;
-  export let text: string | undefined = '';
-  export let textPos: 'before' | 'after' = 'after';
-  export let textClass = '';
-  export let labelClass = '';
+  export let text: string | undefined = "";
+  export let textPos: "before" | "after" = "after";
+  export let textClass = "";
+  export let labelClass = "";
   export let autofocus: boolean = false;
   export { _class as class };
 
   export let onChanged: ((value: any) => void) | undefined = undefined;
 
   function selectChanged(event: any) {
-    if (onChanged) onChanged(JSON.parse(event.target.value ?? ''));
+    if (onChanged) onChanged(JSON.parse(event.target.value ?? ""));
   }
 
-  let _class = '';
+  let _class = "";
 </script>
 
 <label class="w-full flex flex-row items-center {labelClass}">
-  {#if text !== '' && textPos === 'before'}<span class="w-full flex justify-start ml-1 {textClass}">
+  {#if text !== "" && textPos === "before"}<span
+      class="w-full flex justify-start ml-1 {textClass}"
+    >
       {text}
     </span>{/if}
-  {#if type === 'text'}
+  {#if type === "text"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -59,7 +61,7 @@
       {placeholder}
       bind:value
     />
-  {:else if type === 'checkbox'}
+  {:else if type === "checkbox"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -73,7 +75,7 @@
       type="checkbox"
       bind:checked
     />
-  {:else if type === 'color'}
+  {:else if type === "color"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -87,7 +89,7 @@
       type="color"
       bind:value
     />
-  {:else if type === 'date'}
+  {:else if type === "date"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -101,7 +103,7 @@
       type="date"
       bind:value
     />
-  {:else if type === 'datetime'}
+  {:else if type === "datetime"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -115,7 +117,7 @@
       type="datetime"
       bind:value
     />
-  {:else if type === 'datetime-local'}
+  {:else if type === "datetime-local"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -129,7 +131,7 @@
       type="datetime-local"
       bind:value
     />
-  {:else if type === 'email'}
+  {:else if type === "email"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -144,7 +146,7 @@
       {placeholder}
       bind:value
     />
-  {:else if type === 'file'}
+  {:else if type === "file"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -160,7 +162,7 @@
       {multiple}
       bind:value
     />
-  {:else if type === 'search'}
+  {:else if type === "search"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -175,7 +177,7 @@
       {placeholder}
       bind:value
     />
-  {:else if type === 'image'}
+  {:else if type === "image"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -191,7 +193,7 @@
       {alt}
       {multiple}
     />
-  {:else if type === 'number'}
+  {:else if type === "number"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -206,7 +208,7 @@
       {placeholder}
       bind:value
     />
-  {:else if type === 'password'}
+  {:else if type === "password"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -221,7 +223,7 @@
       {placeholder}
       bind:value
     />
-  {:else if type === 'radio'}
+  {:else if type === "radio"}
     <!-- svelte-ignore a11y-autofocus -->
     <input
       on:change="{selectChanged}"
@@ -251,7 +253,7 @@
       bind:value
     />
   {/if}
-  {#if text !== '' && textPos === 'after'}
+  {#if text !== "" && textPos === "after"}
     <span class="w-full flex justify-start ml-1 {textClass}">
       {text}
     </span>

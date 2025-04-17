@@ -1,8 +1,8 @@
 <script lang="ts">
-  import NavButton from '$components/Navigation/NavButton.svelte';
-  import { page } from '$app/stores';
-  import { webPaths } from '$libs/webPaths';
-  import translations from '$stores/translations';
+  import { page } from "$app/stores";
+  import NavButton from "$components/Navigation/NavButton.svelte";
+  import { webPaths } from "$libs/webPaths";
+  import translations from "$stores/translations";
 </script>
 
 {#each webPaths as navElement}
@@ -12,6 +12,8 @@
     rel="{navElement.external ? 'external' : ''}"
     icon="{navElement.icon ?? ''}"
     iconPos="before"
-    active="{navElement.href !== '/' ? $page.url.pathname.startsWith(navElement.href) : $page.url.pathname === navElement.href}"
+    active="{navElement.href !== '/' ?
+      $page.url.pathname.startsWith(navElement.href)
+    : $page.url.pathname === navElement.href}"
   />
 {/each}

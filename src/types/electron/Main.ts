@@ -1,6 +1,6 @@
-import type { ConfigOptions } from '../ConfigOptions';
-import type { Translations } from '../Translations';
-import type { Macro } from '../Macro';
+import type { ConfigOptions } from "../ConfigOptions";
+import type { Macro } from "../Macro";
+import type { Translations } from "../Translations";
 
 export interface Main {
   config: ConfigOptions;

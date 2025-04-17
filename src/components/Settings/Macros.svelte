@@ -1,13 +1,13 @@
 <script lang="ts">
-  import Button from '$components/Modal/Button.svelte';
-  import Svg from '$components/Svg.svelte';
-  import translations from '$stores/translations';
-  import type { Macro } from '$types/Macro';
-  import EditMacros from '$components/Settings/EditMacros.svelte';
+  import Button from "$components/Modal/Button.svelte";
+  import EditMacros from "$components/Settings/EditMacros.svelte";
+  import Svg from "$components/Svg.svelte";
+  import translations from "$stores/translations";
+  import type { Macro } from "$types/Macro";
 
   export let macros: Array<Macro>;
 
-  let actionMode: 'add-macro' | 'edit-macro' | 'remove-macro' | 'none' = 'none';
+  let actionMode: "add-macro" | "edit-macro" | "remove-macro" | "none" = "none";
 
   let indexToModify: number = -1;
 </script>
@@ -35,7 +35,8 @@
               {#if prefix}
                 <span>{prefix}</span>
               {:else}
-                <span class="text-neutral-400">{$translations.states.none}</span>
+                <span class="text-neutral-400">{$translations.states.none}</span
+                >
               {/if}
             </td>
             <td>
@@ -89,7 +90,7 @@
   </div>
 </div>
 
-{#if actionMode !== 'none'}
+{#if actionMode !== "none"}
   <EditMacros
     bind:actionMode
     bind:indexToModify

@@ -1,35 +1,43 @@
 <script lang="ts">
-  import type { ConfigOptions } from '$types/ConfigOptions';
-  import Button from '$components/Modal/Button.svelte';
-  import Svg from '$components/Svg.svelte';
-  import EditItem from '$components/Settings/EditWordsPhrasesWindows.svelte';
-  import translations from '$stores/translations';
+  import Button from "$components/Modal/Button.svelte";
+  import EditItem from "$components/Settings/EditWordsPhrasesWindows.svelte";
+  import Svg from "$components/Svg.svelte";
+  import translations from "$stores/translations";
+  import type { ConfigOptions } from "$types/ConfigOptions";
 
-  export let items: ConfigOptions['speechRecognition']['customWordsAndPhrases'] | ConfigOptions['windowAllowList']['windows'];
-  export let itemName: 'customWordsAndPhrases' | 'windows';
+  export let items:
+    | ConfigOptions["speechRecognition"]["customWordsAndPhrases"]
+    | ConfigOptions["windowAllowList"]["windows"];
+  export let itemName: "customWordsAndPhrases" | "windows";
   export let disabled: boolean = false;
   export let disabledText: string | undefined = undefined;
 
-  let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none' = 'none';
+  let actionMode: "add-item" | "edit-item" | "remove-item" | "none" = "none";
 
   let indexToModify: number = -1;
 </script>
 
 <div class="w-full relative text-white flex flex-col gap-1">
   {#if disabled}
-    <div class="absolute w-full h-full z-10 flex flex-col justify-center items-center text-3xl">
+    <div
+      class="absolute w-full h-full z-10 flex flex-col justify-center items-center text-3xl"
+    >
       <span>{$translations.states.disabled}</span>
-      <span class="text-xl text-neutral-300">{disabledText ?? ''}</span>
+      <span class="text-xl text-neutral-300">{disabledText ?? ""}</span>
     </div>
   {/if}
   <div class="relative flex flex-col rounded-md border border-neutral-500">
     <table>
       <thead>
         <tr>
-          {#if itemName === 'customWordsAndPhrases'}
-            <th>{$translations.settings.speechRecognition.customWordsAndPhrases.table.title}</th>
+          {#if itemName === "customWordsAndPhrases"}
+            <th
+              >{$translations.settings.speechRecognition.customWordsAndPhrases
+                .table.title}</th
+            >
           {:else}
-            <th>{$translations.settings.windowAllowList.windows.table.title}</th>
+            <th>{$translations.settings.windowAllowList.windows.table.title}</th
+            >
           {/if}
         </tr>
       </thead>
@@ -83,8 +91,9 @@
         actionMode = 'add-item';
       }}"
     >
-      {#if itemName === 'customWordsAndPhrases'}
-        {$translations.settings.speechRecognition.customWordsAndPhrases.table.button}
+      {#if itemName === "customWordsAndPhrases"}
+        {$translations.settings.speechRecognition.customWordsAndPhrases.table
+          .button}
       {:else}
         {$translations.settings.windowAllowList.windows.table.button}
       {/if}
@@ -92,7 +101,7 @@
   </div>
 </div>
 
-{#if actionMode !== 'none'}
+{#if actionMode !== "none"}
   <EditItem
     bind:actionMode
     bind:itemName

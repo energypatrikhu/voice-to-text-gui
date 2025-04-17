@@ -1,31 +1,42 @@
-import electronUpdater from 'electron-updater';
+import electronUpdater from "electron-updater";
 
-import { __app } from '../app.js';
-import { cmd } from '../command-handler.js';
+import { __app } from "../app.js";
+import { cmd } from "../command-handler.js";
 
 const { autoUpdater } = electronUpdater;
 
 cmd.registerCommand(
   async function (speechSynthesis) {
     __app.checkingForUpdate = true;
-    __app.console.log(__app.translations.textFeedback.commands.updateApp.checkingUpdate);
+    __app.console.log(
+      __app.translations.textFeedback.commands.updateApp.checkingUpdate,
+    );
 
-    if (__app.versions.appVersion !== (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version) {
-      __app.updateReason = 'manual';
+    if (
+      __app.versions.appVersion !==
+      (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version
+    ) {
+      __app.updateReason = "manual";
 
-      __app.console.log(__app.translations.textFeedback.commands.updateApp.updateAvailable);
-      speechSynthesis.speak(__app.translations.speechFeedback.commands.updateApp.updateAvailable);
+      __app.console.log(
+        __app.translations.textFeedback.commands.updateApp.updateAvailable,
+      );
+      speechSynthesis.speak(
+        __app.translations.speechFeedback.commands.updateApp.updateAvailable,
+      );
 
       return;
     }
 
-    __app.console.log(__app.translations.textFeedback.commands.updateApp.noUpdateAvailable);
+    __app.console.log(
+      __app.translations.textFeedback.commands.updateApp.noUpdateAvailable,
+    );
   },
   [
-    'both',
-    'Alkalmazás frissítés',
+    "both",
+    "Alkalmazás frissítés",
     null,
-    ['frissítés', '!', 'up', 'update'],
+    ["frissítés", "!", "up", "update"],
     __app.translations.textFeedback.commands.updateApp.description,
   ],
 );

@@ -1,14 +1,16 @@
-import { cError } from '$stores/console';
+import { cError } from "$stores/console";
 
 export function getLocationName(table: any, searchHref: string): any {
   try {
     if (!table || !searchHref) {
-      throw new Error('Param(s) `table` or `searchHref` was not provided!');
+      throw new Error("Param(s) `table` or `searchHref` was not provided!");
     }
 
     for (const _location of table) {
       if (
-        _location.href !== '' && _location.href !== '/' ? searchHref.startsWith(_location.href) : _location.href === searchHref
+        _location.href !== "" && _location.href !== "/"
+          ? searchHref.startsWith(_location.href)
+          : _location.href === searchHref
       ) {
         return _location;
       }

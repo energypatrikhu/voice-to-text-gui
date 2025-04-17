@@ -1,4 +1,6 @@
-<div class="flex flex-row justify-between px-3 z-50 bg-neutral-700 fixed w-screen">
+<div
+  class="flex flex-row justify-between px-3 z-50 bg-neutral-700 fixed w-screen"
+>
   <div class="btn-group flex py-1.5">
     <slot name="left" />
   </div>

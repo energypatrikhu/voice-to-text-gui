@@ -1,10 +1,10 @@
-import { app } from 'electron';
-import electronUpdater from 'electron-updater';
-import { __app } from './app.js';
-import { convertFileSize } from './convert-file-size.js';
-import { saveManifest } from './manifest.js';
-import { sleep } from './sleep.js';
-import { textReplacer } from './text-replacer.js';
+import { app } from "electron";
+import electronUpdater from "electron-updater";
+import { __app } from "./app.js";
+import { convertFileSize } from "./convert-file-size.js";
+import { saveManifest } from "./manifest.js";
+import { sleep } from "./sleep.js";
+import { textReplacer } from "./text-replacer.js";
 
 const { autoUpdater } = electronUpdater;
 
@@ -13,7 +13,7 @@ export class Updater {
     autoUpdater.allowPrerelease = __app.config.update.allowPrerelease;
     autoUpdater.allowDowngrade = __app.config.update.allowDowngrade;
 
-    autoUpdater.on('download-progress', function (progObj) {
+    autoUpdater.on("download-progress", function (progObj) {
       __app.console.log(
         textReplacer(
           __app.translations.textFeedback.index.updater.updateDownloading,
@@ -25,16 +25,22 @@ export class Updater {
       );
     });
 
-    autoUpdater.on('update-downloaded', async function () {
+    autoUpdater.on("update-downloaded", async function () {
       if (!__app.updateReason) {
         return;
       }
 
       switch (__app.updateReason) {
-        case 'manual': {
-          __app.console.log(__app.translations.textFeedback.update.checkAppUpdate.updateDownloaded);
+        case "manual": {
+          __app.console.log(
+            __app.translations.textFeedback.update.checkAppUpdate
+              .updateDownloaded,
+          );
           if (__app.speechSynthesis) {
-            await __app.speechSynthesis.speak(__app.translations.textFeedback.update.checkAppUpdate.updateDownloaded);
+            await __app.speechSynthesis.speak(
+              __app.translations.textFeedback.update.checkAppUpdate
+                .updateDownloaded,
+            );
           }
 
           saveManifest({ isFirstStart: true });
@@ -47,7 +53,7 @@ export class Updater {
           app.exit();
           break;
         }
-        case 'automatic': {
+        case "automatic": {
           __app.set({ downloadedUpdate: true });
           break;
         }
@@ -58,28 +64,42 @@ export class Updater {
   async init() {
     setTimeout(
       this.autoRunChecker,
-      (__app.config.update.checkInterval < 1 ? 1 : __app.config.update.checkInterval) * 60 * 1000,
+      (__app.config.update.checkInterval < 1
+        ? 1
+        : __app.config.update.checkInterval) *
+        60 *
+        1000,
     );
 
     if (__app.config.update.checkOnStartup) {
-      __app.console.log(__app.translations.textFeedback.update.checkAppUpdate.checkingUpdate);
-      return await this.checker('manual');
+      __app.console.log(
+        __app.translations.textFeedback.update.checkAppUpdate.checkingUpdate,
+      );
+      return await this.checker("manual");
     }
   }
 
-  async checker(mode: 'automatic' | 'manual') {
+  async checker(mode: "automatic" | "manual") {
     __app.set({ updateReason: mode });
 
     switch (mode) {
-      case 'manual': {
-        if (__app.versions.appVersion !== (await autoUpdater.checkForUpdates())?.updateInfo.version) {
-          __app.console.log(__app.translations.textFeedback.update.checkAppUpdate.notUpToDate);
+      case "manual": {
+        if (
+          __app.versions.appVersion !==
+          (await autoUpdater.checkForUpdates())?.updateInfo.version
+        ) {
+          __app.console.log(
+            __app.translations.textFeedback.update.checkAppUpdate.notUpToDate,
+          );
           return true;
         }
         break;
       }
-      case 'automatic': {
-        if (__app.versions.appVersion !== (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version) {
+      case "automatic": {
+        if (
+          __app.versions.appVersion !==
+          (await autoUpdater.checkForUpdatesAndNotify())?.updateInfo.version
+        ) {
           return true;
         }
         break;
@@ -91,15 +111,23 @@ export class Updater {
 
   async autoRunChecker() {
     if (__app.config.update.autoCheck) {
-      __app.console.debugLog(__app.translations.textFeedback.update.checkAppUpdate.checkingUpdate);
-      if (!(await this.checker('automatic'))) {
-        __app.console.debugLog(__app.translations.textFeedback.update.checkAppUpdate.upToDate);
+      __app.console.debugLog(
+        __app.translations.textFeedback.update.checkAppUpdate.checkingUpdate,
+      );
+      if (!(await this.checker("automatic"))) {
+        __app.console.debugLog(
+          __app.translations.textFeedback.update.checkAppUpdate.upToDate,
+        );
       }
     }
 
     setTimeout(
       this.autoRunChecker,
-      (__app.config.update.checkInterval < 1 ? 1 : __app.config.update.checkInterval) * 60 * 1000,
+      (__app.config.update.checkInterval < 1
+        ? 1
+        : __app.config.update.checkInterval) *
+        60 *
+        1000,
     );
   }
 }

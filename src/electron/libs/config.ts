@@ -1,9 +1,9 @@
-import _ from 'lodash';
+import _ from "lodash";
 
-import { __app } from './app.js';
-import { loadJson, saveJson } from './json-storage.js';
+import { __app } from "./app.js";
+import { loadJson, saveJson } from "./json-storage.js";
 
-import type { ConfigOptions } from '../../types/ConfigOptions.js';
+import type { ConfigOptions } from "../../types/ConfigOptions.js";
 
 const defaultConfig: ConfigOptions = {
   logs: {
@@ -15,7 +15,7 @@ const defaultConfig: ConfigOptions = {
     keyboardShortcuts: [
       {
         outputPrefix: null,
-        shortcut: ['win', 'h'],
+        shortcut: ["win", "h"],
       },
     ],
     autoRelease: {
@@ -32,7 +32,7 @@ const defaultConfig: ConfigOptions = {
     sounds: {
       enabled: true,
       volume: 0.1,
-      mode: 'default',
+      mode: "default",
       file: {
         filepath: null,
         basepath: null,
@@ -43,10 +43,10 @@ const defaultConfig: ConfigOptions = {
       enabled: true,
       volume: 0.5,
     },
-    language: 'en',
+    language: "en",
   },
   speechRecognition: {
-    language: 'hu-HU',
+    language: "hu-HU",
     customWordsAndPhrases: [],
   },
   replacers: {
@@ -62,8 +62,8 @@ const defaultConfig: ConfigOptions = {
   },
   commands: {
     enabled: true,
-    prefix: '!',
-    splitter: ':',
+    prefix: "!",
+    splitter: ":",
   },
   update: {
     checkOnStartup: true,
@@ -79,12 +79,23 @@ const defaultConfig: ConfigOptions = {
   },
 };
 
-function patchConfig(newConfig: { [x: string]: any }, oldConfig: { [x: string]: any }, defaultConfig: object) {
+function patchConfig(
+  newConfig: { [x: string]: any },
+  oldConfig: { [x: string]: any },
+  defaultConfig: object,
+) {
   try {
     for (const [key, value] of Object.entries(defaultConfig)) {
-      if (value !== null && typeof value !== 'boolean' && typeof value === 'object' && !Array.isArray(value)) {
-        Object.assign(newConfig, { [key]: patchConfig({}, oldConfig[key] ?? {}, value) });
-      } else if (!(key in oldConfig) && typeof oldConfig === 'object') {
+      if (
+        value !== null &&
+        typeof value !== "boolean" &&
+        typeof value === "object" &&
+        !Array.isArray(value)
+      ) {
+        Object.assign(newConfig, {
+          [key]: patchConfig({}, oldConfig[key] ?? {}, value),
+        });
+      } else if (!(key in oldConfig) && typeof oldConfig === "object") {
         newConfig[key] = value;
       } else {
         newConfig[key] = oldConfig[key];
@@ -98,18 +109,22 @@ function patchConfig(newConfig: { [x: string]: any }, oldConfig: { [x: string]: 
 }
 
 export function loadConfig() {
-  const savedConfig = loadJson<ConfigOptions>('config');
+  const savedConfig = loadJson<ConfigOptions>("config");
   const loadedConfig = savedConfig ?? defaultConfig;
-  const patchedConfig = patchConfig({}, loadedConfig, defaultConfig) as ConfigOptions;
+  const patchedConfig = patchConfig(
+    {},
+    loadedConfig,
+    defaultConfig,
+  ) as ConfigOptions;
 
   if (!_.isEqual(loadedConfig, patchedConfig) || !savedConfig) {
-    saveJson('config', patchedConfig);
+    saveJson("config", patchedConfig);
   }
 
   return patchedConfig;
 }
 
 export function saveConfig(config: ConfigOptions) {
-  saveJson('config', config);
-  __app.settingsUpdate.send('config');
+  saveJson("config", config);
+  __app.settingsUpdate.send("config");
 }

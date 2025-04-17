@@ -124,14 +124,14 @@ export interface KeyboardShortcutsModal {
 }
 
 export interface ModalButtons {
-  'add-button': string;
-  'remove-button': string;
+  "add-button": string;
+  "remove-button": string;
 }
 
 export interface PurpleTitles {
-  'add-shortcut': string;
-  'edit-shortcut': string;
-  'remove-shortcut': string;
+  "add-shortcut": string;
+  "edit-shortcut": string;
+  "remove-shortcut": string;
 }
 
 export interface KeyboardShortcutsTable {
@@ -166,9 +166,9 @@ export interface MacrosModal {
 }
 
 export interface FluffyTitles {
-  'add-macro': string;
-  'edit-macro': string;
-  'remove-macro': string;
+  "add-macro": string;
+  "edit-macro": string;
+  "remove-macro": string;
 }
 
 export interface MacrosTable {
@@ -216,9 +216,9 @@ export interface CustomWordsAndPhrasesModal {
 }
 
 export interface TentacledTitles {
-  'add-item': string;
-  'edit-item': string;
-  'remove-item': string;
+  "add-item": string;
+  "edit-item": string;
+  "remove-item": string;
 }
 
 export interface CustomWordsAndPhrasesTable {

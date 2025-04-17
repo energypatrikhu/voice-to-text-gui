@@ -3,5 +3,5 @@ export interface App {
   appVersion: string;
   startupDate: string;
   ready: boolean;
-  mode: 'development' | 'production';
+  mode: "development" | "production";
 }

@@ -5,10 +5,10 @@
   export let placeholder: string | undefined = undefined;
   export let disabled: boolean = false;
   export let required: boolean = false;
-  export let value: string = '';
+  export let value: string = "";
   export { _class as class };
 
-  let _class = '';
+  let _class = "";
 </script>
 
 <textarea

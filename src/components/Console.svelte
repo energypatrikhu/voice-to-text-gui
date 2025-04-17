@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { eConsole } from '$stores/console';
-  import { dateToLocale } from '$libs/functions/dateToLocale';
-  import { onMount } from 'svelte';
-  import Highlight from 'svelte-highlight';
-  import languageJson from 'svelte-highlight/languages/json';
-  import languagePlaintext from 'svelte-highlight/languages/plaintext';
-  import 'svelte-highlight/styles/github-dark-dimmed.css';
-  import app from '$stores/app';
+  import { dateToLocale } from "$libs/functions/dateToLocale";
+  import app from "$stores/app";
+  import { eConsole } from "$stores/console";
+  import { onMount } from "svelte";
+  import Highlight from "svelte-highlight";
+  import languageJson from "svelte-highlight/languages/json";
+  import languagePlaintext from "svelte-highlight/languages/plaintext";
+  import "svelte-highlight/styles/github-dark-dimmed.css";
 
   let consoleWrapper: HTMLDivElement;
 
@@ -22,17 +22,19 @@
   });
 
   const colorCodes = {
-    Error: 'bg-red-800',
-    Info: 'bg-neutral-800',
-    Warning: 'bg-orange-800',
+    Error: "bg-red-800",
+    Info: "bg-neutral-800",
+    Warning: "bg-orange-800",
   };
 </script>
 
 <div
   bind:this="{consoleWrapper}"
-  class="fixed overflow-hidden overflow-y-scroll w-full {$app.ready && $app.mode === 'production'
-    ? 'h-[calc(100%-48px-36px)]'
-    : 'h-[calc(100%-48px)]'} flex flex-col"
+  class="fixed overflow-hidden overflow-y-scroll w-full {(
+    $app.ready && $app.mode === 'production'
+  ) ?
+    'h-[calc(100%-48px-36px)]'
+  : 'h-[calc(100%-48px)]'} flex flex-col"
 >
   {#each $eConsole as { type, severity, timestamp, lang, textArray }}
     <div class="w-full {colorCodes[severity]} border-t border-t-neutral-600">

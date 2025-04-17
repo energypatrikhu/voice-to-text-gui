@@ -1,22 +1,25 @@
 <script lang="ts">
-  import Modal from '$components/Modal/Modal.svelte';
-  import Button from '$components/Modal/Button.svelte';
-  import macros from '$stores/macros';
-  import Input from '$components/Modal/Input.svelte';
-  import translations from '$stores/translations';
-  import Textarea from '$components/Modal/Textarea.svelte';
+  import Button from "$components/Modal/Button.svelte";
+  import Input from "$components/Modal/Input.svelte";
+  import Modal from "$components/Modal/Modal.svelte";
+  import Textarea from "$components/Modal/Textarea.svelte";
+  import macros from "$stores/macros";
+  import translations from "$stores/translations";
 
-  export let actionMode: 'add-macro' | 'edit-macro' | 'remove-macro' | 'none';
+  export let actionMode: "add-macro" | "edit-macro" | "remove-macro" | "none";
   export let indexToModify: number;
 
-  let { handler, prefix, text } = indexToModify !== -1 ? $macros[indexToModify] : { handler: '', prefix: '', text: '' };
+  let { handler, prefix, text } =
+    indexToModify !== -1 ?
+      $macros[indexToModify]
+    : { handler: "", prefix: "", text: "" };
 
   $: title =
-    actionMode !== 'none'
-      ? actionMode in $translations.settings.macros.macros.modal.titles
-        ? $translations.settings.macros.macros.modal.titles[actionMode]
-        : ''
-      : '';
+    actionMode !== "none" ?
+      actionMode in $translations.settings.macros.macros.modal.titles ?
+        $translations.settings.macros.macros.modal.titles[actionMode]
+      : ""
+    : "";
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -51,7 +54,7 @@
     />
 
     <div class="flex justify-around w-full">
-      {#if actionMode !== 'remove-macro'}
+      {#if actionMode !== "remove-macro"}
         <Button
           type="button"
           on:click="{function () {

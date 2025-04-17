@@ -1,19 +1,19 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
-import electronContextMenu from 'electron-context-menu';
-import electronServe from 'electron-serve';
-import electronUpdater from 'electron-updater';
-import electronWindowState from 'electron-window-state';
-import { join } from 'path';
-import { EventRouter } from './libs/event-router.js';
+import { app, BrowserWindow, ipcMain } from "electron";
+import electronContextMenu from "electron-context-menu";
+import electronServe from "electron-serve";
+import electronUpdater from "electron-updater";
+import electronWindowState from "electron-window-state";
+import { join } from "path";
+import { EventRouter } from "./libs/event-router.js";
 
 const { autoUpdater } = electronUpdater;
 const serveURL = electronServe({
-  directory: '.',
+  directory: ".",
 });
 
 const port = process.env.PORT || 5173;
-const isDev = !app.isPackaged || process.env.NODE_ENV === 'dev';
-const isBeta = process.env.APP_STATE === 'beta';
+const isDev = !app.isPackaged || process.env.NODE_ENV === "dev";
+const isBeta = process.env.APP_STATE === "beta";
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -24,8 +24,8 @@ function createWindow() {
   });
 
   mainWindow = new BrowserWindow({
-    backgroundColor: 'black',
-    titleBarStyle: 'default',
+    backgroundColor: "black",
+    titleBarStyle: "default",
     autoHideMenuBar: false,
     minWidth: 800,
     minHeight: 600,
@@ -34,8 +34,8 @@ function createWindow() {
       nodeIntegration: true,
       spellcheck: true,
       devTools: isDev || isBeta,
-      preload: join(import.meta.dirname, 'preload.mjs'),
-      disableBlinkFeatures: 'Auxclick',
+      preload: join(import.meta.dirname, "preload.mjs"),
+      disableBlinkFeatures: "Auxclick",
       webSecurity: false,
     },
     x: windowState.x,
@@ -53,7 +53,7 @@ function createWindow() {
   }
 
   windowState.manage(mainWindow);
-  mainWindow.on('close', () => {
+  mainWindow.on("close", () => {
     // autoUpdater.checkForUpdatesAndNotify();
 
     windowState.saveState(mainWindow!);
@@ -73,7 +73,7 @@ electronContextMenu({
 
 function loadVite(port: any) {
   mainWindow!.loadURL(`http://localhost:${port}`).catch((e) => {
-    console.log('Error loading URL, retrying', e);
+    console.log("Error loading URL, retrying", e);
     setTimeout(() => {
       loadVite(port);
     }, 200);
@@ -82,7 +82,7 @@ function loadVite(port: any) {
 
 async function createMainWindow() {
   mainWindow = createWindow();
-  mainWindow.once('close', () => {
+  mainWindow.once("close", () => {
     mainWindow = null;
   });
 
@@ -97,43 +97,52 @@ async function createMainWindow() {
   // setInterval(autoUpdater.checkForUpdatesAndNotify, 15 * 60 * 1000);
 }
 
-app.once('ready', createMainWindow);
-app.on('activate', () => {
+app.once("ready", createMainWindow);
+app.on("activate", () => {
   if (!mainWindow) {
     createMainWindow();
   }
 });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
-autoUpdater.on('checking-for-update', () => {
-  console.log('Checking for update...');
+autoUpdater.on("checking-for-update", () => {
+  console.log("Checking for update...");
 });
-autoUpdater.on('update-available', (info) => {
-  console.log('Update available.');
+autoUpdater.on("update-available", (info) => {
+  console.log("Update available.");
 });
-autoUpdater.on('update-not-available', (info) => {
-  console.log('Update not available.');
+autoUpdater.on("update-not-available", (info) => {
+  console.log("Update not available.");
 });
-autoUpdater.on('error', (err) => {
-  console.log('Error in auto-updater. ' + err);
+autoUpdater.on("error", (err) => {
+  console.log("Error in auto-updater. " + err);
 });
-autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = 'Download speed: ' + progressObj.bytesPerSecond;
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-  log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')';
+autoUpdater.on("download-progress", (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + " - Downloaded " + progressObj.percent + "%";
+  log_message =
+    log_message +
+    " (" +
+    progressObj.transferred +
+    "/" +
+    progressObj.total +
+    ")";
   console.log(log_message);
 });
-autoUpdater.on('update-downloaded', (info) => {
-  console.log('Update downloaded');
+autoUpdater.on("update-downloaded", (info) => {
+  console.log("Update downloaded");
 });
 
-process.on('uncaughtException', (error) => {
+process.on("uncaughtException", (error) => {
   if (mainWindow) {
-    mainWindow.webContents.send('electron', { event: 'log', data: { severity: 'Error', type: 'Normal', textArray: error } });
+    mainWindow.webContents.send("electron", {
+      event: "log",
+      data: { severity: "Error", type: "Normal", textArray: error },
+    });
   }
 });
