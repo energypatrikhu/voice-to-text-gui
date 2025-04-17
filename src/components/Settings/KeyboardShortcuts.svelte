@@ -1,13 +1,17 @@
 <script lang="ts">
-  import type { ConfigOptions } from '$types/ConfigOptions';
-  import Button from '$components/Modal/Button.svelte';
-  import Svg from '$components/Svg.svelte';
-  import EditShortcut from '$components/Settings/EditShortcut.svelte';
-  import translations from '$stores/translations';
+  import Button from "$components/Modal/Button.svelte";
+  import EditShortcut from "$components/Settings/EditShortcut.svelte";
+  import Svg from "$components/Svg.svelte";
+  import translations from "$stores/translations";
+  import type { ConfigOptions } from "$types/ConfigOptions";
 
-  export let keyboardShortcuts: ConfigOptions['input']['keyboardShortcuts'];
+  export let keyboardShortcuts: ConfigOptions["input"]["keyboardShortcuts"];
 
-  let actionMode: 'add-shortcut' | 'edit-shortcut' | 'remove-shortcut' | 'none' = 'none';
+  let actionMode:
+    | "add-shortcut"
+    | "edit-shortcut"
+    | "remove-shortcut"
+    | "none" = "none";
 
   let indexToModify: number = -1;
 </script>
@@ -19,7 +23,9 @@
       <thead>
         <tr>
           <th>{$translations.settings.input.keyboardShortcuts.table.prefix}</th>
-          <th>{$translations.settings.input.keyboardShortcuts.table.shortcut}</th>
+          <th
+            >{$translations.settings.input.keyboardShortcuts.table.shortcut}</th
+          >
         </tr>
       </thead>
       <div class="absolute w-full h-[1px] left-0 bg-neutral-500"></div>
@@ -30,11 +36,13 @@
               {#if outputPrefix}
                 <span>{outputPrefix}</span>
               {:else}
-                <span class=" text-neutral-400">{$translations.states.none}</span>
+                <span class=" text-neutral-400"
+                  >{$translations.states.none}</span
+                >
               {/if}
             </td>
             <td>
-              <span>{shortcut.join(' + ')}</span>
+              <span>{shortcut.join(" + ")}</span>
             </td>
             <td>
               <div class="flex">
@@ -84,7 +92,7 @@
   </div>
 </div>
 
-{#if actionMode !== 'none'}
+{#if actionMode !== "none"}
   <EditShortcut
     bind:actionMode
     bind:indexToModify

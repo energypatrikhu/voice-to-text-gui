@@ -1,23 +1,23 @@
 <script lang="ts">
-  import Input from '$components/Modal/Input.svelte';
-  import Button from '$components/Modal/Button.svelte';
-  import { debugLog } from '$libs/functions/debugLog';
-  import translations from '$stores/translations';
-  import app from '$stores/app';
+  import Button from "$components/Modal/Button.svelte";
+  import Input from "$components/Modal/Input.svelte";
+  import { debugLog } from "$libs/functions/debugLog";
+  import app from "$stores/app";
+  import translations from "$stores/translations";
 
-  let textInput = '';
+  let textInput = "";
 
   function submit() {
     if (!textInput) return;
 
-    window.electron.send('electron', { event: 'textInput', data: textInput });
+    window.electron.send("electron", { event: "textInput", data: textInput });
 
     debugLog(textInput);
-    textInput = '';
+    textInput = "";
   }
 </script>
 
-{#if $app.ready && $app.mode === 'production'}
+{#if $app.ready && $app.mode === "production"}
   <form
     on:submit="{submit}"
     class="fixed bottom-0 w-full flex h-9 overflow-hidden"

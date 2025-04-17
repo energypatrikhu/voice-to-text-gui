@@ -6,7 +6,10 @@ declare interface Window {
   electron: {
     send: (channel: string, data: { event: string; data: any }) => void;
     sendSync: (channel: string, data: { event: string; data: any }) => void;
-    receive: (channel: string, func: (data: { event: string; data: any }) => void) => void;
+    receive: (
+      channel: string,
+      func: (data: { event: string; data: any }) => void,
+    ) => void;
     getVersion: () => void;
   };
   speechRecognition: SpeechRecognition;
@@ -19,10 +22,14 @@ declare interface Window {
   speechRecognitionRestart: boolean;
 
   callSpeechRecognitionTranscript: (transcript: string) => void;
-  callSpeechRecognitionInfo: (info: 'started' | 'stopped') => void;
+  callSpeechRecognitionInfo: (info: "started" | "stopped") => void;
   callSpeechSynthesisFinished: () => void;
 
-  speechSynthesisOptions: { volume: number; lang: string; voice: SpeechSynthesisVoice };
+  speechSynthesisOptions: {
+    volume: number;
+    lang: string;
+    voice: SpeechSynthesisVoice;
+  };
 
   audioPlayback: HTMLAudioElement;
 }

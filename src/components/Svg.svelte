@@ -1,15 +1,15 @@
 <script lang="ts">
-  import * as icons from '@mdi/js';
-  import type { Icon } from '$types/Mdi';
+  import type { Icon } from "$types/Mdi";
+  import * as icons from "@mdi/js";
 
-  let className: string = '';
+  let className: string = "";
   export let icon: Icon;
 
-  export let svgClass: string = '';
-  export let svgStyle: string = '';
+  export let svgClass: string = "";
+  export let svgStyle: string = "";
 
-  export let pathClass: string = '';
-  export let pathStyle: string = '';
+  export let pathClass: string = "";
+  export let pathStyle: string = "";
   export { className as class };
 </script>
 

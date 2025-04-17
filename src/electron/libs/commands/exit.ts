@@ -1,10 +1,12 @@
-import { __app } from '../app.js';
-import { cmd } from '../command-handler.js';
+import { __app } from "../app.js";
+import { cmd } from "../command-handler.js";
 
 cmd.registerCommand(
   async function (speechSynthesis) {
     try {
-      await speechSynthesis.speak(__app.translations.speechFeedback.commands.exit.closingApp);
+      await speechSynthesis.speak(
+        __app.translations.speechFeedback.commands.exit.closingApp,
+      );
 
       process.exit();
     } catch (error) {
@@ -12,10 +14,10 @@ cmd.registerCommand(
     }
   },
   [
-    'both',
-    'Alkalmazás bezárás',
+    "both",
+    "Alkalmazás bezárás",
     null,
-    ['kilépés', 'bezárás', 'close', 'exit'],
+    ["kilépés", "bezárás", "close", "exit"],
     __app.translations.textFeedback.commands.exit.description,
   ],
 );

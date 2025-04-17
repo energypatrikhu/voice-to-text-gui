@@ -1,6 +1,6 @@
-import { EventEmitter } from 'puppeteer-core';
+import { EventEmitter } from "puppeteer-core";
 
-import { __app } from './app.js';
+import { __app } from "./app.js";
 
 export class SpeechSynthesisEngine {
   private isSpeechFinished: boolean = true;
@@ -15,9 +15,12 @@ export class SpeechSynthesisEngine {
   }
 
   private async initExposeFunctions() {
-    this.pageEmitter.on('speech:synthesis:finished', () => this.speechFinished());
-    await __app.chromePage.exposeFunction('callSpeechSynthesisFinished', (info: any) =>
-      this.pageEmitter.emit('speech:synthesis:finished', info),
+    this.pageEmitter.on("speech:synthesis:finished", () =>
+      this.speechFinished(),
+    );
+    await __app.chromePage.exposeFunction(
+      "callSpeechSynthesisFinished",
+      (info: any) => this.pageEmitter.emit("speech:synthesis:finished", info),
     );
   }
 
@@ -27,12 +30,19 @@ export class SpeechSynthesisEngine {
         const voices = Array.from(window.speechSynthesis.getVoices());
 
         window.speechSynthesisOptions = {
-          lang: speechSynthesisOptions.language || voices.filter((voice) => voice.default)[0].lang,
-          voice: voices.filter((voice) => voice.lang.includes(speechSynthesisOptions.language))[0],
+          lang:
+            speechSynthesisOptions.language ||
+            voices.filter((voice) => voice.default)[0].lang,
+          voice: voices.filter((voice) =>
+            voice.lang.includes(speechSynthesisOptions.language),
+          )[0],
           volume: speechSynthesisOptions.volume,
         };
       },
-      { language: __app.config.feedback.language, volume: __app.config.feedback.speech.volume },
+      {
+        language: __app.config.feedback.language,
+        volume: __app.config.feedback.speech.volume,
+      },
     );
   }
 
@@ -55,7 +65,7 @@ export class SpeechSynthesisEngine {
 
       window.speechSynthesis.speak(utterance);
 
-      utterance.addEventListener('end', window.callSpeechSynthesisFinished);
+      utterance.addEventListener("end", window.callSpeechSynthesisFinished);
     }, text);
 
     return await this.awaitSpeechFinished();

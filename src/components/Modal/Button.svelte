@@ -1,21 +1,21 @@
 <script lang="ts">
-  import Svg from '$components/Svg.svelte';
-  import { scale } from 'svelte/transition';
+  import Svg from "$components/Svg.svelte";
+  import { scale } from "svelte/transition";
 
   export { _class as class };
   export let disabled: boolean = false;
   export let loading: boolean = false;
-  export let btnType: 'submit' | 'cancel' = 'submit';
-  export let type: 'submit' | 'button' | 'reset' | null | undefined = undefined;
+  export let btnType: "submit" | "cancel" = "submit";
+  export let type: "submit" | "button" | "reset" | null | undefined = undefined;
 
-  let _class = '';
+  let _class = "";
 </script>
 
 <button
   on:click
-  class="text-white py-1 px-2 outline-none rounded-md {btnType === 'submit'
-    ? 'bg-green-600 hover:bg-green-700'
-    : 'bg-red-600 hover:bg-red-700'} disabled:brightness-75 disabled:grayscale transition-all duration-100 flex justify-center items-center {_class}"
+  class="text-white py-1 px-2 outline-none rounded-md {btnType === 'submit' ?
+    'bg-green-600 hover:bg-green-700'
+  : 'bg-red-600 hover:bg-red-700'} disabled:brightness-75 disabled:grayscale transition-all duration-100 flex justify-center items-center {_class}"
   {type}
   {disabled}
 >

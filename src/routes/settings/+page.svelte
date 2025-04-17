@@ -1,36 +1,46 @@
 <script lang="ts">
-  import Header from '$components/Header.svelte';
-  import Layout from '$components/Layout.svelte';
-  import translations from '$stores/translations';
-  import config from '$stores/config';
-  import macros from '$stores/macros';
-  import Input from '$components/Modal/Input.svelte';
-  import Option from '$components/Modal/Option.svelte';
-  import Select from '$components/Modal/Select.svelte';
-  import Section from '$components/Settings/Section.svelte';
-  import SubSection from '$components/Settings/SubSection.svelte';
-  import KeyboardShortcuts from '$components/Settings/KeyboardShortcuts.svelte';
-  import WordsPhrasesWindows from '$components/Settings/WordsPhrasesWindows.svelte';
-  import Button from '$components/Modal/Button.svelte';
-  import Macros from '$components/Settings/Macros.svelte';
+  import Header from "$components/Header.svelte";
+  import Layout from "$components/Layout.svelte";
+  import Button from "$components/Modal/Button.svelte";
+  import Input from "$components/Modal/Input.svelte";
+  import Option from "$components/Modal/Option.svelte";
+  import Select from "$components/Modal/Select.svelte";
+  import KeyboardShortcuts from "$components/Settings/KeyboardShortcuts.svelte";
+  import Macros from "$components/Settings/Macros.svelte";
+  import Section from "$components/Settings/Section.svelte";
+  import SubSection from "$components/Settings/SubSection.svelte";
+  import WordsPhrasesWindows from "$components/Settings/WordsPhrasesWindows.svelte";
+  import config from "$stores/config";
+  import macros from "$stores/macros";
+  import translations from "$stores/translations";
 </script>
 
 <Header />
 
 <Layout>
-  <div class="text-4xl px-4 h-16 border-b border-b-neutral-600 flex items-center">
+  <div
+    class="text-4xl px-4 h-16 border-b border-b-neutral-600 flex items-center"
+  >
     <span>{$translations.navigation.settings}</span>
   </div>
 
-  <div class="fixed overflow-hidden overflow-y-scroll w-full h-[calc(100%-64px-48px)] flex flex-col gap-4 px-4 py-2">
+  <div
+    class="fixed overflow-hidden overflow-y-scroll w-full h-[calc(100%-64px-48px)] flex flex-col gap-4 px-4 py-2"
+  >
     <Section>
       <span slot="title">{$translations.settings.update.this.name}</span>
-      <span slot="description">{$translations.settings.update.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.update.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.update.checkOnStartup.name}</span>
-          <span slot="description">{$translations.settings.update.checkOnStartup.description}</span>
+          <span slot="title"
+            >{$translations.settings.update.checkOnStartup.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.update.checkOnStartup.description}</span
+          >
 
           <Select
             slot="content"
@@ -42,8 +52,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.update.allowPrerelease.name}</span>
-          <span slot="description">{$translations.settings.update.allowPrerelease.description}</span>
+          <span slot="title"
+            >{$translations.settings.update.allowPrerelease.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.update.allowPrerelease.description}</span
+          >
 
           <Select
             slot="content"
@@ -55,8 +69,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.update.allowDowngrade.name}</span>
-          <span slot="description">{$translations.settings.update.allowDowngrade.description}</span>
+          <span slot="title"
+            >{$translations.settings.update.allowDowngrade.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.update.allowDowngrade.description}</span
+          >
 
           <Select
             slot="content"
@@ -68,8 +86,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.update.autoCheck.name}</span>
-          <span slot="description">{$translations.settings.update.autoCheck.description}</span>
+          <span slot="title"
+            >{$translations.settings.update.autoCheck.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.update.autoCheck.description}</span
+          >
 
           <Select
             slot="content"
@@ -81,8 +103,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.update.checkInterval.name}</span>
-          <span slot="description">{$translations.settings.update.checkInterval.description}</span>
+          <span slot="title"
+            >{$translations.settings.update.checkInterval.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.update.checkInterval.description}</span
+          >
 
           <Input
             slot="content"
@@ -94,8 +120,13 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.update.checkChromeUpdates.name}</span>
-          <span slot="description">{$translations.settings.update.checkChromeUpdates.description}</span>
+          <span slot="title"
+            >{$translations.settings.update.checkChromeUpdates.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.update.checkChromeUpdates
+              .description}</span
+          >
 
           <Select
             slot="content"
@@ -110,12 +141,16 @@
 
     <Section>
       <span slot="title">{$translations.settings.logs.this.name}</span>
-      <span slot="description">{$translations.settings.logs.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.logs.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
           <span slot="title">{$translations.settings.logs.debug.name}</span>
-          <span slot="description">{$translations.settings.logs.debug.description}</span>
+          <span slot="description"
+            >{$translations.settings.logs.debug.description}</span
+          >
 
           <Select
             slot="content"
@@ -127,8 +162,11 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.logs.saveToFile.name}</span>
-          <span slot="description">{$translations.settings.logs.saveToFile.description}</span>
+          <span slot="title">{$translations.settings.logs.saveToFile.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.logs.saveToFile.description}</span
+          >
 
           <Select
             slot="content"
@@ -143,12 +181,18 @@
 
     <Section>
       <span slot="title">{$translations.settings.input.this.name}</span>
-      <span slot="description">{$translations.settings.input.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.input.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.input.holdToActivate.name}</span>
-          <span slot="description">{$translations.settings.input.holdToActivate.description}</span>
+          <span slot="title"
+            >{$translations.settings.input.holdToActivate.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.input.holdToActivate.description}</span
+          >
 
           <Select
             slot="content"
@@ -160,8 +204,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.input.keyboardShortcuts.name}</span>
-          <span slot="description">{$translations.settings.input.keyboardShortcuts.description}</span>
+          <span slot="title"
+            >{$translations.settings.input.keyboardShortcuts.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.input.keyboardShortcuts.description}</span
+          >
 
           <KeyboardShortcuts
             slot="content"
@@ -170,8 +218,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.input.autoRelease.name}</span>
-          <span slot="description">{$translations.settings.input.autoRelease.description}</span>
+          <span slot="title"
+            >{$translations.settings.input.autoRelease.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.input.autoRelease.description}</span
+          >
 
           <Select
             slot="content"
@@ -183,8 +235,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.input.releaseTime.name}</span>
-          <span slot="description">{$translations.settings.input.releaseTime.description}</span>
+          <span slot="title"
+            >{$translations.settings.input.releaseTime.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.input.releaseTime.description}</span
+          >
 
           <Input
             slot="content"
@@ -200,12 +256,16 @@
 
     <Section>
       <span slot="title">{$translations.settings.output.this.name}</span>
-      <span slot="description">{$translations.settings.output.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.output.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
           <span slot="title">{$translations.settings.output.partial.name}</span>
-          <span slot="description">{$translations.settings.output.partial.description}</span>
+          <span slot="description"
+            >{$translations.settings.output.partial.description}</span
+          >
 
           <Select
             slot="content"
@@ -217,8 +277,11 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.output.animated.name}</span>
-          <span slot="description">{$translations.settings.output.animated.description}</span>
+          <span slot="title">{$translations.settings.output.animated.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.output.animated.description}</span
+          >
 
           <Select
             slot="content"
@@ -230,8 +293,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.output.typingDelay.name}</span>
-          <span slot="description">{$translations.settings.output.typingDelay.description}</span>
+          <span slot="title"
+            >{$translations.settings.output.typingDelay.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.output.typingDelay.description}</span
+          >
 
           <Input
             bind:value="{$config.output.typingDelay}"
@@ -247,12 +314,17 @@
 
     <Section>
       <span slot="title">{$translations.settings.feedback.this.name}</span>
-      <span slot="description">{$translations.settings.feedback.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.feedback.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.feedback.sounds.name}</span>
-          <span slot="description">{$translations.settings.feedback.sounds.description}</span>
+          <span slot="title">{$translations.settings.feedback.sounds.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.feedback.sounds.description}</span
+          >
 
           <div slot="content">
             <Select bind:value="{$config.feedback.sounds.enabled}">
@@ -263,8 +335,13 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.feedback.sounds.audioMode.name}</span>
-          <span slot="description">{$translations.settings.feedback.sounds.audioMode.description}</span>
+          <span slot="title"
+            >{$translations.settings.feedback.sounds.audioMode.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.feedback.sounds.audioMode
+              .description}</span
+          >
 
           <div slot="content">
             <Select
@@ -278,8 +355,13 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.feedback.sounds.audioVolume.name}</span>
-          <span slot="description">{$translations.settings.feedback.sounds.audioVolume.description}</span>
+          <span slot="title"
+            >{$translations.settings.feedback.sounds.audioVolume.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.feedback.sounds.audioVolume
+              .description}</span
+          >
 
           <div slot="content">
             <div class="flex gap-1">
@@ -297,19 +379,29 @@
           </div>
         </SubSection>
 
-        {#if $config.feedback.sounds.mode === 'custom' && $config.feedback.sounds.enabled}
+        {#if $config.feedback.sounds.mode === "custom" && $config.feedback.sounds.enabled}
           <SubSection>
-            <span slot="title">{$translations.settings.feedback.sounds.customAudioFile.name}</span>
-            <span slot="description">{$translations.settings.feedback.sounds.customAudioFile.description}</span>
+            <span slot="title"
+              >{$translations.settings.feedback.sounds.customAudioFile
+                .name}</span
+            >
+            <span slot="description"
+              >{$translations.settings.feedback.sounds.customAudioFile
+                .description}</span
+            >
 
             <div slot="content">
               <div class="flex gap-1">
                 <Button
                   on:click="{function () {
-                    window.electron.send('electron', { event: 'selectAudioFile', data: null });
+                    window.electron.send('electron', {
+                      event: 'selectAudioFile',
+                      data: null,
+                    });
                   }}"
                 >
-                  {$translations.settings.feedback.sounds.customAudioFile.select}
+                  {$translations.settings.feedback.sounds.customAudioFile
+                    .select}
                 </Button>
                 {#if $config.feedback.sounds.file.filepath !== null}
                   <Button
@@ -326,7 +418,10 @@
                   </Button>
                   <Button
                     on:click="{function () {
-                      window.electron.send('electron', { event: 'playTest', data: null });
+                      window.electron.send('electron', {
+                        event: 'playTest',
+                        data: null,
+                      });
                     }}"
                   >
                     Test
@@ -334,11 +429,12 @@
                 {/if}
               </div>
               <span
-                >{$translations.settings.feedback.sounds.customAudioFile.selected}:
+                >{$translations.settings.feedback.sounds.customAudioFile
+                  .selected}:
                 <span class="font-light"
-                  >{$config.feedback.sounds.file.basename
-                    ? $config.feedback.sounds.file.basename
-                    : $translations.states.none}</span
+                  >{$config.feedback.sounds.file.basename ?
+                    $config.feedback.sounds.file.basename
+                  : $translations.states.none}</span
                 ></span
               >
             </div>
@@ -346,8 +442,11 @@
         {/if}
 
         <SubSection>
-          <span slot="title">{$translations.settings.feedback.speech.name}</span>
-          <span slot="description">{$translations.settings.feedback.speech.description}</span>
+          <span slot="title">{$translations.settings.feedback.speech.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.feedback.speech.description}</span
+          >
 
           <Select
             slot="content"
@@ -359,8 +458,11 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.feedback.volume.name}</span>
-          <span slot="description">{$translations.settings.feedback.volume.description}</span>
+          <span slot="title">{$translations.settings.feedback.volume.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.feedback.volume.description}</span
+          >
 
           <div
             slot="content"
@@ -380,8 +482,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.feedback.language.name}</span>
-          <span slot="description">{$translations.settings.feedback.language.description}</span>
+          <span slot="title"
+            >{$translations.settings.feedback.language.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.feedback.language.description}</span
+          >
 
           <Select
             slot="content"
@@ -395,13 +501,22 @@
     </Section>
 
     <Section>
-      <span slot="title">{$translations.settings.speechRecognition.this.name}</span>
-      <span slot="description">{$translations.settings.speechRecognition.this.description}</span>
+      <span slot="title"
+        >{$translations.settings.speechRecognition.this.name}</span
+      >
+      <span slot="description"
+        >{$translations.settings.speechRecognition.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.speechRecognition.language.name}</span>
-          <span slot="description">{$translations.settings.speechRecognition.language.description}</span>
+          <span slot="title"
+            >{$translations.settings.speechRecognition.language.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.speechRecognition.language
+              .description}</span
+          >
 
           <Select
             slot="content"
@@ -414,8 +529,14 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.speechRecognition.customWordsAndPhrases.name}</span>
-          <span slot="description">{$translations.settings.speechRecognition.customWordsAndPhrases.description}</span>
+          <span slot="title"
+            >{$translations.settings.speechRecognition.customWordsAndPhrases
+              .name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.speechRecognition.customWordsAndPhrases
+              .description}</span
+          >
 
           <WordsPhrasesWindows
             slot="content"
@@ -428,12 +549,19 @@
 
     <Section>
       <span slot="title">{$translations.settings.replacers.this.name}</span>
-      <span slot="description">{$translations.settings.replacers.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.replacers.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.replacers.punctuationMarks.name}</span>
-          <span slot="description">{$translations.settings.replacers.punctuationMarks.description}</span>
+          <span slot="title"
+            >{$translations.settings.replacers.punctuationMarks.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.replacers.punctuationMarks
+              .description}</span
+          >
 
           <Select
             slot="content"
@@ -445,8 +573,13 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.replacers.gameChatPrefixes.name}</span>
-          <span slot="description">{$translations.settings.replacers.gameChatPrefixes.description}</span>
+          <span slot="title"
+            >{$translations.settings.replacers.gameChatPrefixes.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.replacers.gameChatPrefixes
+              .description}</span
+          >
 
           <Select
             slot="content"
@@ -460,8 +593,12 @@
     </Section>
 
     <Section>
-      <span slot="title">{$translations.settings.windowAllowList.this.name}</span>
-      <span slot="description">{$translations.settings.windowAllowList.this.description}</span>
+      <span slot="title"
+        >{$translations.settings.windowAllowList.this.name}</span
+      >
+      <span slot="description"
+        >{$translations.settings.windowAllowList.this.description}</span
+      >
       <div slot="extra">
         <SubSection connectedSubSection="{true}">
           <Select
@@ -476,8 +613,12 @@
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.windowAllowList.windows.name}</span>
-          <span slot="description">{$translations.settings.windowAllowList.windows.description}</span>
+          <span slot="title"
+            >{$translations.settings.windowAllowList.windows.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.windowAllowList.windows.description}</span
+          >
 
           <WordsPhrasesWindows
             disabled="{!$config.windowAllowList.enabled}"
@@ -496,7 +637,9 @@
 
     <Section>
       <span slot="title">{$translations.settings.commands.this.name}</span>
-      <span slot="description">{$translations.settings.commands.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.commands.this.description}</span
+      >
       <div slot="extra">
         <SubSection connectedSubSection="{true}">
           <Select
@@ -514,8 +657,11 @@
         class="relative"
       >
         <SubSection>
-          <span slot="title">{$translations.settings.commands.prefix.name}</span>
-          <span slot="description">{$translations.settings.commands.prefix.description}</span>
+          <span slot="title">{$translations.settings.commands.prefix.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.commands.prefix.description}</span
+          >
 
           <Input
             slot="content"
@@ -525,8 +671,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.commands.splitter.name}</span>
-          <span slot="description">{$translations.settings.commands.splitter.description}</span>
+          <span slot="title"
+            >{$translations.settings.commands.splitter.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.commands.splitter.description}</span
+          >
 
           <Input
             slot="content"
@@ -539,7 +689,9 @@
 
     <Section>
       <span slot="title">{$translations.settings.macros.this.name}</span>
-      <span slot="description">{$translations.settings.macros.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.macros.this.description}</span
+      >
       <div slot="extra">
         <SubSection connectedSubSection="{true}">
           <Select
@@ -558,7 +710,9 @@
       >
         <SubSection>
           <span slot="title">{$translations.settings.macros.macros.name}</span>
-          <span slot="description">{$translations.settings.macros.macros.description}</span>
+          <span slot="description"
+            >{$translations.settings.macros.macros.description}</span
+          >
 
           <Macros
             slot="content"
@@ -570,12 +724,19 @@
 
     <Section useSplitterLine="{false}">
       <span slot="title">{$translations.settings.others.this.name}</span>
-      <span slot="description">{$translations.settings.others.this.description}</span>
+      <span slot="description"
+        >{$translations.settings.others.this.description}</span
+      >
 
       <div slot="content">
         <SubSection>
-          <span slot="title">{$translations.settings.others.mtaConsoleInputMode.name}</span>
-          <span slot="description">{$translations.settings.others.mtaConsoleInputMode.description}</span>
+          <span slot="title"
+            >{$translations.settings.others.mtaConsoleInputMode.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.others.mtaConsoleInputMode
+              .description}</span
+          >
 
           <Select
             slot="content"
@@ -588,8 +749,12 @@
         </SubSection>
 
         <SubSection>
-          <span slot="title">{$translations.settings.others.showActiveButtons.name}</span>
-          <span slot="description">{$translations.settings.others.showActiveButtons.description}</span>
+          <span slot="title"
+            >{$translations.settings.others.showActiveButtons.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.others.showActiveButtons.description}</span
+          >
 
           <Select
             slot="content"

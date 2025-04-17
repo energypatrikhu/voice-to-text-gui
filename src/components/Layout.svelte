@@ -1,8 +1,13 @@
 <script lang="ts">
-  import { afterNavigate } from '$app/navigation';
-  import { clientWidth, clientHeight, offsetHeight, offsetWidth } from '$stores/windowSizes';
-  import { onMount, onDestroy, afterUpdate } from 'svelte';
-  import { fade } from 'svelte/transition';
+  import { afterNavigate } from "$app/navigation";
+  import {
+    clientHeight,
+    clientWidth,
+    offsetHeight,
+    offsetWidth,
+  } from "$stores/windowSizes";
+  import { afterUpdate, onDestroy, onMount } from "svelte";
+  import { fade } from "svelte/transition";
 
   export let transition = true;
 

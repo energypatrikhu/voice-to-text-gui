@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Svg from '$components/Svg.svelte';
-  import NavbarContainer from '$components/Navigation/NavBarContainer.svelte';
-  import SideNavBar from '$components/Navigation/SideNavBar.svelte';
-  import NavLeftLayout from '$components/Navigation/NavLeftLayout.svelte';
-  import NavRightLayout from '$components/Navigation/NavRightLayout.svelte';
-  import { offsetWidth } from '$stores/windowSizes';
-  import { pageInfo } from '$stores/page';
+  import NavbarContainer from "$components/Navigation/NavBarContainer.svelte";
+  import NavLeftLayout from "$components/Navigation/NavLeftLayout.svelte";
+  import NavRightLayout from "$components/Navigation/NavRightLayout.svelte";
+  import SideNavBar from "$components/Navigation/SideNavBar.svelte";
+  import Svg from "$components/Svg.svelte";
+  import { pageInfo } from "$stores/page";
+  import { offsetWidth } from "$stores/windowSizes";
 
   export let title: string | null = null;
   export let enabled = true;
@@ -18,7 +18,9 @@
 
 <svelte:head>
   <title>
-    {title !== null ? title + ' - ' : $pageInfo ? $pageInfo?.title + ' - ' : ''}Voice To Text
+    {title !== null ? title + " - "
+    : $pageInfo ? $pageInfo?.title + " - "
+    : ""}Voice To Text
   </title>
 </svelte:head>
 
@@ -29,14 +31,15 @@
         slot="left"
         class="gap-1"
       >
-        {#if $pageInfo?.navPos === 'side' || sideBarAvailable}
+        {#if $pageInfo?.navPos === "side" || sideBarAvailable}
           <button
             type="button"
             on:click="{() => (sideBarOpen = !sideBarOpen)}"
           >
             <Svg
               class="w-9 h-9 flex justify-center items-center rounded-full p-0.5"
-              svgClass="hover:fill-green-600 {sideBarOpen ? '!fill-green-600' : ''}"
+              svgClass="hover:fill-green-600 {sideBarOpen ? '!fill-green-600'
+              : ''}"
               icon="mdiMenu"
             />
           </button>
@@ -56,7 +59,7 @@
         <NavRightLayout />
       </div>
     </NavbarContainer>
-    {#if ($pageInfo?.navPos === 'side' || sideBarAvailable) && sideBarOpen}
+    {#if ($pageInfo?.navPos === "side" || sideBarAvailable) && sideBarOpen}
       <SideNavBar bind:open="{sideBarOpen}" />
     {/if}
   </header>

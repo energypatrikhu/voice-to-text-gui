@@ -1,32 +1,40 @@
 <script lang="ts">
-  import Modal from '$components/Modal/Modal.svelte';
-  import Button from '$components/Modal/Button.svelte';
-  import config from '$stores/config';
-  import Input from '$components/Modal/Input.svelte';
-  import translations from '$stores/translations';
-  import Textarea from '../Modal/Textarea.svelte';
+  import Button from "$components/Modal/Button.svelte";
+  import Input from "$components/Modal/Input.svelte";
+  import Modal from "$components/Modal/Modal.svelte";
+  import config from "$stores/config";
+  import translations from "$stores/translations";
+  import Textarea from "../Modal/Textarea.svelte";
 
-  export let actionMode: 'add-item' | 'edit-item' | 'remove-item' | 'none';
-  export let itemName: 'customWordsAndPhrases' | 'windows';
+  export let actionMode: "add-item" | "edit-item" | "remove-item" | "none";
+  export let itemName: "customWordsAndPhrases" | "windows";
   export let indexToModify: number;
 
   let value =
-    indexToModify !== -1
-      ? itemName === 'customWordsAndPhrases'
-        ? $config.speechRecognition.customWordsAndPhrases[indexToModify]
-        : $config.windowAllowList.windows[indexToModify]
-      : '';
+    indexToModify !== -1 ?
+      itemName === "customWordsAndPhrases" ?
+        $config.speechRecognition.customWordsAndPhrases[indexToModify]
+      : $config.windowAllowList.windows[indexToModify]
+    : "";
 
   $: title =
-    actionMode !== 'none'
-      ? itemName === 'customWordsAndPhrases'
-        ? actionMode in $translations.settings.speechRecognition.customWordsAndPhrases.modal.titles
-          ? $translations.settings.speechRecognition.customWordsAndPhrases.modal.titles[actionMode]
-          : ''
-        : actionMode in $translations.settings.windowAllowList.windows.modal.titles
-          ? $translations.settings.windowAllowList.windows.modal.titles[actionMode]
-          : ''
-      : '';
+    actionMode !== "none" ?
+      itemName === "customWordsAndPhrases" ?
+        (
+          actionMode in
+          $translations.settings.speechRecognition.customWordsAndPhrases.modal
+            .titles
+        ) ?
+          $translations.settings.speechRecognition.customWordsAndPhrases.modal
+            .titles[actionMode]
+        : ""
+      : (
+        actionMode in
+        $translations.settings.windowAllowList.windows.modal.titles
+      ) ?
+        $translations.settings.windowAllowList.windows.modal.titles[actionMode]
+      : ""
+    : "";
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -37,20 +45,23 @@
 >
   <Modal header="{title}">
     <span
-      >{itemName === 'customWordsAndPhrases'
-        ? $translations.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase
-        : $translations.settings.windowAllowList.windows.modal.windowName}:</span
+      >{itemName === "customWordsAndPhrases" ?
+        $translations.settings.speechRecognition.customWordsAndPhrases.modal
+          .wordPhrase
+      : $translations.settings.windowAllowList.windows.modal.windowName}:</span
     >
-    {#if itemName === 'customWordsAndPhrases'}
+    {#if itemName === "customWordsAndPhrases"}
       <Textarea
-        placeholder="{$translations.settings.speechRecognition.customWordsAndPhrases.modal.wordPhrase}"
+        placeholder="{$translations.settings.speechRecognition
+          .customWordsAndPhrases.modal.wordPhrase}"
         bind:value
         disabled="{actionMode === 'remove-item'}"
         required
       />
-    {:else if itemName === 'windows'}
+    {:else if itemName === "windows"}
       <Input
-        placeholder="{$translations.settings.windowAllowList.windows.modal.windowName}"
+        placeholder="{$translations.settings.windowAllowList.windows.modal
+          .windowName}"
         bind:value
         disabled="{actionMode === 'remove-item'}"
         required
@@ -58,7 +69,7 @@
     {/if}
 
     <div class="flex justify-around w-full">
-      {#if actionMode !== 'remove-item'}
+      {#if actionMode !== "remove-item"}
         <Button
           type="button"
           on:click="{function () {
@@ -76,7 +87,10 @@
                   }
 
                   case 'windows': {
-                    $config.windowAllowList.windows = [...$config.windowAllowList.windows, value];
+                    $config.windowAllowList.windows = [
+                      ...$config.windowAllowList.windows,
+                      value,
+                    ];
                     break;
                   }
                 }
@@ -86,7 +100,9 @@
               case 'edit-item': {
                 switch (itemName) {
                   case 'customWordsAndPhrases': {
-                    $config.speechRecognition.customWordsAndPhrases[indexToModify] = value;
+                    $config.speechRecognition.customWordsAndPhrases[
+                      indexToModify
+                    ] = value;
                     break;
                   }
 
@@ -110,14 +126,19 @@
           on:click="{function () {
             switch (itemName) {
               case 'customWordsAndPhrases': {
-                $config.speechRecognition.customWordsAndPhrases.splice(indexToModify, 1);
-                $config.speechRecognition.customWordsAndPhrases = $config.speechRecognition.customWordsAndPhrases;
+                $config.speechRecognition.customWordsAndPhrases.splice(
+                  indexToModify,
+                  1,
+                );
+                $config.speechRecognition.customWordsAndPhrases =
+                  $config.speechRecognition.customWordsAndPhrases;
                 break;
               }
 
               case 'windows': {
                 $config.windowAllowList.windows.splice(indexToModify, 1);
-                $config.windowAllowList.windows = $config.windowAllowList.windows;
+                $config.windowAllowList.windows =
+                  $config.windowAllowList.windows;
                 break;
               }
             }

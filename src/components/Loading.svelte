@@ -1,9 +1,9 @@
 <script lang="ts">
   export { _class as class };
-  let _class = '';
+  let _class = "";
 
   export { _style as style };
-  let _style = '';
+  let _style = "";
 </script>
 
 <div
@@ -39,7 +39,7 @@
     animation: spinner 1.2s linear infinite;
   }
   .spinner div:after {
-    content: ' ';
+    content: " ";
     display: block;
     position: absolute;
     height: 14px;

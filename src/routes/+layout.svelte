@@ -1,35 +1,35 @@
 <script lang="ts">
-  import '../app.css';
-  import Loading from '$components/Loading.svelte';
+  import Loading from "$components/Loading.svelte";
+  import "../app.css";
 
-  import { onMount } from 'svelte';
-  import config from '$stores/config';
-  import macros from '$stores/macros';
-  import translations from '$stores/translations';
-  import app from '$stores/app';
+  import app from "$stores/app";
+  import config from "$stores/config";
+  import macros from "$stores/macros";
+  import translations from "$stores/translations";
+  import { onMount } from "svelte";
 
-  import { getLocaleTime } from '$libs/functions/getLocaleTime';
-  import { updateConsoleStore } from '$stores/console';
+  import { getLocaleTime } from "$libs/functions/getLocaleTime";
+  import { updateConsoleStore } from "$stores/console";
 
   window.audioPlayback = new Audio();
 
-  window.addEventListener('mouseup', function (mouseEvent) {
+  window.addEventListener("mouseup", function (mouseEvent) {
     if ([1, 3, 4].includes(mouseEvent.button)) {
       mouseEvent.preventDefault();
       mouseEvent.stopPropagation();
     }
   });
 
-  document.addEventListener('auxclick', function (mouseEvent) {
+  document.addEventListener("auxclick", function (mouseEvent) {
     mouseEvent.preventDefault();
     mouseEvent.stopPropagation();
   });
 
   let ready = false;
 
-  window.electron.receive('electron', function ({ event, data }) {
+  window.electron.receive("electron", function ({ event, data }) {
     switch (event) {
-      case 'ready': {
+      case "ready": {
         $config = data.config;
         $macros = data.macros;
         $translations = data.translations;
@@ -38,35 +38,38 @@
         break;
       }
 
-      case 'log': {
+      case "log": {
         updateConsoleStore(data);
-        window.electron.send('electron', { event: 'log', data: { ...data, filename: $app.startupDate + '.log' } });
+        window.electron.send("electron", {
+          event: "log",
+          data: { ...data, filename: $app.startupDate + ".log" },
+        });
         break;
       }
 
-      case 'translations': {
+      case "translations": {
         $translations = data.translations;
         break;
       }
 
-      case 'config': {
+      case "config": {
         $config = data.config;
         break;
       }
 
-      case 'macros': {
+      case "macros": {
         $macros = data.macros;
         break;
       }
 
-      case 'selectAudioFile': {
+      case "selectAudioFile": {
         if (data) {
           $config.feedback.sounds.file = data;
         }
         break;
       }
 
-      case 'playAudio': {
+      case "playAudio": {
         if (data.src && data.volume) {
           window.audioPlayback.src = data.src;
           window.audioPlayback.volume = data.volume;
@@ -75,7 +78,7 @@
         break;
       }
 
-      case 'loaded': {
+      case "loaded": {
         $app.mode = data.mode;
         $app.ready = true;
         break;
@@ -91,8 +94,8 @@
   onMount(function () {
     loadSettings();
 
-    window.electron.send('electron', {
-      event: 'ready',
+    window.electron.send("electron", {
+      event: "ready",
       data: null,
     });
   });
