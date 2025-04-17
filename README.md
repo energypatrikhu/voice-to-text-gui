@@ -8,10 +8,10 @@ Ez az alkalmazás a Google [Beszédfelismerő motorját](https://developer.mozil
 tehát a *Google Chrome* köré kell építenem, mivel az API kulcs(?) be van építve.
 
 # Figyelem
-Az alkalmazás nem teljes, és biztosan lesznek benne hibák, de igyekszem mindent megtenni, hogy kijavítsam őket, mivel nem vagyok szakértő.
+Az alkalmazás nem teljes, és biztosan lesznek benne hibák, de igyekszem mindent megtenni, hogy kijavítsam őket.
 
 # Hozzájárulás
-Ha bármilyen problémád van, vagy ötleted vannak új funkciókkal kapcsolatban, nyugodtan írj egy *issue*-t, vagy kérj *pull request*-et.
+Ha bármilyen problémád van, vagy ötleteid vannak új funkciókkal kapcsolatban, nyugodtan írj egy *issue*-t, vagy kérj *pull request*-et.
 
 <p align="right">
 ~ EnergyPatrikHU
@@ -29,7 +29,7 @@ and because *Chromium* does not support it as it is missing the API key(?),
 so I have to build it around *Google Chrome* as the API key(?) is built in.
 
 # Warning
-The app is not complete, and it sure will have bugs, but i'll try my best to fix them as i'm not an expert.
+The app is not complete, and it sure will have bugs, but i'll try my best to fix them. 
 
 # Contributing
 If you have any issues or have ideas for new features, feel free to write an *issue* or make a *pull request*.
