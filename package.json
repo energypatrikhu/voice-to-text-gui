@@ -11,9 +11,9 @@
     "url": "https://github.com/energypatrikhu/voice-to-text-gui.git"
   },
   "scripts": {
-    "_up": "bun rm.mjs ./node_modules && npm up",
+    "_up": "bun rm.ts ./node_modules && bun update",
     "dev": "cross-env-file -p .env.dev.json concurrently --kill-others -n=svelte,electron -c='#ff3e00',blue \"vite dev\" \"bun electron.esbuild.config.ts && electron resources/app/electron.mjs\"",
-    "clear-dist": "bun rm.mjs ./dist",
+    "clear-dist": "bun rm.ts ./dist",
     "pack:electron": "cross-env-file -p .env.prod.json bun electron.esbuild.config.ts",
     "pack:electron:beta": "cross-env-file -p .env.prod.beta.json bun electron.esbuild.config.ts",
     "pack:vite": "cross-env-file -p .env.prod.json vite build",
