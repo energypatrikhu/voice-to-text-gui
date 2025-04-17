@@ -36,7 +36,7 @@
     "active-win": "^8.2.1",
     "adm-zip": "^0.5.16",
     "axios": "^1.8.4",
-    "electron-context-menu": "^4.0.0",
+    "electron-context-menu": "^4.0.5",
     "electron-reloader": "^1.2.3",
     "electron-serve": "^2.0.0",
     "electron-updater": "^6.6.2",
