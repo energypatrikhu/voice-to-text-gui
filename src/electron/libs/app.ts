@@ -1,6 +1,10 @@
 import _ from "lodash";
+
+import type { Keyboard } from "@energypatrikhu/keysender";
+import type { Hardware } from "@energypatrikhu/node-hardware";
 import type { Page } from "puppeteer-core";
 import type { ConfigOptions } from "../../types/ConfigOptions.js";
+import type { Manifest } from "../../types/electron/Manifest.js";
 import type { Versions } from "../../types/electron/Versions.js";
 import type { Macro } from "../../types/Macro.js";
 import type { Translations } from "../../types/Translations.js";
@@ -8,8 +12,6 @@ import type { Console } from "./console.js";
 import type { SettingsUpdate } from "./send-settings-update.js";
 import type { SpeechRecognitionEngine } from "./speech-recognition-engine.js";
 import type { SpeechSynthesisEngine } from "./speech-synthesis-engine.js";
-
-import type { Manifest } from "../../types/electron/Manifest.js";
 
 export class App {
   isDev!: boolean;
@@ -36,6 +38,12 @@ export class App {
 
   userDataFolder!: string;
   resources!: string;
+
+  interceptionDriverInstalled!: boolean;
+
+  hardware!: {
+    keyboard: Keyboard | Hardware["keyboard"];
+  };
 
   set(data: Partial<App>) {
     const oldApp = _.omit(this, ["set"]);

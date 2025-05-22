@@ -4,4 +4,5 @@ export interface App {
   startupDate: string;
   ready: boolean;
   mode: "development" | "production";
+  interceptionDriverInstalled: boolean;
 }

@@ -10,6 +10,7 @@
   import Section from "$components/Settings/Section.svelte";
   import SubSection from "$components/Settings/SubSection.svelte";
   import WordsPhrasesWindows from "$components/Settings/WordsPhrasesWindows.svelte";
+  import app from "$stores/app";
   import config from "$stores/config";
   import macros from "$stores/macros";
   import translations from "$stores/translations";
@@ -759,6 +760,24 @@
           <Select
             slot="content"
             bind:value="{$config.others.showActiveButtons}"
+          >
+            <Option value="{true}">{$translations.states.enable}</Option>
+            <Option value="{false}">{$translations.states.disable}</Option>
+          </Select>
+        </SubSection>
+
+        <SubSection>
+          <span slot="title"
+            >{$translations.settings.others.useInterception.name}</span
+          >
+          <span slot="description"
+            >{$translations.settings.others.useInterception.description}</span
+          >
+
+          <Select
+            slot="content"
+            bind:value="{$config.others.useInterception}"
+            disabled="{!$app.interceptionDriverInstalled}"
           >
             <Option value="{true}">{$translations.states.enable}</Option>
             <Option value="{false}">{$translations.states.disable}</Option>

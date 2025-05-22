@@ -33,7 +33,11 @@
         $config = data.config;
         $macros = data.macros;
         $translations = data.translations;
-        $app = { ...$app, ...data.versions };
+        $app = {
+          ...$app,
+          ...data.versions,
+          interceptionDriverInstalled: data.interceptionDriverInstalled,
+        };
         ready = true;
         break;
       }

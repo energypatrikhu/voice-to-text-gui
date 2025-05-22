@@ -182,6 +182,7 @@ export interface Others {
   this: Prefix;
   mtaConsoleInputMode: Prefix;
   showActiveButtons: Prefix;
+  useInterception: Prefix;
 }
 
 export interface Output {
@@ -466,6 +467,7 @@ export interface Macro {
 
 export interface TextFeedbackIndex {
   app: App;
+  interception: Interception;
   chrome: IndexChrome;
   updater: Updater;
   registering: Registering;
@@ -495,6 +497,10 @@ export interface CreatorsCredits {
   wrapper: string;
   createdBy: string;
   ideaBy: string;
+}
+
+export interface Interception {
+  notInstalled: string;
 }
 
 export interface Registering {
