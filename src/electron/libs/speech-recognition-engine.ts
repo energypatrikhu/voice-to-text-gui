@@ -222,7 +222,7 @@ export class SpeechRecognitionEngine {
           __app.config.others.mtaConsoleInputMode &&
           !output.startsWith("/")
         ) {
-          output = output.replace("say, ", "say ");
+          output = output.replace(/(.*?)(,) /, "$1 ");
         }
 
         if ((isCommand || isMacro) && __app.config.commands.enabled) {
