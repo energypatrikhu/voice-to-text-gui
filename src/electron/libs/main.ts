@@ -1,3 +1,5 @@
+import { Hardware as Keysender } from "@energypatrikhu/keysender";
+import { Hardware as NodeHardware } from "@energypatrikhu/node-hardware";
 import { app, BrowserWindow } from "electron";
 import { existsSync, mkdirSync, readFileSync } from "fs";
 import _ from "lodash";
@@ -11,6 +13,7 @@ import { loadConfig } from "./config.js";
 import { Console } from "./console.js";
 import { firstStart } from "./first-start.js";
 import { getActiveWindowName } from "./get-active-window-name.js";
+import { isInterceptionInstalled } from "./interception-tools.js";
 import { keyboardShortcutMapper } from "./keyboard-shortcut-mapper.js";
 import { loadMacros } from "./macros.js";
 import { loadManifest } from "./manifest.js";
@@ -38,6 +41,7 @@ export async function main(
     updateReason: null,
     userDataFolder: join(app.getPath("userData"), app.name),
     resources: resolve("./resources"),
+    interceptionDriverInstalled: isInterceptionInstalled(),
   });
 
   __app.set({
@@ -55,6 +59,15 @@ export async function main(
   });
 
   __app.set({
+    hardware: {
+      keyboard:
+        __app.config.others.useInterception && __app.interceptionDriverInstalled
+          ? new NodeHardware().keyboard
+          : new Keysender().keyboard,
+    },
+  });
+
+  __app.set({
     console: new Console().init(),
     translations: loadTranslation(),
     settingsUpdate: new SettingsUpdate(),
@@ -62,7 +75,13 @@ export async function main(
 
   mainWindow.webContents.send("electron", {
     event: "ready",
-    data: _.pick(__app, ["versions", "config", "macros", "translations"]),
+    data: _.pick(__app, [
+      "versions",
+      "config",
+      "macros",
+      "translations",
+      "interceptionDriverInstalled",
+    ]),
   });
 
   if (isDev) {
@@ -102,6 +121,16 @@ export async function main(
     __app.console.debugLog(__app.translations.firstStart.global.done);
   } else {
     __app.console.debugLog(__app.translations.firstStart.global.skip);
+  }
+
+  if (
+    __app.config.others.useInterception &&
+    !__app.interceptionDriverInstalled
+  ) {
+    __app.console.errorLog(
+      __app.translations.textFeedback.index.interception.notInstalled,
+    );
+    return;
   }
 
   __app.console.debugLog(

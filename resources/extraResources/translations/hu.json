@@ -6,45 +6,37 @@
         "updateAvailable": "Van egy frissítés! Kérjük, indítsa újra az alkalmazást a frissítés elindításához!"
       }
     },
-
     "commandHandler": {
       "unknownMacro": "Ismeretlen makró!",
       "unknownCommand": "Ismeretlen parancs!"
     },
-
     "commands": {
       "updateApp": {
         "updateAvailable": "Frissítés elérhető! Kérjük, várjon, a frissítés letöltése folyamatban..."
       },
-
       "showActiveButtons": {
         "showActiveButtons": {
           "enabled": "Aktív gombok megjelenítése: Engedélyezve",
           "disabled": "Aktív gombok megjelenítése: Letiltva"
         }
       },
-
       "mtaMode": {
         "mtaConsoleInputMode": {
           "enabled": "MTA konzol beviteli mód: Engedélyezve",
           "disabled": "MTA konzol beviteli mód: Letiltva"
         }
       },
-
       "exitMta": {
         "notInForeground": "Az MTA San Andreas nincs előtérben!"
       },
-
       "exit": {
         "closingApp": "Az alkalmazás bezárása folyamatban..."
       },
-
       "activeWindow": {
         "activeWindow": "Aktív ablak: {0}"
       }
     }
   },
-
   "textFeedback": {
     "index": {
       "app": {
@@ -54,6 +46,9 @@
           "hold": "A Voice To Text alkalmazás elindult, nyomja meg és tartsa lenyomva az egyik meghatározott billentyűparancsot az alkalmazás használatához",
           "toggle": "A Voice To Text alkalmazás elindult, nyomja meg az egyik meghatározott billentyűparancsot az alkalmazás használatához"
         }
+      },
+      "interception": {
+        "notInstalled": "Interception használata bekapcsolva, de az Interception driver nem található!\nKérjük, telepítse az Interception drivert a következő linken: https://github.com/oblitum/Interception/releases/latest"
       },
       "chrome": {
         "starting": "A Google Chrome indítása fej nélküli módban...",
@@ -77,11 +72,9 @@
       },
       "commandsEnabled": "Mondja vagy írja be, hogy '{0}parancsok' az elérhető parancsok listázásához!"
     },
-
     "soundWrapper": {
       "playingSound": "Hang lejátszása..."
     },
-
     "config": {
       "macro": {
         "loaded": "Makrók betöltve!"
@@ -100,12 +93,10 @@
         "loaded": "Szótár betöltve!"
       }
     },
-
     "commandHandler": {
       "unknownMacro": "Ismeretlen makró!",
       "unknownCommand": "Ismeretlen parancs!"
     },
-
     "chromeInstance": {
       "chrome": {
         "navigating": "Navigálás a Chrome-ban...",
@@ -116,7 +107,6 @@
         "starting": "Beszédfelismerő motor indítása..."
       }
     },
-
     "update": {
       "checkAppUpdate": {
         "checkingUpdate": "Frissítés keresése...",
@@ -125,7 +115,6 @@
         "updateDownloaded": "A frissítés letöltődött, az alkalmazás most újraindul..."
       }
     },
-
     "commands": {
       "updateApp": {
         "description": "Frissítést keress az alkalmazáshoz.",
@@ -133,7 +122,6 @@
         "noUpdateAvailable": "Nincs elérhető frissítés.",
         "updateAvailable": "Frissítés elérhető! Kérjük, várjon, frissítés letöltése folyamatban..."
       },
-
       "showActiveButtons": {
         "description": "Kiírja az aktív gombok listáját, hasznos arra, hogy be állítsd a kívánt gomb kombinációt a voice-to-text aktíválásához.",
         "showActiveButtons": {
@@ -141,7 +129,6 @@
           "disabled": "Aktív gombok megjelenítése: Letiltva"
         }
       },
-
       "mtaMode": {
         "description": "Az 'mtaConsoleInputMode' beállítás jelenlegi értékének az ellenkezőjére állítja be. (true => false | false => true)",
         "mtaConsoleInputMode": {
@@ -149,17 +136,14 @@
           "disabled": "MTA konzol beviteli mód: Letiltva"
         }
       },
-
       "exitMta": {
         "description": "Bezárja az MTA San Andreas programot.",
         "notInForeground": "MTA:SA nincs előtérben!"
       },
-
       "exit": {
         "description": "Bezárja ezt a programot.",
         "closingApp": "Az alkalmazás bezárása..."
       },
-
       "commandList": {
         "description": "Parancs lista.",
         "list": {
@@ -175,13 +159,11 @@
           "speech": "csak beszéd"
         }
       },
-
       "activeWindow": {
         "description": "Jelenleg előtérben lévő ablak lekérése.",
         "activeWindow": "Aktív ablak: {0}"
       }
     },
-
     "chromeFunctions": {
       "speechRecognition": {
         "outputStopped": "Kimenet leállítva a 'Escape' megnyomása gomb által!",
@@ -200,7 +182,6 @@
       }
     }
   },
-
   "states": {
     "disabled": "Letiltva",
     "enabled": "Engedélyezve",
@@ -220,7 +201,6 @@
     "custom": "Egyedi",
     "default": "Alapértelmezett"
   },
-
   "time": {
     "normal": {
       "ms": "századmásodperc",
@@ -243,7 +223,6 @@
       "y": "év"
     }
   },
-
   "buttons": {
     "add": "Hozzáadás",
     "remove": "Eltávolítás",
@@ -251,21 +230,18 @@
     "cancel": "Mégsem",
     "reset": "Visszaállítás"
   },
-
   "navigation": {
     "home": "Otthon",
     "settings": "Beállítások",
     "macros": "Makrók",
     "info": "Infó"
   },
-
   "console": {
     "input": {
       "placeholder": "Parancs bemenet (előtag nélkül)",
       "submit": "Küldés"
     }
   },
-
   "firstStart": {
     "global": {
       "run": "Első indítás szkriptek futtatása...",
@@ -280,7 +256,6 @@
       "fail": "Nem sikerült frissíteni a Chrome-ot!"
     }
   },
-
   "settings": {
     "logs": {
       "this": {
@@ -534,6 +509,10 @@
       "showActiveButtons": {
         "name": "Megnyomott gombok megjelenítése",
         "description": "Jelenleg aktív gombok kiíratása"
+      },
+      "useInterception": {
+        "name": "Interception használata",
+        "description": "Interception használata a billentyűzet és egér bemenetekhez, ehhez szükséges telepíteni az Interception drivert, mely letölthető innen https://github.com/oblitum/Interception/releases/latest"
       }
     }
   }

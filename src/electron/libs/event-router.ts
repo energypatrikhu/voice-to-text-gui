@@ -1,3 +1,5 @@
+import { Hardware as Keysender } from "@energypatrikhu/keysender";
+import { Hardware as NodeHardware } from "@energypatrikhu/node-hardware";
 import { dialog } from "electron";
 import _ from "lodash";
 import { basename } from "path";
@@ -41,24 +43,24 @@ export class EventRouter {
 
         case "config": {
           if (this.isReady && !_.isEqual(__app.config, data)) {
-            console.log("Config Changed Event");
+            __app.console.debugLog("Config Changed Event");
 
             const { oldApp } = __app.set({ config: data });
             __app.console.debugLog("Config Changed!");
-            console.log("Config Changed!");
 
-            console.log(
+            __app.console.debugLog(
               oldApp.config.feedback.language,
               __app.config.feedback.language,
             );
 
+            // feedback ( language and sounds )
             if (
               !_.isEqual(
                 oldApp.config.feedback.language,
                 __app.config.feedback.language,
               )
             ) {
-              console.log("feedback.language changed!");
+              __app.console.debugLog("feedback.language changed!");
 
               const translations = loadTranslation();
               __app.set({ translations });
@@ -73,16 +75,30 @@ export class EventRouter {
               });
             }
 
+            // speech recognition
             if (
               !_.isEqual(
                 oldApp.config.speechRecognition,
                 __app.config.speechRecognition,
               )
             ) {
-              console.log("speechRecognition changed!");
+              __app.console.debugLog("speechRecognition changed!");
               if (!this.isDev) {
                 __app.speechRecognition.updateEngine();
               }
+            }
+
+            // interception
+            if (
+              oldApp.config.others.useInterception !==
+              __app.config.others.useInterception
+            ) {
+              __app.console.debugLog("Input method changed!");
+              __app.hardware.keyboard =
+                __app.config.others.useInterception &&
+                __app.interceptionDriverInstalled
+                  ? new NodeHardware().keyboard
+                  : new Keysender().keyboard;
             }
 
             saveConfig(data);
@@ -94,7 +110,6 @@ export class EventRouter {
         case "macros": {
           if (this.isReady && !_.isEqual(__app.macros, data)) {
             __app.console.debugLog("Macros Changed!");
-            console.log("Macros Changed!");
 
             __app.set({ macros: data });
 

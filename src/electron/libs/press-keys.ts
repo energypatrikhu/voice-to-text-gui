@@ -1,6 +1,4 @@
-import type { KeyboardButton } from "@energypatrikhu/keysender";
 import { __app } from "./app.js";
-import { keyboard } from "./hardware.js";
 
 export async function printTextSegments(
   output: string,
@@ -35,29 +33,32 @@ export async function printText(text: string) {
     const delay = __app.config.output.animated
       ? __app.config.output.typingDelay
       : 0;
-    await keyboard.printText(text, delay, delay);
+
+    await __app.hardware.keyboard.printText(text, delay, delay);
   } catch (error) {
     __app.console.debugErrorLog(error);
   }
 }
 
-export async function sendKey(key: KeyboardButton | string) {
+export async function sendKey(key: string) {
   try {
     const delay = __app.config.output.animated
       ? __app.config.output.typingDelay
       : 0;
-    await keyboard.sendKey(key as KeyboardButton, delay, delay);
+
+    await __app.hardware.keyboard.sendKey(key as any, delay, delay);
   } catch (error) {
     __app.console.debugErrorLog(error);
   }
 }
 
-export async function sendKeys(keys: KeyboardButton[] | string[]) {
+export async function sendKeys(keys: string[]) {
   try {
     const delay = __app.config.output.animated
       ? __app.config.output.typingDelay
       : 0;
-    await keyboard.sendKeys(keys as KeyboardButton[], delay, delay);
+
+    await __app.hardware.keyboard.sendKeys(keys as any, delay, delay);
   } catch (error) {
     __app.console.debugErrorLog(error);
   }

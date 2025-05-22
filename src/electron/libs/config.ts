@@ -76,6 +76,7 @@ const defaultConfig: ConfigOptions = {
   others: {
     mtaConsoleInputMode: false,
     showActiveButtons: false,
+    useInterception: false,
   },
 };
 

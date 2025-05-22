@@ -66,5 +66,6 @@ export interface ConfigOptions {
   others: {
     mtaConsoleInputMode: boolean;
     showActiveButtons: boolean;
+    useInterception: boolean;
   };
 }

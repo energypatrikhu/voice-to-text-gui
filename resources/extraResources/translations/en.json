@@ -6,45 +6,37 @@
         "updateAvailable": "There is an update available! Please restart the application to start the update!"
       }
     },
-
     "commandHandler": {
       "unknownMacro": "Unknown macro!",
       "unknownCommand": "Unknown command!"
     },
-
     "commands": {
       "updateApp": {
         "updateAvailable": "Update available! Please wait, downloading update..."
       },
-
       "showActiveButtons": {
         "showActiveButtons": {
           "enabled": "Show active buttons: Enabled",
           "disabled": "Show active buttons: Disabled"
         }
       },
-
       "mtaMode": {
         "mtaConsoleInputMode": {
           "enabled": "MTA Console Input Mode: Enabled",
           "disabled": "MTA Console Input Mode: Disabled"
         }
       },
-
       "exitMta": {
         "notInForeground": "MTA San Andreas is not in foreground!"
       },
-
       "exit": {
         "closingApp": "Closing application..."
       },
-
       "activeWindow": {
         "activeWindow": "Active window: {0}"
       }
     }
   },
-
   "textFeedback": {
     "index": {
       "app": {
@@ -54,6 +46,9 @@
           "hold": "Voice To Text app started, press and hold one of the defined keyboard shortcuts to use voice-to-text",
           "toggle": "Voice To Text app started, press one of the defined keyboard shortcuts to toggle voice-to-text"
         }
+      },
+      "interception": {
+        "notInstalled": "Use Interception is on, but the driver not installed, please install it from https://github.com/oblitum/Interception/releases/latest"
       },
       "chrome": {
         "starting": "Starting chrome in headless mode...",
@@ -77,11 +72,9 @@
       },
       "commandsEnabled": "Say or write '{0}parancsok' to list available commands!"
     },
-
     "soundWrapper": {
       "playingSound": "Playing sound..."
     },
-
     "config": {
       "macro": {
         "loaded": "Macros loaded!"
@@ -100,12 +93,10 @@
         "loaded": "Translations loaded!"
       }
     },
-
     "commandHandler": {
       "unknownMacro": "Unknown macro!",
       "unknownCommand": "Unknown command!"
     },
-
     "chromeInstance": {
       "chrome": {
         "navigating": "Navigating chrome...",
@@ -116,7 +107,6 @@
         "starting": "Starting speech recognition engine..."
       }
     },
-
     "update": {
       "checkAppUpdate": {
         "checkingUpdate": "Checking for update...",
@@ -125,7 +115,6 @@
         "updateDownloaded": "Update downloaded, the application now restarts..."
       }
     },
-
     "commands": {
       "updateApp": {
         "description": "Check for app update.",
@@ -133,7 +122,6 @@
         "noUpdateAvailable": "No update available.",
         "updateAvailable": "Update available! Please wait, downloading update..."
       },
-
       "showActiveButtons": {
         "description": "Prints the list of active buttons, useful for setting the desired button combination to activate voice-to-text.",
         "showActiveButtons": {
@@ -141,7 +129,6 @@
           "disabled": "Show active buttons: Disabled"
         }
       },
-
       "mtaMode": {
         "description": "Sets it to the opposite of the current value of 'mtaConsoleInputMode'. (true => false | false => true)",
         "mtaConsoleInputMode": {
@@ -149,17 +136,14 @@
           "disabled": "MTA Console Input Mode: Disabled"
         }
       },
-
       "exitMta": {
         "description": "Closes the MTA San Andreas program.",
         "notInForeground": "MTA:SA is not in foreground!"
       },
-
       "exit": {
         "description": "Close this program.",
         "closingApp": "Closing application..."
       },
-
       "commandList": {
         "description": "Command list.",
         "list": {
@@ -175,13 +159,11 @@
           "speech": "speech only"
         }
       },
-
       "activeWindow": {
         "description": "Get the currently foreground window.",
         "activeWindow": "Active Window: {0}"
       }
     },
-
     "chromeFunctions": {
       "speechRecognition": {
         "outputStopped": "Output stopped by pressing 'Escape'!",
@@ -200,7 +182,6 @@
       }
     }
   },
-
   "states": {
     "disabled": "Disabled",
     "enabled": "Enabled",
@@ -220,7 +201,6 @@
     "custom": "Custom",
     "default": "Default"
   },
-
   "time": {
     "normal": {
       "ms": "millisecond(s)",
@@ -243,7 +223,6 @@
       "y": "y"
     }
   },
-
   "buttons": {
     "add": "Add",
     "remove": "Remove",
@@ -251,21 +230,18 @@
     "cancel": "Cancel",
     "reset": "Reset"
   },
-
   "navigation": {
     "home": "Home",
     "settings": "Settings",
     "macros": "Macros",
     "info": "Info"
   },
-
   "console": {
     "input": {
       "placeholder": "Command input (without prefix)",
       "submit": "Send"
     }
   },
-
   "firstStart": {
     "global": {
       "run": "Running first start scripts...",
@@ -280,7 +256,6 @@
       "fail": "Failed to update chrome!"
     }
   },
-
   "settings": {
     "logs": {
       "this": {
@@ -534,6 +509,10 @@
       "showActiveButtons": {
         "name": "Show pressed buttons",
         "description": "Show currently active buttons"
+      },
+      "useInterception": {
+        "name": "Use Interception",
+        "description": "Use Interception for keyboard and mouse input, for this you need to install the Interception driver from https://github.com/oblitum/Interception/releases/latest"
       }
     }
   }
