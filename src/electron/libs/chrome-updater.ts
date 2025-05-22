@@ -30,6 +30,11 @@ const listOfUnnecessaryFiles = [
   "vulkan-1.dll",
 ];
 
+let chromeInstallerPath: string;
+let chromeArchive: string;
+let chromePath: string;
+let chromeExePath: string;
+
 function cleanupChromeFiles() {
   const filesToDelete = [
     "chrome",
@@ -123,13 +128,12 @@ async function chromeDownloader() {
     __app.console.debugLogJson(chromeData);
     __app.console.debugLog("Old Chrome version:", __app.manifest.chromeVersion);
 
-    const chromeFilePath = join(__app.resources, "chrome-installer.exe");
-
     if (
       chromeData.version === __app.manifest.chromeVersion &&
-      !__app.manifest.isFirstStart
+      !__app.manifest.isFirstStart &&
+      existsSync(chromeExePath)
     ) {
-      return { filename: chromeFilePath, version: chromeData.version };
+      return { filename: chromeInstallerPath, version: chromeData.version };
     }
 
     __app.console.log(__app.translations.firstStart.chrome.update);
@@ -151,7 +155,7 @@ async function chromeDownloader() {
               responseType: "stream",
             });
 
-            const chromeFileStream = createWriteStream(chromeFilePath);
+            const chromeFileStream = createWriteStream(chromeInstallerPath);
             axiosResponse.data.pipe(chromeFileStream);
 
             await new Promise<void>((r) => {
@@ -162,7 +166,7 @@ async function chromeDownloader() {
             });
 
             return promiseResolve({
-              filename: chromeFilePath,
+              filename: chromeInstallerPath,
               version: chromeData.version,
             });
           } catch (error: any) {
@@ -180,6 +184,11 @@ async function chromeDownloader() {
 }
 
 export async function chromeUpdater() {
+  chromeInstallerPath = join(__app.resources, "chrome-installer.exe");
+  chromeArchive = join(__app.resources, "chrome.7z");
+  chromePath = join(__app.resources, "chrome");
+  chromeExePath = join(chromePath, "chrome.exe");
+
   try {
     const chromeData = await chromeDownloader();
 
@@ -189,7 +198,8 @@ export async function chromeUpdater() {
 
     if (
       chromeData.version === __app.manifest.chromeVersion &&
-      !__app.manifest.isFirstStart
+      !__app.manifest.isFirstStart &&
+      existsSync(chromeExePath)
     ) {
       __app.console.log(__app.translations.firstStart.chrome.no_update);
       return;
@@ -198,11 +208,9 @@ export async function chromeUpdater() {
     extractArchive(chromeData.filename);
     rmSync(chromeData.filename, { force: true, recursive: true });
 
-    const chromeArchive = join(__app.resources, "chrome.7z");
     extractArchive(chromeArchive);
     rmSync(chromeArchive, { force: true, recursive: true });
 
-    const chromePath = join(__app.resources, "chrome");
     renameSync(join(__app.resources, "Chrome-bin"), chromePath);
 
     for (const file of ["chrome_proxy.exe"]) {
