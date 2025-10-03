@@ -1,2 +1,0 @@
-*.dll diff=lfs merge=lfs -text
-chrome.zip diff=lfs merge=lfs -text
