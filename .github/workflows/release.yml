@@ -104,7 +104,7 @@ jobs:
           tag_name: v${{ steps.version.outputs.new_version }}
           name: Release v${{ steps.version.outputs.new_version }}
           body_path: changelog.txt
-          draft: false
+          draft: true
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -114,5 +114,13 @@ jobs:
         env:
           NODE_ENV: prod
           APP_STATE: release
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Publish Release
+        run: |
+          $release = gh release view "v${{ steps.version.outputs.new_version }}" --json id | ConvertFrom-Json
+          gh release edit "v${{ steps.version.outputs.new_version }}" --draft=false
+          Write-Host "Release v${{ steps.version.outputs.new_version }} published successfully"
+        env:
           GH_TOKEN: ${{ github.token }}
 
