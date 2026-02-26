@@ -1,0 +1,101 @@
+name: Build and Release Beta
+
+on:
+  workflow_dispatch:
+    inputs:
+      increment:
+        description: 'Version increment type'
+        required: true
+        type: choice
+        options:
+          - Patch
+          - Minor
+          - Major
+        default: Patch
+
+jobs:
+  build-beta:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Calculate new version
+        id: version
+        run: |
+          $packageJson = Get-Content package.json -Raw | ConvertFrom-Json
+          $currentVersion = $packageJson.version
+
+          # Check if current version is a beta
+          if ($currentVersion -match '^(\d+)\.(\d+)\.(\d+)-beta\.(\d+)$') {
+            $major = [int]$Matches[1]
+            $minor = [int]$Matches[2]
+            $patch = [int]$Matches[3]
+            $beta = [int]$Matches[4]
+
+            # If it's already a beta, increment based on choice or increment beta number
+            switch ("${{ inputs.increment }}") {
+              "Major" { $major++; $minor = 0; $patch = 0; $beta = 1 }
+              "Minor" { $minor++; $patch = 0; $beta = 1 }
+              "Patch" { $beta++ }  # Just increment beta number
+            }
+          } else {
+            # Not a beta, parse regular version
+            $versionParts = $currentVersion.Split('.')
+            $major = [int]$versionParts[0]
+            $minor = [int]$versionParts[1]
+            $patch = [int]$versionParts[2]
+
+            switch ("${{ inputs.increment }}") {
+              "Major" { $major++; $minor = 0; $patch = 0 }
+              "Minor" { $minor++; $patch = 0 }
+              "Patch" { $patch++ }
+            }
+            $beta = 1
+          }
+
+          $newVersion = "$major.$minor.$patch-beta.$beta"
+          echo "new_version=$newVersion" >> $env:GITHUB_OUTPUT
+          echo "New version will be: $newVersion"
+
+      - name: Update version in package.json
+        run: |
+          $packageJson = Get-Content package.json -Raw | ConvertFrom-Json
+          $packageJson.version = "${{ steps.version.outputs.new_version }}"
+          $packageJson | ConvertTo-Json -Depth 100 | Set-Content package.json
+
+      - name: Build Electron app (Beta)
+        run: bun run pack:electron:beta && bun run pack:vite:beta && bun run build:electron:release:beta
+        env:
+          NODE_ENV: prod
+          APP_STATE: beta
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create Git tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}" || echo "No changes to commit"
+          git tag -a "v${{ steps.version.outputs.new_version }}" -m "Pre-release v${{ steps.version.outputs.new_version }}"
+          git push origin "v${{ steps.version.outputs.new_version }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: beta-builds
+          path: dist/*.exe
+          if-no-files-found: error
