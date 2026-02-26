@@ -60,13 +60,6 @@ jobs:
           $packageJson.version = "${{ steps.version.outputs.new_version }}"
           $packageJson | ConvertTo-Json -Depth 100 | Set-Content package.json
 
-      - name: Build Electron app
-        run: bun run pack:electron && bun run pack:vite && bun run build:electron:release
-        env:
-          NODE_ENV: prod
-          APP_STATE: release
-          GH_TOKEN: ${{ github.token }}
-
       - name: Create Git tag
         run: |
           git config user.name "github-actions[bot]"
@@ -78,9 +71,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-builds
-          path: dist/*.exe
-          if-no-files-found: error
+      - name: Build Electron app
+        run: bun run pack:electron && bun run pack:vite && bun run build:electron:release
+        env:
+          NODE_ENV: prod
+          APP_STATE: release
+          GH_TOKEN: ${{ github.token }}
