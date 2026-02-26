@@ -1,4 +1,7 @@
 {
+  "npm": {
+    "publishPackageManager": "bun"
+  },
   "git": {
     "tagAnnotation": "Pre-Release ${version}"
   },
