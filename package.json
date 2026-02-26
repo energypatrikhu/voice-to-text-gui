@@ -26,8 +26,8 @@
     "release-it:release:beta": "cross-env-file -p .env.prod.beta.json release-it --config preRelease.release-it.json",
     "build": "bun run pack:electron && bun run pack:vite && bun run build:electron",
     "build:beta": "bun run pack:electron:beta && bun run pack:vite:beta && bun run build:electron:beta",
-    "release": "bun run --bun release-it:release && bun run pack:electron && bun run pack:vite && bun run build:electron:release",
-    "release:beta": "bun run --bun release-it:release:beta && bun run pack:electron:beta && bun run pack:vite:beta && bun run build:electron:release:beta"
+    "release": "bun run release-it:release && bun run pack:electron && bun run pack:vite && bun run build:electron:release",
+    "release:beta": "bun run release-it:release:beta && bun run pack:electron:beta && bun run pack:vite:beta && bun run build:electron:release:beta"
   },
   "dependencies": {
     "@energypatrikhu/keysender": "2.3.4",
