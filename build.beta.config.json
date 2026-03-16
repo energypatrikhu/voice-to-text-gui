@@ -3,9 +3,8 @@
   "productName": "Voice To Text",
   "compression": "maximum",
   "publish": {
-    "provider": "github",
-    "owner": "EnergyPatrikHU",
-    "repo": "voice-to-text-gui",
+    "provider": "generic",
+    "url": "https://git.ep24.hu/ephu/voice-to-text-gui/releases",
     "releaseType": "prerelease",
     "publishAutoUpdate": true
   },
