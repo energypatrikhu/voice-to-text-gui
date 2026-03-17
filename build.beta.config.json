@@ -3,8 +3,10 @@
   "productName": "Voice To Text",
   "compression": "maximum",
   "publish": {
-    "provider": "generic",
-    "url": "https://git.ep24.hu/ephu/voice-to-text-gui/releases",
+    "provider": "gitlab",
+    "host": "https://gitlab.ep24.hu",
+    "owner": "ephu",
+    "repo": "voice-to-text-gui",
     "releaseType": "prerelease",
     "publishAutoUpdate": true
   },

@@ -6,13 +6,14 @@
   "git": {
     "tagAnnotation": "Release ${version}"
   },
-  "github": {
+  "gitlab": {
     "release": true,
-    "tokenRef": "GH_TOKEN",
+    "tokenRef": "GITLAB_TOKEN",
+    "origin": "https://gitlab.ep24.hu",
     "comments": {
       "submit": true,
       "issue": "_This issue has been resolved in v${version}. See [${releaseName}](${releaseUrl}) for release notes._",
-      "pr": "_This pull request is included in v${version}. See [${releaseName}](${releaseUrl}) for release notes._"
+      "pr": "_This merge request is included in v${version}. See [${releaseName}](${releaseUrl}) for release notes._"
     }
   }
 }
