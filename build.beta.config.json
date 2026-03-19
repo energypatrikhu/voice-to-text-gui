@@ -3,9 +3,8 @@
   "productName": "Voice To Text",
   "compression": "maximum",
   "publish": {
-    "provider": "gitlab",
-    "host": "https://gitlab.ep24.hu",
-    "owner": "ephu",
+    "provider": "github",
+    "owner": "EnergyPatrikHU",
     "repo": "voice-to-text-gui",
     "releaseType": "prerelease",
     "publishAutoUpdate": true
