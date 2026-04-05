@@ -62,7 +62,7 @@
     "concurrently": "9.2.1",
     "cross-env-file": "1.0.0",
     "dotenv": "17.3.1",
-    "electron": "35.7.5",
+    "electron": "39.8.4",
     "electron-builder": "26.0.12",
     "electron-connect": "0.6.3",
     "postcss": "8.5.6",
